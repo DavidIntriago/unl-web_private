@@ -1,0 +1,8 @@
+uuid: 55de85b2-837a-40e4-a095-29e60ba1ac9e
+langcode: en
+status: true
+dependencies: {  }
+id: mapa_footer
+label: 'Mapa Footer'
+revision: false
+description: 'Mapa que se muestra en el footer'

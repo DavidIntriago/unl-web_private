@@ -1,0 +1,19 @@
+uuid: daba6025-7ebc-4ae3-84ec-ad529d8efc88
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contacto_institucional
+    - field.storage.block_content.field_email
+id: block_content.contacto_institucional.field_email
+field_name: field_email
+entity_type: block_content
+bundle: contacto_institucional
+label: 'Correo electrónico'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

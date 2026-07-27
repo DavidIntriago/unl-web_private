@@ -1,0 +1,11 @@
+{#
+  Envuelve el teléfono en un link tel:, mostrando también el label.
+#}
+{% if label_hidden == false %}
+  <div{{ title_attributes }}>{{ label }}</div>
+{% endif %}
+{% for item in items %}
+  <a href="tel:{{ item.content['#context'].value|replace({' ': '', '(': '', ')': '', '-': ''}) }}">
+    {{ item.content }}
+  </a>
+{% endfor %}

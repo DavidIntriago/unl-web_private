@@ -1,0 +1,10 @@
+uuid: c94f7624-b4fb-4a3a-9df9-0611f33911d5
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: BCM-vV1zzRaLHN18dqAR_CuGOj8AFJvTx7BKl_8Gcxc
+id: tools
+label: Herramientas
+description: 'Enlaces de herramientas de usuario. Los suelen a??adir los m??dulos'
+locked: true

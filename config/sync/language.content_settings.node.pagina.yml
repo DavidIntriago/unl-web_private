@@ -1,0 +1,11 @@
+uuid: cf739264-d6c1-4688-aff4-9c86c2ae1340
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.pagina
+id: node.pagina
+target_entity_type_id: node
+target_bundle: pagina
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,10 @@
+uuid: b96fc461-f124-4347-8efd-a18f09bd93ac
+langcode: en
+status: true
+dependencies: {  }
+id: diapositiva_hero
+label: 'Diapositiva Hero'
+icon_uuid: null
+icon_default: null
+description: 'Diapositivas para Hero Carrusel con Titulo, Descripcion, Enlace e Imagen'
+behavior_plugins: {  }

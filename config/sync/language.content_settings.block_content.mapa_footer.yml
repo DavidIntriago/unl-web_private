@@ -1,0 +1,11 @@
+uuid: 1ed39558-e114-4658-bebd-ec8d91d24aa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mapa_footer
+id: block_content.mapa_footer
+target_entity_type_id: block_content
+target_bundle: mapa_footer
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,35 @@
+<footer class="site-footer">
+
+  <div class="site-footer__container">
+  
+
+    <div class="site-footer__branding">
+      {{ page.branding }}
+    </div>
+
+    <div class="site-footer__contact">
+      <h2>Contacto</h2>
+      {{ page.footer_contact }}
+    </div>
+
+    <div class="site-footer__social">
+      <h2>Redes sociales</h2>
+      {{ page.footer_social }}
+    </div>
+
+    <div class="site-footer__map">
+      <h2>Ubicación</h2>
+      {{ page.footer_map }}
+      <iframe
+        src="https://www.google.com/maps?q=Universidad+Nacional+de+Loja&output=embed"
+        style="width:100%;height:220px;border:0;">
+      </iframe>
+    </div>
+
+  </div>
+
+  <div class="site-footer__bottom">
+    © {{ "now"|date("Y") }} Universidad Nacional de Loja
+  </div>
+
+</footer>

@@ -1,0 +1,19 @@
+name: UNL Theme
+type: theme
+description: Tema personalizado para el portal de la Universidad Nacional de Loja.
+core_version_requirement: ^11
+base theme: false
+
+libraries:
+  - unl_theme/global
+
+regions:
+  top_bar: Top Bar
+  branding: Branding
+  primary_menu: Primary Menu
+  header_actions: Header Actions
+  highlighted: Hero
+  content: Content
+  footer_contact: Footer - Contacto
+  footer_social: Footer - Redes Sociales
+  footer_map: Footer - Mapa

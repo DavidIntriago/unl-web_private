@@ -1,0 +1,9 @@
+{#
+  Dirección: label arriba, ícono al lado del valor abajo.
+#}
+{% if label_hidden == false %}
+  <div class="site-footer__address-label">{{ label }}</div>
+{% endif %}
+{% for item in items %}
+  <div class="site-footer__address">{{ item.content }}</div>
+{% endfor %}

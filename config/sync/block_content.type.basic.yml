@@ -1,0 +1,10 @@
+uuid: 2d20f5ca-ffb3-44b5-9531-59281d270596
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pQP5iQy4SdhAMVcjDUncCfkJmTofnHVtXrsMzx4k6Yk
+id: basic
+label: 'Bloque b??sico'
+revision: false
+description: 'Un bloque b??sico contiene un t??tulo y un cuerpo.'

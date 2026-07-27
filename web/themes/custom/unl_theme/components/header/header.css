@@ -1,0 +1,410 @@
+/* ==========================================================================
+   VARIABLE GENERALES (Por si acaso las necesitas)
+   ========================================================================== */
+:root {
+  --primary-color: #93000b;
+  --surface-color: #ffffff;
+  --header-height: 80px;
+  --container-width: 1280px;
+}
+
+/* ==========================================================================
+   HEADER GENERAL & CONTENEDOR
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-height, 80px);
+  background: var(--surface-color, #ffffff);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.site-header__container {
+  max-width: var(--container-width, 1280px);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.site-header__logo img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-header__logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   MENU PRINCIPAL (ESCRITORIO)
+   ========================================================================== */
+
+.site-header__navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.site-header__navigation ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header__navigation li {
+  position: relative;
+}
+
+.site-header__navigation a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+}
+
+/* Línea animada inferior (Escritorio) */
+.site-header__navigation a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color, #93000b);
+  transition: 0.25s ease;
+}
+
+.site-header__navigation a:hover {
+  color: var(--primary-color, #93000b);
+  transform: translateY(-2px);
+}
+
+.site-header__navigation a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   SUBMENÚS (Dropdown al hacer hover)
+   ========================================================================== */
+.site-header__navigation .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--surface-color, #ffffff);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+
+  /* Oculto por defecto */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.25s ease;
+}
+
+.site-header__navigation li.has-children:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.site-header__navigation .submenu a {
+  padding: 0.65rem 1.5rem;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  text-transform: none;
+  transition: 0.25s ease;
+}
+
+.site-header__navigation .submenu a:hover {
+  background: #f9f9f9;
+  color: var(--primary-color, #93000b);
+  padding-left: 1.75rem;
+}
+
+.site-header__navigation .submenu a::after {
+  display: none; /* que no herede la línea animada del padre */
+}
+
+/* ==========================================================================
+   BOTONES / ACCIONES GLOBAL
+   ========================================================================== */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-header__actions a,
+.site-header__actions button {
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.site-header__actions .button-primary {
+  background: var(--primary-color, #93000b);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.site-header__actions .button-primary:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   BOTÓN HAMBURGUESA ANIMADO
+   ========================================================================== */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.mobile-menu-button span {
+  display: block;
+  height: 3px;
+  width: 25px;
+  background: var(--primary-color, #93000b);
+  border-radius: 5px;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease;
+}
+
+/* Animación a 'X' de hamburguesa activa */
+.mobile-menu-button.is-active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-button.is-active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.mobile-menu-button.is-active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   PANEL MÓVIL (Menú Desplegable con Estilos Bonitos)
+   ========================================================================== */
+.mobile-menu-panel {
+  display: block;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 0 2rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    padding 0.4s ease;
+}
+
+/* Estado Abierto */
+.mobile-menu-panel.is-open {
+  max-height: 600px;
+  opacity: 1;
+  padding: 1.5rem 2rem;
+}
+
+/* Forzar que la lista de Drupal rompa fila horizontal y se apile verticalmente */
+.mobile-menu-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Apilado vertical */
+  gap: 0;
+}
+
+.mobile-menu-panel li {
+  width: 100%;
+  border-bottom: 1px solid #f5f5f5; /* Línea divisoria suave */
+}
+
+.mobile-menu-panel li:last-child {
+  border-bottom: none;
+}
+
+/* Estilización bonita de los enlaces en el panel móvil */
+.mobile-menu-panel a {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: #333333;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition:
+    padding-left 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Pequeño efecto de desplazamiento al tocar o pasar el mouse en móvil */
+.mobile-menu-panel a:hover {
+  color: var(--primary-color, #93000b);
+  padding-left: 8px;
+}
+/* ==========================================================================
+   SUBMENÚS DENTRO DEL PANEL MÓVIL (Acordeón)
+   ========================================================================== */
+.mobile-menu-panel li.has-children {
+  position: relative;
+}
+
+/* El link del padre ocupa menos espacio para no chocar con el botón */
+.mobile-menu-panel li.has-children > a {
+  padding-right: 3rem;
+}
+
+/* Botón chevron */
+.mobile-menu-panel .submenu-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-panel .submenu-toggle__icon {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #666;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+/* Rota el chevron cuando está abierto (apunta hacia arriba) */
+.mobile-menu-panel li.is-submenu-open .submenu-toggle__icon {
+  transform: rotate(-135deg);
+}
+
+/* Submenú oculto por defecto, con animación de despliegue */
+.mobile-menu-panel .submenu {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 1rem;
+  border-left: 2px solid #f0f0f0;
+  margin-left: 0;
+  transition: max-height 0.35s ease;
+}
+
+.mobile-menu-panel li.is-submenu-open .submenu {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.mobile-menu-panel .submenu a {
+  padding: 0.6rem 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #666;
+}
+
+.mobile-menu-panel .submenu a:hover {
+  color: var(--primary-color, #93000b);
+  padding-left: 6px;
+}
+.mobile-menu-panel li.has-children > span {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  padding-right: 3rem;
+  color: #333333;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+/* ==========================================================================
+   RESPONSIVE / MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1000px) {
+  .site-header__container {
+    padding: 0 1.5rem;
+  }
+
+  .site-header__navigation {
+    display: none; /* Oculta navegación horizontal en tablets/móviles */
+  }
+
+  .mobile-menu-button {
+    display: flex; /* Muestra el botón de hamburguesa */
+  }
+
+  .site-header__logo img {
+    height: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    height: 70px;
+  }
+
+  .site-header__container {
+    padding: 0 1rem;
+  }
+
+  .site-header__logo img {
+    height: 42px;
+  }
+}

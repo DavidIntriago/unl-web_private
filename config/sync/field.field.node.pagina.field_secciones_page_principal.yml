@@ -1,0 +1,36 @@
+uuid: 1cb68f25-1114-4831-a980-c0d35fe5a6b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secciones_page_principal
+    - node.type.pagina
+    - paragraphs.paragraphs_type.diapositiva_hero
+    - paragraphs.paragraphs_type.hero_carrusel
+  module:
+    - entity_reference_revisions
+id: node.pagina.field_secciones_page_principal
+field_name: field_secciones_page_principal
+entity_type: node
+bundle: pagina
+label: 'Secciones Page Principal'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      diapositiva_hero: diapositiva_hero
+      hero_carrusel: hero_carrusel
+    negate: 0
+    target_bundles_drag_drop:
+      diapositiva_hero:
+        weight: 3
+        enabled: true
+      hero_carrusel:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

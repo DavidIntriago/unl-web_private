@@ -1,0 +1,22 @@
+uuid: 9adee851-cb77-4948-ac29-7eeca617334b
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - unl_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: unl_theme_content
+theme: unl_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenido principal de la página'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,17 @@
+global:
+  css:
+    theme:
+      assets/css/variables.css: {}
+      assets/css/base.css: {}
+      assets/css/typography.css: {}
+      assets/css/utilities.css: {}
+      components/header/header.css: {}
+      components/footer/footer.css: {}
+
+  js:
+    assets/js/global.js: {}
+    components/footer/footer.js: {}
+    components/header/header.js: {}
+
+  dependencies:
+    - core/drupal

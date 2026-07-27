@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: drupal11_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: drupal
+      POSTGRES_PASSWORD: drupalpass
+      POSTGRES_DB: drupaldb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: drupal11_app
+    restart: always
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/opt/drupal
+
+
+volumes:
+  postgres_data:

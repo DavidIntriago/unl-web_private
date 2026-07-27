@@ -1,0 +1,11 @@
+uuid: d307457c-2468-4c71-acd4-d65be676fcf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contacto_institucional
+id: block_content.contacto_institucional
+target_entity_type_id: block_content
+target_bundle: contacto_institucional
+default_langcode: site_default
+language_alterable: false

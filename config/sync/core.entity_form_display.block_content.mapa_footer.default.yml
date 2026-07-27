@@ -1,0 +1,38 @@
+uuid: 867a2de6-d699-432d-99e5-c73408f1116e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mapa_footer
+    - field.field.block_content.mapa_footer.field_map
+  module:
+    - link
+id: block_content.mapa_footer.default
+targetEntityType: block_content
+bundle: mapa_footer
+mode: default
+content:
+  field_map:
+    type: link_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

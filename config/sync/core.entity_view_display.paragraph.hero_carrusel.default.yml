@@ -1,0 +1,24 @@
+uuid: 2843644b-a3e2-403a-993b-551dbeb96b86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_carrusel.field_diapositivas
+    - paragraphs.paragraphs_type.hero_carrusel
+  module:
+    - entity_reference_revisions
+id: paragraph.hero_carrusel.default
+targetEntityType: paragraph
+bundle: hero_carrusel
+mode: default
+content:
+  field_diapositivas:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

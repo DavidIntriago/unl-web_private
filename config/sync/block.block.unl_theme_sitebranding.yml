@@ -1,0 +1,23 @@
+uuid: 16f3115e-a239-414b-a93e-da46f42e22dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_sitebranding
+theme: unl_theme
+region: branding
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

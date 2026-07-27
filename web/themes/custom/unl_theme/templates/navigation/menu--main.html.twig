@@ -1,0 +1,35 @@
+<nav class="main-navigation">
+
+  <ul class="main-menu">
+
+    {% for item in items %}
+
+      <li class="menu-item {% if item.below %}has-children{% endif %}">
+
+        <a href="{{ item.url }}">
+          {{ item.title }}
+        </a>
+
+        {% if item.below %}
+
+          <div class="submenu">
+
+            {% for child in item.below %}
+
+              <a href="{{ child.url }}">
+                {{ child.title }}
+              </a>
+
+            {% endfor %}
+
+          </div>
+
+        {% endif %}
+
+      </li>
+
+    {% endfor %}
+
+  </ul>
+
+</nav>

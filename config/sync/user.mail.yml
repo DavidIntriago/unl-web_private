@@ -1,0 +1,30 @@
+_core:
+  default_config_hash: 6CZIzFifRq3qbdq3n3nDpEOO4hWIQtKOAQNPvGNGKeM
+langcode: es
+cancel_confirm:
+  subject: 'Solicitud de cancelaci??n de cuenta para [user:display-name] en [site:name]'
+  body: "[user:display-name]\r\n\r\nSe ha realizado una petici??n para eliminar su cuenta en [site:name].\r\n\r\nPuede cancelar su cuenta en [site:url-brief] haciendo click en este enlace o copi??ndolo y peg??ndolo en su navegador:\r\n\r\n[user:cancel-url]\r\n\r\nIMPORTANTE: La cancelaci??n de su cuenta es un proceso irreversible.\r\n\r\nEste enlace caducar?? en un d??a y si no es utilizado no ocurrir?? nada.\r\n\r\n--  El equipo de [site:name]"
+password_reset:
+  subject: 'Reemplazo de informaci??n de inicio de sesi??n para [user:display-name] en [site:name]'
+  body: "[user:display-name],\r\n\r\nUna petici??n para reestablecer la contrase??a de su cuenta ha sido realizada en [site:name].\r\n\r\nAhora puede iniciar sesi??n haciendo clic en este enlace o copi??ndolo y peg??ndolo en su navegador:\r\n\r\n[user:one-time-login-url]\r\n\r\nEste enlace solo puede ser usado una vez para iniciar sesi??n y le llevar?? a una p??gina donde puede establecer su contrase??a. Caduca despu??s de un d??a y nada ocurrir?? si no se usa.\r\n\r\n--  El equipo de [site:name]"
+register_admin_created:
+  subject: 'Un administrador ha creado una cuenta para usted en [site:name]'
+  body: "[user:display-name],\r\n\r\nUn administrador del sitio en [site:name] ha creado una cuenta para usted. Puede ahora iniciar sesi??n haciendo clic en este enlace o copiando y peg??ndolo en su navegador:\r\n\r\n[user:one-time-login-url]\r\n\r\nEste enlace solo puede ser usado una vez para iniciar sesi??n y le conducir?? a la p??gina donde podr?? establecer su contrase??a.\r\n\r\nDespu??s de establecer su contrase??a, ser?? capaz de iniciar sesi??n en [site:login-url] en el futuro usando:\r\n\r\nNombre de usuario: [user:name]\r\nContrase??a: Su contrase??a\r\n\r\n--  Equipo de [site:name]"
+register_no_approval_required:
+  subject: 'Detalles de la cuenta para [user:display-name] en [site:name]'
+  body: "[user:display-name],\r\n\r\nGracias por registrarse en [site:name]. Puede ahora iniciar sesi??n haciendo clic en este enlace o copiando y pegandolo en su navegador:\r\n\r\n[user:one-time-login-url]\r\n\r\nEste enlace solo puede ser usado una vez para iniciar sesi??n y le conducir?? a una p??gina donde podr?? establecer sus contrase??a.\r\n\r\nDespu??s de establecer su contrase??a, ser?? capaz de iniciar sesi??n en [site:login-url] en el futuro usando:\r\n\r\nNombre de usuario: [user:name]\r\nContrase??a: Su contrase??a\r\n\r\n--  Equipo de [site:name]"
+register_pending_approval:
+  subject: 'Detalles de cuenta para [user:display-name] en [site:name] (pendiente de aprobaci??n por el administrador)'
+  body: "[user:display-name],\r\n\r\nGracias por registrarse en [site:name]. Su solicitud de una cuenta actualmente est?? pendiente de aprobaci??n. Una vez que haya sido aprobada, recibir?? otro correo electr??nico con informaci??n sobre c??mo iniciar sesi??n, establecer su contrase??a y otros detalles.\r\n\r\n--  El equipo de [site:name]"
+register_pending_approval_admin:
+  subject: 'Detalles de cuenta para [user:display-name] en [site:name] (pendiente de aprobaci??n por el administrador)'
+  body: "[user:display-name] ha solicitado una cuenta.\r\n\r\n[user:edit-url]"
+status_activated:
+  subject: 'Detalles de cuenta para [user:display-name] en [site:name] (aprobado)'
+  body: "[user:display-name],\r\n\r\nSu cuenta en [site:name] ha sido activada.\r\n\r\nUsted puede ahora iniciar sesi??n haciendo click en este enlace o copi??ndolo y peg??ndolo en su navegador:\r\n\r\n[user:one-time-login-url]\r\n\r\nEste enlace solo puede ser usado una vez para iniciar sesi??n y lo llevar?? a usted a una p??gina donde podr?? establecer su clave personal.\r\n\r\nDespu??s de establecer su clave personal, usted podr?? iniciar sesi??n en [site:login-url] utilizando:\r\n\r\nusuario: [user:account-name]\r\nclave personal: Your password\r\n\r\n--  Equipo [site:name]"
+status_blocked:
+  subject: 'Detalles de la cuenta de [user:display-name] en [site:name] (bloqueada)'
+  body: "[user:display-name],\r\n\r\nSu cuenta en [site:name] ha sido bloqueada.\r\n\r\n--  El equipo de [site:name]"
+status_canceled:
+  subject: 'Detalles de cuenta para [user:display-name] en [site:name] (cancelado)'
+  body: "[user:display-name],\r\n\r\nSu cuenta en [site:name] ha sido cancelada.\r\n\r\n--  El equipo de [site:name]"

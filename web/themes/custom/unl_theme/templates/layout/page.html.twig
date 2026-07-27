@@ -1,0 +1,30 @@
+{{ attach_library('unl_theme/global') }}
+
+<div id="page-wrapper">
+
+    {% if page.top_bar %}
+    <div class="top-bar">
+        {{ page.top_bar }}
+    </div>
+    {% endif %}
+
+
+    {% include '@unl_theme/components/header/header.html.twig' %}
+
+
+    {% if page.highlighted %}
+    <section class="hero">
+        {{ page.highlighted }}
+    </section>
+    {% endif %}
+
+
+    <main class="site-content">
+        {{ page.content }}
+    </main>
+
+
+    {% include '@unl_theme/components/footer/footer.html.twig' %}
+
+
+</div>

@@ -1,0 +1,52 @@
+uuid: 2749a850-26b0-457e-b74c-6364b4097232
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.diapositiva_hero.field_descripcion
+    - field.field.paragraph.diapositiva_hero.field_enlace
+    - field.field.paragraph.diapositiva_hero.field_imagen
+    - field.field.paragraph.diapositiva_hero.field_titulo
+    - paragraphs.paragraphs_type.diapositiva_hero
+  module:
+    - link
+    - media_library
+id: paragraph.diapositiva_hero.default
+targetEntityType: paragraph
+bundle: diapositiva_hero
+mode: default
+content:
+  field_descripcion:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_enlace:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_imagen:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_titulo:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

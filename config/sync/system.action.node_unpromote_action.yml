@@ -1,0 +1,13 @@
+uuid: 46469688-6b15-461b-b927-5623c4fe58a1
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: JBptjnfuOMtsdKygklXxoOgeOCTMtQxlkymjnnj-cC0
+id: node_unpromote_action
+label: 'Eliminar contenido de la p??gina de inicio'
+type: node
+plugin: node_unpromote_action
+configuration: {  }

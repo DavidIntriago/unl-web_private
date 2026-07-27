@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+body {
+
+  margin:0;
+
+  background:var(--background-color);
+
+  color:var(--text-color);
+
+  font-family: Arial, sans-serif;
+
+}
+
+
+img {
+
+  max-width:100%;
+
+  display:block;
+
+}
+
+
+a {
+
+  color:inherit;
+
+}

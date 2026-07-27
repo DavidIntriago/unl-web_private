@@ -1,0 +1,54 @@
+uuid: 0abe484e-13b6-42bf-b8c3-606c44a9179f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contacto_institucional
+    - field.field.block_content.contacto_institucional.field_adress
+    - field.field.block_content.contacto_institucional.field_email
+    - field.field.block_content.contacto_institucional.field_phone
+id: block_content.contacto_institucional.default
+targetEntityType: block_content
+bundle: contacto_institucional
+mode: default
+content:
+  field_adress:
+    type: string_textarea
+    weight: 26
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_phone:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

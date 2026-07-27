@@ -1,0 +1,13 @@
+uuid: 3aa8221a-a491-4ed5-99d0-14f04e668471
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: LhdsoZPL_pFas2fjaAWue4zvrQ_tEVofLYtcNec-JGM
+id: node_save_action
+label: 'Guardar contenido'
+type: node
+plugin: 'entity:save_action:node'
+configuration: {  }

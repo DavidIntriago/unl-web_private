@@ -1,0 +1,28 @@
+uuid: 79151790-3df8-49a2-b348-ae2ec8fa7232
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.mapa_footer
+    - field.field.block_content.mapa_footer.field_map
+  module:
+    - link
+id: block_content.mapa_footer.default
+targetEntityType: block_content
+bundle: mapa_footer
+mode: default
+content:
+  field_map:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

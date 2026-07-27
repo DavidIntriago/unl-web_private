@@ -1,0 +1,25 @@
+uuid: 08b280f6-ba11-4466-80f2-ab7c66cc03cd
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.redes-sociales
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_redessociales
+theme: unl_theme
+region: top_bar
+weight: 0
+provider: null
+plugin: 'system_menu_block:redes-sociales'
+settings:
+  id: 'system_menu_block:redes-sociales'
+  label: 'Redes Sociales'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

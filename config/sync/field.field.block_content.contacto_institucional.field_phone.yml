@@ -1,0 +1,19 @@
+uuid: 1b562be7-43e9-4371-86e4-1e9f7a880c2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contacto_institucional
+    - field.storage.block_content.field_phone
+id: block_content.contacto_institucional.field_phone
+field_name: field_phone
+entity_type: block_content
+bundle: contacto_institucional
+label: Teléfono
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

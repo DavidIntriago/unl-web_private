@@ -1,0 +1,19 @@
+name: Hero Carrusel
+description: 'Carrusel donde cada diapositiva tiene su propio texto e imagen.'
+status: experimental
+props:
+  type: object
+  properties:
+    diapositiva:
+      type: array
+      items:
+        type: object
+        properties:
+          titulo:
+            type: string
+          descripcion:
+            type: string
+          imagen_url:   
+            type: string
+          enlace_url:
+            type: string

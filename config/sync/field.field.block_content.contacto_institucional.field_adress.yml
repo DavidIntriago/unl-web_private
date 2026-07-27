@@ -1,0 +1,19 @@
+uuid: 73abc113-111d-4c6d-9247-b2a4440a8134
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contacto_institucional
+    - field.storage.block_content.field_adress
+id: block_content.contacto_institucional.field_adress
+field_name: field_adress
+entity_type: block_content
+bundle: contacto_institucional
+label: Dirección
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

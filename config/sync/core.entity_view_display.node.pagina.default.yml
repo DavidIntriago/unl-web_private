@@ -1,0 +1,31 @@
+uuid: be783380-ba42-4ffe-b95f-1349e351f8f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.pagina.field_secciones_page_principal
+    - node.type.pagina
+  module:
+    - entity_reference_revisions
+    - user
+id: node.pagina.default
+targetEntityType: node
+bundle: pagina
+mode: default
+content:
+  field_secciones_page_principal:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

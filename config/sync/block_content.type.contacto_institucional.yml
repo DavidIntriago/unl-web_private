@@ -1,0 +1,8 @@
+uuid: 444fa26e-9fc3-45dc-abc7-1fc89a4212e5
+langcode: en
+status: true
+dependencies: {  }
+id: contacto_institucional
+label: 'Contacto Institucional'
+revision: false
+description: 'Información de contacto que se mostrará en el footer.'

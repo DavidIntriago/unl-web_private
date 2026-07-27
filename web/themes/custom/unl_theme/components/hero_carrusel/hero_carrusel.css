@@ -1,0 +1,127 @@
+/* web/themes/custom/unl_theme/components/hero_carrusel/hero_carrusel.css */
+
+.hero-carrusel-contenedor {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%); /* Forzar pantalla completa */
+  height: 80vh; 
+  overflow: hidden;
+  background-color: #1a1a1a; /* Fondo oscuro mientras carga la imagen */
+}
+
+.carrusel-slides {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Todas ocultas por defecto */
+  z-index: 0;
+  transition: opacity 0.8s ease-in-out; /* Efecto Fade suave de 0.8 segundos */
+}
+
+/* Esta es la clase que el JS le irá pasando a cada diapositiva */
+.slide-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Mostramos temporalmente la primera con CSS puro para pruebas */
+.slide-item:first-child {
+  opacity: 1; 
+  z-index: 1;
+}
+
+/* La imagen ocupando todo el fondo sin deformarse */
+.slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Oscurecer para leer textos */
+  z-index: 1;
+}
+
+.slide-texto {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.slide-texto h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-universidad {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #d6b027; /* Dorado institucional genérico */
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* web/themes/custom/unl_theme/components/hero_carrusel/hero_carrusel.css */
+
+/* ... tu código anterior ... */
+
+.carrusel-controles {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 3; /* Por encima de todo */
+  pointer-events: none; /* Permite hacer clic a través del contenedor... */
+}
+
+.btn-flecha {
+  pointer-events: auto; /* ...pero hace que los botones sí sean clicables */
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-flecha:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: #d6b027; /* Toque del dorado institucional */
+}

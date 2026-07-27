@@ -1,0 +1,9 @@
+/vendor/
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/files/config_*/
+
+.env
+.vscode/
+.idea/
+*.log

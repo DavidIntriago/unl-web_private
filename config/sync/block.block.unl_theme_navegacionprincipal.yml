@@ -1,0 +1,25 @@
+uuid: 0a4fcc60-c82d-4478-8369-dfc6fdfe19da
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_navegacionprincipal
+theme: unl_theme
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Navegación principal'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: true
+visibility: {  }

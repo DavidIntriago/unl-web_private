@@ -2,24 +2,51 @@
  * @file
  * Funcionalidad interactiva para la cabecera de la UNL.
  */
-(function (Drupal) {
+(function (Drupal, once) {
   "use strict";
 
   Drupal.behaviors.unlHeaderMenu = {
     attach: function (context) {
-      // 1. CONTROL DEL MENÚ MÓVIL GENERAL
-      const menuButton = context.querySelector(".mobile-menu-button");
-      const menuPanel = document.querySelector(".mobile-menu-panel");
+      
+      // ========================================================================
+      // 1. OCULTAR HEADER AL BAJAR / MOSTRAR AL SUBIR
+      // ========================================================================
+      const headers = once('unl-header-scroll', '.site-header', context);
 
-      if (
-        menuButton &&
-        menuPanel &&
-        !menuButton.classList.contains("js-menu-initialized")
-      ) {
-        menuButton.classList.add("js-menu-initialized");
+      headers.forEach((header) => {
+        let lastScrollY = window.scrollY;
+        const scrollThreshold = 100;
+
+        window.addEventListener('scroll', () => {
+          const currentScrollY = window.scrollY;
+          const menuPanel = document.querySelector('.mobile-menu-panel');
+          const isMobileMenuOpen = menuPanel && menuPanel.classList.contains('is-open');
+
+          // No ocultar si el menú móvil está abierto o si estamos en la cima de la página
+          if (isMobileMenuOpen) return;
+
+          if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+            header.classList.add('is-hidden');
+          } else {
+            header.classList.remove('is-hidden');
+          }
+
+          lastScrollY = currentScrollY;
+        }, { passive: true });
+      });
+
+      // ========================================================================
+      // 2. CONTROL DEL MENÚ MÓVIL GENERAL
+      // ========================================================================
+      const menuButtons = once('unl-header-mobile-toggle', '.mobile-menu-button', context);
+
+      menuButtons.forEach((menuButton) => {
+        const menuPanel = document.querySelector(".mobile-menu-panel");
+        if (!menuPanel) return;
+
         menuButton.addEventListener("click", function (e) {
           e.preventDefault();
-          e.stopPropagation(); // evita que este mismo clic dispare el listener de "fuera"
+          e.stopPropagation();
           menuButton.classList.toggle("is-active");
           menuPanel.classList.toggle("is-open");
         });
@@ -27,9 +54,7 @@
         // Cerrar el menú si se hace clic fuera del panel y del botón
         document.addEventListener("click", function (e) {
           const isOpen = menuPanel.classList.contains("is-open");
-          if (!isOpen) {
-            return;
-          }
+          if (!isOpen) return;
 
           const clickedInsidePanel = menuPanel.contains(e.target);
           const clickedButton = menuButton.contains(e.target);
@@ -39,29 +64,30 @@
             menuPanel.classList.remove("is-open");
           }
         });
-      }
+      });
 
-      // 2. CONTROL DE SUBMENÚS EN ESCRITORIO (solo marca la clase, el hover lo hace el CSS)
-      const desktopItems = context.querySelectorAll(
-        ".site-header__navigation li",
-      );
-      desktopItems.forEach(function (li) {
+      // ========================================================================
+      // 3. CONTROL DE SUBMENÚS EN ESCRITORIO
+      // ========================================================================
+      const desktopItems = once('unl-desktop-menu-items', '.site-header__navigation li', context);
+
+      desktopItems.forEach((li) => {
         const subMenu = li.querySelector("ul, .submenu");
         if (subMenu) {
           li.classList.add("has-children");
         }
       });
 
-      // 3. ACORDEÓN DE SUBMENÚS EN EL PANEL MÓVIL
-      const mobileItems = context.querySelectorAll(".mobile-menu-panel li");
+      // ========================================================================
+      // 4. ACORDEÓN DE SUBMENÚS EN EL PANEL MÓVIL
+      // ========================================================================
+      const mobileItems = once('unl-mobile-submenu-items', '.mobile-menu-panel li', context);
 
-      mobileItems.forEach(function (li) {
+      mobileItems.forEach((li) => {
         const subMenu = li.querySelector(".submenu");
-        if (!subMenu || li.classList.contains("js-accordion-initialized")) {
-          return;
-        }
+        if (!subMenu) return;
 
-        li.classList.add("has-children", "js-accordion-initialized");
+        li.classList.add("has-children");
 
         const toggleButton = document.createElement("button");
         toggleButton.type = "button";
@@ -100,4 +126,4 @@
       });
     },
   };
-})(Drupal);
+})(Drupal, once);

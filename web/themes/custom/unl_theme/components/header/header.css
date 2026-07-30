@@ -1,9 +1,9 @@
 /* ==========================================================================
-   VARIABLE GENERALES (Por si acaso las necesitas)
+   VARIABLES GENERALES
    ========================================================================== */
 :root {
-  --primary-color: #93000b;
-  --surface-color: #ffffff;
+  --primary-color: #ffffff;
+  --surface-color: #93000b;
   --header-height: 80px;
   --container-width: 1280px;
 }
@@ -16,8 +16,15 @@
   top: 0;
   z-index: 1000;
   height: var(--header-height, 80px);
-  background: var(--surface-color, #ffffff);
+  background: var(--surface-color, #93000b);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
 }
 
 .site-header__container {
@@ -31,6 +38,11 @@
   gap: 2rem;
 }
 
+.site-header.is-hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
+}
+
 /* ==========================================================================
    LOGO
    ========================================================================== */
@@ -41,7 +53,7 @@
 }
 
 .site-header__logo img {
-  height: 56px;
+  height: 80px;
   width: auto;
   object-fit: contain;
 }
@@ -81,7 +93,7 @@
   align-items: center;
   padding: 0.75rem 0;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-size: 0.9rem;
   letter-spacing: 0.04em;
   font-weight: 700;
@@ -111,16 +123,17 @@
 }
 
 /* ==========================================================================
-   SUBMENÚS (Dropdown al hacer hover)
+   SUBMENÚS (Dropdown al hacer hover - Escritorio)
    ========================================================================== */
 .site-header__navigation .submenu {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 220px;
-  background: var(--surface-color, #ffffff);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  min-width: 230px;
+  background: var(--surface-color, #93000b);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 8px 8px;
+  border-top: none;
   padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
@@ -129,7 +142,7 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .site-header__navigation li.has-children:hover .submenu {
@@ -139,24 +152,24 @@
 }
 
 .site-header__navigation .submenu a {
-  padding: 0.65rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   text-decoration: none;
-  color: #666;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.85rem;
   letter-spacing: 0.02em;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: none;
-  transition: 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .site-header__navigation .submenu a:hover {
-  background: #f9f9f9;
-  color: var(--primary-color, #93000b);
-  padding-left: 1.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding-left: 1.85rem;
 }
 
 .site-header__navigation .submenu a::after {
-  display: none; /* que no herede la línea animada del padre */
+  display: none;
 }
 
 /* ==========================================================================
@@ -176,7 +189,7 @@
 }
 
 .site-header__actions .button-primary {
-  background: var(--primary-color, #93000b);
+  background: var(--primary-color, #ffffff);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
@@ -208,7 +221,7 @@
   display: block;
   height: 3px;
   width: 25px;
-  background: var(--primary-color, #93000b);
+  background: var(--primary-color, #ffffff);
   border-radius: 5px;
   transition:
     transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -230,16 +243,17 @@
 }
 
 /* ==========================================================================
-   PANEL MÓVIL (Menú Desplegable con Estilos Bonitos)
+   PANEL MÓVIL Y SUBMENÚS (Tema Rojo & Blanco)
    ========================================================================== */
 .mobile-menu-panel {
   display: block;
-  background: #ffffff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: var(--surface-color, #93000b);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 0 2rem;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   transition:
     max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.3s ease,
@@ -253,32 +267,30 @@
   padding: 1.5rem 2rem;
 }
 
-/* Forzar que la lista de Drupal rompa fila horizontal y se apile verticalmente */
 .mobile-menu-panel ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Apilado vertical */
+  flex-direction: column;
   gap: 0;
 }
 
 .mobile-menu-panel li {
   width: 100%;
-  border-bottom: 1px solid #f5f5f5; /* Línea divisoria suave */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .mobile-menu-panel li:last-child {
   border-bottom: none;
 }
 
-/* Estilización bonita de los enlaces en el panel móvil */
 .mobile-menu-panel a {
   display: flex;
   align-items: center;
   padding: 1rem 0;
   text-decoration: none;
-  color: #333333;
+  color: #ffffff;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   font-weight: 700;
@@ -288,24 +300,19 @@
     color 0.3s ease;
 }
 
-/* Pequeño efecto de desplazamiento al tocar o pasar el mouse en móvil */
 .mobile-menu-panel a:hover {
-  color: var(--primary-color, #93000b);
+  color: #ffffff;
   padding-left: 8px;
 }
-/* ==========================================================================
-   SUBMENÚS DENTRO DEL PANEL MÓVIL (Acordeón)
-   ========================================================================== */
+
 .mobile-menu-panel li.has-children {
   position: relative;
 }
 
-/* El link del padre ocupa menos espacio para no chocar con el botón */
 .mobile-menu-panel li.has-children > a {
   padding-right: 3rem;
 }
 
-/* Botón chevron */
 .mobile-menu-panel .submenu-toggle {
   position: absolute;
   top: 0;
@@ -323,25 +330,23 @@
 .mobile-menu-panel .submenu-toggle__icon {
   width: 10px;
   height: 10px;
-  border-right: 2px solid #666;
-  border-bottom: 2px solid #666;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
   transform: rotate(45deg);
   transition: transform 0.3s ease;
 }
 
-/* Rota el chevron cuando está abierto (apunta hacia arriba) */
 .mobile-menu-panel li.is-submenu-open .submenu-toggle__icon {
   transform: rotate(-135deg);
 }
 
-/* Submenú oculto por defecto, con animación de despliegue */
 .mobile-menu-panel .submenu {
   display: flex;
   flex-direction: column;
   max-height: 0;
   overflow: hidden;
   padding-left: 1rem;
-  border-left: 2px solid #f0f0f0;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
   margin-left: 0;
   transition: max-height 0.35s ease;
 }
@@ -356,19 +361,20 @@
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0.02em;
-  color: #666;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .mobile-menu-panel .submenu a:hover {
-  color: var(--primary-color, #93000b);
+  color: #ffffff;
   padding-left: 6px;
 }
+
 .mobile-menu-panel li.has-children > span {
   display: flex;
   align-items: center;
   padding: 1rem 0;
   padding-right: 3rem;
-  color: #333333;
+  color: #ffffff;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   font-weight: 700;
@@ -383,11 +389,11 @@
   }
 
   .site-header__navigation {
-    display: none; /* Oculta navegación horizontal en tablets/móviles */
+    display: none;
   }
 
   .mobile-menu-button {
-    display: flex; /* Muestra el botón de hamburguesa */
+    display: flex;
   }
 
   .site-header__logo img {

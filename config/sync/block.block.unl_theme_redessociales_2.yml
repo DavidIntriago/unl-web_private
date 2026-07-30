@@ -1,0 +1,25 @@
+uuid: 64733c94-f6e6-46f1-ba25-90be6d029de7
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.redes-sociales
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_redessociales_2
+theme: unl_theme
+region: footer_social
+weight: 0
+provider: null
+plugin: 'system_menu_block:redes-sociales'
+settings:
+  id: 'system_menu_block:redes-sociales'
+  label: 'Redes Sociales'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

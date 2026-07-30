@@ -1,0 +1,11 @@
+{% embed 'unl_theme:grid-tarjetas'  with {
+  titulo: content.field_titulo_seccion|render|striptags|trim
+}  %}
+  {% block items %}
+    {% for item in content.field_tarjetas %}
+      {% if item['#paragraph'] is defined %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

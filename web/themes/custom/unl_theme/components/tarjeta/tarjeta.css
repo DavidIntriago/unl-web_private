@@ -1,0 +1,88 @@
+.tarjeta-institucional {
+  position: relative;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  transition:
+      flex .45s cubic-bezier(.25,.8,.25,1),
+      transform .35s ease,
+      box-shadow .35s ease;
+}
+
+.tarjeta-institucional:hover {
+  flex: 3;
+  transform: translateY(-8px);
+  z-index: 5;
+    box-shadow: 0 12px 30px rgba(0,0,0,.15);
+
+}
+
+.tarjeta-bg-img {
+  transition:
+      opacity .4s ease,
+      transform .5s ease;
+}
+
+.tarjeta-institucional:hover .tarjeta-bg-img {
+  opacity: .35;
+  transform: scale(1.08);
+}
+
+
+
+.tarjeta-contenido {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 2rem;
+  text-align: center;
+}
+
+.tarjeta-titulo {
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+
+    text-align: center;
+
+    text-shadow: 0 2px 6px rgba(0,0,0,.35);
+
+    transition: transform .35s ease;
+}
+
+
+.tarjeta-institucional:hover .tarjeta-titulo {
+    transform: scale(1.05);
+    text-shadow: 0 4px 12px rgba(0,0,0,.55);
+}
+.tarjeta-contenido{
+    transition: transform .35s ease;
+}
+
+.tarjeta-institucional:hover .tarjeta-contenido{
+    transform: scale(1.05);
+}
+
+/* facultades   */
+.theme-fjsa { background-color: #e53e3e; } /* Rojo */
+.theme-fsh { background-color: #3182ce; } /* Azul */
+.theme-feirnnr { background-color: #ffab03; } /* Naranja*/
+.bg-default { background-color: #4a5568; } /* Gris por defecto */
+.theme-farnr { background-color: #38a169; } /* Verde */
+.theme-feac { background-color: #c7c4cc; } /* Morado */
+
+@media (max-width: 768px) {
+  .tarjeta-institucional {
+    height: 100px;
+    flex: none;
+  }
+}

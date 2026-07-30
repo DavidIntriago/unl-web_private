@@ -1,0 +1,20 @@
+{% set classes = [
+  'tarjeta-institucional',
+  color
+] %}
+
+<article class="{{ classes|join(' ') }}">
+  
+  {% if imagen %}
+    <div class="tarjeta-bg-img">
+      {{ imagen }}
+    </div>
+  {% endif %}
+
+  <div class="tarjeta-contenido">
+    <h3 class="tarjeta-titulo">
+      {{ titulo|nl2br }} 
+    </h3>
+  </div>
+  
+</article>

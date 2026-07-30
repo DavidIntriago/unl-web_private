@@ -1,0 +1,19 @@
+.grid-tarjetas-wrapper {
+  width: 100%;
+  max-width: none; 
+  margin: 0;
+}
+
+.grid-tarjetas-container{
+    display:flex;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .grid-tarjetas-container {
+    flex-direction: column;
+    height: auto;
+  }
+}

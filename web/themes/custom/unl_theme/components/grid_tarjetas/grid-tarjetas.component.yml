@@ -1,0 +1,11 @@
+name: 'Grid Tarjetas'
+description: 'Contenedor en cuadrícula para múltiples elementos.'
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+      title: 'Título de la Sección'
+slots:
+  items:
+    title: 'Elementos del Grid'

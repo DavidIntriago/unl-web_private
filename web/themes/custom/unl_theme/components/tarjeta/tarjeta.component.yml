@@ -1,0 +1,21 @@
+name: 'Tarjeta'
+description: 'Tarjeta individual para facultades, servicios, etc.'
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+      title: 'Título'
+    descripcion:
+      type: [string, 'null']
+      title: 'Descripción'
+    imagen:
+      type: [string, 'null', 'object']
+      title: 'Imagen'
+    color:
+      type: [string, 'null']
+      title: 'Clase CSS del Color'
+      default: 'bg-gray-100'
+    enlace:
+      type: [string, 'null', 'object']
+      title: 'Enlace'

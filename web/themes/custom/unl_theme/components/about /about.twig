@@ -1,0 +1,33 @@
+<section class="unl-about {{ color|default('bg-gray-100') }}">
+  <div class="unl-about__container">
+    
+    <div class="unl-about__content">
+      {% if titulo %}
+        <h2 class="unl-about__title">{{ titulo }}</h2>
+      {% endif %}
+      
+      {% if titulo_2 %}
+        <h3 class="unl-about__subtitle">{{ titulo_2 }}</h3>
+      {% endif %}
+      
+      {% if descripcion %}
+        <div class="unl-about__description">
+          {{ descripcion }}
+        </div>
+      {% endif %}
+      
+      {% if enlace %}
+        <div class="unl-about__action">
+          {{ enlace }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if media %}
+      <div class="unl-about__media">
+        {{ media }}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,0 +1,24 @@
+name: 'About'
+description: 'Componente para mostrar información sobre la institución, facultad o servicio.'
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+      title: 'Título'
+    titulo_2:
+      type: [string, 'null']
+      title: 'Título 2'
+    descripcion:
+      type: [string, 'null']
+      title: 'Descripción'
+    media:
+      type: [string, 'null', 'object']
+      title: 'Media'
+    color:
+      type: [string, 'null']
+      title: 'Clase CSS del Color'
+      default: 'bg-gray-100'
+    enlace:
+      type: [string, 'null', 'object']
+      title: 'Enlace'

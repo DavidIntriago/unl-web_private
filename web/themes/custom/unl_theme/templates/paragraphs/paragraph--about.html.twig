@@ -1,0 +1,19 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {% include 'unl_theme:about' with {
+    titulo: paragraph.field_titulo.value,
+    titulo_2: paragraph.field_titulo_2.value,
+    descripcion: content.field_descripcion|render,
+    media: content.field_media,
+    color: paragraph.field_color_base.value,
+    enlace: content.field_enlace
+  } only %}
+</div>

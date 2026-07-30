@@ -7,38 +7,49 @@
 
   Drupal.behaviors.unlHeaderMenu = {
     attach: function (context) {
-      
       // ========================================================================
       // 1. OCULTAR HEADER AL BAJAR / MOSTRAR AL SUBIR
       // ========================================================================
-      const headers = once('unl-header-scroll', '.site-header', context);
+      const headers = once("unl-header-scroll", ".site-header", context);
 
       headers.forEach((header) => {
         let lastScrollY = window.scrollY;
         const scrollThreshold = 100;
 
-        window.addEventListener('scroll', () => {
-          const currentScrollY = window.scrollY;
-          const menuPanel = document.querySelector('.mobile-menu-panel');
-          const isMobileMenuOpen = menuPanel && menuPanel.classList.contains('is-open');
+        window.addEventListener(
+          "scroll",
+          () => {
+            const currentScrollY = window.scrollY;
+            const menuPanel = document.querySelector(".mobile-menu-panel");
+            const isMobileMenuOpen =
+              menuPanel && menuPanel.classList.contains("is-open");
 
-          // No ocultar si el menú móvil está abierto o si estamos en la cima de la página
-          if (isMobileMenuOpen) return;
+            // No ocultar si el menú móvil está abierto o si estamos en la cima de la página
+            if (isMobileMenuOpen) return;
 
-          if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
-            header.classList.add('is-hidden');
-          } else {
-            header.classList.remove('is-hidden');
-          }
+            if (
+              currentScrollY > lastScrollY &&
+              currentScrollY > scrollThreshold
+            ) {
+              header.classList.add("is-hidden");
+            } else {
+              header.classList.remove("is-hidden");
+            }
 
-          lastScrollY = currentScrollY;
-        }, { passive: true });
+            lastScrollY = currentScrollY;
+          },
+          { passive: true },
+        );
       });
 
       // ========================================================================
       // 2. CONTROL DEL MENÚ MÓVIL GENERAL
       // ========================================================================
-      const menuButtons = once('unl-header-mobile-toggle', '.mobile-menu-button', context);
+      const menuButtons = once(
+        "unl-header-mobile-toggle",
+        ".mobile-menu-button",
+        context,
+      );
 
       menuButtons.forEach((menuButton) => {
         const menuPanel = document.querySelector(".mobile-menu-panel");
@@ -69,7 +80,11 @@
       // ========================================================================
       // 3. CONTROL DE SUBMENÚS EN ESCRITORIO
       // ========================================================================
-      const desktopItems = once('unl-desktop-menu-items', '.site-header__navigation li', context);
+      const desktopItems = once(
+        "unl-desktop-menu-items",
+        ".site-header__navigation li",
+        context,
+      );
 
       desktopItems.forEach((li) => {
         const subMenu = li.querySelector("ul, .submenu");
@@ -79,12 +94,16 @@
       });
 
       // ========================================================================
-      // 4. ACORDEÓN DE SUBMENÚS EN EL PANEL MÓVIL
+      // 4. ACORDEÓN DE SUBMENÚS EN EL PANEL MÓVIL (MULTINIVEL)
       // ========================================================================
-      const mobileItems = once('unl-mobile-submenu-items', '.mobile-menu-panel li', context);
+      const mobileItems = once(
+        "unl-mobile-submenu-items",
+        ".mobile-menu-panel li",
+        context,
+      );
 
       mobileItems.forEach((li) => {
-        const subMenu = li.querySelector(".submenu");
+        const subMenu = li.querySelector(":scope > .submenu, :scope > ul");
         if (!subMenu) return;
 
         li.classList.add("has-children");
@@ -119,6 +138,13 @@
 
           if (isOpen) {
             subMenu.style.maxHeight = subMenu.scrollHeight + "px";
+
+            let parentSubmenu = li.parentElement.closest(".submenu");
+            while (parentSubmenu) {
+              parentSubmenu.style.maxHeight =
+                parentSubmenu.scrollHeight + subMenu.scrollHeight + "px";
+              parentSubmenu = parentSubmenu.parentElement.closest(".submenu");
+            }
           } else {
             subMenu.style.maxHeight = null;
           }

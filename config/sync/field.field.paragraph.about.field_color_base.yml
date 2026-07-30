@@ -1,0 +1,21 @@
+uuid: 8427dbb0-40a2-49b8-ad27-f58c4eee9b23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color_base
+    - paragraphs.paragraphs_type.about
+  module:
+    - options
+id: paragraph.about.field_color_base
+field_name: field_color_base
+entity_type: paragraph
+bundle: about
+label: 'Color Base'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

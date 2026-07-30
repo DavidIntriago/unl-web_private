@@ -1,0 +1,10 @@
+uuid: 15b36eb0-1600-4bad-939a-7c6e901a42e2
+langcode: en
+status: true
+dependencies: {  }
+id: grid_tarjetas
+label: 'Grid Tarjetas'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: 6779caad-161d-4eae-a00e-b0d31d4bafd5
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_titulo_seccion
+field_name: field_titulo_seccion
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

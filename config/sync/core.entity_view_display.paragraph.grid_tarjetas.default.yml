@@ -1,0 +1,34 @@
+uuid: 35ffca37-b31f-453c-bb97-20076fecebaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_tarjetas.field_tarjetas
+    - field.field.paragraph.grid_tarjetas.field_titulo_seccion
+    - paragraphs.paragraphs_type.grid_tarjetas
+  module:
+    - entity_reference_revisions
+id: paragraph.grid_tarjetas.default
+targetEntityType: paragraph
+bundle: grid_tarjetas
+mode: default
+content:
+  field_tarjetas:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_titulo_seccion:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

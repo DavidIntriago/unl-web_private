@@ -1,0 +1,20 @@
+uuid: 94fb3550-4785-4e0c-8543-015e83492f77
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.facultades
+  module:
+    - user
+id: node.facultades.default
+targetEntityType: node
+bundle: facultades
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

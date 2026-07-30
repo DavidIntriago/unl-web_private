@@ -1,0 +1,11 @@
+uuid: 790e1536-4f12-4740-922d-2ddf7c39a02f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.facultades
+id: node.facultades
+target_entity_type_id: node
+target_bundle: facultades
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,10 @@
+uuid: f8c3abda-d2e8-41eb-b0c3-385f95446e20
+langcode: en
+status: true
+dependencies: {  }
+id: tarjeta
+label: Tarjeta
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

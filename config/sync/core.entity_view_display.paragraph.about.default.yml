@@ -1,0 +1,74 @@
+uuid: c2f76878-e660-445c-b954-835606becae1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.about.field_color_base
+    - field.field.paragraph.about.field_descripcion
+    - field.field.paragraph.about.field_enlace
+    - field.field.paragraph.about.field_media
+    - field.field.paragraph.about.field_titulo
+    - field.field.paragraph.about.field_titulo_2
+    - paragraphs.paragraphs_type.about
+  module:
+    - link
+    - options
+id: paragraph.about.default
+targetEntityType: paragraph
+bundle: about
+mode: default
+content:
+  field_color_base:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_descripcion:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_enlace:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_titulo:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_titulo_2:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }

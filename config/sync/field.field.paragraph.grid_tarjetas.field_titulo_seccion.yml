@@ -1,0 +1,19 @@
+uuid: 329471dc-756c-49d4-b230-5be02eabcf83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titulo_seccion
+    - paragraphs.paragraphs_type.grid_tarjetas
+id: paragraph.grid_tarjetas.field_titulo_seccion
+field_name: field_titulo_seccion
+entity_type: paragraph
+bundle: grid_tarjetas
+label: 'titulo seccion'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

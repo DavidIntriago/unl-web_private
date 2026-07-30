@@ -1,0 +1,19 @@
+uuid: 5f64ced7-4b66-4941-9978-3554c7f40dd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titulo
+    - paragraphs.paragraphs_type.tarjeta
+id: paragraph.tarjeta.field_titulo
+field_name: field_titulo
+entity_type: paragraph
+bundle: tarjeta
+label: Titulo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

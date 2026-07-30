@@ -5,7 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_secciones_page_principal
     - node.type.pagina
-    - paragraphs.paragraphs_type.diapositiva_hero
+    - paragraphs.paragraphs_type.about
+    - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.hero_carrusel
   module:
     - entity_reference_revisions
@@ -23,14 +24,24 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      diapositiva_hero: diapositiva_hero
       hero_carrusel: hero_carrusel
+      grid_tarjetas: grid_tarjetas
+      about: about
     negate: 0
     target_bundles_drag_drop:
+      about:
+        weight: 6
+        enabled: true
       diapositiva_hero:
         weight: 3
+        enabled: false
+      grid_tarjetas:
+        weight: 5
         enabled: true
       hero_carrusel:
         weight: 4
         enabled: true
+      tarjeta:
+        weight: 8
+        enabled: false
 field_type: entity_reference_revisions

@@ -1,0 +1,40 @@
+uuid: 6dc33706-c578-4c76-9ce0-02789d352ffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tarjetas
+    - paragraphs.paragraphs_type.grid_tarjetas
+    - paragraphs.paragraphs_type.tarjeta
+  module:
+    - entity_reference_revisions
+id: paragraph.grid_tarjetas.field_tarjetas
+field_name: field_tarjetas
+entity_type: paragraph
+bundle: grid_tarjetas
+label: Tarjetas
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tarjeta: tarjeta
+    negate: 0
+    target_bundles_drag_drop:
+      diapositiva_hero:
+        weight: 6
+        enabled: false
+      grid_tarjetas:
+        weight: 5
+        enabled: false
+      hero_carrusel:
+        weight: 7
+        enabled: false
+      tarjeta:
+        weight: 8
+        enabled: true
+field_type: entity_reference_revisions

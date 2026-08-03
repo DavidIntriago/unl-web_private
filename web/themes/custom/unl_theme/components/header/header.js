@@ -8,47 +8,56 @@
   Drupal.behaviors.unlHeaderMenu = {
     attach: function (context) {
       // ========================================================================
-      // 1. OCULTAR HEADER AL BAJAR / MOSTRAR AL SUBIR
+      // 1. OCULTAR HEADER AL BAJAR / MOSTRAR AL SUBIR (ESCRITORIO Y MÓVIL)
       // ========================================================================
       const headers = once("unl-header-scroll", ".site-header", context);
 
       headers.forEach((header) => {
         let lastScrollY = window.scrollY;
-        const scrollThreshold = 100;
+        const scrollThreshold = 60; // Umbral mínimo de scroll en píxeles
 
         window.addEventListener(
           "scroll",
           () => {
             const currentScrollY = window.scrollY;
             const menuPanel = document.querySelector(".mobile-menu-panel");
-            const isMobileMenuOpen =
-              menuPanel && menuPanel.classList.contains("is-open");
 
-            // No ocultar si el menú móvil está abierto o si estamos en la cima de la página
-            if (isMobileMenuOpen) return;
-
+            // Si bajamos scroll superando el umbral -> Ocultar Header
             if (
               currentScrollY > lastScrollY &&
               currentScrollY > scrollThreshold
             ) {
               header.classList.add("is-hidden");
-            } else {
+
+              // Si el panel móvil estaba abierto, se cierra al ocultar la cabecera
+              if (menuPanel && menuPanel.classList.contains("is-open")) {
+                menuPanel.classList.remove("is-open");
+                const menuButton = document.querySelector(".mobile-menu-button");
+                if (menuButton) menuButton.classList.remove("is-active");
+              }
+            } else if (currentScrollY < lastScrollY) {
+              // Si subimos scroll -> Mostrar Header
+              header.classList.remove("is-hidden");
+            }
+
+            // Si estamos arriba del todo, siempre visible
+            if (currentScrollY <= 0) {
               header.classList.remove("is-hidden");
             }
 
             lastScrollY = currentScrollY;
           },
-          { passive: true },
+          { passive: true }
         );
       });
 
       // ========================================================================
-      // 2. CONTROL DEL MENÚ MÓVIL GENERAL
+      // 2. CONTROL DEL BOTÓN HAMBURGUESA MÓVIL
       // ========================================================================
       const menuButtons = once(
         "unl-header-mobile-toggle",
         ".mobile-menu-button",
-        context,
+        context
       );
 
       menuButtons.forEach((menuButton) => {
@@ -60,9 +69,19 @@
           e.stopPropagation();
           menuButton.classList.toggle("is-active");
           menuPanel.classList.toggle("is-open");
+
+          // Reiniciar siempre los acordeones (abrir o cerrar el panel):
+          // así el menú móvil nunca recuerda qué submenú quedó abierto
+          // de la vez anterior, y siempre arranca todo colapsado.
+          menuPanel.querySelectorAll(".is-submenu-open").forEach((openLi) => {
+            openLi.classList.remove("is-submenu-open");
+          });
+          menuPanel.querySelectorAll(".submenu-toggle").forEach((btn) => {
+            btn.setAttribute("aria-expanded", "false");
+          });
         });
 
-        // Cerrar el menú si se hace clic fuera del panel y del botón
+        // Cerrar si se hace clic fuera del menú
         document.addEventListener("click", function (e) {
           const isOpen = menuPanel.classList.contains("is-open");
           if (!isOpen) return;
@@ -75,6 +94,18 @@
             menuPanel.classList.remove("is-open");
           }
         });
+
+        // Cerrar el menú móvil si la ventana crece más allá del
+        // breakpoint móvil (1000px, mismo valor que en header.css),
+        // para que no quede abierto al pasar a vista de escritorio.
+        const mobileBreakpoint = window.matchMedia("(max-width: 1000px)");
+        const closeMobileMenuOnDesktop = () => {
+          if (!mobileBreakpoint.matches) {
+            menuButton.classList.remove("is-active");
+            menuPanel.classList.remove("is-open");
+          }
+        };
+        window.addEventListener("resize", closeMobileMenuOnDesktop);
       });
 
       // ========================================================================
@@ -83,24 +114,57 @@
       const desktopItems = once(
         "unl-desktop-menu-items",
         ".site-header__navigation li",
-        context,
+        context
       );
 
+      // Lista raíz del menú. OJO: no usamos ">" (hijo directo de <nav>)
+      // porque Drupal suele envolver el <ul> del menú en un <div> del
+      // bloque (a veces con un <h2> de título antes). Como en el HTML
+      // el <ul> de primer nivel siempre aparece ANTES que cualquier
+      // <ul> anidado dentro de sus <li>, el primer <ul> que encuentre
+      // el selector (sin ">") es siempre el de nivel 1.
+      const topLevelList = document.querySelector(".site-header__navigation ul");
+
       desktopItems.forEach((li) => {
-        const subMenu = li.querySelector("ul, .submenu");
+        // :scope > asegura que solo cuente un submenú que sea HIJO DIRECTO,
+        // no cualquier <ul> anidado en niveles más profundos.
+        const subMenu = li.querySelector(":scope > ul, :scope > .submenu");
         if (subMenu) {
           li.classList.add("has-children");
+
+          // Si el <li> pertenece al primer nivel (hijo directo de la lista raíz),
+          // lo marcamos como disparador de mega menú.
+          if (topLevelList && li.parentElement === topLevelList) {
+            li.classList.add("has-mega-menu");
+          }
         }
       });
 
       // ========================================================================
-      // 4. ACORDEÓN DE SUBMENÚS EN EL PANEL MÓVIL (MULTINIVEL)
+      // 4. ACORDEÓN EN MÓVIL (EL PADRE ABRE HIJOS SIN REDIRIGIR)
       // ========================================================================
       const mobileItems = once(
         "unl-mobile-submenu-items",
         ".mobile-menu-panel li",
-        context,
+        context
       );
+
+      // Colapsa un <li> y, además, cualquier submenú que haya quedado
+      // abierto adentro suyo (para que al reabrirlo no aparezca ya
+      // expandido en un nivel más profundo).
+      const collapseAccordionItem = (targetLi) => {
+        targetLi.classList.remove("is-submenu-open");
+
+        const ownToggle = targetLi.querySelector(":scope > .submenu-toggle");
+        if (ownToggle) ownToggle.setAttribute("aria-expanded", "false");
+
+        targetLi.querySelectorAll(".is-submenu-open").forEach((nestedLi) => {
+          nestedLi.classList.remove("is-submenu-open");
+        });
+        targetLi.querySelectorAll(".submenu-toggle").forEach((nestedToggle) => {
+          nestedToggle.setAttribute("aria-expanded", "false");
+        });
+      };
 
       mobileItems.forEach((li) => {
         const subMenu = li.querySelector(":scope > .submenu, :scope > ul");
@@ -108,47 +172,47 @@
 
         li.classList.add("has-children");
 
+        // Botón con ícono de flecha
         const toggleButton = document.createElement("button");
         toggleButton.type = "button";
         toggleButton.className = "submenu-toggle";
         toggleButton.setAttribute("aria-expanded", "false");
-        toggleButton.setAttribute("aria-label", "Mostrar submenú");
+        toggleButton.setAttribute("aria-label", "Desplegar submenú");
         toggleButton.innerHTML = '<span class="submenu-toggle__icon"></span>';
 
         li.appendChild(toggleButton);
 
-        const parentLink = li.querySelector(":scope > a, :scope > span");
-        if (
-          parentLink &&
-          (!parentLink.getAttribute("href") || parentLink.tagName === "SPAN")
-        ) {
-          parentLink.style.cursor = "pointer";
-          parentLink.addEventListener("click", function (e) {
-            e.preventDefault();
-            toggleButton.click();
-          });
-        }
-
-        toggleButton.addEventListener("click", function (e) {
-          e.preventDefault();
+        // Función unificada para desplegar/contraer
+        const toggleAccordion = function (e) {
+          e.preventDefault(); // Previene la navegación a la página del padre
           e.stopPropagation();
 
-          const isOpen = li.classList.toggle("is-submenu-open");
-          toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          const willOpen = !li.classList.contains("is-submenu-open");
 
-          if (isOpen) {
-            subMenu.style.maxHeight = subMenu.scrollHeight + "px";
-
-            let parentSubmenu = li.parentElement.closest(".submenu");
-            while (parentSubmenu) {
-              parentSubmenu.style.maxHeight =
-                parentSubmenu.scrollHeight + subMenu.scrollHeight + "px";
-              parentSubmenu = parentSubmenu.parentElement.closest(".submenu");
-            }
-          } else {
-            subMenu.style.maxHeight = null;
+          // Si se va a abrir, cerrar antes cualquier hermano del mismo
+          // nivel (mismo <ul> padre) que haya quedado abierto.
+          if (willOpen && li.parentElement) {
+            li.parentElement
+              .querySelectorAll(":scope > li.is-submenu-open")
+              .forEach((siblingLi) => {
+                if (siblingLi !== li) {
+                  collapseAccordionItem(siblingLi);
+                }
+              });
           }
-        });
+
+          li.classList.toggle("is-submenu-open", willOpen);
+          toggleButton.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        };
+
+        // Asignar el clic tanto al texto del enlace/padre como al botón flecha
+        const parentLink = li.querySelector(":scope > a, :scope > span");
+        if (parentLink) {
+          parentLink.style.cursor = "pointer";
+          parentLink.addEventListener("click", toggleAccordion);
+        }
+
+        toggleButton.addEventListener("click", toggleAccordion);
       });
     },
   };

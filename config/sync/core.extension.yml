@@ -7,6 +7,9 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  chosen: 0
+  chosen_field: 0
+  chosen_lib: 0
   ckeditor5: 0
   config: 0
   contextual: 0
@@ -19,6 +22,8 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  fontawesome: 0
+  fontawesome_iconpicker_widget: 0
   help: 0
   image: 0
   language: 0

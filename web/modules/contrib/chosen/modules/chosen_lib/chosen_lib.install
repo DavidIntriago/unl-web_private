@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Install, update and requirements hooks for chosen_lib.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function chosen_lib_requirements($phase) {
+  $requirements = [];
+
+  switch ($phase) {
+    case 'runtime':
+      $chosen_path = _chosen_lib_get_chosen_path();
+
+      if (!$chosen_path) {
+        $requirements['chosen_js'] = [
+          'title' => t('Chosen JavaScript file'),
+          'value' => t('Using CDN fallback'),
+          'severity' => REQUIREMENT_WARNING,
+          'description' => t('The local Chosen library was not found in %path, so Chosen is being loaded from jsDelivr CDN. This makes the module work out of the box, but for production sites it is recommended to install the library locally with Composer as described in the README.', [
+            '%path' => 'libraries/chosen',
+          ]),
+        ];
+      }
+      else {
+        $requirements['chosen_js'] = [
+          'title' => t('Chosen JavaScript file'),
+          'severity' => REQUIREMENT_OK,
+          'value' => t('Installed locally at %path.', [
+            '%path' => $chosen_path,
+          ]),
+        ];
+      }
+      break;
+  }
+
+  return $requirements;
+}

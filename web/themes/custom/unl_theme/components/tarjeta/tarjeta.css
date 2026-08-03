@@ -9,6 +9,21 @@
       box-shadow .35s ease;
 }
 
+.tarjeta-institucional,
+.tarjeta-funcion {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-institucional .tarjeta-contenido {
+  flex-grow: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+}
+
 .tarjeta-institucional:hover {
   flex: 3;
   transform: translateY(-8px);
@@ -33,32 +48,26 @@
 .tarjeta-contenido {
   position: relative;
   z-index: 2;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   height: 100%;
-
   padding: 2rem;
   text-align: center;
 }
 
 .tarjeta-titulo {
-    color: #fff;
-    font-size: 1.15rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 0;
-
-    text-align: center;
-
-    text-shadow: 0 2px 6px rgba(0,0,0,.35);
-
-    transition: transform .35s ease;
+  margin: 0;
+  color: rgba(255,255,255,.95);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.18);
+  transition: transform .35s ease;
 }
-
 
 .tarjeta-institucional:hover .tarjeta-titulo {
     transform: scale(1.05);
@@ -73,16 +82,128 @@
 }
 
 /* facultades   */
-.theme-fjsa { background-color: #e53e3e; } /* Rojo */
-.theme-fsh { background-color: #3182ce; } /* Azul */
-.theme-feirnnr { background-color: #ffab03; } /* Naranja*/
-.bg-default { background-color: #4a5568; } /* Gris por defecto */
-.theme-farnr { background-color: #38a169; } /* Verde */
-.theme-feac { background-color: #c7c4cc; } /* Morado */
+.theme-fjsa { background-color: #e3463c; } /* Rojo */
+.theme-fsh { background-color: #5fbfe2; } /* Azul */
+.theme-feirnnr { background-color: #fac947; } /* Naranja*/
+.bg-default { background-color: #93000b; } /* Gris por defecto */
+.theme-farnr { background-color: #5bad3b; } /* Verde */
+.theme-feac { background-color: #ed8942; } /* Morado */
+.theme-ued { background-color: #7b378d; } /* Morado */
 
 @media (max-width: 768px) {
   .tarjeta-institucional {
     height: 100px;
     flex: none;
   }
+}
+
+/* -- PARA DEFAULT -- */
+.tarjeta-default {
+  position: relative; 
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f3f4f6;
+}
+
+.tarjeta-default:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* IAMGEN*/
+
+.tarjeta-default__imagen {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #f3f4f6; 
+}
+
+
+.tarjeta-default__imagen .field,
+.tarjeta-default__imagen .field__items,
+.tarjeta-default__imagen .field__item,
+.tarjeta-default__imagen article,
+.tarjeta-default__imagen picture {
+  display: contents; 
+}
+
+.tarjeta-default__imagen img {
+width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+  object-position: center !important; 
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.tarjeta-default:hover .tarjeta-default__imagen img {
+  transform: scale(1.05);
+}
+
+/* CNTENDIO TARJETA*/
+.tarjeta-default__contenido {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  /*background-color: ##93000b; muy rojooooooo*/
+}
+
+.tarjeta-default__titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+  transition: margin 0.4s ease; 
+}
+
+.tarjeta-default__descripcion {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.tarjeta-default:hover .tarjeta-default__descripcion {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+/* enlace */
+
+.tarjeta-default__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.tarjeta-default__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+.tarjeta-default__enlace a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
 }

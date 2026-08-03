@@ -19,3 +19,10 @@ props:
     enlace:
       type: [string, 'null', 'object']
       title: 'Enlace'
+    variante:
+      type: [string, 'null']
+      title: 'Variante de la Tarjeta'
+      enum:
+        - 'default'
+        - 'facultad'
+      default: 'default'

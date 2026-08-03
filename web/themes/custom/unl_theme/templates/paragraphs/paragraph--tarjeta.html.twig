@@ -1,7 +1,21 @@
-{% include 'unl_theme:tarjeta' with {
-  titulo: content.field_titulo,
-  descripcion: content.field_descripcion,
-  imagen: content.field_imagen,
-  color: paragraph.field_color_base.value|default('bg-gray-100'),
-  enlace: content.field_enlace
-} %}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {% set variante_padre = paragraph.getParentEntity().field_variante.value|default('default') %}
+
+  {% include 'unl_theme:tarjeta' with {
+    titulo: paragraph.field_titulo.value,
+    descripcion: content.field_descripcion|render,
+    imagen: content.field_imagen,
+    color: paragraph.field_color_base.value,
+    variante: variante_padre, 
+    enlace: content.field_enlace
+  } only %}
+</div>

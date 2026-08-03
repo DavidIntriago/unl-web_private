@@ -6,6 +6,13 @@ props:
     titulo:
       type: string
       title: 'Título de la Sección'
+    variante:
+      type: [string, 'null']
+      title: 'Variante del Grid'
+      enum:
+        - 'default'
+        - 'facultad'
+      default: 'default'
 slots:
   items:
     title: 'Elementos del Grid'

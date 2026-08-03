@@ -1,19 +1,72 @@
 .grid-tarjetas-wrapper {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
   width: 100%;
-  max-width: none; 
+}
+
+.grid-tarjetas__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.grid-tarjetas__titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
   margin: 0;
 }
 
-.grid-tarjetas-container{
-    display:flex;
-    width:100vw;
-    margin-left:calc(50% - 50vw);
+.grid-tarjetas__divider {
+  height: 4px; 
+  width: 100px; 
+  background-color: #93000b; 
+  margin: 0.75rem auto 0 auto; 
 }
 
-/* responsive */
+.grid-tarjetas-container--facultad .field,
+.grid-tarjetas-container--facultad .field__items,
+.grid-tarjetas-container--default .field,
+.grid-tarjetas-container--default .field__items {
+  display: contents;
+}
+
+.grid-tarjetas-container--default {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem; 
+  max-width: 1400px;  
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* facultadessssssss*/
+.grid-tarjetas-container--facultad {
+  display: flex;
+  width: 100%; 
+}
+
+.grid-tarjetas-container--facultad > * {
+  flex: 1 1 0; 
+  min-width: 0;
+}
+
+/* responsve */ 
 @media (max-width: 768px) {
-  .grid-tarjetas-container {
+
+  .grid-tarjetas-container--facultad {
     flex-direction: column;
+    width: 100%;
+    margin-left: 0;
     height: auto;
   }
+
+  .grid-tarjetas-container--facultad .tarjeta-institucional {
+    flex: none;
+    height: 100px;
+  }
+
+  .grid-tarjetas-container--facultad .tarjeta-institucional:hover {
+    flex: none;
+  }
+
 }

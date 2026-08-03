@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Chosen test module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function chosen_test_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() !== 'node') {
+    return [];
+  }
+
+  $fields['chosen_test_base_field'] = BaseFieldDefinition::create('list_string')
+    ->setLabel(t('Chosen test base field'))
+    ->setCardinality(3)
+    ->setSetting('allowed_values', [
+      'one' => 'One',
+      'two' => 'Two',
+      'three' => 'Three',
+      'four' => 'Four',
+    ])
+    ->setDisplayOptions('form', [
+      'type' => 'options_select',
+      'weight' => 99,
+    ])
+    ->setDisplayConfigurable('form', TRUE);
+
+  return $fields;
+}

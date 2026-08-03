@@ -1,0 +1,12 @@
+name: 'Chosen Field Test'
+type: module
+description: 'Test support module for chosen_field.'
+core_version_requirement: '^10 || ^11'
+package: Testing
+dependencies:
+  - field
+
+# Information added by Drupal.org packaging script on 2026-05-24
+version: '5.0.6'
+project: 'chosen'
+datestamp: 1779619388

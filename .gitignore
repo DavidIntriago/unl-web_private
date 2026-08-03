@@ -2,6 +2,7 @@
 /web/sites/*/files/
 /web/sites/*/private/
 /web/sites/*/files/config_*/
+/web/modules/contrib/
 
 .env
 .vscode/

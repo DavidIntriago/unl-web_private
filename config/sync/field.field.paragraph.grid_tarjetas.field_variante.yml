@@ -1,0 +1,21 @@
+uuid: 6fc890f3-a11b-4b8f-b340-44476a11fe81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_variante
+    - paragraphs.paragraphs_type.grid_tarjetas
+  module:
+    - options
+id: paragraph.grid_tarjetas.field_variante
+field_name: field_variante
+entity_type: paragraph
+bundle: grid_tarjetas
+label: Variante
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

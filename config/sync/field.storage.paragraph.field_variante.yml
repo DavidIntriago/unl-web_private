@@ -1,0 +1,27 @@
+uuid: ac9ad494-24ce-4217-98a3-4ab209d8f33a
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_variante
+field_name: field_variante
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: facultad
+      label: Facultad
+    -
+      value: default
+      label: Default
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

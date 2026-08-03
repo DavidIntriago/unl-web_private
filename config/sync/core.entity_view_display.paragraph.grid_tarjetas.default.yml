@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.field.paragraph.grid_tarjetas.field_tarjetas
     - field.field.paragraph.grid_tarjetas.field_titulo_seccion
+    - field.field.paragraph.grid_tarjetas.field_variante
     - paragraphs.paragraphs_type.grid_tarjetas
   module:
     - entity_reference_revisions
+    - options
 id: paragraph.grid_tarjetas.default
 targetEntityType: paragraph
 bundle: grid_tarjetas
@@ -30,5 +32,12 @@ content:
       link_rel: canonical
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_variante:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden: {  }

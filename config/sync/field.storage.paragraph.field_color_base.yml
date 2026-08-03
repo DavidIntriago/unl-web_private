@@ -28,7 +28,10 @@ settings:
       label: Rojo
     -
       value: theme-ued
-      label: Plomo
+      label: Morado
+    -
+      value: default
+      label: 'Base UNL (rojo)'
   allowed_values_function: ''
 module: options
 locked: false

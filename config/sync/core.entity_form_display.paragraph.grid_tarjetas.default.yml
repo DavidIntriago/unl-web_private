@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.grid_tarjetas.field_tarjetas
     - field.field.paragraph.grid_tarjetas.field_titulo_seccion
+    - field.field.paragraph.grid_tarjetas.field_variante
     - paragraphs.paragraphs_type.grid_tarjetas
   module:
     - paragraphs
@@ -40,6 +41,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_variante:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

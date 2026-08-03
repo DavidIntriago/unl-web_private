@@ -1,0 +1,9 @@
+uuid: e685d78a-a8bd-45b0-958c-e019f0b6498a
+langcode: es
+status: true
+dependencies: {  }
+name: Departamento
+vid: departamento
+description: null
+weight: 0
+new_revision: false

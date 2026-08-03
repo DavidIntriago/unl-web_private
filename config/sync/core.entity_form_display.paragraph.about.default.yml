@@ -45,10 +45,7 @@ content:
     weight: 5
     region: content
     settings:
-      media_types:
-        - image
-        - remote_video
-        - video
+      media_types: {  }
     third_party_settings: {  }
   field_titulo:
     type: string_textfield

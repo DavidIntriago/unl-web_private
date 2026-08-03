@@ -1,0 +1,11 @@
+uuid: 18ffd0b3-a576-458b-9274-26a87fda0086
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.departamento
+id: taxonomy_term.departamento
+target_entity_type_id: taxonomy_term
+target_bundle: departamento
+default_langcode: es
+language_alterable: false

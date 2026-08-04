@@ -1,0 +1,53 @@
+<article class="evento-teaser">
+
+  <div class="evento-teaser__imagen">
+
+    {% if content.field_imagen|render|trim %}
+      {{ content.field_imagen }}
+    {% endif %}
+
+    {% if content.field_fecha|render|trim %}
+      <div class="evento-teaser__fecha">
+
+    <span class="evento-teaser__dia">
+        {{ node.field_fecha.value|date('d') }}
+    </span>
+
+    <span class="evento-teaser__mes">
+        {{ node.field_fecha.value|date('M') }}
+    </span>
+
+</div>
+    {% endif %}
+
+  </div>
+
+  <div class="evento-teaser__contenido">
+
+    <h3 class="evento-teaser__titulo">
+      <a href="{{ url }}">
+        {{ label }}
+      </a>
+    </h3>
+
+{% if content.field_ubicacion|render|trim %}
+  <div class="evento-teaser__ubicacion">
+    <span class="evento-teaser__label">Ubicación:</span>
+    {{ content.field_ubicacion }}
+  </div>
+{% endif %}
+
+    <div class="evento-teaser__accion">
+
+      <a href="{{ url }}"
+         class="evento-teaser__boton">
+
+         Ver detalles
+
+      </a>
+
+    </div>
+
+  </div>
+
+</article>

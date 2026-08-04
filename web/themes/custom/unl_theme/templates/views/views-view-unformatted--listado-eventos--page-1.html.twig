@@ -1,0 +1,11 @@
+<section class="eventos">
+  
+  <div class="eventos__contenedor">
+  
+    {% for row in rows %}
+      <div class="eventos__item">
+        {{ row.content }}
+      </div>
+    {% endfor %}
+  </div>
+</section>

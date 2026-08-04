@@ -1,0 +1,54 @@
+{{ attach_library('unl_theme/evento_detalle') }}
+
+<article class="evento-detalle">
+  
+  <header class="evento-detalle__header">
+    <h1 class="evento-detalle__titulo">{{ label }}</h1>
+    <div class="evento-detalle__divider"></div>
+  </header>
+
+  <div class="evento-detalle__grid">
+    
+    <main class="evento-detalle__main">
+      {% if content.field_imagen|render|trim is not empty %}
+        <div class="evento-detalle__imagen">
+          {{ content.field_imagen }}
+        </div>
+      {% endif %}
+
+      <div class="evento-detalle__cuerpo">
+        {{ content.body }}
+      </div>
+    </main>
+    
+    <aside class="evento-detalle__sidebar">
+      <div class="sidebar-box">
+        <h3 class="sidebar-box__titulo">Detalles del Evento</h3>
+        
+        {% if content.field_fecha|render|trim is not empty %}
+          <div class="sidebar-box__item">
+            <strong>Cuándo:</strong>
+            {{ content.field_fecha }}
+          </div>
+        {% endif %}
+
+        {% if content.field_ubicacion|render|trim is not empty %}
+          <div class="sidebar-box__item">
+            <strong>Dónde:</strong>
+            {{ content.field_ubicacion }}
+          </div>
+        {% endif %}
+
+        {% if content.field_area|render|trim is not empty %}
+          <div class="sidebar-box__item">
+            <strong>Organiza:</strong>
+            {{ content.field_area }}
+          </div>
+        {% endif %}
+      </div>
+    </aside>
+
+  </div>
+  
+  {{ content|without('field_imagen', 'body', 'field_fecha', 'field_ubicacion', 'field_area', 'links') }}
+</article>

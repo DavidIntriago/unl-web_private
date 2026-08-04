@@ -1,0 +1,38 @@
+.eventos{
+    padding:4rem 0 5rem;
+}
+
+.eventos__contenedor{
+    width:min(1600px,95%);
+    margin:0 auto;
+    display:grid;
+    gap:2rem;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    align-items:stretch;
+}
+
+.eventos__item{
+    display:flex;
+}
+
+.eventos__item .evento-teaser{
+    width:100%;
+}
+
+@media (max-width:1400px){
+.eventos__contenedor{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+}
+}
+
+@media (max-width:640px){
+.eventos{
+    padding:2rem 0 3rem;
+}
+
+.eventos__contenedor{
+    width:92%;
+    grid-template-columns:1fr;
+    gap:1.25rem;
+}
+}

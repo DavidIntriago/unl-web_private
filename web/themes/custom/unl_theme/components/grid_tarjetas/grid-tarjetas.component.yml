@@ -12,6 +12,7 @@ props:
       enum:
         - 'default'
         - 'facultad'
+        - 'contador'
       default: 'default'
 slots:
   items:

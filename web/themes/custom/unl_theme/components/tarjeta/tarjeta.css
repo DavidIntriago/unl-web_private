@@ -1,12 +1,14 @@
+/* ==========================================
+   ESTRUCTURA DE TARJETAS
+   ========================================== */
 .tarjeta-institucional {
   position: relative;
   flex: 1;
   display: flex;
   overflow: hidden;
   transition:
-      flex .45s cubic-bezier(.25,.8,.25,1),
-      transform .35s ease,
-      box-shadow .35s ease;
+    flex .45s cubic-bezier(.25,.8,.25,1),
+    transform .35s ease;
 }
 
 .tarjeta-institucional,
@@ -16,34 +18,9 @@
   flex-direction: column;
 }
 
-.tarjeta-institucional .tarjeta-contenido {
-  flex-grow: 1; 
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  text-align: center;
-}
-
-.tarjeta-institucional:hover {
-  flex: 3;
-  transform: translateY(-8px);
-  z-index: 5;
-    box-shadow: 0 12px 30px rgba(0,0,0,.15);
-
-}
-
 .tarjeta-bg-img {
-  transition:
-      opacity .4s ease,
-      transform .5s ease;
+  transition: opacity .4s ease, transform .5s ease;
 }
-
-.tarjeta-institucional:hover .tarjeta-bg-img {
-  opacity: .35;
-  transform: scale(1.08);
-}
-
-
 
 .tarjeta-contenido {
   position: relative;
@@ -51,49 +28,104 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100%;
-  padding: 2rem;
-  text-align: center;
-}
-
-.tarjeta-titulo {
-  margin: 0;
-  color: rgba(255,255,255,.95);
-  font-size: 1.05rem;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: .02em;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.18);
+  padding: 1.5rem 2rem;
   transition: transform .35s ease;
 }
 
+/* ==========================================
+   TEXTO Y LÍNEA LATERAL IZQUIERDA
+   ========================================== */
+.tarjeta-titulo {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  
+  border-left: 2.5px solid #ffffff;
+  padding-left: 0.85rem;
+  
+  transition: transform .35s ease;
+}
+
+.tarjeta-titulo strong {
+  font-weight: 700;
+}
+
+/* ==========================================
+   HOVER (EFECTO EN LA TARJETA COMPLETA)
+   ========================================== */
+.tarjeta-institucional:hover {
+  flex: 3;
+  transform: translateY(-8px);
+  z-index: 5;
+}
+
+.tarjeta-institucional:hover .tarjeta-bg-img {
+  opacity: .35;
+  transform: scale(1.05);
+}
+
+.tarjeta-institucional:hover .tarjeta-contenido,
 .tarjeta-institucional:hover .tarjeta-titulo {
-    transform: scale(1.05);
-    text-shadow: 0 4px 12px rgba(0,0,0,.55);
-}
-.tarjeta-contenido{
-    transition: transform .35s ease;
+  transform: none; 
 }
 
-.tarjeta-institucional:hover .tarjeta-contenido{
-    transform: scale(1.05);
+/* ==========================================
+   ENLACE ESTIRADO (TARJETA COMPLETA CLICKEABLE)
+   ========================================== */
+.tarjeta-institucional__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
 }
 
-/* facultades   */
+.tarjeta-institucional__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+.tarjeta-institucional__enlace a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+/* ==========================================
+   TEMAS DE FACULTADES
+   ========================================== */
 .theme-fjsa { background-color: #e3463c; } /* Rojo */
 .theme-fsh { background-color: #5fbfe2; } /* Azul */
-.theme-feirnnr { background-color: #fac947; } /* Naranja*/
+.theme-feirnnr { background-color: #ed8942; } /* Naranja*/
 .bg-default { background-color: #93000b; } /* Gris por defecto */
 .theme-farnr { background-color: #5bad3b; } /* Verde */
-.theme-feac { background-color: #ed8942; } /* Morado */
+.theme-feac { background-color: #e7ba3e; } /* Amarillo */
 .theme-ued { background-color: #7b378d; } /* Morado */
 
+/* ==========================================
+   RESPONSIVE (MÓVIL)
+   ========================================== */
 @media (max-width: 768px) {
   .tarjeta-institucional {
-    height: 100px;
+    min-height: 90px;
+    height: auto;
     flex: none;
+  }
+
+  .tarjeta-contenido {
+    padding: 1rem 1.25rem;
+  }
+
+  .tarjeta-titulo {
+    font-size: 0.9rem;
+    padding-left: 0.75rem;
+    border-left-width: 2px;
   }
 }
 
@@ -206,4 +238,65 @@ width: 100% !important;
   right: 0;
   bottom: 0;
   z-index: 10;
+}
+
+/* ==========================================
+   VARIANTE CONTADOR (ícono + número + etiqueta)
+   ========================================== */
+.tarjeta-contador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  width: 100%;
+}
+
+.tarjeta-contador__icono {
+  margin-bottom: 0.85rem;
+  line-height: 0;
+}
+
+.tarjeta-contador__icono svg,
+.tarjeta-contador__icono img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  /* Si el ícono viene como imagen/SVG con color propio, esto lo
+     fuerza a blanco para que combine con el fondo rojo del grid.
+     Si el ícono ya es blanco de origen, esta línea no cambia nada. */
+  filter: brightness(0) invert(1);
+}
+
+.tarjeta-contador__numero {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.tarjeta-contador__etiqueta {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .tarjeta-contador__numero {
+    font-size: 2rem;
+  }
+
+  .tarjeta-contador__icono svg,
+  .tarjeta-contador__icono img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tarjeta-contador__etiqueta {
+    font-size: 0.75rem;
+  }
 }

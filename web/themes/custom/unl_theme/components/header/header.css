@@ -467,17 +467,30 @@
 
 .site-header__navigation li.has-mega-menu > .submenu {
   position: absolute;
-  top: 100%;
+  /* Antes: top: 100% (justo en el borde inferior del header). Ahora
+     empieza un poco más arriba, invadiendo el hueco vacío que queda
+     entre el texto del padre (centrado en los 80px del header) y el
+     borde inferior del header. Ese hueco era "tierra de nadie": si
+     el mouse pasaba por ahí al bajar, se perdía el :hover del padre
+     antes de llegar al panel. Como el panel comparte el mismo color
+     de fondo que el header, la invasión no debería notarse — bajé el
+     valor de 20px a 8px porque 20px tapaba el ícono/flecha del menú. */
+  top: calc(100% - 8px);
   left: 50%;
   width: 100vw;
   min-width: 0;
-  max-height: calc(100vh - var(--header-height, 80px));
+  max-height: calc(100vh - var(--header-height, 80px) + 8px);
   margin: 0;
   transform: translateX(-50%) translateY(10px);
   border-radius: 0;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
-  padding: 2.5rem calc((100vw - var(--container-width, 1280px)) / 2 + 2rem);
+  /* padding-top con 8px de más para compensar el "top" más alto:
+     el contenido visual queda exactamente en el mismo lugar de antes. */
+  padding-top: calc(2.5rem + 8px);
+  padding-right: calc((100vw - var(--container-width, 1280px)) / 2 + 2rem);
+  padding-bottom: 2.5rem;
+  padding-left: calc((100vw - var(--container-width, 1280px)) / 2 + 2rem);
 }
 
 .site-header__navigation li.has-mega-menu.has-children:hover > .submenu {
@@ -514,6 +527,19 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Nivel 3 del mega menú: antes tenía "visibility: visible !important",
+   que forzaba a TODOS los niveles 3 de TODOS los padres a ser
+   "tocables" con el mouse todo el tiempo (aunque invisibles por el
+   opacity:0 heredado del padre cerrado). Un hijo con visibility:visible
+   explícito "atraviesa" el visibility:hidden de un ancestro y sigue
+   recibiendo hover, aunque no se vea. Por eso, al pasar el mouse por
+   el panel abierto de un padre, a veces tocabas el nivel 3 invisible
+   de OTRO padre (todos ocupan el mismo espacio en pantalla) y eso
+   disparaba su :hover, abriéndolo también. Con "inherit", nivel 3
+   copia la visibilidad real de su padre 1 (oculto si no está en
+   hover), así que deja de ser hoverable mientras ese padre esté
+   cerrado. Es el único cambio de este bloque respecto a la versión
+   anterior; el resto queda igual. */
 .site-header__navigation li.has-mega-menu .submenu .submenu {
   position: static !important;
   top: auto !important;
@@ -526,7 +552,7 @@
   box-shadow: none !important;
   background: transparent !important;
   opacity: 1 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   transform: none !important;
   display: block !important;
 }

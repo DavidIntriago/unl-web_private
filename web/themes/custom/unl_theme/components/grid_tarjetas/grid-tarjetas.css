@@ -26,7 +26,9 @@
 .grid-tarjetas-container--facultad .field,
 .grid-tarjetas-container--facultad .field__items,
 .grid-tarjetas-container--default .field,
-.grid-tarjetas-container--default .field__items {
+.grid-tarjetas-container--default .field__items,
+.grid-tarjetas-container--contador .field,
+.grid-tarjetas-container--contador .field__items {
   display: contents;
 }
 
@@ -69,4 +71,58 @@
     flex: none;
   }
 
+}
+
+/* ==========================================
+   VARIANTE CONTADOR (franja roja con números)
+   ========================================== */
+
+/* El wrapper por defecto tiene márgenes y es transparente. Para
+   contador queremos una franja a todo el ancho, sin márgenes,
+   con el fondo rojo institucional (igual a --surface-color del header). */
+.grid-tarjetas-wrapper--contador {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: #93000b;
+  padding: 3rem 0;
+}
+
+/* Si hay título en esta variante, que se vea en blanco sobre el rojo */
+.grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
+  color: #ffffff;
+}
+
+.grid-tarjetas-wrapper--contador .grid-tarjetas__divider {
+  background-color: #ffffff;
+}
+
+.grid-tarjetas-container--contador {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.grid-tarjetas-container--contador > * {
+  flex: 1 1 180px;
+  max-width: 260px;
+}
+
+@media (max-width: 768px) {
+  .grid-tarjetas-wrapper--contador {
+    padding: 2.5rem 0;
+  }
+
+  .grid-tarjetas-container--contador {
+    gap: 2rem 1.5rem;
+  }
+
+  .grid-tarjetas-container--contador > * {
+    flex: 1 1 40%;
+  }
 }

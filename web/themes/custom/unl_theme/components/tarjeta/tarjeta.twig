@@ -18,8 +18,35 @@
       {{ titulo|nl2br }} 
     </h3>
   </div>
+
+  {% if enlace %}
+    <div class="tarjeta-institucional__enlace">
+      {{ enlace }}
+    </div>
+  {% endif %}
   
 </article>
+{% elseif variante == 'contador' %}
+
+  {# ------contador: ícono + número grande + etiqueta #}
+
+  <article class="tarjeta-contador">
+
+    {% if imagen %}
+      <div class="tarjeta-contador__icono">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    {% if titulo %}
+      <div class="tarjeta-contador__numero">{{ titulo }}</div>
+    {% endif %}
+
+    {% if descripcion %}
+      <div class="tarjeta-contador__etiqueta">{{ descripcion }}</div>
+    {% endif %}
+
+  </article>
 {% else %}
   
   {# ------defaultttttttttttt #}

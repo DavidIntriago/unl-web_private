@@ -2,10 +2,6 @@ uuid: 631e5341-5716-48ee-996f-168ff0e632fb
 langcode: en
 status: false
 dependencies:
-  content:
-    - 'block_content:contacto_institucional:ac2a1122-4654-4d9c-bc52-0966a08431d3'
-  module:
-    - block_content
   theme:
     - unl_theme
 id: unl_theme_contactosfooter

@@ -146,6 +146,49 @@
 .btn-flecha:hover {
   background: #93000b;
 }
+/* ==========================================
+   DESCRIPCIÓN Y BOTÓN OCULTOS POR DEFECTO
+   ========================================== */
+.slide-texto p,
+.slide-texto .btn-universidad {
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0 !important;
+  overflow: hidden;
+  transform: translateY(20px); 
+  pointer-events: none;
+  transition: 
+    opacity 0.4s ease,
+    max-height 0.5s ease,
+    transform 0.4s ease,
+    margin-bottom 0.4s ease;
+}
+
+.slide-texto h2 {
+  transition: margin-bottom 0.4s ease;
+}
+
+/* ==========================================
+   REVELAR CONTENIDO AL PASAR EL MOUSE POR LA DIAPO (HOVER)
+   ========================================== */
+.slide-item:hover .slide-texto p {
+  opacity: 1;
+  max-height: 300px; 
+  margin-bottom: 2rem !important; 
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.slide-item:hover .slide-texto .btn-universidad {
+  opacity: 1;
+  max-height: 100px;           
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.slide-item:hover .slide-texto .btn-universidad {
+  transition-delay: 0.1s;
+}
 
 /* Responsive */
 
@@ -164,8 +207,16 @@
   .slide-texto h2 {
     font-size: clamp(2rem, 10vw, 3rem);
   }
+  .slide-texto p,
+  .slide-texto .btn-universidad {
+    opacity: 1;
+    max-height: none;
+    transform: none;
+    pointer-events: auto;
+  }
+  
   .slide-texto p {
-    font-size: 1.1rem;
+    margin-bottom: 2rem !important;
   }
   .btn-flecha {
     width: 42px;

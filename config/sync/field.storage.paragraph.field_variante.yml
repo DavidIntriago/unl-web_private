@@ -17,6 +17,9 @@ settings:
     -
       value: default
       label: Default
+    -
+      value: contador
+      label: contador
   allowed_values_function: ''
 module: options
 locked: false

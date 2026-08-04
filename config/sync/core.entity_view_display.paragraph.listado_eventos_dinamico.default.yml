@@ -1,0 +1,24 @@
+uuid: feb65436-2bf4-4767-9645-753be885a29c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listado_eventos_dinamico.field_vista_eventos
+    - paragraphs.paragraphs_type.listado_eventos_dinamico
+  module:
+    - viewsreference
+id: paragraph.listado_eventos_dinamico.default
+targetEntityType: paragraph
+bundle: listado_eventos_dinamico
+mode: default
+content:
+  field_vista_eventos:
+    type: viewsreference_formatter
+    label: above
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

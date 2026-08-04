@@ -1,0 +1,27 @@
+uuid: 52cfd4c6-d9d4-4046-a4da-9bfc9f34e22d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listado_eventos_dinamico.field_vista_eventos
+    - paragraphs.paragraphs_type.listado_eventos_dinamico
+  module:
+    - viewsreference
+id: paragraph.listado_eventos_dinamico.default
+targetEntityType: paragraph
+bundle: listado_eventos_dinamico
+mode: default
+content:
+  field_vista_eventos:
+    type: viewsreference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

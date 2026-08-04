@@ -1,0 +1,31 @@
+uuid: 3d742690-c0c6-4d81-a198-d4ffd0c3fee5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vista_eventos
+    - paragraphs.paragraphs_type.listado_eventos_dinamico
+  module:
+    - viewsreference
+id: paragraph.listado_eventos_dinamico.field_vista_eventos
+field_name: field_vista_eventos
+entity_type: paragraph
+bundle: listado_eventos_dinamico
+label: 'Vista Eventos'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    listado_eventos: listado_eventos
+  enabled_settings:
+    argument: argument
+field_type: viewsreference

@@ -21,6 +21,7 @@
         "drupal/core-recipe-unpack": "^11.4",
         "drupal/core-recommended": "^11.4",
         "drupal/paragraphs": "^1.21",
+        "drupal/viewsreference": "^2.0@beta",
         "drush/drush": "^13.7"
     },
     "conflict": {

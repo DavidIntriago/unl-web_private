@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.about
     - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.hero_carrusel
+    - paragraphs.paragraphs_type.listado_eventos_dinamico
   module:
     - entity_reference_revisions
 id: node.pagina.field_secciones_page_principal
@@ -27,6 +28,7 @@ settings:
       hero_carrusel: hero_carrusel
       grid_tarjetas: grid_tarjetas
       about: about
+      listado_eventos_dinamico: listado_eventos_dinamico
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -40,6 +42,9 @@ settings:
         enabled: true
       hero_carrusel:
         weight: 4
+        enabled: true
+      listado_eventos_dinamico:
+        weight: 11
         enabled: true
       tarjeta:
         weight: 8

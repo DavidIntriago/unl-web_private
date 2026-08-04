@@ -1,111 +1,185 @@
+/* ============================================
+   EVENTO-TEASER — Tarjeta individual (v2)
+   ============================================ */
+
 .evento-teaser{
-    background:#fff;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    border-radius:16px;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-    transition:.35s;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(17, 24, 39, .08);
+    transition: transform .35s ease, box-shadow .35s ease;
 }
 
 .evento-teaser:hover{
-    transform:translateY(-8px);
-    box-shadow:0 20px 40px rgba(0,0,0,.16);
+    transform: translateY(-8px);
+    box-shadow: 0 24px 45px rgba(17, 24, 39, .18);
 }
+
+/* ---------- Imagen ---------- */
 
 .evento-teaser__imagen{
-    position:relative;
-    aspect-ratio:16/10;
-    height:auto;
-    overflow:hidden;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #e5e7eb;
+    flex-shrink: 0;
 }
 
-.evento-teaser__imagen img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.5s;
+.evento-teaser__imagen .contextual-region{
+    position: static !important;
 }
 
-.evento-teaser:hover img{
-    transform:scale(1.08);
+.evento-teaser__imagen [data-contextual-id]{
+    display: none !important;
 }
 
-.evento-teaser__imagen::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent,
-        rgba(0,0,0,.25)
-    );
+.evento-teaser .evento-teaser__imagen img,
+.evento-teaser .evento-teaser__imagen picture,
+.evento-teaser .evento-teaser__imagen picture img{
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transition: transform .6s ease;
 }
+
+.evento-teaser:hover .evento-teaser__imagen img{
+    transform: scale(1.08);
+}
+
+/* ---------- Badge de fecha ---------- */
 
 .evento-teaser__fecha{
-    position:absolute;
-    top:20px;
-    left:20px;
-    background:white;
-    color:#93000b;
-    padding:.7rem 1rem;
-    border-radius:12px;
-    font-weight:700;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-    z-index:2;
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    background: #93000b;
+    color: #fff;
+    min-width: 54px;
+    padding: .5rem .65rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(147, 0, 11, .35);
 }
 
+.evento-teaser__dia{
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.evento-teaser__mes{
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-top: .2rem;
+    opacity: .85;
+}
+
+/* ---------- Contenido ---------- */
+
 .evento-teaser__contenido{
-    display:flex;
-    flex-direction:column;
-    flex:1;
-    padding:1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5rem 1.5rem 1.75rem;
 }
 
 .evento-teaser__titulo{
-    margin:0;
-    font-size:1.35rem;
-    line-height:1.35;
+    margin: 0;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #1a1a1a;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.evento-teaser__titulo a{
-    color:#222;
-    text-decoration:none;
+.evento-teaser__divider{
+    height: 4px;
+    width: 48px;
+    background-color: #93000b;
+    border-radius: 3px;
+    margin: .65rem 0 .85rem;
 }
 
-.evento-teaser__titulo a:hover{
-    color:#93000b;
+.evento-teaser__meta{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
-.evento-teaser__ubicacion{
-    margin-top:1rem;
-    color:#6b7280;
-    font-size:.95rem;
-    line-height:1.5;
+.evento-teaser__meta-item{
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    color: #6b7280;
+    font-size: .88rem;
+    line-height: 1.5;
 }
 
-.evento-teaser__label{
-    font-weight:600;
-    color:#374151;
-    margin-right:.25rem;
+/* Ícono de ubicación (pin) */
+.evento-teaser__meta-item--ubicacion::before{
+    content: "";
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+    margin-top: .15rem;
+    background-color: #93000b;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/></svg>");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 }
 
-.evento-teaser__accion{
-    margin-top:auto;
-    padding-top:1.5rem;
-    border-top:1px solid #eee;
+/* Ícono de "organiza" (edificio/institución) */
+.evento-teaser__meta-item--area::before{
+    content: "";
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+    margin-top: .15rem;
+    background-color: #93000b;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 21V7l8-4 8 4v14h-6v-6h-4v6H4z'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 21V7l8-4 8 4v14h-6v-6h-4v6H4z'/></svg>");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 }
 
-.evento-teaser__boton{
-    text-decoration:none;
-    color:#93000b;
-    font-weight:700;
+/* ---------- Descripción (body) ---------- */
+
+.evento-teaser__cuerpo{
+    margin-top: 1.1rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid #f0f0f0;
+    color: #4b5563;
+    font-size: .92rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.evento-teaser__boton::after{
-    content:" →";
-    transition:.3s;
-}
-
-.evento-teaser__boton:hover::after{
-    margin-left:.35rem;
+.evento-teaser__cuerpo p{
+    margin: 0;
 }

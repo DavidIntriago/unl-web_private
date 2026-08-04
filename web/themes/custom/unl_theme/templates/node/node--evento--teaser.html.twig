@@ -25,28 +25,32 @@
   <div class="evento-teaser__contenido">
 
     <h3 class="evento-teaser__titulo">
-      <a href="{{ url }}">
-        {{ label }}
-      </a>
+      {{ label }}
     </h3>
 
-{% if content.field_ubicacion|render|trim %}
-  <div class="evento-teaser__ubicacion">
-    <span class="evento-teaser__label">Ubicación:</span>
-    {{ content.field_ubicacion }}
-  </div>
-{% endif %}
+    <div class="evento-teaser__divider"></div>
 
-    <div class="evento-teaser__accion">
+    <div class="evento-teaser__meta">
 
-      <a href="{{ url }}"
-         class="evento-teaser__boton">
+      {% if content.field_ubicacion|render|trim %}
+        <div class="evento-teaser__meta-item evento-teaser__meta-item--ubicacion">
+          {{ content.field_ubicacion }}
+        </div>
+      {% endif %}
 
-         Ver detalles
-
-      </a>
+      {% if content.field_area|render|trim %}
+        <div class="evento-teaser__meta-item evento-teaser__meta-item--area">
+          {{ content.field_area }}
+        </div>
+      {% endif %}
 
     </div>
+
+    {% if content.body|render|trim %}
+      <div class="evento-teaser__cuerpo">
+        {{ content.body }}
+      </div>
+    {% endif %}
 
   </div>
 

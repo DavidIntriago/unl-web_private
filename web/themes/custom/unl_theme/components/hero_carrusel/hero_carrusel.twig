@@ -1,30 +1,22 @@
 <div class="hero-carrusel-contenedor">
   <div class="carrusel-slides">
-    
-    {% for slide in diapositivas %}
+      {% for slide in diapositivas %}
       <div class="slide-item">
-        
-        {% if slide.imagen_url %}
+          {% if slide.imagen_url %}
           <img src="{{ slide.imagen_url }}" class="slide-bg" alt="{{ slide.titulo }}">
         {% endif %}
-
         <div class="slide-overlay"></div>
-
         <div class="slide-texto">
           <h2>{{ slide.titulo }}</h2>
           <p>{{ slide.descripcion }}</p>
-          
           {% if slide.enlace_url %}
-            <a href="{{ slide.enlace_url }}" class="btn-universidad">Descubrir más</a>
+            <a href="{{ slide.enlace_url }}" class="btn-universidad">{{ slide.enlace_texto|default('Descubrir más') }}</a>
           {% endif %}
         </div>
-
-      </div>
+       </div>
     {% endfor %}
-
-  </div>
-
-  {# Botones #}
+   </div>
+   {# Botones #}
   <div class="carrusel-controles">
     <button class="btn-flecha prev" aria-label="Anterior">&#10094;</button>
     <button class="btn-flecha next" aria-label="Siguiente">&#10095;</button>

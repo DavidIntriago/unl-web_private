@@ -17,3 +17,6 @@ props:
             type: string
           enlace_url:
             type: string
+          enlace_texto:
+            type: string
+            title: 'Texto del botón'

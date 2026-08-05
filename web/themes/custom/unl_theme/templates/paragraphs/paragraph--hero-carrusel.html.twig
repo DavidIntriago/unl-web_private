@@ -13,7 +13,8 @@
         titulo: child['#paragraph'].field_titulo.value,
         descripcion: child['#paragraph'].field_descripcion.value,
         imagen_url: url_imagen,
-        enlace_url: child['#paragraph'].field_enlace.uri
+        enlace_url: child['#paragraph'].field_enlace.uri,
+        enlace_texto: child['#paragraph'].field_enlace.title
       }]) %}
 
     {% endif %}

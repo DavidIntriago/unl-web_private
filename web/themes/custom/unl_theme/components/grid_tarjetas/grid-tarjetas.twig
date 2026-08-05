@@ -11,11 +11,27 @@
 
   {% set modificador_grid = variante == 'facultad'
     ? 'grid-tarjetas-container--facultad'
-    : (variante == 'contador' ? 'grid-tarjetas-container--contador' : 'grid-tarjetas-container--default') %}
+    : (variante == 'contador'
+      ? 'grid-tarjetas-container--contador'
+      : (variante == 'sitios_interes'
+        ? 'grid-tarjetas-container--sitios_interes'
+        : 'grid-tarjetas-container--default')) %}
 
   <section class="grid-tarjetas-container {{ modificador_grid }}">
+    {% if variante == 'sitios_interes' %}
+      <button class="carrusel-sitios-flecha prev" aria-label="Anterior">&#10094;</button>
+      <div class="carrusel-sitios-viewport">
+        <div class="carrusel-sitios-track">
+    {% endif %}
+
     {% block items %}
     {% endblock %}
+
+    {% if variante == 'sitios_interes' %}
+        </div>
+      </div>
+      <button class="carrusel-sitios-flecha next" aria-label="Siguiente">&#10095;</button>
+    {% endif %}
   </section>
   
 </div>

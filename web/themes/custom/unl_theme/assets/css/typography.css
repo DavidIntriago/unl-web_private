@@ -1,26 +1,24 @@
-h1,h2,h3{
 
-font-weight:700;
+@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap');
 
+body {
+  font-family: "Fustat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
-
-h1{
-
-font-size:3rem;
-
+h1, h2, h3 {
+  font-weight: 700;
 }
 
-
-h2{
-
-font-size:2rem;
-
+h1 {
+  font-size: 3rem;
 }
 
+h2 {
+  font-size: 2rem;
+}
 
-p{
-
-line-height:1.6;
-
+p {
+  line-height: 1.6;
 }

@@ -120,6 +120,7 @@
 
   .tarjeta-contenido {
     padding: 1rem 1.25rem;
+    justify-content: flex-start;
   }
 
   .tarjeta-titulo {
@@ -299,4 +300,66 @@ width: 100% !important;
   .tarjeta-contador__etiqueta {
     font-size: 0.75rem;
   }
+}
+
+/* ==========================================
+   VARIANTE SITIOS DE INTERÉS (tarjeta dentro del carrusel)
+   ========================================== */
+.tarjeta-sitio-interes {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 2rem 1.25rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-sitio-interes:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta-sitio-interes__icono {
+  margin-bottom: 1rem;
+  line-height: 0;
+}
+
+.tarjeta-sitio-interes__icono svg,
+.tarjeta-sitio-interes__icono img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.tarjeta-sitio-interes__titulo {
+  margin: 0;
+  color: #111827;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.tarjeta-sitio-interes__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.tarjeta-sitio-interes__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+.tarjeta-sitio-interes__enlace a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
 }

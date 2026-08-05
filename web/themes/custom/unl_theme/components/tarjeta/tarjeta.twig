@@ -47,6 +47,29 @@
     {% endif %}
 
   </article>
+{% elseif variante == 'sitios_interes' %}
+
+  {# ------sitios de interés: ícono + nombre, tarjeta completa clickeable #}
+
+  <article class="tarjeta-sitio-interes">
+
+    {% if imagen %}
+      <div class="tarjeta-sitio-interes__icono">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    {% if titulo %}
+      <h3 class="tarjeta-sitio-interes__titulo">{{ titulo }}</h3>
+    {% endif %}
+
+    {% if enlace %}
+      <div class="tarjeta-sitio-interes__enlace">
+        {{ enlace }}
+      </div>
+    {% endif %}
+
+  </article>
 {% else %}
   
   {# ------defaultttttttttttt #}

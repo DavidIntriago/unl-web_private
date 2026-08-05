@@ -97,6 +97,7 @@
 
   .grid-tarjetas-container--facultad .tarjeta-contenido {
     padding: 1rem 1.25rem !important;
+    justify-content: flex-start !important;
   }
 
   .grid-tarjetas-container--facultad .tarjeta-institucional:hover {
@@ -157,5 +158,96 @@
 
   .grid-tarjetas-container--contador > * {
     flex: 1 1 40%;
+  }
+}
+
+/* ==========================================
+   VARIANTE SITIOS DE INTERÉS (carrusel de 4 tarjetas)
+   ========================================== */
+.grid-tarjetas-container--sitios_interes {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3.5rem;
+  box-sizing: border-box;
+}
+
+.carrusel-sitios-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carrusel-sitios-track {
+  display: flex;
+  gap: 1.5rem;
+  touch-action: pan-y;
+  transition: transform 0.45s ease;
+}
+
+.carrusel-sitios-track > * {
+  flex: 0 0 calc((100% - 3 * 1.5rem) / 4);
+  min-width: 0;
+}
+
+.carrusel-sitios-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #93000b;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+.carrusel-sitios-flecha:hover {
+  background: #6e0008;
+}
+
+.carrusel-sitios-flecha.prev {
+  left: 0;
+}
+
+.carrusel-sitios-flecha.next {
+  right: 0;
+}
+
+.carrusel-sitios-flecha:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Tablet: 3 tarjetas visibles en vez de 4 */
+@media (min-width: 769px) and (max-width: 1300px) {
+  .carrusel-sitios-track > * {
+    flex-basis: calc((100% - 2 * 1.5rem) / 3);
+  }
+}
+
+/* Móvil: 1 tarjeta visible, centrada, ocupando todo el ancho */
+@media (max-width: 768px) {
+  .grid-tarjetas-container--sitios_interes {
+    padding: 0 1rem;
+  }
+
+  .carrusel-sitios-track > * {
+    flex-basis: 100%;
+  }
+}
+
+/* Ocultamos las flechas SOLO cuando se cumplen ambas condiciones a
+   la vez: pantalla angosta (móvil) Y puntero táctil real (coarse) */
+@media (max-width: 768px) and (pointer: coarse) {
+  .carrusel-sitios-flecha {
+    display: none;
   }
 }

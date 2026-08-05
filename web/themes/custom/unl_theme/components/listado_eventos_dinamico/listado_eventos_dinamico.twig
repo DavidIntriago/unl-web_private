@@ -1,0 +1,23 @@
+<section class="seccion-eventos">
+  <div class="seccion-eventos__contenedor">
+    
+    <div class="seccion-eventos__cabecera">
+      
+      <div class="seccion-eventos__titulos">
+        {% if titulo %}
+          <h2 class="seccion-eventos__titulo">{{ titulo }}</h2>
+        {% endif %}
+      </div>
+
+      <div class="seccion-eventos__boton-superior">
+        {% block boton_enlace %}{% endblock %}
+      </div>
+      
+    </div>
+    
+    <div class="seccion-eventos__contenido">
+      {% block vista_eventos %}{% endblock %}
+    </div>
+
+  </div>
+</section>

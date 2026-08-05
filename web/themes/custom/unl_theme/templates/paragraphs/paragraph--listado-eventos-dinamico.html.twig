@@ -1,0 +1,15 @@
+{% set titulo_limpio = content.field_titulo|render|striptags|trim %}
+
+{% embed 'unl_theme:listado_eventos_dinamico' with {
+  titulo: titulo_limpio
+} %}
+  
+  {% block vista_eventos %}
+    {{ content.field_vista_eventos }}
+  {% endblock %}
+
+   {% block boton_enlace %}
+    {{ content.field_enlace }}
+  {% endblock %}
+  
+{% endembed %}

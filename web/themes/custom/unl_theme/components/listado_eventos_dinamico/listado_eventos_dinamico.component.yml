@@ -1,0 +1,12 @@
+name: Listado de Eventos
+description: 'Contenedor exterior para listados dinámicos de eventos'
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+slots:
+  vista_eventos:
+    title: 'View de Drupal'
+  boton_enlace:
+    title: 'Botón para ver todos los eventos'

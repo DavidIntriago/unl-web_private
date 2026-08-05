@@ -74,12 +74,46 @@
 }
 
 /* ==========================================
+   RANGO TABLET (769px–1300px): en vez de 6 columnas
+   apretadas en una sola fila, pasamos a 3 columnas x 2 filas.*/
+
+@media (min-width: 769px) and (max-width: 1300px) {
+
+  .grid-tarjetas-container--facultad {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    flex-wrap: wrap;
+  }
+
+  .grid-tarjetas-container--facultad > * {
+    flex: none !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .grid-tarjetas-container--facultad .tarjeta-institucional {
+    height: 170px !important;
+  }
+
+  .grid-tarjetas-container--facultad .tarjeta-contenido {
+    padding: 1rem 1.25rem !important;
+  }
+
+  .grid-tarjetas-container--facultad .tarjeta-institucional:hover {
+    transform: translateY(-8px) !important;
+    z-index: 5;
+  }
+
+  .grid-tarjetas-container--facultad .tarjeta-titulo {
+    font-size: 0.8rem !important;
+    padding-left: 0.6rem !important;
+  }
+}
+
+/* ==========================================
    VARIANTE CONTADOR (franja roja con números)
    ========================================== */
 
-/* El wrapper por defecto tiene márgenes y es transparente. Para
-   contador queremos una franja a todo el ancho, sin márgenes,
-   con el fondo rojo institucional (igual a --surface-color del header). */
 .grid-tarjetas-wrapper--contador {
   margin-top: 0;
   margin-bottom: 0;
@@ -88,7 +122,6 @@
   padding: 3rem 0;
 }
 
-/* Si hay título en esta variante, que se vea en blanco sobre el rojo */
 .grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
   color: #ffffff;
 }

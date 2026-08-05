@@ -5,6 +5,7 @@
   min-height: 700px;
   overflow: hidden;
   background-color: #1a1a1a;
+  touch-action: pan-y;
 }
 
 /*  slides */
@@ -25,8 +26,8 @@
   transition: opacity .8s ease-in-out;
 }
 
-.slide-item.active,
-.slide-item:first-child {
+/* Regla para que todos salgan con animacion al deslizar */
+.slide-item.active {
   opacity: 1;
   z-index: 1;
 }
@@ -46,7 +47,6 @@
   transform: scale(1.08);
 }
 
-/* overlay */
 .slide-overlay {
   position: absolute;
   inset: 0;
@@ -71,7 +71,6 @@
   text-align: left;
 }
 
-.slide-item:first-child .slide-texto,
 .slide-item.active .slide-texto {
   opacity: 1;
   transform: none;
@@ -116,16 +115,24 @@
 
 .carrusel-controles {
   position: absolute;
-  top: 50%;
+  bottom: 15px;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   padding: 0 20px;
   box-sizing: border-box;
-  transform:translateY(-50%);
   z-index: 3;
   pointer-events: none;
+}
+
+/* Ocultamos las flechas en dispositivos táctiles: ahí se navega con swipe */
+@media (pointer: coarse) {
+  .carrusel-controles {
+    display: none;
+  }
 }
 
 .btn-flecha {
@@ -147,51 +154,61 @@
   background: #93000b;
 }
 /* ==========================================
-   DESCRIPCIÓN Y BOTÓN OCULTOS POR DEFECTO
+   BASE: el texto y el botón se ven SIEMPRE por defecto
+   (móvil, tablet, táctil, etc.)
    ========================================== */
 .slide-texto p,
 .slide-texto .btn-universidad {
-  opacity: 0;
-  max-height: 0;
-  margin-bottom: 0 !important;
-  overflow: hidden;
-  transform: translateY(20px); 
-  pointer-events: none;
-  transition: 
-    opacity 0.4s ease,
-    max-height 0.5s ease,
-    transform 0.4s ease,
-    margin-bottom 0.4s ease;
-}
-
-.slide-texto h2 {
-  transition: margin-bottom 0.4s ease;
+  opacity: 1;
+  max-height: none;
+  margin-bottom: 2rem !important;
+  transform: none;
+  pointer-events: auto;
 }
 
 /* ==========================================
-   REVELAR CONTENIDO AL PASAR EL MOUSE POR LA DIAPO (HOVER)
+   SOLO en dispositivos con ratón real: se ocultan
+   y se revelan al pasar el mouse por la diapositiva
    ========================================== */
-.slide-item:hover .slide-texto p {
-  opacity: 1;
-  max-height: 300px; 
-  margin-bottom: 2rem !important; 
-  transform: translateY(0);
-  pointer-events: auto;
-}
+/* Puntero fino se refiere al puntero de una computadora, sino es fino es touch */
+@media (hover: hover) and (pointer: fine) {
+  .slide-texto p,
+  .slide-texto .btn-universidad {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition:
+      opacity 0.4s ease,
+      max-height 0.5s ease,
+      transform 0.4s ease,
+      margin-bottom 0.4s ease;
+  }
 
-.slide-item:hover .slide-texto .btn-universidad {
-  opacity: 1;
-  max-height: 100px;           
-  transform: translateY(0);
-  pointer-events: auto;
-}
+  .slide-texto h2 {
+    transition: margin-bottom 0.4s ease;
+  }
 
-.slide-item:hover .slide-texto .btn-universidad {
-  transition-delay: 0.1s;
+  .slide-item:hover .slide-texto p {
+    opacity: 1;
+    max-height: 300px;
+    margin-bottom: 2rem !important;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .slide-item:hover .slide-texto .btn-universidad {
+    opacity: 1;
+    max-height: 100px;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition-delay: 0.1s;
+  }
 }
 
 /* Responsive */
-
 @media (max-width: 768px) {
   .hero-carrusel-contenedor {
     min-height: 600px;
@@ -206,17 +223,6 @@
   }
   .slide-texto h2 {
     font-size: clamp(2rem, 10vw, 3rem);
-  }
-  .slide-texto p,
-  .slide-texto .btn-universidad {
-    opacity: 1;
-    max-height: none;
-    transform: none;
-    pointer-events: auto;
-  }
-  
-  .slide-texto p {
-    margin-bottom: 2rem !important;
   }
   .btn-flecha {
     width: 42px;

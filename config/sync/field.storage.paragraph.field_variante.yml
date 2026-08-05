@@ -20,6 +20,9 @@ settings:
     -
       value: contador
       label: contador
+    -
+      value: sitios_interes
+      label: 'sitios interes'
   allowed_values_function: ''
 module: options
 locked: false

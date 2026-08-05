@@ -54,6 +54,34 @@
           });
         }
 
+        // SWIPE TÁCTIL
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const UMBRAL_SWIPE = 50;
+
+        carrusel.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carrusel.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          const distancia = touchEndX - touchStartX;
+
+          if (Math.abs(distancia) < UMBRAL_SWIPE) return; // toque muy corto, no cuenta como swipe
+
+          if (distancia < 0) {
+            moverCarrusel(1); // swipe hacia la izquierda -> siguiente
+          } else {
+            moverCarrusel(-1); // swipe hacia la derecha -> anterior
+          }
+          reiniciarTemporizador();
+        }, { passive: true });
+
+        carrusel.addEventListener('touchcancel', () => {
+          touchStartX = 0;
+          touchEndX = 0;
+        }, { passive: true });
+
         iniciarTemporizador();
       });
 

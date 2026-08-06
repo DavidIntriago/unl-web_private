@@ -1,0 +1,12 @@
+name: Listado de Noticias
+description: 'Contenedor exterior para listados dinámicos de noticias destacadas'
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+slots:
+  vista_noticias:
+    title: 'View de Drupal'
+  boton_enlace:
+    title: 'Botón para ver todas las noticias'

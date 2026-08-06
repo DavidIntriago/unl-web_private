@@ -1,0 +1,25 @@
+<section class="noticias-destacadas">
+  <div class="noticias-destacadas__contenedor">
+    
+    <div class="noticias-destacadas__cabecera">
+      
+      {% if titulo %}
+        <div class="noticias-destacadas__titulos">
+          <h2 class="noticias-destacadas__titulo">{{ titulo }}</h2>
+        </div>
+      {% endif %}
+
+      <div class="noticias-destacadas__boton-superior">
+        {% block boton_enlace %}
+        {% endblock %}
+      </div>
+
+    </div>
+
+    <div class="noticias-destacadas__grid">
+      {% block vista_noticias %}
+      {% endblock %}
+    </div>
+
+  </div>
+</section>

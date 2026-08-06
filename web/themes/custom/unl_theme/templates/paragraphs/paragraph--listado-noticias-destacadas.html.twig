@@ -1,0 +1,15 @@
+{% set titulo_limpio = content.field_titulo|render|striptags|trim %}
+
+{% embed 'unl_theme:listado_noticias_destacadas' with {
+  titulo: titulo_limpio
+} %}
+  
+  {% block vista_noticias %}
+    {{ content.field_vista_noticias }}
+  {% endblock %}
+
+  {% block boton_enlace %}
+    {{ content.field_enlace }}
+  {% endblock %}
+  
+{% endembed %}

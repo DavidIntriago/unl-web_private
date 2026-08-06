@@ -23,6 +23,9 @@ settings:
     -
       value: sitios_interes
       label: 'sitios interes'
+    -
+      value: imagenes
+      label: imagenes
   allowed_values_function: ''
 module: options
 locked: false

@@ -1,0 +1,34 @@
+<article class="noticia-full">
+  
+  {% if content.field_imagen|render|trim is not empty %}
+    <div class="noticia-full__portada">
+      {{ content.field_imagen }}
+    </div>
+  {% endif %}
+
+  <div class="noticia-full__contenedor">
+    
+    <header class="noticia-full__cabecera">
+      <div class="noticia-full__meta">
+        <span class="noticia-full__fecha">{{ node.createdtime|format_date('custom', 'd \\d\\e F \\d\\e Y') }}</span>
+        
+        {% if content.field_area|render|trim is not empty %}
+          <span class="noticia-full__area">| {{ content.field_area }}</span>
+        {% endif %}
+      </div>
+      
+      <h1 class="noticia-full__titulo">{{ label }}</h1>
+      <div class="noticia-full__separador"></div>
+    </header>
+
+    <div class="noticia-full__cuerpo">
+      {{ content.field_body }}
+    </div>
+
+    {% if content.field_galeria|render|trim is not empty %}
+    {{ content.field_galeria }}
+
+    {% endif %}
+
+  </div>
+</article>

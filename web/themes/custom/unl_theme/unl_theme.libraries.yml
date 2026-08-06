@@ -8,8 +8,11 @@ global:
       components/header/header.css: {}
       components/footer/footer.css: {}
       assets/css/node/evento-detalle.css: {}
+      assets/css/node/noticia-full.css: {}
       assets/css/node/evento-teaser.css: {}
+      assets/css/node/noticia-teaser.css: {}
       assets/css/views/eventos.css: {}
+      assets/css/views/noticias.css: {}
       assets/css/navigation/pager.css: {}
   js:
     assets/js/global.js: {}

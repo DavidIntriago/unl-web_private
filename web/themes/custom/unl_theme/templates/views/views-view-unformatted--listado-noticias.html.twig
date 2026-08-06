@@ -1,0 +1,11 @@
+<section class="noticias">
+  
+  <div class="noticias__contenedor">
+    {% for row in rows %}
+      <div class="noticias__item">
+        {{ row.content }}
+      </div>
+    {% endfor %}
+  </div>
+
+</section>

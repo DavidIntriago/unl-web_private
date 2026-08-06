@@ -1,0 +1,119 @@
+.noticia-teaser {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.noticia-teaser:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+
+
+.noticia-teaser__enlace-imagen {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.noticia-teaser__imagen {
+  width: 100%;
+  aspect-ratio: 16 / 9; 
+  overflow: hidden;
+  background-color: #f3f4f6; 
+}
+
+.noticia-teaser__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.noticia-teaser:hover .noticia-teaser__imagen img {
+  transform: scale(1.05); 
+}
+
+
+
+.noticia-teaser__contenido {
+  padding:1.5rem 1.5rem 0.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.noticia-teaser__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.noticia-teaser__titulo {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  min-height: 3.4rem;
+
+}
+
+.noticia-teaser__titulo a {
+  color: #111827;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.noticia-teaser__titulo a:hover {
+  color: #93000b;  
+}
+
+ 
+.noticia-teaser__resumen {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+.noticia-teaser__resumen p {
+  margin: 0;
+}
+
+
+.noticia-teaser__pie {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  margin-top: auto; 
+}
+
+.noticia-teaser__boton {
+  display: inline-flex;
+  align-items: center;
+  color: #93000b;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.noticia-teaser__boton span {
+  margin-left: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.noticia-teaser:hover .noticia-teaser__boton span {
+  transform: translateX(5px);
+}

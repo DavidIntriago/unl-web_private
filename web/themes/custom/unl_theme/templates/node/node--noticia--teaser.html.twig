@@ -1,0 +1,31 @@
+{{ attach_library('unl_theme/noticia-teaser') }}
+
+<article class="noticia-teaser">
+  
+  <a href="{{ url }}" class="noticia-teaser__enlace-imagen">
+    <div class="noticia-teaser__imagen">
+      {% if content.field_imagen|render|trim is not empty %}
+        {{ content.field_imagen }}
+      {% endif %}
+    </div>
+  </a>
+
+  <div class="noticia-teaser__contenido">
+    
+    <div class="noticia-teaser__meta">
+      <span class="noticia-teaser__fecha">{{ node.createdtime|date('d M. Y')|upper }}</span>
+    </div>
+
+    <h3 class="noticia-teaser__titulo">
+      <a href="{{ url }}">{{ label }}</a>
+    </h3>
+
+  </div>
+
+  <div class="noticia-teaser__pie">
+    <a href="{{ url }}" class="noticia-teaser__boton">
+      Leer noticia <span>→</span>
+    </a>
+  </div>
+
+</article>

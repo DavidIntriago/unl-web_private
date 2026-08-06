@@ -1,0 +1,23 @@
+uuid: 8db2bfd4-1026-478e-98cc-4aaddd99ac53
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contacto_institucional:31038c86-30d8-471a-ac66-0d45eb2a60a4'
+  module:
+    - block_content
+  theme:
+    - unl_theme
+id: unl_theme_contacto
+theme: unl_theme
+region: footer_contact
+weight: 0
+provider: null
+plugin: 'block_content:31038c86-30d8-471a-ac66-0d45eb2a60a4'
+settings:
+  id: 'block_content:31038c86-30d8-471a-ac66-0d45eb2a60a4'
+  label: Contacto
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

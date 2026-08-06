@@ -1,0 +1,56 @@
+uuid: 75a5f18b-8ed0-4006-828c-320c22b6aee7
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+name: 'Formato Texto Redactores'
+format: formato_texto_redactores
+weight: 0
+filters:
+  entity_links:
+    id: entity_links
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <strong> <em> <u> <a href data-entity-type data-entity-uuid data-entity-metadata> <ul type> <ol type reversed start> <li> <drupal-media data-entity-type data-entity-uuid alt data-link-entity-type data-link-entity-uuid data-link-entity-metadata>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: 72
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types:
+        audio: audio
+        image: image
+        video: video

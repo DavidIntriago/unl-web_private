@@ -3,18 +3,42 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.listado_eventos_dinamico.field_enlace
+    - field.field.paragraph.listado_eventos_dinamico.field_titulo
     - field.field.paragraph.listado_eventos_dinamico.field_vista_eventos
     - paragraphs.paragraphs_type.listado_eventos_dinamico
   module:
+    - link
     - viewsreference
 id: paragraph.listado_eventos_dinamico.default
 targetEntityType: paragraph
 bundle: listado_eventos_dinamico
 mode: default
 content:
+  field_enlace:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_titulo:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_vista_eventos:
     type: viewsreference_formatter
-    label: above
+    label: hidden
     settings:
       plugin_types:
         - block

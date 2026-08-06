@@ -1,0 +1,50 @@
+uuid: 3b5e535f-d3bb-441b-bb9f-a0a9f8b39954
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.formato_texto_redactores
+  module:
+    - ckeditor5
+format: formato_texto_redactores
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - italic
+      - outdent
+      - indent
+      - numberedList
+      - bulletedList
+      - alignment
+      - underline
+      - link
+      - undo
+      - redo
+      - drupalMedia
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+        styles: true
+      multiBlock: true
+    media_media:
+      allow_view_mode_override: false
+image_upload:
+  status: false

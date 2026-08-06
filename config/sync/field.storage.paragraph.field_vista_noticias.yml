@@ -1,0 +1,21 @@
+uuid: 0dbfcaab-d221-4cf6-8753-60c54e5eef69
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - views
+    - viewsreference
+id: paragraph.field_vista_noticias
+field_name: field_vista_noticias
+entity_type: paragraph
+type: viewsreference
+settings:
+  target_type: view
+module: viewsreference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,48 @@
+uuid: d5212703-713f-4189-99eb-17d926d3bc73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listado_noticias_destacadas.field_enlace
+    - field.field.paragraph.listado_noticias_destacadas.field_titulo
+    - field.field.paragraph.listado_noticias_destacadas.field_vista_noticias
+    - paragraphs.paragraphs_type.listado_noticias_destacadas
+  module:
+    - link
+    - viewsreference
+id: paragraph.listado_noticias_destacadas.default
+targetEntityType: paragraph
+bundle: listado_noticias_destacadas
+mode: default
+content:
+  field_enlace:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_titulo:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_vista_noticias:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

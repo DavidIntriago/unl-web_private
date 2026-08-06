@@ -1,0 +1,10 @@
+uuid: 1f61cf3d-a603-4da1-88fa-de98cc183853
+langcode: en
+status: true
+dependencies: {  }
+id: listado_noticias_destacadas
+label: 'Listado de Noticias Destacadas'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 5fb3dcee-eaf6-4db2-9b92-2bcd115a8b2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_enlace
+    - paragraphs.paragraphs_type.listado_noticias_destacadas
+  module:
+    - link
+id: paragraph.listado_noticias_destacadas.field_enlace
+field_name: field_enlace
+entity_type: paragraph
+bundle: listado_noticias_destacadas
+label: Enlace
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

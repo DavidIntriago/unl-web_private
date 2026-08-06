@@ -1,0 +1,24 @@
+uuid: c3478054-b936-4688-8ee1-b01f5d858892
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - filter.format.formato_texto_redactores
+    - node.type.noticia
+  module:
+    - text
+id: node.noticia.field_body
+field_name: field_body
+entity_type: node
+bundle: noticia
+label: Cuerpo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - formato_texto_redactores
+field_type: text_long

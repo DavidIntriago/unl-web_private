@@ -251,3 +251,39 @@
     display: none;
   }
 }
+
+/* incluir "imagenes" en el reset de wrappers de Drupal */
+.grid-tarjetas-container--imagenes .field,
+.grid-tarjetas-container--imagenes .field__items {
+  display: contents;
+}
+
+/* ==========================================
+   VARIANTE IMAGENES (fila de imágenes, sin texto)
+   ========================================== */
+.grid-tarjetas-container--imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.grid-tarjetas-container--imagenes > * {
+  flex: 1 1 260px;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .grid-tarjetas-container--imagenes {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .grid-tarjetas-container--imagenes > * {
+    flex: 1 1 45%;
+    max-width: none;
+  }
+}

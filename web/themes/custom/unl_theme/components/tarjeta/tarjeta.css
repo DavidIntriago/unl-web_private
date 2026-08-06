@@ -363,3 +363,57 @@ width: 100% !important;
   inset: 0;
   z-index: 10;
 }
+
+/* ==========================================
+   VARIANTE IMAGENES (solo imagen)
+   ========================================== */
+.tarjeta-imagen {
+  position: relative;
+  width: 100%;
+  max-width: 280px; /* <- límite máximo, ajústalo a tu gusto */
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-imagen:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.tarjeta-imagen .field,
+.tarjeta-imagen .field__items,
+.tarjeta-imagen .field__item,
+.tarjeta-imagen article,
+.tarjeta-imagen picture {
+  display: contents;
+}
+
+.tarjeta-imagen img {
+  display: block;
+  width: 100%;
+  height: auto; /* respeta la proporción real de la imagen, sin recortes */
+}
+.tarjeta-imagen__enlace {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.tarjeta-imagen__enlace a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.tarjeta-imagen__enlace a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}

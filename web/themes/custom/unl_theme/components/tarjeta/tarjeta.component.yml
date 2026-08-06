@@ -27,4 +27,5 @@ props:
         - 'facultad'
         - 'contador'
         - 'sitios_interes'
+        - 'imagenes'
       default: 'default'

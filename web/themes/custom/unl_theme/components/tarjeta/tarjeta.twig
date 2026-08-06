@@ -70,6 +70,23 @@
     {% endif %}
 
   </article>
+{% elseif variante == 'imagenes' %}
+
+  {# ------imagenes: solo la imagen, sin título ni descripción #}
+
+  <article class="tarjeta-imagen">
+
+    {% if imagen %}
+      {{ imagen }}
+    {% endif %}
+
+    {% if enlace %}
+      <div class="tarjeta-imagen__enlace">
+        {{ enlace }}
+      </div>
+    {% endif %}
+
+  </article>
 {% else %}
   
   {# ------defaultttttttttttt #}

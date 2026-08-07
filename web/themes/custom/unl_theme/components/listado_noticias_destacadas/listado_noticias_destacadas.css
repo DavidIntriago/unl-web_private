@@ -1,4 +1,3 @@
-/* Reducimos el padding superior e inferior de 3.5rem a 2rem para restar altura */
 .noticias-destacadas {
   padding: 2rem 1.25rem; 
 }
@@ -168,7 +167,7 @@
   }
 
   .noticias-destacadas__grid .noticias__item:nth-child(n+2) .noticia-teaser__titulo {
-    font-size: 0.95rem; /* Letra más pequeña */
+    font-size: 0.95rem;
     line-height: 1.2;
   }
   .noticias-destacadas__grid .noticias__item:nth-child(n+2) .noticia-teaser__resumen {
@@ -182,4 +181,31 @@
   .noticias-destacadas__grid .noticias__item:nth-child(n+2) .noticia-teaser__boton {
     font-size: 0.85rem;
   }
+}
+
+/* Movil*/
+
+@media (max-width: 991px) {
+.noticias-destacadas__grid .noticias__contenedor{
+display:flex;
+overflow-x:auto;
+gap:1rem;
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+padding-bottom:.8rem;
+}
+
+.noticias-destacadas__grid .noticias__contenedor::-webkit-scrollbar{
+display:none;
+}
+
+.noticias-destacadas__grid .noticias__contenedor{
+scrollbar-width:none;
+}
+
+.noticias-destacadas__grid .noticias__item{
+flex:0 0 85%;
+scroll-snap-align:center;
+}
+
 }

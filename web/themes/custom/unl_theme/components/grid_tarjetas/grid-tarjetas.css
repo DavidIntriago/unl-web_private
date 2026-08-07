@@ -1,8 +1,3 @@
-.grid-tarjetas-wrapper {
-  margin-top: 5rem;
-  margin-bottom: 3rem;
-  width: 100%;
-}
 
 .grid-tarjetas__header {
   text-align: center;
@@ -116,8 +111,8 @@
    ========================================== */
 
 .grid-tarjetas-wrapper--contador {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
   width: 100%;
   background-color: #93000b;
   padding: 3rem 0;

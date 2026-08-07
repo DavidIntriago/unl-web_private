@@ -1,5 +1,7 @@
-<div class="grid-tarjetas-wrapper {{ variante == 'contador' ? 'grid-tarjetas-wrapper--contador' : '' }}">
-  
+{% set modificador_wrapper = variante ? 'grid-tarjetas-wrapper--' ~ variante : '' %}
+
+<div class="grid-tarjetas-wrapper {{ modificador_wrapper }}">
+
   {% if titulo %}
     <div class="grid-tarjetas__header">
       <h2 class="grid-tarjetas__titulo">
@@ -35,5 +37,5 @@
       <button class="carrusel-sitios-flecha next" aria-label="Siguiente">&#10095;</button>
     {% endif %}
   </section>
-  
+
 </div>

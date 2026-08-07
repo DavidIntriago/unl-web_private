@@ -214,6 +214,103 @@
 
         toggleButton.addEventListener("click", toggleAccordion);
       });
+      // ========================================================================
+      // 5. FRANJA DE SUBMENÚS (nivel 2) SEGÚN EL ITEM DEL NIVEL 1 EN HOVER
+      // ========================================================================
+      const subbar = document.querySelector(".site-header__subbar");
+      const subbarInner = document.querySelector(".site-header__subbar-inner");
+
+      if (subbar && subbarInner && topLevelList) {
+        const topLevelItems = topLevelList.querySelectorAll(
+          ":scope > li.has-children"
+        );
+
+        let closeTimeout = null;
+
+        const fillSubbar = (li) => {
+          if (closeTimeout) {
+            clearTimeout(closeTimeout);
+            closeTimeout = null;
+          }
+
+          const level2Items = li.querySelectorAll(
+            ":scope > ul > li, :scope > .submenu > .submenu-list > li"
+          );
+
+          if (!level2Items.length) {
+            subbar.classList.remove("is-open");
+            subbarInner.innerHTML = "";
+            return;
+          }
+
+          subbarInner.innerHTML = "";
+
+          level2Items.forEach((level2Li) => {
+            const link = level2Li.querySelector(":scope > a");
+            if (!link) return;
+
+            const wrapper = document.createElement("div");
+            wrapper.className = "site-header__subbar-item";
+
+            const linkClone = link.cloneNode(true);
+            wrapper.appendChild(linkClone);
+
+            // Si este item de nivel 2 tiene hijos (nivel 3), armamos su mini-dropdown
+            const level3Items = level2Li.querySelectorAll(
+              ":scope > ul > li > a, :scope > .submenu > .submenu-list > li > a"
+            );
+
+            if (level3Items.length) {
+              wrapper.classList.add("has-flyout");
+
+              const flyout = document.createElement("div");
+              flyout.className = "site-header__subbar-flyout";
+
+              level3Items.forEach((level3Link) => {
+                flyout.appendChild(level3Link.cloneNode(true));
+              });
+
+              wrapper.appendChild(flyout);
+            }
+
+            subbarInner.appendChild(wrapper);
+          });
+
+          subbar.classList.add("is-open");
+        };
+
+        const scheduleClose = () => {
+          if (closeTimeout) clearTimeout(closeTimeout);
+          closeTimeout = setTimeout(() => {
+            subbar.classList.remove("is-open");
+            subbarInner.innerHTML = "";
+          }, 300); // 300ms de margen para cruzar hacia la franja
+        };
+
+        const cancelClose = () => {
+          if (closeTimeout) {
+            clearTimeout(closeTimeout);
+            closeTimeout = null;
+          }
+        };
+
+        topLevelItems.forEach((li) => {
+          li.addEventListener("mouseenter", () => fillSubbar(li));
+          li.addEventListener("mouseleave", scheduleClose);
+
+          const directLink = li.querySelector(":scope > a");
+          if (directLink) {
+            directLink.addEventListener("touchstart", () => fillSubbar(li), {
+              passive: true,
+            });
+          }
+        });
+
+        // La franja blanca en sí también cancela el cierre mientras el
+        // mouse esté sobre ella, y lo reprograma al salir de ella.
+        subbar.addEventListener("mouseenter", cancelClose);
+        subbar.addEventListener("mouseleave", scheduleClose);
+      }
     },
   };
 })(Drupal, once);

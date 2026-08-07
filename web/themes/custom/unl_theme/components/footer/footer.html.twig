@@ -1,7 +1,6 @@
 <footer class="site-footer">
 
   <div class="site-footer__container">
-  
 
     <div class="site-footer__branding">
       {{ page.branding }}
@@ -19,11 +18,9 @@
 
     <div class="site-footer__map">
       <h2>Ubicación</h2>
-      {{ page.footer_map }}
-      <iframe
-        src="https://www.google.com/maps?q=Universidad+Nacional+de+Loja&output=embed"
-        style="width:100%;height:220px;border:0;">
-      </iframe>
+      <div class="site-footer__map-block">
+        {{ page.footer_map }}
+      </div>
     </div>
 
   </div>

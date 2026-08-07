@@ -6,46 +6,41 @@
   z-index: 0;
 }
 
-.fondo-decorativo__particula {
+.fondo-decorativo__atomo-grande {
   position: absolute;
-  opacity: 0.45;
-  transform: translate(
-    calc((var(--mx) - 0.5) * var(--factor, 40) * 1px),
-    calc((var(--my) - 0.5) * var(--factor, 40) * 1px)
-  ) rotate(var(--giro, 0deg));
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  top: 50%;
+  right: -180px;
+  width: 900px;
+  height: 900px;
+  transform: translateY(-50%) rotate(0deg);
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='6' fill='%2393000b'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='18' fill='none' stroke='%2393000b' stroke-width='2'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='18' fill='none' stroke='%2393000b' stroke-width='2' transform='rotate(60 50 50)'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='18' fill='none' stroke='%2393000b' stroke-width='2' transform='rotate(120 50 50)'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  animation: girar-atomo 30s linear infinite;
 }
 
-/* ---- Formas (clip-path en vez de solo círculos) ---- */
-.forma--circulo   { border-radius: 50%; }
-
-/* ---- Colores institucionales (facultades) ---- */
-.color--rojo    { background-color: #e3463c; }
-.color--azul    { background-color: #5fbfe2; }
-.color--naranja { background-color: #ed8942; }
-.color--verde   { background-color: #5bad3b; }
-.color--amarillo{ background-color: #e7ba3e; }
-.color--morado  { background-color: #7b378d; }
-.color--vino    { background-color: var(--primary-color); }
-
-/* ---- Partículas: tamaño, posición, factor de movimiento y giro ---- */
-.fondo-decorativo__particula--1 { top: 12%; left: 8%;  width: 48px; height: 48px; --factor: 70;  --giro: 15deg; }
-.fondo-decorativo__particula--2 { top: 25%; left: 82%; width: 48px; height: 48px; --factor: -50; --giro: -20deg; }
-.fondo-decorativo__particula--3 { top: 55%; left: 15%; width: 48px; height: 48px; --factor: 40;  --giro: 8deg;  opacity: 0.3; }
-.fondo-decorativo__particula--4 { top: 70%; left: 90%; width: 48px; height: 48px; --factor: -80; --giro: -12deg; }
-.fondo-decorativo__particula--5 { top: 85%; left: 30%; width: 48px; height: 48px; --factor: 60;  --giro: 25deg; opacity: 0.35; }
-.fondo-decorativo__particula--6 { top: 40%; left: 55%; width: 48px; height: 48px; --factor: -35; --giro: -8deg; opacity: 0.4; }
+@keyframes girar-atomo {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .fondo-decorativo__particula {
-    transition: none;
-    transform: none !important;
+  .fondo-decorativo__atomo-grande {
+    animation: none;
   }
 }
 
 @media (max-width: 768px) {
-  .fondo-decorativo {
-    display: none;
+  .fondo-decorativo__atomo-grande {
+    width: 500px;
+    height: 500px;
+    right: -150px;
   }
 }
 

@@ -1,0 +1,23 @@
+uuid: 66b4bcc9-d17f-4a2f-8ac8-4cf5c1a51768
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:mapa_footer:f065f7be-bda8-44a1-a14e-6a9e083adb25'
+  module:
+    - block_content
+  theme:
+    - unl_theme
+id: unl_theme_mapafooter
+theme: unl_theme
+region: footer_map
+weight: 0
+provider: null
+plugin: 'block_content:f065f7be-bda8-44a1-a14e-6a9e083adb25'
+settings:
+  id: 'block_content:f065f7be-bda8-44a1-a14e-6a9e083adb25'
+  label: 'Mapa Footer'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

@@ -249,9 +249,11 @@
   width: 25px;
   background: var(--primary-color, #ffffff);
   border-radius: 5px;
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.2s ease;
+  transition:    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),    opacity 0.2s ease;
+  -webkit-transition:;
+  -moz-transition:;
+  -ms-transition:;
+  -o-transition:;
 }
 
 .mobile-menu-button.is-active span:nth-child(1) {
@@ -467,14 +469,6 @@
 
 .site-header__navigation li.has-mega-menu > .submenu {
   position: absolute;
-  /* Antes: top: 100% (justo en el borde inferior del header). Ahora
-     empieza un poco más arriba, invadiendo el hueco vacío que queda
-     entre el texto del padre (centrado en los 80px del header) y el
-     borde inferior del header. Ese hueco era "tierra de nadie": si
-     el mouse pasaba por ahí al bajar, se perdía el :hover del padre
-     antes de llegar al panel. Como el panel comparte el mismo color
-     de fondo que el header, la invasión no debería notarse — bajé el
-     valor de 20px a 8px porque 20px tapaba el ícono/flecha del menú. */
   top: calc(100% - 8px);
   left: 50%;
   width: 100vw;
@@ -485,8 +479,6 @@
   border-radius: 0;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
-  /* padding-top con 8px de más para compensar el "top" más alto:
-     el contenido visual queda exactamente en el mismo lugar de antes. */
   padding-top: calc(2.5rem + 8px);
   padding-right: calc((100vw - var(--container-width, 1280px)) / 2 + 2rem);
   padding-bottom: 2.5rem;
@@ -505,8 +497,8 @@
   width: 100%;
 }
 
-.site-header__navigation li.has-mega-menu > .submenu > .submenu-list > li {
-  width: auto;
+.site-header__navigation li.has-mega-menu > .submenu {
+  display: none !important;
 }
 
 .site-header__navigation li.has-mega-menu > .submenu > .submenu-list > li > a {
@@ -526,20 +518,6 @@
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
 }
-
-/* Nivel 3 del mega menú: antes tenía "visibility: visible !important",
-   que forzaba a TODOS los niveles 3 de TODOS los padres a ser
-   "tocables" con el mouse todo el tiempo (aunque invisibles por el
-   opacity:0 heredado del padre cerrado). Un hijo con visibility:visible
-   explícito "atraviesa" el visibility:hidden de un ancestro y sigue
-   recibiendo hover, aunque no se vea. Por eso, al pasar el mouse por
-   el panel abierto de un padre, a veces tocabas el nivel 3 invisible
-   de OTRO padre (todos ocupan el mismo espacio en pantalla) y eso
-   disparaba su :hover, abriéndolo también. Con "inherit", nivel 3
-   copia la visibilidad real de su padre 1 (oculto si no está en
-   hover), así que deja de ser hoverable mientras ese padre esté
-   cerrado. Es el único cambio de este bloque respecto a la versión
-   anterior; el resto queda igual. */
 .site-header__navigation li.has-mega-menu .submenu .submenu {
   position: static !important;
   top: auto !important;
@@ -576,4 +554,107 @@
   padding-left: 0.4rem;
   background: transparent;
   color: #ffffff;
+}
+
+/* ==========================================================================
+   FRANJA BLANCA DE SUBMENÚS (nivel 2, aparece según el hover del nivel 1)
+   ========================================================================== */
+.site-header__subbar {
+  overflow: visible;
+  background: #fdf1f1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.site-header__subbar.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.site-header__subbar-inner {
+  max-width: var(--container-width, 1280px);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 52px;
+}
+
+.site-header__subbar-inner a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  color: #333333;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.site-header__subbar-inner a:hover {
+  background-color: rgba(147, 0, 11, 0.08);
+  color: var(--surface-color, #93000b);
+}
+
+
+@media (max-width: 1000px) {
+  .site-header__subbar {
+    display: none;
+  }
+}
+
+.site-header__subbar-item {
+  position: relative;
+}
+
+.site-header__subbar-flyout {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #fdf1f1;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.site-header__subbar-item.has-flyout:hover .site-header__subbar-flyout {
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-header__subbar-flyout a {
+  padding: 0.6rem 1.25rem;
+  border-radius: 0;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.site-header__subbar-flyout a:hover {
+  background-color: rgba(147, 0, 11, 0.08);
+}
+
+.site-header__subbar-item.has-flyout > a::after {
+  content: "▾";
+  margin-left: 0.35rem;
+  font-size: 0.65rem;
+  opacity: 0.6;
 }

@@ -1,4 +1,7 @@
 
+.grid-tarjetas-wrapper--facultad {
+  margin-top: 4rem;
+}
 .grid-tarjetas__header {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -12,10 +15,10 @@
 }
 
 .grid-tarjetas__divider {
-  height: 4px; 
-  width: 100px; 
-  background-color: #93000b; 
-  margin: 0.75rem auto 0 auto; 
+  height: 4px;
+  width: 100px;
+  background-color: #93000b;
+  margin: 0.75rem auto 0 auto;
 }
 
 .grid-tarjetas-container--facultad .field,
@@ -30,8 +33,8 @@
 .grid-tarjetas-container--default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem; 
-  max-width: 1400px;  
+  gap: 2rem;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -39,18 +42,17 @@
 /* facultadessssssss*/
 .grid-tarjetas-container--facultad {
   display: flex;
-  width: 100%; 
+  width: 100%;
   margin-top: 2rem;
 }
 
 .grid-tarjetas-container--facultad > * {
-  flex: 1 1 0; 
+  flex: 1 1 0;
   min-width: 0;
 }
 
-/* responsve */ 
+/* responsve */
 @media (max-width: 768px) {
-
   .grid-tarjetas-container--facultad {
     flex-direction: column;
     width: 100%;
@@ -66,7 +68,6 @@
   .grid-tarjetas-container--facultad .tarjeta-institucional:hover {
     flex: none;
   }
-
 }
 
 /* ==========================================
@@ -74,7 +75,6 @@
    apretadas en una sola fila, pasamos a 3 columnas x 2 filas.*/
 
 @media (min-width: 769px) and (max-width: 1300px) {
-
   .grid-tarjetas-container--facultad {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -201,7 +201,9 @@
   font-size: 20px;
   cursor: pointer;
   z-index: 3;
-  transition: background 0.3s ease, opacity 0.3s ease;
+  transition:
+    background 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .carrusel-sitios-flecha:hover {

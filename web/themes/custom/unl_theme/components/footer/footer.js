@@ -2,32 +2,38 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
-    var mapFrame = document.querySelector('.site-footer__map-frame');
-    if (!mapFrame || !mapFrame.dataset.src) {
+    var mapBlock = document.querySelector('.site-footer__map-block');
+    if (!mapBlock) {
       return;
     }
 
-    var loadMap = function () {
-      if (mapFrame.src) {
-        return; // ya cargado
-      }
-      mapFrame.src = mapFrame.dataset.src;
-    };
+    var link = mapBlock.querySelector('a[href]');
+    var img = mapBlock.querySelector('img');
 
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            loadMap();
-            observer.disconnect();
-          }
-        });
-      }, { rootMargin: '200px' });
-
-      observer.observe(mapFrame);
-    } else {
-      // Fallback para navegadores sin soporte: cargar tras el evento load
-      window.addEventListener('load', loadMap);
+    if (!link || !img) {
+      return;
     }
+
+    var wrapper = document.createElement('a');
+    wrapper.href = link.getAttribute('href');
+    wrapper.target = '_blank';
+    wrapper.rel = 'noopener';
+    wrapper.className = 'site-footer__map-link';
+    wrapper.setAttribute(
+      'aria-label',
+      link.textContent.trim() || 'Ver ubicación en Google Maps'
+    );
+
+    wrapper.appendChild(img.cloneNode(true));
+
+    var overlay = document.createElement('span');
+    overlay.className = 'site-footer__map-overlay';
+    var pin = document.createElement('span');
+    pin.className = 'site-footer__map-pin';
+    overlay.appendChild(pin);
+    wrapper.appendChild(overlay);
+
+    mapBlock.innerHTML = '';
+    mapBlock.appendChild(wrapper);
   });
 })();

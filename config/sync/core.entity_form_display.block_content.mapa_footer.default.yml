@@ -4,14 +4,23 @@ status: true
 dependencies:
   config:
     - block_content.type.mapa_footer
+    - field.field.block_content.mapa_footer.field_imagen_mapa
     - field.field.block_content.mapa_footer.field_map
   module:
     - link
+    - media_library
 id: block_content.mapa_footer.default
 targetEntityType: block_content
 bundle: mapa_footer
 mode: default
 content:
+  field_imagen_mapa:
+    type: media_library_widget
+    weight: 27
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_map:
     type: link_default
     weight: 26

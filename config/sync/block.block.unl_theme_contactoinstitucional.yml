@@ -1,0 +1,23 @@
+uuid: 8d2d36fb-5e4f-4312-bb0a-f57f5c738eba
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:contacto_institucional:2ded1caa-8c36-44b1-9c55-253bfb73cff5'
+  module:
+    - block_content
+  theme:
+    - unl_theme
+id: unl_theme_contactoinstitucional
+theme: unl_theme
+region: footer_contact
+weight: 0
+provider: null
+plugin: 'block_content:2ded1caa-8c36-44b1-9c55-253bfb73cff5'
+settings:
+  id: 'block_content:2ded1caa-8c36-44b1-9c55-253bfb73cff5'
+  label: 'Contacto Institucional'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

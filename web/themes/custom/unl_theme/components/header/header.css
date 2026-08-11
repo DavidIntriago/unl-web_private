@@ -250,10 +250,6 @@
   background: var(--primary-color, #ffffff);
   border-radius: 5px;
   transition:    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),    opacity 0.2s ease;
-  -webkit-transition:;
-  -moz-transition:;
-  -ms-transition:;
-  -o-transition:;
 }
 
 .mobile-menu-button.is-active span:nth-child(1) {
@@ -557,9 +553,10 @@
 }
 
 /* ==========================================================================
-   FRANJA BLANCA DE SUBMENÚS (nivel 2, aparece según el hover del nivel 1)
+   FRANJA BLANCA DE SUBMENÚS (nivel 2, aparece según el hover/clic del nivel 1)
    ========================================================================== */
 .site-header__subbar {
+  position: relative;
   overflow: visible;
   background: #fdf1f1;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
@@ -577,15 +574,41 @@
   pointer-events: auto;
 }
 
-.site-header__subbar-inner {
-  max-width: var(--container-width, 1280px);
+.site-header__subbar-container {
+  max-width: none;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.site-header__subbar-viewport {
+  clip-path: inset(-9999px 0 -9999px 0);
+  max-width: 100%;
+  height: 100%;
+}
+
+.site-header__subbar-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
   gap: 2rem;
-  height: 52px;
+  height: 100%;
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-header__subbar-inner.is-animating {
+  will-change: transform;
+}
+
+.site-header__subbar-inner.is-no-transition {
+  transition: none;
+}
+
+.site-header__subbar-item {
+  position: relative;
+  flex-shrink: 0;
 }
 
 .site-header__subbar-inner a {
@@ -601,6 +624,8 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .site-header__subbar-inner a:hover {
@@ -608,15 +633,10 @@
   color: var(--surface-color, #93000b);
 }
 
-
 @media (max-width: 1000px) {
   .site-header__subbar {
     display: none;
   }
-}
-
-.site-header__subbar-item {
-  position: relative;
 }
 
 .site-header__subbar-flyout {
@@ -636,7 +656,8 @@
   z-index: 10;
 }
 
-.site-header__subbar-item.has-flyout:hover .site-header__subbar-flyout {
+.site-header__subbar-item.has-flyout:hover .site-header__subbar-flyout,
+.site-header__subbar-item.has-flyout.is-open .site-header__subbar-flyout {
   opacity: 1;
   visibility: visible;
 }
@@ -657,4 +678,49 @@
   margin-left: 0.35rem;
   font-size: 0.65rem;
   opacity: 0.6;
+}
+
+/* ==========================================================================
+   FLECHAS DE PAGINACIÓN DE LA FRANJA BLANCA
+   ========================================================================== */
+.site-header__subbar-arrow {
+  flex-shrink: 0;
+  width: 0;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+
+.site-header__subbar-arrow.is-visible {
+  width: 44px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.site-header__subbar-arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--surface-color, #93000b);
+  transition: background-color 0.2s ease;
+}
+
+.site-header__subbar-arrow:hover .site-header__subbar-arrow-icon {
+  background-color: rgba(147, 0, 11, 0.08);
+}
+
+.site-header__subbar-arrow-icon svg {
+  width: 24px;
+  height: 24px;
 }

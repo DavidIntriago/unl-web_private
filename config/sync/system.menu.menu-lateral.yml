@@ -1,0 +1,8 @@
+uuid: 522e71b9-1951-4e3a-a309-925b05044a1f
+langcode: en
+status: true
+dependencies: {  }
+id: menu-lateral
+label: 'Menu Lateral'
+description: ''
+locked: false

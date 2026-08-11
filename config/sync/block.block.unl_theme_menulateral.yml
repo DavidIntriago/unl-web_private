@@ -1,0 +1,25 @@
+uuid: 43821f48-4c0b-4924-9bfe-f0a7bbf296af
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.menu-lateral
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_menulateral
+theme: unl_theme
+region: lateral_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:menu-lateral'
+settings:
+  id: 'system_menu_block:menu-lateral'
+  label: 'Menu Lateral'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

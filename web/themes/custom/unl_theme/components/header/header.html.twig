@@ -1,42 +1,57 @@
 <header class="site-header">
-
   <div class="site-header__container">
-
     <div class="site-header__logo">
       {{ page.branding }}
     </div>
-
 
     <nav class="site-header__navigation">
       {{ page.primary_menu }}
     </nav>
 
-
     <div class="site-header__actions">
       {{ page.header_actions }}
     </div>
 
-
     <button class="mobile-menu-button" aria-label="Abrir menú">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-
-
   </div>
-
 
   <div class="site-header__subbar">
-    <div class="site-header__subbar-inner"></div>
-  </div>
+    <div class="site-header__subbar-container">
+      <button
+        type="button"
+        class="site-header__subbar-arrow site-header__subbar-arrow--left"
+        aria-label="Ver opciones anteriores"
+      >
+        <span class="site-header__subbar-arrow-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
 
+      <div class="site-header__subbar-viewport">
+        <div class="site-header__subbar-inner"></div>
+      </div>
+
+      <button
+        type="button"
+        class="site-header__subbar-arrow site-header__subbar-arrow--right"
+        aria-label="Ver más opciones"
+      >
+        <span class="site-header__subbar-arrow-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
 
   <div class="mobile-menu-panel">
-
-      {{ page.primary_menu }}
-
+    {{ page.primary_menu }}
   </div>
-
-
 </header>

@@ -1,10 +1,9 @@
-
 .grid-tarjetas-wrapper--facultad {
   margin-top: 4rem;
 }
 .grid-tarjetas__header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .grid-tarjetas__titulo {
@@ -201,13 +200,16 @@
   font-size: 20px;
   cursor: pointer;
   z-index: 3;
+  opacity: 0.45;
   transition:
     background 0.3s ease,
     opacity 0.3s ease;
 }
 
-.carrusel-sitios-flecha:hover {
+.carrusel-sitios-flecha:hover,
+.carrusel-sitios-flecha:focus-visible {
   background: #6e0008;
+  opacity: 1;
 }
 
 .carrusel-sitios-flecha.prev {
@@ -219,19 +221,17 @@
 }
 
 .carrusel-sitios-flecha:disabled {
-  opacity: 0.3;
+  opacity: 0.2;
   cursor: default;
   pointer-events: none;
 }
 
-/* Tablet: 3 tarjetas visibles en vez de 4 */
 @media (min-width: 769px) and (max-width: 1300px) {
   .carrusel-sitios-track > * {
     flex-basis: calc((100% - 2 * 1.5rem) / 3);
   }
 }
 
-/* Móvil: 1 tarjeta visible, centrada, ocupando todo el ancho */
 @media (max-width: 768px) {
   .grid-tarjetas-container--sitios_interes {
     padding: 0 1rem;
@@ -242,15 +242,12 @@
   }
 }
 
-/* Ocultamos las flechas SOLO cuando se cumplen ambas condiciones a
-   la vez: pantalla angosta (móvil) Y puntero táctil real (coarse) */
 @media (max-width: 768px) and (pointer: coarse) {
   .carrusel-sitios-flecha {
     display: none;
   }
 }
 
-/* incluir "imagenes" en el reset de wrappers de Drupal */
 .grid-tarjetas-container--imagenes .field,
 .grid-tarjetas-container--imagenes .field__items {
   display: contents;

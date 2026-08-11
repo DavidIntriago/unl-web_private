@@ -1,0 +1,114 @@
+/* ==========================================================================
+   MENÚ LATERAL
+   ========================================================================== */
+.lateral-menu {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 950;
+  display: flex;
+  align-items: stretch;
+}
+
+/* --- La pestaña siempre visible, semi-transparente --- */
+.lateral-menu__tab {
+  flex-shrink: 0;
+  width: 34px;
+  min-height: 88px;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  background: rgba(147, 0, 11, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.25s ease;
+}
+
+.lateral-menu__tab:hover,
+.lateral-menu.is-open .lateral-menu__tab {
+  background: rgba(147, 0, 11, 0.85);
+}
+
+.lateral-menu__tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.lateral-menu__tab-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- El panel desplegable con los enlaces --- */
+.lateral-menu__panel {
+  flex-shrink: 0;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.12);
+  transition: max-width 0.3s ease, opacity 0.25s ease, visibility 0.3s ease;
+}
+
+.lateral-menu__panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.lateral-menu__panel li {
+  width: 100%;
+}
+
+.lateral-menu__panel a {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.25rem 0.6rem 1rem;
+  color: var(--surface-color, #93000b);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.lateral-menu__panel a:hover {
+  background-color: rgba(147, 0, 11, 0.08);
+}
+
+.lateral-menu.is-open .lateral-menu__panel {
+  max-width: 320px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.lateral-menu.is-open .lateral-menu__tab-icon {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 600px) {
+  .lateral-menu__tab {
+    width: 30px;
+    min-height: 72px;
+  }
+
+  .lateral-menu__panel a {
+    padding: 0.55rem 1rem 0.55rem 0.85rem;
+    font-size: 0.8rem;
+  }
+}

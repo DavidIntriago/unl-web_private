@@ -43,10 +43,10 @@
   font-weight: 700;
   line-height: 1.3;
   text-align: left;
-  
+
   border-left: 2.5px solid #ffffff;
   padding-left: 0.85rem;
-  
+
   transition: transform .35s ease;
 }
 
@@ -70,7 +70,7 @@
 
 .tarjeta-institucional:hover .tarjeta-contenido,
 .tarjeta-institucional:hover .tarjeta-titulo {
-  transform: none; 
+  transform: none;
 }
 
 /* ==========================================
@@ -132,10 +132,10 @@
 
 /* -- PARA DEFAULT -- */
 .tarjeta-default {
-  position: relative; 
+  position: relative;
   background-color: #ffffff;
   border-radius: 12px;
-  overflow: hidden; 
+  overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   height: 100%;
   display: flex;
@@ -155,7 +155,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: #f3f4f6; 
+  background-color: #f3f4f6;
 }
 
 
@@ -164,14 +164,14 @@
 .tarjeta-default__imagen .field__item,
 .tarjeta-default__imagen article,
 .tarjeta-default__imagen picture {
-  display: contents; 
+  display: contents;
 }
 
 .tarjeta-default__imagen img {
 width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important; 
-  object-position: center !important; 
+  object-fit: cover !important;
+  object-position: center !important;
   display: block;
   transition: transform 0.6s ease;
 }
@@ -186,9 +186,9 @@ width: 100% !important;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: center; 
-  align-items: center; 
-  text-align: center; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   /*background-color: ##93000b; muy rojooooooo*/
 }
 
@@ -198,7 +198,7 @@ width: 100% !important;
   color: #111827;
   margin: 0;
   line-height: 1.3;
-  transition: margin 0.4s ease; 
+  transition: margin 0.4s ease;
 }
 
 .tarjeta-default__descripcion {
@@ -304,6 +304,8 @@ width: 100% !important;
 
 /* ==========================================
    VARIANTE SITIOS DE INTERÉS (tarjeta dentro del carrusel)
+   Rojo por defecto (logo y título en blanco); al pasar el mouse se
+   vuelve blanca (logo en sus colores originales, título en rojo).
    ========================================== */
 .tarjeta-sitio-interes {
   position: relative;
@@ -313,17 +315,16 @@ width: 100% !important;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #ffffff;
-  border: 1px solid #f3f4f6;
+  background-color: var(--surface-color, #93000b);
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 2rem 1.25rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .tarjeta-sitio-interes:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
+  border-color: var(--surface-color, #93000b);
 }
 
 .tarjeta-sitio-interes__icono {
@@ -336,14 +337,30 @@ width: 100% !important;
   width: 48px;
   height: 48px;
   object-fit: contain;
+  transition: filter 0.3s ease;
+  /* Fuerza el logo a blanco sobre el fondo rojo. Si el logo tiene varios
+     colores (marca a color), esto lo aplana a una silueta blanca — si no
+     se ve bien así, quita esta línea y la de abajo (:hover) para dejarlo
+     siempre a color. */
+  filter: brightness(0) invert(1);
+}
+
+.tarjeta-sitio-interes:hover .tarjeta-sitio-interes__icono svg,
+.tarjeta-sitio-interes:hover .tarjeta-sitio-interes__icono img {
+  filter: none; /* colores originales del logo sobre fondo blanco */
 }
 
 .tarjeta-sitio-interes__titulo {
   margin: 0;
-  color: #111827;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.tarjeta-sitio-interes:hover .tarjeta-sitio-interes__titulo {
+  color: var(--surface-color, #93000b);
 }
 
 .tarjeta-sitio-interes__enlace {

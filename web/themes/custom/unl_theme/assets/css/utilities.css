@@ -8,26 +8,18 @@
 
 .fondo-decorativo__atomo-grande {
   position: absolute;
-  top: 50%;
-  right: -180px;
-  width: 900px;
-  height: 900px;
-  transform: translateY(-50%) rotate(0deg);
-  opacity: 0.09;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='6' fill='%2393000b'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='18' fill='none' stroke='%2393000b' stroke-width='2'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='18' fill='none' stroke='%2393000b' stroke-width='2' transform='rotate(60 50 50)'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='18' fill='none' stroke='%2393000b' stroke-width='2' transform='rotate(120 50 50)'/%3E%3C/svg%3E");
+  width: 800px;
+  height: 800px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%2393000b' stroke-width='4'%3E%3Cline x1='200' y1='200' x2='120' y2='90' /%3E%3Cline x1='200' y1='200' x2='300' y2='110' /%3E%3Cline x1='200' y1='200' x2='90' y2='230' /%3E%3Cline x1='200' y1='200' x2='305' y2='240' /%3E%3Cline x1='200' y1='200' x2='140' y2='320' /%3E%3Cline x1='200' y1='200' x2='290' y2='330' /%3E%3C/g%3E%3Cg fill='%23fff' stroke='%2393000b' stroke-width='4'%3E%3Ccircle cx='200' cy='200' r='55' /%3E%3Ccircle cx='120' cy='90' r='30' /%3E%3Ccircle cx='300' cy='110' r='24' /%3E%3Ccircle cx='90' cy='230' r='22' /%3E%3Ccircle cx='305' cy='240' r='30' /%3E%3Ccircle cx='140' cy='320' r='28' /%3E%3Ccircle cx='290' cy='330' r='30' /%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
-  animation: girar-atomo 30s linear infinite;
+  opacity: 0.08;
+  animation: girar-atomo 60s linear infinite;
 }
 
 @keyframes girar-atomo {
-  from {
-    transform: translateY(-50%) rotate(0deg);
-  }
-  to {
-    transform: translateY(-50%) rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {

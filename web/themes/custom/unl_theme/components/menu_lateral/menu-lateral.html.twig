@@ -1,0 +1,25 @@
+{#
+  Menú lateral flotante (redes sociales, radio, editorial, etc.)
+  El contenido viene de `page.lateral_menu` — un bloque de menú de Drupal,
+  para que los editores puedan agregar/quitar enlaces desde la interfaz.
+#}
+<div class="lateral-menu">
+
+  <button
+    type="button"
+    class="lateral-menu__tab"
+    aria-label="Abrir enlaces rápidos"
+    aria-expanded="false"
+  >
+    <span class="lateral-menu__tab-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <nav class="lateral-menu__panel" aria-label="Enlaces rápidos">
+    {{ page.lateral_menu }}
+  </nav>
+
+</div>

@@ -14,11 +14,13 @@ global:
       assets/css/views/eventos.css: {}
       assets/css/views/noticias.css: {}
       assets/css/navigation/pager.css: {}
+      components/menu_lateral/menu_lateral.css: {}
+
   js:
     assets/js/global.js: {}
     components/footer/footer.js: {}
     components/header/header.js: {}
-
+    components/menu_lateral/menu_lateral.js: {}
   dependencies:
     - core/drupal
     - core/once

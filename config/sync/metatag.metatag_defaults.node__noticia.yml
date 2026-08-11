@@ -1,0 +1,14 @@
+uuid: 956e037c-9121-4cb3-bf19-adfea5844e14
+langcode: en
+status: true
+dependencies: {  }
+id: node__noticia
+label: 'Content: Noticia'
+tags:
+  og_description: '[node:field_body:value]'
+  og_image: '[node:field_imagen:entity:field_media_image]'
+  og_title: '[node:title]'
+  og_url: '[node:url:absolute]'
+  twitter_cards_description: '[node:field_body:value]'
+  twitter_cards_title: '[node:title]'
+  twitter_cards_type: summary_large_image

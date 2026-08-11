@@ -1,0 +1,19 @@
+uuid: c73af8ff-d87e-4f26-a77c-8fe8fb880275
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_descipcion_audio
+    - media.type.audio
+id: media.audio.field_descipcion_audio
+field_name: field_descipcion_audio
+entity_type: media
+bundle: audio
+label: 'Descipcion audio'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

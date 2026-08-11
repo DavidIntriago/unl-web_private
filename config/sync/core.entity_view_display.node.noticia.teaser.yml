@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.noticia.field_area
+    - field.field.node.noticia.field_audio
     - field.field.node.noticia.field_body
     - field.field.node.noticia.field_galeria
     - field.field.node.noticia.field_imagen
@@ -53,5 +54,6 @@ content:
     weight: 100
     region: content
 hidden:
+  field_audio: true
   field_body: true
   langcode: true

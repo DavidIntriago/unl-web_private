@@ -1,0 +1,21 @@
+uuid: d8dac300-ef68-45b5-b7c9-8a9170ce94f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_descipcion_audio
+field_name: field_descipcion_audio
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

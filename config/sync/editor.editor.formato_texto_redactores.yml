@@ -11,19 +11,27 @@ editor: ckeditor5
 settings:
   toolbar:
     items:
-      - heading
       - bold
       - italic
+      - underline
+      - '|'
+      - link
+      - '|'
+      - heading
+      - '|'
+      - bulletedList
+      - numberedList
+      - alignment
+      - '|'
+      - blockQuote
+      - drupalMedia
+      - drupalInsertImage
+      - insertTable
+      - '|'
       - outdent
       - indent
-      - numberedList
-      - bulletedList
-      - alignment
-      - underline
-      - link
       - undo
       - redo
-      - drupalMedia
   plugins:
     ckeditor5_alignment:
       enabled_alignments:
@@ -38,6 +46,8 @@ settings:
         - heading4
         - heading5
         - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
     ckeditor5_list:
       properties:
         reversed: true

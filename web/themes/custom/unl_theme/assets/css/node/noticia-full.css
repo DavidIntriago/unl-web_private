@@ -89,3 +89,139 @@
     object-fit:cover;
     border-radius:14px;
 }
+
+/* ==========================================
+   ESTILOS PARA IMÁGENES DENTRO DEL CUERPO (CKEditor)
+========================================== */
+
+/* Evita que los elementos flotados se salgan del contenedor principal */
+.noticia-full__cuerpo::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Alineación a la IZQUIERDA */
+.noticia-full__cuerpo .align-left,
+.noticia-full__cuerpo figure.align-left,
+.noticia-full__cuerpo img.align-left,
+.noticia-full__cuerpo .image-style-align-left {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+  max-width: 50%; /* Evita que la imagen ocupe todo el ancho */
+  height: auto;
+}
+
+/* Alineación a la DERECHA */
+.noticia-full__cuerpo .align-right,
+.noticia-full__cuerpo figure.align-right,
+.noticia-full__cuerpo img.align-right,
+.noticia-full__cuerpo .image-style-align-right {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  max-width: 50%;
+  height: auto;
+}
+
+/* Alineación al CENTRO */
+.noticia-full__cuerpo .align-center,
+.noticia-full__cuerpo figure.align-center,
+.noticia-full__cuerpo img.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Asegura que las imágenes dentro del texto sean responsivas */
+.noticia-full__cuerpo figure,
+.noticia-full__cuerpo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* RESPONSIVE: En celulares, las imágenes alineadas ocupan el 100% para no apretar el texto */
+@media (max-width: 640px) {
+  .noticia-full__cuerpo .align-left,
+  .noticia-full__cuerpo .align-right,
+  .noticia-full__cuerpo figure.align-left,
+  .noticia-full__cuerpo figure.align-right {
+    float: none;
+    display: block;
+    max-width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+/* ==========================================
+   BOTONES DE COMPARTIR
+========================================== */
+.noticia-compartir {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.noticia-compartir__texto {
+  font-weight: 700;
+  color: #374151;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.noticia-compartir__redes {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-compartir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-compartir svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* marcas Hoveer*/
+.btn-compartir:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.btn-compartir--facebook:hover {
+  background-color: #1877F2; 
+}
+
+.btn-compartir--x:hover {
+  background-color: #000000; 
+}
+
+.btn-compartir--whatsapp:hover {
+  background-color: #25D366; 
+}
+
+.btn-compartir--linkedin:hover {
+  background-color: #0A66C2; 
+}
+
+.btn-compartir--telegram:hover {
+  background-color: #26A5E4; 
+}

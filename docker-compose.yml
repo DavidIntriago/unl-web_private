@@ -22,7 +22,8 @@ services:
       - postgres
     volumes:
       - ./:/opt/drupal
-
+      #Quitar y buildear la imagen en el docker file
+      - ./php-custom.ini:/usr/local/etc/php/conf.d/php-custom.ini
 
 volumes:
   postgres_data:

@@ -2,14 +2,29 @@ uuid: 75a5f18b-8ed0-4006-828c-320c22b6aee7
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
   module:
+    - editor
     - media
 name: 'Formato Texto Redactores'
 format: formato_texto_redactores
 weight: 0
 filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 0
+    settings: {  }
   entity_links:
     id: entity_links
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_align:
+    id: filter_align
     provider: filter
     status: true
     weight: 0
@@ -20,13 +35,19 @@ filters:
     status: true
     weight: 0
     settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
     status: true
     weight: -10
     settings:
-      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <strong> <em> <u> <a href data-entity-type data-entity-uuid data-entity-metadata> <ul type> <ol type reversed start> <li> <drupal-media data-entity-type data-entity-uuid alt data-link-entity-type data-link-entity-uuid data-link-entity-metadata>'
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <strong> <em> <u> <blockquote> <a href data-entity-type data-entity-uuid data-entity-metadata> <img data-link-entity-type data-link-entity-uuid src alt height width data-caption data-align> <ul type> <ol type reversed start> <li> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align data-link-entity-type data-link-entity-uuid data-link-entity-metadata>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -34,6 +55,12 @@ filters:
     provider: filter
     status: true
     weight: 10
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
     settings: {  }
   filter_url:
     id: filter_url
@@ -49,8 +76,8 @@ filters:
     weight: 100
     settings:
       default_view_mode: default
-      allowed_view_modes: {  }
+      allowed_view_modes:
+        media_library: media_library
       allowed_media_types:
-        audio: audio
         image: image
         video: video

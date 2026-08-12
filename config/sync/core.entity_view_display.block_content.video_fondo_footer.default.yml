@@ -1,0 +1,24 @@
+uuid: 56bad5cf-a5ae-4a9b-9ea4-1e723da3e429
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_fondo_footer
+    - field.field.block_content.video_fondo_footer.field_video_de_fondo
+  module:
+    - file
+id: block_content.video_fondo_footer.default
+targetEntityType: block_content
+bundle: video_fondo_footer
+mode: default
+content:
+  field_video_de_fondo:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

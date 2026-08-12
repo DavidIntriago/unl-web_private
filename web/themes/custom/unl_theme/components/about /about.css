@@ -23,7 +23,6 @@
 /* titulosss */
 .unl-about__title {
   font-size: 2.25rem;
-  font-weight: 700;
   color: #111827;
   margin-top: 0;
   margin-bottom: 0.5rem; 
@@ -125,4 +124,8 @@ background: linear-gradient(90deg,#5fbfe2 0%, #5bad3b 20%, #fac947 40%, #ed8942 
 
 .unl-about__divider.theme-feac {
   background: #c7c4cc; 
+}
+
+.unl-about__divider.default {
+  background: #93000b; 
 }

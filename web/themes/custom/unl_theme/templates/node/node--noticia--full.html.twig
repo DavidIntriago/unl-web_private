@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    {% if node.field_audio.entity %}
+    {% if node.field_audio.entity.field_media_audio_file.entity.uri.value %}
       {% set audio_url = file_url(node.field_audio.entity.field_media_audio_file.entity.uri.value) %}
       
       <div class="audio-ondas-wrapper">

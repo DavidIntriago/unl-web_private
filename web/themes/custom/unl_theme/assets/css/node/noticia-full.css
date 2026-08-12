@@ -18,8 +18,6 @@
   display: block;
 }
 
-
-
 .noticia-full__cabecera {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -65,43 +63,12 @@
   margin-bottom: 1.5rem;
 }
 
-
-.noticia-galeria{
-    display:flex;
-    gap:1.5rem;
-    overflow-x:auto;
-    padding-bottom:1rem;
-    scroll-snap-type:x proximity;
-}
-
-.noticia-galeria__item{
-    flex:0 0 280px;
-    transition:transform .3s ease;
-}
-
-.noticia-galeria__item:hover{
-    transform:translateY(-6px);
-}
-
-.noticia-galeria img{
-    width:100%;
-    height:190px;
-    object-fit:cover;
-    border-radius:14px;
-}
-
-/* ==========================================
-   ESTILOS PARA IMÁGENES DENTRO DEL CUERPO (CKEditor)
-========================================== */
-
-/* Evita que los elementos flotados se salgan del contenedor principal */
 .noticia-full__cuerpo::after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Alineación a la IZQUIERDA */
 .noticia-full__cuerpo .align-left,
 .noticia-full__cuerpo figure.align-left,
 .noticia-full__cuerpo img.align-left,
@@ -109,11 +76,10 @@
   float: left;
   margin-right: 1.5rem;
   margin-bottom: 1rem;
-  max-width: 50%; /* Evita que la imagen ocupe todo el ancho */
+  max-width: 50%;
   height: auto;
 }
 
-/* Alineación a la DERECHA */
 .noticia-full__cuerpo .align-right,
 .noticia-full__cuerpo figure.align-right,
 .noticia-full__cuerpo img.align-right,
@@ -125,7 +91,6 @@
   height: auto;
 }
 
-/* Alineación al CENTRO */
 .noticia-full__cuerpo .align-center,
 .noticia-full__cuerpo figure.align-center,
 .noticia-full__cuerpo img.align-center {
@@ -137,14 +102,13 @@
   height: auto;
 }
 
-/* Asegura que las imágenes dentro del texto sean responsivas */
 .noticia-full__cuerpo figure,
-.noticia-full__cuerpo img {
+.noticia-full__cuerpo img,
+.noticia-full__cuerpo video{
   max-width: 100%;
   height: auto;
 }
 
-/* RESPONSIVE: En celulares, las imágenes alineadas ocupan el 100% para no apretar el texto */
 @media (max-width: 640px) {
   .noticia-full__cuerpo .align-left,
   .noticia-full__cuerpo .align-right,
@@ -157,9 +121,7 @@
   }
 }
 
-/* ==========================================
-   BOTONES DE COMPARTIR
-========================================== */
+/* Botones Compartir */
 .noticia-compartir {
   display: flex;
   align-items: center;
@@ -224,4 +186,61 @@
 
 .btn-compartir--telegram:hover {
   background-color: #26A5E4; 
+}
+
+/* audio */
+
+.audio-ondas-contenedor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.audio-ondas-btn {
+  background-color: #93000b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.audio-ondas-btn:hover {
+  background-color: #111827;
+  transform: scale(1.05);
+}
+
+.audio-ondas-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.audio-ondas-lienzo {
+  flex-grow: 1;
+  cursor: pointer; 
+}
+
+.audio-ondas-tiempo {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 85px;   text-align: right;
+  font-variant-numeric: tabular-nums; 
+}
+
+.audio-ondas-descripcion {
+  text-align: center; 
+  font-weight: 700; 
+  font-size: 0.95rem;
+  color: #374151; 
+  padding: 0 1rem;
 }

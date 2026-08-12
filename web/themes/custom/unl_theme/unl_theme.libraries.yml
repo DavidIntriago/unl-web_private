@@ -21,7 +21,17 @@ global:
     components/footer/footer.js: {}
     components/header/header.js: {}
     components/menu_lateral/menu_lateral.js: {}
+    assets/js/reproductor.js: {}
   dependencies:
     - core/drupal
     - core/once
     - core/jquery
+
+wavesurfer:
+  version: 7.x
+  js:
+    https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.min.js: { type: external, minified: true }
+    assets/js/reproductor.js: {} 
+  dependencies:
+    - core/drupal
+    - core/once

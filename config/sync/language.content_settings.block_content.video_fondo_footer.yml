@@ -1,0 +1,11 @@
+uuid: 8295280f-84ff-4c17-ba5f-9ec1a34c83c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_fondo_footer
+id: block_content.video_fondo_footer
+target_entity_type_id: block_content
+target_bundle: video_fondo_footer
+default_langcode: site_default
+language_alterable: false

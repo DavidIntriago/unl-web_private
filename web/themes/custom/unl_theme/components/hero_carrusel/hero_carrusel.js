@@ -18,13 +18,55 @@
         let temporizador;
         slides[0].classList.add('active');
 
-   
+        // --- Indicadores tipo "rayita" (uno por diapositiva) ---
+        const controles = carrusel.querySelector('.carrusel-controles');
+        let indicadores = [];
+
+        if (controles) {
+          slides.forEach((slide, indice) => {
+            const boton = document.createElement('button');
+            boton.type = 'button';
+            boton.className = 'carrusel-indicador';
+            boton.setAttribute('role', 'tab');
+            boton.setAttribute(
+              'aria-label',
+              'Ir a la diapositiva ' + (indice + 1) + ' de ' + slides.length
+            );
+            boton.addEventListener('click', () => {
+              irADiapositiva(indice);
+              reiniciarTemporizador();
+            });
+            controles.appendChild(boton);
+            indicadores.push(boton);
+          });
+          indicadores[0].classList.add('active');
+        }
+
+        const actualizarIndicadores = () => {
+          indicadores.forEach((indicador, indice) => {
+            indicador.classList.toggle('active', indice === slideActual);
+            indicador.setAttribute(
+              'aria-selected',
+              indice === slideActual ? 'true' : 'false'
+            );
+          });
+        };
+
         const moverCarrusel = (direccion) => {
           slides[slideActual].classList.remove('active');
-          
+
           slideActual = (slideActual + direccion + slides.length) % slides.length;
-          
+
           slides[slideActual].classList.add('active');
+          actualizarIndicadores();
+        };
+
+        const irADiapositiva = (indice) => {
+          if (indice === slideActual) return;
+          slides[slideActual].classList.remove('active');
+          slideActual = indice;
+          slides[slideActual].classList.add('active');
+          actualizarIndicadores();
         };
 
         const iniciarTemporizador = () => {
@@ -37,22 +79,6 @@
           clearInterval(temporizador);
           iniciarTemporizador();
         };
-
-        // BOTONES
-        const btnNext = carrusel.querySelector('.next');
-        const btnPrev = carrusel.querySelector('.prev');
-
-        if (btnNext && btnPrev) {
-          btnNext.addEventListener('click', () => {
-            moverCarrusel(1);
-            reiniciarTemporizador(); 
-          });
-
-          btnPrev.addEventListener('click', () => {
-            moverCarrusel(-1);
-            reiniciarTemporizador();
-          });
-        }
 
         // SWIPE TÁCTIL
         let touchStartX = 0;

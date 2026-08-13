@@ -114,43 +114,47 @@
 
 .carrusel-controles {
   position: absolute;
-  bottom: 15px;
+  bottom: 24px;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 3;
-  pointer-events: none;
 }
 
-/* Ocultamos las flechas en dispositivos táctiles: ahí se navega con swipe */
-@media (pointer: coarse) {
-  .carrusel-controles {
-    display: none;
-  }
-}
-
-.btn-flecha {
+.carrusel-indicador {
   pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background: rgba(0,0,0,.4);
-  color: #fff;
-  font-size: 24px;
+  width: 32px;
+  height: 3px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
-  transition: all .3s ease;
+  padding: 0;
+  transition: background-color 0.3s ease, width 0.3s ease;
 }
-.btn-flecha:hover {
-  background: #93000b;
+
+.carrusel-indicador:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.carrusel-indicador.active {
+  width: 48px;
+  background: #ffffff;
+}
+
+.carrusel-indicador {
+  position: relative;
+}
+
+.carrusel-indicador::after {
+  content: "";
+  position: absolute;
+  inset: -10px -4px;
 }
 /* ==========================================
    BASE: el texto y el botón se ven SIEMPRE por defecto
@@ -169,7 +173,7 @@
    SOLO en dispositivos con ratón real: se ocultan
    y se revelan al pasar el mouse por la diapositiva
    ========================================== */
-/* Puntero fino se refiere al puntero de una computadora, sino es fino es touch */
+
 @media (hover: hover) and (pointer: fine) {
   .slide-texto p,
   .slide-texto .btn-universidad {
@@ -223,9 +227,16 @@
   .slide-texto h2 {
     font-size: clamp(2rem, 10vw, 3rem);
   }
-  .btn-flecha {
-    width: 42px;
-    height: 42px;
-    font-size: 20px;
+  .carrusel-controles {
+    bottom: 16px;
+    gap: 6px;
+  }
+
+  .carrusel-indicador {
+    width: 22px;
+  }
+
+  .carrusel-indicador.active {
+    width: 34px;
   }
 }

@@ -1,0 +1,23 @@
+uuid: 03a759ff-761d-4ee9-8ec3-b62c0e517426
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:video_fondo_footer:bd3724ef-5b22-47ec-9d03-6337f784af6e'
+  module:
+    - block_content
+  theme:
+    - unl_theme
+id: unl_theme_videodefondodelfooter
+theme: unl_theme
+region: footer_video
+weight: 0
+provider: null
+plugin: 'block_content:bd3724ef-5b22-47ec-9d03-6337f784af6e'
+settings:
+  id: 'block_content:bd3724ef-5b22-47ec-9d03-6337f784af6e'
+  label: 'Video de fondo del footer'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

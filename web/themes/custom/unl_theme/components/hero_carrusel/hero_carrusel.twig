@@ -2,9 +2,41 @@
   <div class="carrusel-slides">
       {% for slide in diapositivas %}
       <div class="slide-item">
-          {% if slide.imagen_url %}
-          <img src="{{ slide.imagen_url }}" class="slide-bg" alt="{{ slide.titulo }}">
-        {% endif %}
+        
+          {% if slide.media_url %}
+            
+            {# IMAGEN #}
+            {% if slide.media_tipo == 'image' %}
+              <img src="{{ slide.media_url }}" class="slide-bg" alt="{{ slide.titulo }}">
+            
+            {# VIDEO LOCAL #}
+            {% elseif slide.media_tipo == 'video' %}
+              <video src="{{ slide.media_url }}" class="slide-bg" autoplay loop muted playsinline></video>
+            
+            {# VIDEO REMOTO #}
+            {% elseif slide.media_tipo == 'remote_video' %}
+              
+              {# Extraemos el ID de la URL de YouTube (soporta formato normal y formato corto youtu.be) #}
+              {% set video_id = '' %}
+              {% if 'youtube.com/watch' in slide.media_url %}
+                {% set video_id = slide.media_url|split('v=')|last|split('&')|first %}
+              {% elseif 'youtu.be/' in slide.media_url %}
+                {% set video_id = slide.media_url|split('/')|last|split('?')|first %}
+              {% endif %}
+
+              {% if video_id %}
+                {# Construimos el iframe con parámetros para que sea silencioso, automático y en bucle #}
+                <iframe class="slide-bg slide-bg--iframe" 
+                        src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist={{ video_id }}&modestbranding=1&playsinline=1" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen" 
+                        allowfullscreen>
+                </iframe>
+              {% endif %}
+
+            {% endif %}
+          {% endif %}
+
         <div class="slide-overlay"></div>
         <div class="slide-texto">
           <h2>{{ slide.titulo }}</h2>
@@ -16,6 +48,9 @@
        </div>
     {% endfor %}
    </div>
-   {# Indicadores (uno por diapositiva, generados dinámicamente por JS) #}
-  <div class="carrusel-controles" role="tablist" aria-label="Diapositivas del carrusel"></div>
+   
+  <div class="carrusel-controles">
+    <button class="btn-flecha prev" aria-label="Anterior">&#10094;</button>
+    <button class="btn-flecha next" aria-label="Siguiente">&#10095;</button>
+  </div>
 </div>

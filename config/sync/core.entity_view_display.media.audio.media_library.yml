@@ -20,7 +20,7 @@ mode: media_library
 content:
   field_descipcion_audio:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
       link_rel: canonical

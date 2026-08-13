@@ -11,6 +11,7 @@ global:
       assets/css/node/noticia-full.css: {}
       assets/css/node/evento-teaser.css: {}
       assets/css/node/noticia-teaser.css: {}
+      assets/css/node/evento-tarjeta-paragraph.css: {}
       assets/css/views/eventos.css: {}
       assets/css/views/noticias.css: {}
       assets/css/navigation/pager.css: {}

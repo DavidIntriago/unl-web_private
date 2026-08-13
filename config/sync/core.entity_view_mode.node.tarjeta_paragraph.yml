@@ -1,0 +1,11 @@
+uuid: 20513783-c1a8-4dfd-881f-e1d44934a113
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.tarjeta_paragraph
+label: 'Tarjeta Paragraph'
+description: null
+targetEntityType: node
+cache: true

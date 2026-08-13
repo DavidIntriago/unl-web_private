@@ -1,9 +1,19 @@
+/* ==========================================
+   SECCIÓN DE EVENTOS
+========================================== */
+.seccion-eventos {
+  margin-top: 2rem;
+  padding: 2rem 1.25rem; 
+}
+
 .seccion-eventos__contenedor {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-
+/* ------------------------------------------
+   CABECERA
+------------------------------------------ */
 .seccion-eventos__cabecera {
   display: grid;
   grid-template-columns: 1fr;
@@ -12,7 +22,19 @@
   text-align: center;
 }
 
+.seccion-eventos__titulo {
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+  margin: 0;
+}
 
+.seccion-eventos__divider {
+  height: 4px; 
+  width: 100px; 
+  background-color: #93000b; 
+  margin: 0.75rem auto 0 auto; 
+}
 
 @media (min-width: 768px) {
   .seccion-eventos__cabecera {
@@ -31,43 +53,9 @@
   }
 }
 
-
-
-.seccion-eventos__titulo {
-  font-size: 2rem;
-  color: #333;
-  margin: 0;
-}
-
-
-.seccion-eventos__divider {
-  height: 4px; 
-  width: 100px; 
-  background-color: #93000b; 
-  margin: 0.75rem auto 0 auto; 
-}
-
-
-
-.seccion-eventos__contenido .eventos__contenedor {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .seccion-eventos__contenido .eventos__contenedor {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .seccion-eventos__contenido .eventos__contenedor {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* botoens*/
+/* ------------------------------------------
+   BOTONES
+------------------------------------------ */
 .seccion-eventos__boton-superior a {
   display: inline-block;
   background-color: #93000b; 
@@ -87,8 +75,35 @@
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-@media (max-width: 767px) {
+/* ------------------------------------------
+   GRILLA DE CONTENIDO (Tarjetas)
+------------------------------------------ */
+/* Móviles (Por defecto) */
+.seccion-eventos__contenido .eventos__contenedor {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: stretch; /* Obliga a que todas las tarjetas de la fila tengan la misma altura */
+}
 
+/* Tablets (A partir de 768px) */
+@media (min-width: 768px) {
+  .seccion-eventos__contenido .eventos__contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Pantallas de escritorio (A partir de 1024px) */
+@media (min-width: 1024px) {
+  .seccion-eventos__contenido .eventos__contenedor {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================
+   COMPORTAMIENTO MÓVIL ESPECÍFICO (Slider Horizontal)
+========================================== */
+@media (max-width: 767px) {
   .seccion-eventos__contenido .eventos__contenedor {
     display: flex;
     overflow-x: auto;
@@ -110,17 +125,22 @@
     display: flex; 
   }
 
-  .seccion-eventos__contenido .eventos__item .evento-teaser { 
+  /* Aplica tanto para la tarjeta antigua como para el nuevo modo párrafo */
+  .seccion-eventos__contenido .eventos__item .evento-teaser,
+  .seccion-eventos__contenido .eventos__item .card-ev-parrafo { 
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: auto; /* Permite que Flexbox controle la altura */
   }
 
-  .seccion-eventos__contenido .eventos__item .evento-teaser__contenido {
+  .seccion-eventos__contenido .eventos__item .evento-teaser__contenido,
+  .seccion-eventos__contenido .eventos__item .card-ev-parrafo__cuerpo {
     flex-grow: 1; 
   }
 
-  .seccion-eventos__contenido .eventos__item .evento-teaser__pie {
+  .seccion-eventos__contenido .eventos__item .evento-teaser__pie,
+  .seccion-eventos__contenido .eventos__item .card-ev-parrafo__footer {
     margin-top: auto; 
   }
 }

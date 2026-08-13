@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.evento.field_area
     - field.field.node.evento.field_fecha
     - field.field.node.evento.field_imagen
+    - field.field.node.evento.field_modalidad
     - field.field.node.evento.field_ubicacion
     - node.type.evento
   module:
@@ -63,4 +64,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_modalidad: true
   langcode: true

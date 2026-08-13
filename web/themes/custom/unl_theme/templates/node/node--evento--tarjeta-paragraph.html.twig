@@ -1,0 +1,58 @@
+<article class="card-ev-parrafo animar-scroll">
+  
+  <div class="card-ev-parrafo__cuerpo">
+    {# Cabecera con el Área y el Calendario Destacado #}
+    <header class="card-ev-parrafo__cabecera">
+      <div class="card-ev-parrafo__fecha-cuadro">
+        <span class="dia">{{ node.field_fecha.value|date('d')|default('3') }}</span>
+        <span class="mes">{{ node.field_fecha.value|date('M')|upper|default('SEP') }}</span>
+      </div>
+      <div class="card-ev-parrafo__tag">
+        {{ content.field_area|render|striptags|trim }}
+      </div>
+    </header>
+
+    <h3 class="card-ev-parrafo__titulo">
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h3>
+    
+    <div class="card-ev-parrafo__separador"></div>
+
+    {# Detalles apilados con más respiro para alargar la tarjeta #}
+    <div class="card-ev-parrafo__detalles">  
+      
+      <div class="detalle-item">
+        <svg width="20" height="20" class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <div class="info">
+          <span class="label">Fecha</span>
+          <span class="valor">{{ content.field_fecha|render|striptags|trim }}</span>
+        </div>
+      </div>
+
+      <div class="detalle-item">
+        <svg width="20" height="20" class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <div class="info">
+          <span class="label">Lugar</span>
+          <span class="valor">{{ content.field_ubicacion }}</span>
+        </div>
+      </div>
+
+      <div class="detalle-item">
+        <svg width="20" height="20" class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <div class="info">
+          <span class="label">Modalidad</span>
+          <span class="valor">{{ content.field_modalidad }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card-ev-parrafo__footer">
+    <a href="{{ url }}" class="link-mas">
+      <span>Más información</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+    </a>
+  </div>
+
+</article>

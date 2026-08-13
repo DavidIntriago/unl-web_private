@@ -1,0 +1,21 @@
+uuid: 0cbcad07-8b55-471c-874f-27630e2da561
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_modalidad
+    - node.type.evento
+  module:
+    - options
+id: node.evento.field_modalidad
+field_name: field_modalidad
+entity_type: node
+bundle: evento
+label: Modalidad
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

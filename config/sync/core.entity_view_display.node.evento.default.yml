@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.evento.field_area
     - field.field.node.evento.field_fecha
     - field.field.node.evento.field_imagen
+    - field.field.node.evento.field_modalidad
     - field.field.node.evento.field_ubicacion
     - node.type.evento
   module:
     - datetime
+    - options
     - user
 id: node.evento.default
 targetEntityType: node
@@ -41,6 +43,13 @@ content:
       link: false
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_modalidad:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_ubicacion:
     type: string

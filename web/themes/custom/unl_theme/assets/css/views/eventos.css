@@ -1,13 +1,9 @@
-/* ============================================
-   EVENTOS — Página de listado (grid)
-   ============================================ */
-
-.eventos{
-    padding: 4rem 0 5rem;
+.eventos {
+    padding: 1rem 0 2rem;
     background: transparent; 
 }
 
-.eventos__contenedor{
+.eventos__contenedor {
     width: min(1400px, 92%);
     margin: 0 auto;
     display: grid;
@@ -16,64 +12,64 @@
     align-items: stretch;
 }
 
-.eventos__item{
+.eventos__item {
     display: flex;
 }
 
-.eventos__item .evento-teaser{
+.eventos__item .evento-teaser {
     width: 100%;
 }
 
-.eventos__item{
+.eventos__item {
     opacity: 0;
     animation: eventos-fade-in .5s ease forwards;
 }
 
-.eventos__item:nth-child(1){ animation-delay: .02s; }
-.eventos__item:nth-child(2){ animation-delay: .08s; }
-.eventos__item:nth-child(3){ animation-delay: .14s; }
-.eventos__item:nth-child(4){ animation-delay: .20s; }
-.eventos__item:nth-child(n+5){ animation-delay: .24s; }
+.eventos__item:nth-child(1) { animation-delay: .02s; }
+.eventos__item:nth-child(2) { animation-delay: .08s; }
+.eventos__item:nth-child(3) { animation-delay: .14s; }
+.eventos__item:nth-child(4) { animation-delay: .20s; }
+.eventos__item:nth-child(n+5) { animation-delay: .24s; }
 
-@keyframes eventos-fade-in{
-    from{
+@keyframes eventos-fade-in {
+    from {
         opacity: 0;
         transform: translateY(14px);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* ---------- Responsive ---------- */
 
-@media (max-width: 1400px){
-    .eventos__contenedor{
+@media (max-width: 1400px) {
+    .eventos__contenedor {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 900px){
-    .eventos__contenedor{
+@media (max-width: 900px) {
+    .eventos__contenedor {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.75rem 1.25rem;
     }
 }
 
-@media (max-width: 640px){
-    .eventos{
-        padding: 2.5rem 0 3rem;
+@media (max-width: 640px) {
+    .eventos {
+        padding: 1rem 0 1.5rem;
     }
 
-    .eventos__contenedor{
+    .eventos__contenedor {
         width: 90%;
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 }
-@media (prefers-reduced-motion: reduce){
-    .eventos__item{
+
+@media (prefers-reduced-motion: reduce) {
+    .eventos__item {
         animation: none;
         opacity: 1;
     }

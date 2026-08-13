@@ -1,9 +1,7 @@
-/* ==========================================
-   SECCIÓN DE EVENTOS
-========================================== */
+
 .seccion-eventos {
-  margin-top: 2rem;
-  padding: 2rem 1.25rem; 
+  margin-top: 1rem; 
+  padding: 1rem 1.25rem 0.5rem 1.25rem; 
 }
 
 .seccion-eventos__contenedor {
@@ -11,21 +9,15 @@
   margin: 0 auto;
 }
 
-/* ------------------------------------------
-   CABECERA
------------------------------------------- */
+
 .seccion-eventos__cabecera {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem; 
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
 .seccion-eventos__titulo {
   font-size: 2rem;
   color: #333;
-  font-weight: bold;
   margin: 0;
 }
 
@@ -36,73 +28,37 @@
   margin: 0.75rem auto 0 auto; 
 }
 
-@media (min-width: 768px) {
-  .seccion-eventos__cabecera {
-    grid-template-columns: 1fr auto 1fr; 
-    align-items: end; 
-  }
-  
-  .seccion-eventos__titulos {
-    grid-column: 2; 
-  }
-  
-  .seccion-eventos__boton-superior {
-    grid-column: 3; 
-    justify-self: end; 
-    padding-bottom: 0.2rem; 
-  }
-}
 
-/* ------------------------------------------
-   BOTONES
------------------------------------------- */
-.seccion-eventos__boton-superior a {
-  display: inline-block;
-  background-color: #93000b; 
-  color: #ffffff;
-  padding: 0.8rem 2.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.seccion-eventos__boton-superior a:hover {
-  background-color: #111827;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-/* ------------------------------------------
-   GRILLA DE CONTENIDO (Tarjetas)
------------------------------------------- */
-/* Móviles (Por defecto) */
 .seccion-eventos__contenido .eventos__contenedor {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: stretch; /* Obliga a que todas las tarjetas de la fila tengan la misma altura */
+  gap: 2rem; 
+  align-items: stretch;
 }
 
-/* Tablets (A partir de 768px) */
+
+.seccion-eventos__contenido .eventos__item {
+  display: flex;
+}
+
+.seccion-eventos__contenido .card-ev-parrafo {
+  width: 100%;
+  flex-grow: 1; 
+}
+
 @media (min-width: 768px) {
   .seccion-eventos__contenido .eventos__contenedor {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Pantallas de escritorio (A partir de 1024px) */
 @media (min-width: 1024px) {
   .seccion-eventos__contenido .eventos__contenedor {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* ==========================================
-   COMPORTAMIENTO MÓVIL ESPECÍFICO (Slider Horizontal)
-========================================== */
+/* movil */
 @media (max-width: 767px) {
   .seccion-eventos__contenido .eventos__contenedor {
     display: flex;
@@ -122,25 +78,9 @@
   .seccion-eventos__contenido .eventos__item { 
     flex: 0 0 85%; 
     scroll-snap-align: center;
-    display: flex; 
   }
-
-  /* Aplica tanto para la tarjeta antigua como para el nuevo modo párrafo */
-  .seccion-eventos__contenido .eventos__item .evento-teaser,
-  .seccion-eventos__contenido .eventos__item .card-ev-parrafo { 
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: auto; /* Permite que Flexbox controle la altura */
-  }
-
-  .seccion-eventos__contenido .eventos__item .evento-teaser__contenido,
-  .seccion-eventos__contenido .eventos__item .card-ev-parrafo__cuerpo {
-    flex-grow: 1; 
-  }
-
-  .seccion-eventos__contenido .eventos__item .evento-teaser__pie,
-  .seccion-eventos__contenido .eventos__item .card-ev-parrafo__footer {
-    margin-top: auto; 
+  
+  .seccion-eventos__contenido .card-ev-parrafo {
+    height: auto; 
   }
 }

@@ -2,18 +2,12 @@
   <div class="seccion-eventos__contenedor">
     
     <div class="seccion-eventos__cabecera">
-      
       <div class="seccion-eventos__titulos">
         {% if titulo %}
           <h2 class="seccion-eventos__titulo">{{ titulo }}</h2>
-                <div class="seccion-eventos__divider"></div>
+          <div class="seccion-eventos__divider"></div>
         {% endif %}
       </div>
-
-      <div class="seccion-eventos__boton-superior">
-        {% block boton_enlace %}{% endblock %}
-      </div>
-      
     </div>
     
     <div class="seccion-eventos__contenido">

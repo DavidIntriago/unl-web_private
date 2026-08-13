@@ -36,6 +36,9 @@
   margin: 0 auto;
   padding: 0 1rem;
 }
+.grid-tarjetas-wrapper--sustantiva {
+  margin-top: 1.5rem;
+}
 
 .grid-tarjetas-container--sustantiva .field,
 .grid-tarjetas-container--sustantiva .field__items {

@@ -26,6 +26,9 @@ settings:
     -
       value: imagenes
       label: imagenes
+    -
+      value: sustantiva
+      label: sustantiva
   allowed_values_function: ''
 module: options
 locked: false

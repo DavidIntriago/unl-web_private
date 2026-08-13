@@ -1,4 +1,142 @@
 /* ==========================================
+   VARIANTE SUSTANTIVA (foto de fondo + etiqueta de color que crece
+   sola a medida que la tarjeta se achica en la fila flex, hasta que
+   solo queda el cuadro de color + el título — sin JS, solo CSS)
+   ========================================== */
+.tarjeta-sustantiva {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end; /* la etiqueta se ancla abajo */
+  overflow: hidden;
+  min-height: 320px;
+  transition: flex 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tarjeta-sustantiva:hover {
+  flex: 3; /* esta tarjeta crece... */
+}
+
+/* ...y como el contenedor es flex, las tarjetas vecinas se achican
+   automáticamente (su flex:1 se reparte un espacio menor) — ahí es
+   donde su etiqueta empieza a dominar el ancho disponible. */
+
+.tarjeta-sustantiva__img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tarjeta-sustantiva__img .field,
+.tarjeta-sustantiva__img .field__items,
+.tarjeta-sustantiva__img .field__item,
+.tarjeta-sustantiva__img article,
+.tarjeta-sustantiva__img picture {
+  display: contents;
+}
+
+.tarjeta-sustantiva__img img {
+  position: absolute; /* se posiciona respecto a .tarjeta-sustantiva__img,
+    saltándose los divs intermedios sin clase que Drupal agrega alrededor
+    del campo — así no depende de que ellos tengan una altura explícita */
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+}
+
+/* --- La etiqueta: ancho FIJO, igual en las 4 tarjetas (no depende del
+   largo del título). Como todas parten del mismo valor, cuando las
+   tarjetas se achican por el hover de otra, todas se reducen en la
+   misma proporción — se ven "iguales" en cualquier punto del proceso,
+   no solo en reposo. El max-width evita que se salga de la tarjeta
+   cuando esta queda más angosta que el ancho fijo. */
+.tarjeta-sustantiva__etiqueta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  width: 200px;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  padding: 1rem 1.25rem;
+  background-color: var(--surface-color, #93000b); /* color por defecto si no hay clase theme-* */
+}
+
+.tarjeta-sustantiva__titulo {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.tarjeta-sustantiva__mas {
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-sustantiva:hover .tarjeta-sustantiva__mas {
+  transform: rotate(90deg);
+}
+
+.tarjeta-sustantiva__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.tarjeta-sustantiva__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+/* El área clicable cubre TODA la tarjeta (la foto completa, no solo
+   la etiqueta) */
+.tarjeta-sustantiva__enlace a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .tarjeta-sustantiva {
+    flex: none;
+    min-height: 90px;
+    align-items: stretch; /* la etiqueta se estira para llenar toda la tarjeta */
+  }
+
+  .tarjeta-sustantiva:hover {
+    flex: none;
+  }
+
+  /* En móvil no hay hover, así que mostrar la foto no aporta nada —
+     directamente mostramos solo el cuadro de color con el título */
+  .tarjeta-sustantiva__img {
+    display: none;
+  }
+
+  .tarjeta-sustantiva__etiqueta {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ==========================================
    ESTRUCTURA DE TARJETAS
    ========================================== */
 .tarjeta-institucional {

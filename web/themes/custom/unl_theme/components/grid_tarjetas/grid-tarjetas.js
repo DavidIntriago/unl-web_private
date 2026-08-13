@@ -1,11 +1,4 @@
-/**
- * @file
- * Carrusel para la variante "sitios_interes" de Grid Tarjetas.
- * Infinito, sin clonar tarjetas: cuando una tarjeta sale de la
- * vista, se reubica físicamente al otro extremo del carrusel y se
- * resetea la posición sin animar, dando la ilusión de loop infinito
- * usando solo los elementos reales.
- */
+
 (function (Drupal, once) {
   "use strict";
 
@@ -47,6 +40,11 @@
           return paso > 0 ? Math.max(Math.round(anchoViewport / paso), 1) : 1;
         };
 
+        const peekPx = () =>
+          parseFloat(getComputedStyle(viewport).paddingLeft) || 0;
+
+        const posReposo = () => -(calcularPaso() - peekPx());
+
         let temporizador;
         let animando = false;
         let vieneDeSiguiente = false;
@@ -57,7 +55,7 @@
           animando = true;
           vieneDeSiguiente = true;
           track.style.transition = "";
-          track.style.transform = `translateX(-${calcularPaso()}px)`;
+          track.style.transform = `translateX(${posReposo() - calcularPaso()}px)`;
         };
 
         const irAnterior = () => {
@@ -69,10 +67,10 @@
           const ultimo = track.lastElementChild;
           track.style.transition = "none";
           track.insertBefore(ultimo, track.firstElementChild);
-          track.style.transform = `translateX(-${paso}px)`;
+          track.style.transform = `translateX(${posReposo() - paso}px)`;
           void track.offsetHeight;
           track.style.transition = "";
-          track.style.transform = "translateX(0px)";
+          track.style.transform = `translateX(${posReposo()}px)`;
         };
 
         track.addEventListener("transitionend", (e) => {
@@ -81,12 +79,11 @@
           }
 
           if (vieneDeSiguiente) {
-            // La primera tarjeta ya salió de vista: la reubicamos al
-            // final y reseteamos sin animar.
+
             const primero = track.firstElementChild;
             track.style.transition = "none";
             track.appendChild(primero);
-            track.style.transform = "translateX(0px)";
+            track.style.transform = `translateX(${posReposo()}px)`;
             void track.offsetHeight;
           }
 
@@ -143,17 +140,21 @@
           { passive: true }
         );
 
-        // Pausamos el autoplay mientras el mouse esté sobre el carrusel
         contenedor.addEventListener("mouseenter", () => clearInterval(temporizador));
         contenedor.addEventListener("mouseleave", iniciarAutoplay);
 
-        // Si hay menos tarjetas reales de las que caben en la vista,
-        // no tiene sentido "carrusel-ear": ya se ven todas. Ocultamos
-        // flechas y no arrancamos el autoplay.
         if (n <= contarVisibles()) {
           if (btnPrev) btnPrev.style.display = "none";
           if (btnNext) btnNext.style.display = "none";
           return;
+        }
+
+        if (peekPx() > 0) {
+          track.insertBefore(track.lastElementChild, track.firstElementChild);
+          track.style.transition = "none";
+          track.style.transform = `translateX(${posReposo()}px)`;
+          void track.offsetHeight;
+          track.style.transition = "";
         }
 
         iniciarAutoplay();

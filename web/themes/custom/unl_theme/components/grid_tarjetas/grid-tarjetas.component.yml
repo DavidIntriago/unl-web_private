@@ -15,6 +15,7 @@ props:
         - 'contador'
         - 'sitios_interes'
         - 'imagenes'
+        - 'sustantiva'
       default: 'default'
 slots:
   items:

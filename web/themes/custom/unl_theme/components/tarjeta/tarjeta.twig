@@ -1,4 +1,30 @@
-{% if variante == 'facultad' %}
+{% if variante == 'sustantiva' %}
+  {# ------sustantiva: foto de fondo + etiqueta de color que crece a
+     medida que la tarjeta se achica (fila flex tipo institucional) #}
+
+  <article class="tarjeta-sustantiva">
+
+    {% if imagen %}
+      <div class="tarjeta-sustantiva__img">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    <div class="tarjeta-sustantiva__etiqueta {{ color }}">
+      {% if titulo %}
+        <h3 class="tarjeta-sustantiva__titulo">{{ titulo|nl2br }}</h3>
+      {% endif %}
+      <span class="tarjeta-sustantiva__mas" aria-hidden="true">+</span>
+    </div>
+
+    {% if enlace %}
+      <div class="tarjeta-sustantiva__enlace">
+        {{ enlace }}
+      </div>
+    {% endif %}
+
+  </article>
+{% elseif variante == 'facultad' %}
   {# -------Facultadesssssssssss#}
   {% set classes = [
   'tarjeta-institucional',

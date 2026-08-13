@@ -1,24 +1,23 @@
 /* ==========================================================================
-   MENÚ LATERAL
+   MENÚ LATERAL (versión discreta: botón circular flotante en la esquina
+   superior derecha, justo debajo del header. El panel se abre hacia abajo,
+   como un menú desplegable normal.)
    ========================================================================== */
 .lateral-menu {
   position: fixed;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  z-index: 950;
-  display: flex;
-  align-items: stretch;
+  top: calc(var(--header-height, 80px) + 16px);
+  right: 24px;
+  z-index: 950; /* debajo del header sticky (1000) */
 }
 
-/* --- La pestaña siempre visible, semi-transparente --- */
+/* --- El botón: circular, pequeño, color neutro --- */
 .lateral-menu__tab {
   flex-shrink: 0;
-  width: 34px;
-  min-height: 88px;
+  width: 46px;
+  height: 46px;
   border: none;
-  border-radius: 0 12px 12px 0;
-  background: rgba(147, 0, 11, 0.55);
+  border-radius: 50%;
+  background: rgba(33, 33, 33, 0.55);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   color: #ffffff;
@@ -26,13 +25,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
-  transition: background-color 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .lateral-menu__tab:hover,
 .lateral-menu.is-open .lateral-menu__tab {
-  background: rgba(147, 0, 11, 0.85);
+  background: rgba(33, 33, 33, 0.85);
+  transform: scale(1.05);
 }
 
 .lateral-menu__tab-icon {
@@ -47,28 +47,50 @@
   height: 16px;
 }
 
-/* --- El panel desplegable con los enlaces --- */
+/* La flechita apunta hacia abajo cuando está cerrado, y rota hacia
+   arriba cuando se abre (más natural para un menú tipo dropdown) */
+.lateral-menu__tab-icon svg {
+  transform: rotate(90deg);
+}
+
+.lateral-menu.is-open .lateral-menu__tab-icon {
+  transform: rotate(180deg);
+}
+
+/* --- El panel: posicionado debajo del botón, alineado a la derecha --- */
 .lateral-menu__panel {
-  flex-shrink: 0;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: max-content;
+  min-width: 200px;
+  max-width: 280px;
+
   overflow: hidden;
-  max-width: 0;
+  max-height: 0;
   opacity: 0;
   visibility: hidden;
-  background: rgba(255, 255, 255, 0.9);
+
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border-radius: 0 12px 12px 0;
-  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.12);
-  transition: max-width 0.3s ease, opacity 0.25s ease, visibility 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: max-height 0.3s ease, opacity 0.25s ease, visibility 0.3s ease;
+}
+
+.lateral-menu.is-open .lateral-menu__panel {
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .lateral-menu__panel ul {
   list-style: none;
   margin: 0;
-  padding: 0.75rem 0;
+  padding: 0.6rem 0;
   display: flex;
   flex-direction: column;
-  white-space: nowrap;
 }
 
 .lateral-menu__panel li {
@@ -78,12 +100,13 @@
 .lateral-menu__panel a {
   display: flex;
   align-items: center;
-  padding: 0.6rem 1.25rem 0.6rem 1rem;
+  padding: 0.55rem 1.1rem;
   color: var(--surface-color, #93000b);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
+  white-space: nowrap;
   transition: background-color 0.2s ease;
 }
 
@@ -91,24 +114,37 @@
   background-color: rgba(147, 0, 11, 0.08);
 }
 
-.lateral-menu.is-open .lateral-menu__panel {
-  max-width: 320px;
-  opacity: 1;
-  visibility: visible;
-}
-
-.lateral-menu.is-open .lateral-menu__tab-icon {
-  transform: rotate(180deg);
-}
-
 @media (max-width: 600px) {
+  .lateral-menu {
+    top: auto;
+    bottom: 16px;
+    right: 16px;
+  }
+
   .lateral-menu__tab {
-    width: 30px;
-    min-height: 72px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* En móvil el botón está abajo, así que el panel se abre hacia ARRIBA
+     (si abriera hacia abajo como en escritorio, se saldría de la pantalla) */
+  .lateral-menu__panel {
+    top: auto;
+    bottom: calc(100% + 10px);
+  }
+
+  /* La flechita apunta hacia arriba en reposo (coherente con que el
+     panel se despliega hacia arriba), y hacia abajo al abrirse */
+  .lateral-menu__tab-icon svg {
+    transform: rotate(-90deg);
+  }
+
+  .lateral-menu.is-open .lateral-menu__tab-icon {
+    transform: rotate(-180deg);
   }
 
   .lateral-menu__panel a {
-    padding: 0.55rem 1rem 0.55rem 0.85rem;
+    padding: 0.5rem 1rem;
     font-size: 0.8rem;
   }
 }

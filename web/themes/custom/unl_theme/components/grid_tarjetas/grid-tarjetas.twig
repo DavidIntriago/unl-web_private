@@ -11,15 +11,17 @@
     </div>
   {% endif %}
 
-  {% set modificador_grid = variante == 'facultad'
-    ? 'grid-tarjetas-container--facultad'
-    : (variante == 'contador'
-      ? 'grid-tarjetas-container--contador'
-      : (variante == 'sitios_interes'
-        ? 'grid-tarjetas-container--sitios_interes'
-        : (variante == 'imagenes'
-          ? 'grid-tarjetas-container--imagenes'
-          : 'grid-tarjetas-container--default'))) %}
+  {% set modificador_grid = variante == 'sustantiva'
+    ? 'grid-tarjetas-container--sustantiva'
+    : (variante == 'facultad'
+      ? 'grid-tarjetas-container--facultad'
+      : (variante == 'contador'
+        ? 'grid-tarjetas-container--contador'
+        : (variante == 'sitios_interes'
+          ? 'grid-tarjetas-container--sitios_interes'
+          : (variante == 'imagenes'
+            ? 'grid-tarjetas-container--imagenes'
+            : 'grid-tarjetas-container--default')))) %}
 
   <section class="grid-tarjetas-container {{ modificador_grid }}">
     {% if variante == 'sitios_interes' %}

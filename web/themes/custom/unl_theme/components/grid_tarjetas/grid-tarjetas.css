@@ -37,6 +37,30 @@
   padding: 0 1rem;
 }
 
+.grid-tarjetas-container--sustantiva .field,
+.grid-tarjetas-container--sustantiva .field__items {
+  display: contents;
+}
+
+.grid-tarjetas-container--sustantiva {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.grid-tarjetas-container--sustantiva > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .grid-tarjetas-container--sustantiva {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 /* facultadessssssss*/
 .grid-tarjetas-container--facultad {
   display: flex;
@@ -236,8 +260,21 @@
     padding: 0 1rem;
   }
 
+  /* Zona de "peek": el viewport gana padding, y el track se estira con
+     un margen negativo IGUAL a ese padding para invadirlo — así las
+     tarjetas vecinas sí llegan a dibujarse ahí (dentro de la caja
+     recortable de overflow:hidden), en vez de quedar cortadas. */
+  .carrusel-sitios-viewport {
+    box-sizing: border-box;
+    padding: 0 28px;
+  }
+
+  .carrusel-sitios-track {
+    margin: 0 -28px;
+  }
+
   .carrusel-sitios-track > * {
-    flex-basis: 100%;
+    flex-basis: calc(100% - 56px); /* 100% del viewport, menos los dos peeks de 28px */
   }
 }
 

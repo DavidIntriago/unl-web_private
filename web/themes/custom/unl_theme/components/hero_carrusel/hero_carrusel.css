@@ -260,3 +260,23 @@
 .slide-item.active .slide-bg--iframe {
   transform: translate(-50%, -50%) scale(1.05); 
 }
+
+/* videos url*/
+.slide-bg--iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; 
+  min-height: 100vh;
+  min-width: 177.77vh;
+  transform: translate(-50%, -50%) scale(1.05); 
+  pointer-events: none; 
+  border: none;
+  z-index: 0;
+  transition: none; 
+}
+
+.slide-item.active .slide-bg--iframe {
+  transform: translate(-50%, -50%) scale(1.05); 
+}

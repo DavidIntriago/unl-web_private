@@ -1,1 +1,14 @@
 <?php
+
+function unl_theme_preprocess_page(&$variables) {
+  if (isset($variables['node']) && $variables['node'] instanceof \Drupal\node\NodeInterface) {
+    $node = $variables['node'];
+    
+    if ($node->hasField('field_imagen_hero') && !$node->get('field_imagen_hero')->isEmpty()) {
+      
+      $variables['hero_imagen_segura'] = $node->get('field_imagen_hero')->view('default');
+      
+      $variables['hero_titulo_seguro'] = $node->getTitle();
+    }
+  }
+}

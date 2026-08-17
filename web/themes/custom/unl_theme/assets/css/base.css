@@ -23,3 +23,12 @@ img {
 a {
   color: inherit;
 }
+.site-content:has(.sidebar-micrositio) {
+  padding-top: 32px;
+  padding-left: 24px;
+}
+.site-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}

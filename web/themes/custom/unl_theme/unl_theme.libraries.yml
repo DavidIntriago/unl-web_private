@@ -17,7 +17,7 @@ global:
       assets/css/navigation/pager.css: {}
       components/menu_lateral/menu_lateral.css: {}
       components/sidebar_micrositio/sidebar_micrositio.css: {}
-
+      components/hero_micrositio/hero_micrositio.css: {}
   js:
     assets/js/global.js: {}
     components/footer/footer.js: {}

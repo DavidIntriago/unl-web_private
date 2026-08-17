@@ -1,0 +1,43 @@
+.hero-micrositio {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px); 
+  
+  overflow: hidden;
+  z-index: 1; 
+}
+
+.hero-micrositio__fondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-micrositio__fondo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+}
+
+.hero-micrositio__contenido {
+  position: absolute;
+  z-index: 3;
+  bottom: 10%;
+  right: 5%;
+  background-color: rgba(17, 17, 17, 0.95);
+  padding: 2rem 3rem;
+  max-width: 600px;
+  border-left: 4px solid #93000b;
+}
+
+.hero-micrositio__titulo {
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+  line-height: 1.2;
+}

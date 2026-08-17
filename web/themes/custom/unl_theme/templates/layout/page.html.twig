@@ -9,16 +9,34 @@
 </div>
 
 <div id="page-wrapper">
-
+  
   {% include '@unl_theme/components/header/header.html.twig' %}
+
+  {% if hero_imagen_segura %}
+    {{ attach_library('unl_theme/hero_micrositio') }}
+    
+    <section class="hero-micrositio">
+      
+      <div class="hero-micrositio__fondo">
+        {{ hero_imagen_segura }}
+      </div>
+      
+      <div class="hero-micrositio__contenido">
+        <h1 class="hero-micrositio__titulo">{{ hero_titulo_seguro }}</h1>
+      </div>
+
+    </section>
+  {% endif %}
 
   <main class="site-content">
     {% if page.sidebar_micrositio %}
-    <aside class="sidebar-micrositio">
-      {{ page.sidebar_micrositio }}
-    </aside>
-  {% endif %}
-  {{ page.content }}
+      <aside class="sidebar-micrositio">
+        {{ page.sidebar_micrositio }}
+      </aside>
+    {% endif %}
+
+    {{ page.content }}
+    
   </main>
 
   {% include '@unl_theme/components/footer/footer.html.twig' %}

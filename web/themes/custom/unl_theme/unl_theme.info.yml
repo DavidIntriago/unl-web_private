@@ -8,13 +8,11 @@ libraries:
   - unl_theme/global
 
 regions:
-  top_bar: Top Bar
   branding: Branding
   primary_menu: Primary Menu
-  header_actions: Header Actions
-  highlighted: Hero
   content: Content
   footer_contact: Footer - Contacto
   footer_map: Footer - Mapa
   lateral_menu: Menú lateral
+  sidebar_micrositio: Sidebar de Micrositio
   footer_video: Video de fondo del footer

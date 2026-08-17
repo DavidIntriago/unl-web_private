@@ -1,0 +1,29 @@
+uuid: 89a1c8c0-7218-4bce-bbaa-ddd7e8895c49
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.menu-investigacion
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_menuinvestigacion
+theme: unl_theme
+region: sidebar_micrositio
+weight: 0
+provider: null
+plugin: 'system_menu_block:menu-investigacion'
+settings:
+  id: 'system_menu_block:menu-investigacion'
+  label: 'Menu Investigación'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/investigacion\r\n/investigacion/*"

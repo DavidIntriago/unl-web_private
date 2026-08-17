@@ -1,0 +1,8 @@
+uuid: 88b7e6b4-71c1-40da-bde6-37b84691bbc3
+langcode: en
+status: true
+dependencies: {  }
+id: menu-investigacion
+label: 'Menu Investigación'
+description: ''
+locked: false

@@ -15,7 +15,6 @@ regions:
   highlighted: Hero
   content: Content
   footer_contact: Footer - Contacto
-  footer_social: Footer - Redes Sociales
   footer_map: Footer - Mapa
   lateral_menu: Menú lateral
   footer_video: Video de fondo del footer

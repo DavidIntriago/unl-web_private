@@ -4,7 +4,6 @@
   document.addEventListener('DOMContentLoaded', function () {
 
     // MAPA
-
     var mapBlock = document.querySelector('.site-footer__map-block');
 
     if (mapBlock) {
@@ -36,7 +35,6 @@
       }
     }
     // VIDEO DE FONDO
-
     var videoSource = document.querySelector('.site-footer__bg-video-source');
 
     if (videoSource) {

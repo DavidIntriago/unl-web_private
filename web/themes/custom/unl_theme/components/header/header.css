@@ -1,6 +1,4 @@
-/* ==========================================================================
-   VARIABLES GENERALES
-   ========================================================================== */
+/*VARIABLES GENERALES*/
 :root {
   --primary-color: #ffffff;
   --surface-color: #93000b;
@@ -8,9 +6,7 @@
   --container-width: 1280px;
 }
 
-/* ==========================================================================
-   HEADER GENERAL & EFECTO SCROLL (ESCRITORIO Y MÓVIL)
-   ========================================================================== */
+/*HEADER GENERAL & EFECTO SCROLL (ESCRITORIO Y MÓVIL)*/
 .site-header {
   position: sticky;
   top: 0;
@@ -19,7 +15,9 @@
   background: var(--surface-color, #93000b);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   will-change: transform;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
 }
 
 .site-header.is-hidden {
@@ -39,9 +37,7 @@
   gap: 2rem;
 }
 
-/* ==========================================================================
-   LOGO
-   ========================================================================== */
+/*LOGO*/
 .site-header__logo {
   display: flex;
   align-items: center;
@@ -60,9 +56,7 @@
   text-decoration: none;
 }
 
-/* ==========================================================================
-   MENU PRINCIPAL (ESCRITORIO)
-   ========================================================================== */
+/*MENU PRINCIPAL (ESCRITORIO)*/
 .site-header__navigation {
   flex: 1;
   display: flex;
@@ -115,9 +109,7 @@
   width: 100%;
 }
 
-/* ==========================================================================
-   SUBMENÚS (Dropdown al hacer hover - Escritorio)
-   ========================================================================== */
+/*SUBMENÚS (Dropdown al hacer hover - Escritorio)*/
 .site-header__navigation .submenu {
   position: absolute;
   top: 100%;
@@ -197,9 +189,7 @@
   transform: translateY(0);
 }
 
-/* ==========================================================================
-   BOTONES / ACCIONES GLOBAL
-   ========================================================================== */
+/*BOTONES / ACCIONES GLOBAL*/
 .site-header__actions {
   display: flex;
   align-items: center;
@@ -227,9 +217,7 @@
   transform: scale(1.05);
 }
 
-/* ==========================================================================
-   BOTÓN HAMBURGUESA ANIMADO
-   ========================================================================== */
+/*BOTÓN HAMBURGUESA ANIMADO*/
 .mobile-menu-button {
   display: none;
   background: none;
@@ -248,7 +236,9 @@
   width: 25px;
   background: var(--primary-color, #ffffff);
   border-radius: 5px;
-  transition:    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),    opacity 0.2s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease;
 }
 
 .mobile-menu-button.is-active span:nth-child(1) {
@@ -264,9 +254,7 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ==========================================================================
-   PANEL MÓVIL Y SUBMENÚS (con scroll interno ~3 elementos y nivel 3)
-   ========================================================================== */
+/*PANEL MÓVIL Y SUBMENÚS (con scroll interno ~3 elementos y nivel 3)*/
 .mobile-menu-panel {
   display: block;
   background: var(--surface-color, #93000b);
@@ -318,7 +306,9 @@
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   font-weight: 500;
-  transition: padding-left 0.3s ease, color 0.3s ease;
+  transition:
+    padding-left 0.3s ease,
+    color 0.3s ease;
 }
 
 .mobile-menu-panel a:hover {
@@ -384,7 +374,10 @@
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition: max-height 0.35s ease, opacity 0.3s ease, margin 0.35s ease;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease,
+    margin 0.35s ease;
 }
 
 .mobile-menu-panel li.is-submenu-open > .submenu {
@@ -421,9 +414,6 @@
   transition: all 0.25s ease;
 }
 
-/* ==========================================================================
-   RESPONSIVE / MEDIA QUERIES
-   ========================================================================== */
 @media (max-width: 1000px) {
   .site-header__container {
     padding: 0 1.5rem;
@@ -505,7 +495,12 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.site-header__navigation li.has-mega-menu > .submenu > .submenu-list > li > a:hover {
+.site-header__navigation
+  li.has-mega-menu
+  > .submenu
+  > .submenu-list
+  > li
+  > a:hover {
   padding-left: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
@@ -548,9 +543,7 @@
   color: #ffffff;
 }
 
-/* ==========================================================================
-   FRANJA BLANCA DE SUBMENÚS (nivel 2, aparece según el hover/clic del nivel 1)
-   ========================================================================== */
+/*FRANJA BLANCA DE SUBMENÚS*/
 .site-header__subbar {
   position: relative;
   overflow: visible;
@@ -560,7 +553,10 @@
   visibility: hidden;
   transform: translateY(-6px);
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
 }
 
 .site-header__subbar.is-open {
@@ -619,7 +615,9 @@
   letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -676,9 +674,7 @@
   opacity: 0.6;
 }
 
-/* ==========================================================================
-   FLECHAS DE PAGINACIÓN DE LA FRANJA BLANCA
-   ========================================================================== */
+/*FLECHAS DE PAGINACIÓN DE LA FRANJA BLANCA*/
 .site-header__subbar-arrow {
   flex-shrink: 0;
   width: 0;
@@ -692,7 +688,9 @@
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: width 0.2s ease, opacity 0.2s ease;
+  transition:
+    width 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .site-header__subbar-arrow.is-visible {

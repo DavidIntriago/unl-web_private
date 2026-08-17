@@ -1,7 +1,7 @@
-.noticia-full__contenedor{
-    max-width:900px;
-    margin:auto;
-    padding:5rem 2rem;
+.noticia-full__contenedor {
+  max-width: 900px;
+  margin: auto;
+  padding: 5rem 2rem;
 }
 
 .noticia-full__portada {
@@ -33,7 +33,7 @@
 }
 
 .noticia-full__area {
-  color: #93000b; 
+  color: #93000b;
 }
 
 .noticia-full__titulo {
@@ -51,7 +51,6 @@
   margin: 0 auto;
   border-radius: 2px;
 }
-
 
 .noticia-full__cuerpo {
   font-size: 1.15rem;
@@ -104,7 +103,7 @@
 
 .noticia-full__cuerpo figure,
 .noticia-full__cuerpo img,
-.noticia-full__cuerpo video{
+.noticia-full__cuerpo video {
   max-width: 100%;
   height: auto;
 }
@@ -121,7 +120,6 @@
   }
 }
 
-/* Botones Compartir */
 .noticia-compartir {
   display: flex;
   align-items: center;
@@ -162,33 +160,30 @@
   height: 20px;
 }
 
-/* marcas Hoveer*/
 .btn-compartir:hover {
   color: #ffffff;
   transform: translateY(-3px);
 }
 
 .btn-compartir--facebook:hover {
-  background-color: #1877F2; 
+  background-color: #1877f2;
 }
 
 .btn-compartir--x:hover {
-  background-color: #000000; 
+  background-color: #000000;
 }
 
 .btn-compartir--whatsapp:hover {
-  background-color: #25D366; 
+  background-color: #25d366;
 }
 
 .btn-compartir--linkedin:hover {
-  background-color: #0A66C2; 
+  background-color: #0a66c2;
 }
 
 .btn-compartir--telegram:hover {
-  background-color: #26A5E4; 
+  background-color: #26a5e4;
 }
-
-/* audio */
 
 .audio-ondas-contenedor {
   display: flex;
@@ -210,7 +205,9 @@
   align-items: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .audio-ondas-btn:hover {
@@ -225,7 +222,7 @@
 
 .audio-ondas-lienzo {
   flex-grow: 1;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .audio-ondas-tiempo {
@@ -233,14 +230,15 @@
   color: #6b7280;
   font-weight: 600;
   flex-shrink: 0;
-  min-width: 85px;   text-align: right;
-  font-variant-numeric: tabular-nums; 
+  min-width: 85px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 .audio-ondas-descripcion {
-  text-align: center; 
-  font-weight: 700; 
+  text-align: center;
+  font-weight: 700;
   font-size: 0.95rem;
-  color: #374151; 
+  color: #374151;
   padding: 0 1rem;
 }

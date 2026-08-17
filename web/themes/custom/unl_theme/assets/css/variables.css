@@ -1,15 +1,13 @@
 :root {
-
   --primary-color: #93000b;
   --secondary-color: #5c5f60;
 
   --surface-color: #ffffff;
-  --background-color: #F6F4F1;
+  --background-color: #f6f4f1;
 
   --text-color: #151c27;
 
   --container-width: 1280px;
 
   --header-height: 80px;
-
 }

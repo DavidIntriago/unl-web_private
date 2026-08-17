@@ -9,10 +9,29 @@
   margin: 0 auto;
 }
 
-
 .seccion-eventos__cabecera {
-  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .seccion-eventos__cabecera {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+  }
+
+  .seccion-eventos__titulos {
+    grid-column: 2;
+  }
+
+  .seccion-eventos__boton-superior {
+    grid-column: 3;
+    justify-self: end;
+    padding-bottom: 0.2rem;
+  }
 }
 
 .seccion-eventos__titulo {
@@ -22,12 +41,11 @@
 }
 
 .seccion-eventos__divider {
-  height: 4px; 
-  width: 100px; 
-  background-color: #93000b; 
-  margin: 0.75rem auto 0 auto; 
+  height: 4px;
+  width: 100px;
+  background-color: #93000b;
+  margin: 0.75rem auto 0 auto;
 }
-
 
 .seccion-eventos__contenido .eventos__contenedor {
   display: grid;
@@ -58,29 +76,60 @@
   }
 }
 
-/* movil */
+.seccion-eventos__boton-superior a {
+  display: inline-block;
+  background-color: #93000b;
+  color: #ffffff;
+  padding: 0.8rem 2.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.seccion-eventos__boton-superior a:hover {
+  background-color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 767px) {
   .seccion-eventos__contenido .eventos__contenedor {
     display: flex;
     overflow-x: auto;
-    gap: 1rem; 
+    gap: 1rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 1rem;
-    align-items: stretch; 
-    scrollbar-width: none; 
+    align-items: stretch;
+    scrollbar-width: none;
   }
 
   .seccion-eventos__contenido .eventos__contenedor::-webkit-scrollbar {
     display: none;
   }
 
-  .seccion-eventos__contenido .eventos__item { 
-    flex: 0 0 85%; 
+  .seccion-eventos__contenido .eventos__item {
+    flex: 0 0 85%;
     scroll-snap-align: center;
+    display: flex;
   }
-  
-  .seccion-eventos__contenido .card-ev-parrafo {
-    height: auto; 
+
+  .seccion-eventos__contenido .eventos__item .evento-teaser {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .seccion-eventos__contenido .eventos__item .evento-teaser__contenido {
+    flex-grow: 1;
+  }
+
+  .seccion-eventos__contenido .eventos__item .evento-teaser__pie {
+    margin-top: auto;
   }
 }

@@ -18,7 +18,7 @@
   background-color: #93000b;
   margin: 0.75rem auto 0 auto;
 }
-
+/*Para limpiar de los elementos de control que trae drupal*/
 .grid-tarjetas-container--facultad .field,
 .grid-tarjetas-container--facultad .field__items,
 .grid-tarjetas-container--default .field,
@@ -64,7 +64,6 @@
   }
 }
 
-/* facultadessssssss*/
 .grid-tarjetas-container--facultad {
   display: flex;
   width: 100%;
@@ -76,7 +75,6 @@
   min-width: 0;
 }
 
-/* responsve */
 @media (max-width: 768px) {
   .grid-tarjetas-container--facultad {
     flex-direction: column;
@@ -94,10 +92,6 @@
     flex: none;
   }
 }
-
-/* ==========================================
-   RANGO TABLET (769px–1300px): en vez de 6 columnas
-   apretadas en una sola fila, pasamos a 3 columnas x 2 filas.*/
 
 @media (min-width: 769px) and (max-width: 1300px) {
   .grid-tarjetas-container--facultad {
@@ -131,11 +125,7 @@
     padding-left: 0.6rem !important;
   }
 }
-
-/* ==========================================
-   VARIANTE CONTADOR (franja roja con números)
-   ========================================== */
-
+/*VARIANTE CONTADOR*/
 .grid-tarjetas-wrapper--contador {
   margin-top: 5rem;
   margin-bottom: 3rem;
@@ -182,9 +172,7 @@
   }
 }
 
-/* ==========================================
-   VARIANTE SITIOS DE INTERÉS (carrusel de 4 tarjetas)
-   ========================================== */
+/*VARIANTE SITIOS DE INTERÉS*/
 .grid-tarjetas-container--sitios_interes {
   position: relative;
   max-width: 1400px;
@@ -263,10 +251,6 @@
     padding: 0 1rem;
   }
 
-  /* Zona de "peek": el viewport gana padding, y el track se estira con
-     un margen negativo IGUAL a ese padding para invadirlo — así las
-     tarjetas vecinas sí llegan a dibujarse ahí (dentro de la caja
-     recortable de overflow:hidden), en vez de quedar cortadas. */
   .carrusel-sitios-viewport {
     box-sizing: border-box;
     padding: 0 28px;
@@ -277,7 +261,7 @@
   }
 
   .carrusel-sitios-track > * {
-    flex-basis: calc(100% - 56px); /* 100% del viewport, menos los dos peeks de 28px */
+    flex-basis: calc(100% - 56px);
   }
 }
 
@@ -292,9 +276,7 @@
   display: contents;
 }
 
-/* ==========================================
-   VARIANTE IMAGENES (fila de imágenes, sin texto)
-   ========================================== */
+/*VARIANTE IMAGENES*/
 .grid-tarjetas-container--imagenes {
   display: flex;
   flex-wrap: wrap;
@@ -320,4 +302,8 @@
     flex: 1 1 45%;
     max-width: none;
   }
+}
+
+.grid-tarjetas-wrapper--sustantiva {
+  margin-top: 1.5rem;
 }

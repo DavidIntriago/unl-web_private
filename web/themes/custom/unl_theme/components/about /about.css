@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-/* renderizado */
+/* responsividad no pasa de 1200 y en telefono todo se hace 1 columna */
 .unl-about__container {
   max-width: 1200px;
   margin: 0 auto;
@@ -19,25 +19,24 @@
     gap: 4rem;
   }
 }
-
-/* titulosss */
+/*Titulo 1*/
 .unl-about__title {
   font-size: 2.25rem;
   color: #111827;
   margin-top: 0;
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.5rem;
   line-height: 1.3;
 }
-
+/*Titulo 2*/
 .unl-about__highlight {
   display: inline-block;
-  background-color: #93000b; 
-  color: #ffffff; 
+  background-color: #93000b;
+  color: #ffffff;
   padding: 0.1rem 0.75rem;
   border-radius: 6px;
   margin-left: 0.5rem;
   font-weight: 800;
-  transform: skew(-5deg); 
+  transform: skew(-5deg);
 }
 
 .unl-about__description {
@@ -52,7 +51,7 @@
 .unl-about__action a {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #93000b; 
+  background-color: #93000b;
   color: #ffffff;
   text-decoration: none;
   border-radius: 6px;
@@ -62,7 +61,7 @@
 }
 
 .unl-about__action a:hover {
-  background-color: #7a0009; 
+  background-color: #7a0009;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(147, 0, 11, 0.4);
 }
@@ -72,7 +71,9 @@
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* imagen y video local */
@@ -87,14 +88,13 @@
 /* video youtube */
 .unl-about__media iframe {
   width: 100%;
-  aspect-ratio: 16 / 9; 
+  aspect-ratio: 16 / 9;
   height: auto;
   display: block;
   border: none;
 }
 
 /* divisor de color */
-
 .unl-about__divider {
   height: 10px;
   width: 100%;
@@ -103,29 +103,37 @@
 }
 
 .unl-about__divider--multicolor {
-background: linear-gradient(90deg,#5fbfe2 0%, #5bad3b 20%, #fac947 40%, #ed8942 60%, #e3463c 80%, #7b378d 100%);}
+  background: linear-gradient(
+    90deg,
+    #5fbfe2 0%,
+    #5bad3b 20%,
+    #fac947 40%,
+    #ed8942 60%,
+    #e3463c 80%,
+    #7b378d 100%
+  );
+}
 
-/* color de las facultades QUITAR CUANDOS E DEFINA GLOBALSSSSSSASS*/
 .unl-about__divider.theme-fjsa {
-  background: #e53e3e; 
+  background: #e53e3e;
 }
 
 .unl-about__divider.theme-fsh {
-  background: #3182ce; 
+  background: #3182ce;
 }
 
 .unl-about__divider.theme-feirnnr {
-  background: #ffab03; 
+  background: #ffab03;
 }
 
 .unl-about__divider.theme-farnr {
-  background: #38a169; 
+  background: #38a169;
 }
 
 .unl-about__divider.theme-feac {
-  background: #c7c4cc; 
+  background: #c7c4cc;
 }
 
 .unl-about__divider.default {
-  background: #93000b; 
+  background: #93000b;
 }

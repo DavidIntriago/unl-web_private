@@ -1,25 +1,17 @@
-/* ==========================================
-   VARIANTE SUSTANTIVA (foto de fondo + etiqueta de color que crece
-   sola a medida que la tarjeta se achica en la fila flex, hasta que
-   solo queda el cuadro de color + el título — sin JS, solo CSS)
-   ========================================== */
+/*VARIANTE SUSTANTIVA*/
 .tarjeta-sustantiva {
   position: relative;
   flex: 1;
   display: flex;
-  align-items: flex-end; /* la etiqueta se ancla abajo */
+  align-items: flex-end;
   overflow: hidden;
   min-height: 320px;
   transition: flex 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .tarjeta-sustantiva:hover {
-  flex: 3; /* esta tarjeta crece... */
+  flex: 3;
 }
-
-/* ...y como el contenedor es flex, las tarjetas vecinas se achican
-   automáticamente (su flex:1 se reparte un espacio menor) — ahí es
-   donde su etiqueta empieza a dominar el ancho disponible. */
 
 .tarjeta-sustantiva__img {
   position: absolute;
@@ -36,9 +28,7 @@
 }
 
 .tarjeta-sustantiva__img img {
-  position: absolute; /* se posiciona respecto a .tarjeta-sustantiva__img,
-    saltándose los divs intermedios sin clase que Drupal agrega alrededor
-    del campo — así no depende de que ellos tengan una altura explícita */
+  position: absolute;
   inset: 0;
   width: 100% !important;
   height: 100% !important;
@@ -47,12 +37,6 @@
   display: block;
 }
 
-/* --- La etiqueta: ancho FIJO, igual en las 4 tarjetas (no depende del
-   largo del título). Como todas parten del mismo valor, cuando las
-   tarjetas se achican por el hover de otra, todas se reducen en la
-   misma proporción — se ven "iguales" en cualquier punto del proceso,
-   no solo en reposo. El max-width evita que se salga de la tarjeta
-   cuando esta queda más angosta que el ancho fijo. */
 .tarjeta-sustantiva__etiqueta {
   position: relative;
   z-index: 2;
@@ -66,7 +50,7 @@
   box-sizing: border-box;
 
   padding: 1rem 1.25rem;
-  background-color: var(--surface-color, #93000b); /* color por defecto si no hay clase theme-* */
+  background-color: var(--surface-color, #93000b);
 }
 
 .tarjeta-sustantiva__titulo {
@@ -103,9 +87,6 @@
   color: transparent;
   font-size: 0;
 }
-
-/* El área clicable cubre TODA la tarjeta (la foto completa, no solo
-   la etiqueta) */
 .tarjeta-sustantiva__enlace a::after {
   content: "";
   position: absolute;
@@ -117,15 +98,13 @@
   .tarjeta-sustantiva {
     flex: none;
     min-height: 90px;
-    align-items: stretch; /* la etiqueta se estira para llenar toda la tarjeta */
+    align-items: stretch;
   }
 
   .tarjeta-sustantiva:hover {
     flex: none;
   }
 
-  /* En móvil no hay hover, así que mostrar la foto no aporta nada —
-     directamente mostramos solo el cuadro de color con el título */
   .tarjeta-sustantiva__img {
     display: none;
   }
@@ -136,17 +115,14 @@
   }
 }
 
-/* ==========================================
-   ESTRUCTURA DE TARJETAS
-   ========================================== */
 .tarjeta-institucional {
   position: relative;
   flex: 1;
   display: flex;
   overflow: hidden;
   transition:
-    flex .45s cubic-bezier(.25,.8,.25,1),
-    transform .35s ease;
+    flex 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 0.35s ease;
 }
 
 .tarjeta-institucional,
@@ -157,7 +133,9 @@
 }
 
 .tarjeta-bg-img {
-  transition: opacity .4s ease, transform .5s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s ease;
 }
 
 .tarjeta-contenido {
@@ -168,12 +146,9 @@
   justify-content: center;
   height: 100%;
   padding: 1.5rem 2rem;
-  transition: transform .35s ease;
+  transition: transform 0.35s ease;
 }
 
-/* ==========================================
-   TEXTO Y LÍNEA LATERAL IZQUIERDA
-   ========================================== */
 .tarjeta-titulo {
   margin: 0;
   color: #ffffff;
@@ -185,16 +160,13 @@
   border-left: 2.5px solid #ffffff;
   padding-left: 0.85rem;
 
-  transition: transform .35s ease;
+  transition: transform 0.35s ease;
 }
 
 .tarjeta-titulo strong {
   font-weight: 700;
 }
 
-/* ==========================================
-   HOVER (EFECTO EN LA TARJETA COMPLETA)
-   ========================================== */
 .tarjeta-institucional:hover {
   flex: 3;
   transform: translateY(-8px);
@@ -202,7 +174,7 @@
 }
 
 .tarjeta-institucional:hover .tarjeta-bg-img {
-  opacity: .35;
+  opacity: 0.35;
   transform: scale(1.05);
 }
 
@@ -211,9 +183,7 @@
   transform: none;
 }
 
-/* ==========================================
-   ENLACE ESTIRADO (TARJETA COMPLETA CLICKEABLE)
-   ========================================== */
+/*ENLACE ESTIRADO (TARJETA COMPLETA CLICKEABLE)*/
 .tarjeta-institucional__enlace {
   margin: 0;
   padding: 0;
@@ -226,7 +196,7 @@
 }
 
 .tarjeta-institucional__enlace a::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -235,20 +205,29 @@
   z-index: 10;
 }
 
-/* ==========================================
-   TEMAS DE FACULTADES
-   ========================================== */
-.theme-fjsa { background-color: #c23329; } /* Rojo */
-.theme-fsh { background-color: #45b5dd; } /* Azul */
-.theme-feirnnr { background-color: #e7792b; } /* Naranja*/
-.bg-default { background-color: #93000b; } /* Gris por defecto */
-.theme-farnr { background-color: #5bad3b; } /* Verde */
-.theme-feac { background-color: #eebb30; } /* Amarillo */
-.theme-ued { background-color: #7b378d; } /* Morado */
+/*TEMAS DE FACULTADES*/
+.theme-fjsa {
+  background-color: #c23329;
+} /* Rojo */
+.theme-fsh {
+  background-color: #45b5dd;
+} /* Azul */
+.theme-feirnnr {
+  background-color: #e7792b;
+} /* Naranja*/
+.bg-default {
+  background-color: #93000b;
+} /* Rojo por defecto */
+.theme-farnr {
+  background-color: #5bad3b;
+} /* Verde */
+.theme-feac {
+  background-color: #eebb30;
+} /* Amarillo */
+.theme-ued {
+  background-color: #7b378d;
+} /* Morado */
 
-/* ==========================================
-   RESPONSIVE (MÓVIL)
-   ========================================== */
 @media (max-width: 768px) {
   .tarjeta-institucional {
     min-height: 90px;
@@ -268,7 +247,6 @@
   }
 }
 
-/* -- PARA DEFAULT -- */
 .tarjeta-default {
   position: relative;
   background-color: #ffffff;
@@ -278,7 +256,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 1px solid #f3f4f6;
 }
 
@@ -287,15 +267,12 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* IAMGEN*/
-
 .tarjeta-default__imagen {
   width: 100%;
   overflow: hidden;
   position: relative;
   background-color: #f3f4f6;
 }
-
 
 .tarjeta-default__imagen .field,
 .tarjeta-default__imagen .field__items,
@@ -306,7 +283,7 @@
 }
 
 .tarjeta-default__imagen img {
-width: 100% !important;
+  width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   object-position: center !important;
@@ -318,7 +295,6 @@ width: 100% !important;
   transform: scale(1.05);
 }
 
-/* CNTENDIO TARJETA*/
 .tarjeta-default__contenido {
   padding: 1.5rem;
   display: flex;
@@ -327,7 +303,6 @@ width: 100% !important;
   justify-content: center;
   align-items: center;
   text-align: center;
-  /*background-color: ##93000b; muy rojooooooo*/
 }
 
 .tarjeta-default__titulo {
@@ -356,8 +331,6 @@ width: 100% !important;
   margin-top: 1rem;
 }
 
-/* enlace */
-
 .tarjeta-default__enlace {
   margin: 0;
   padding: 0;
@@ -370,7 +343,7 @@ width: 100% !important;
 }
 
 .tarjeta-default__enlace a::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -379,9 +352,7 @@ width: 100% !important;
   z-index: 10;
 }
 
-/* ==========================================
-   VARIANTE CONTADOR (ícono + número + etiqueta)
-   ========================================== */
+/*VARIANTE CONTADOR*/
 .tarjeta-contador {
   display: flex;
   flex-direction: column;
@@ -401,9 +372,6 @@ width: 100% !important;
   width: 48px;
   height: 48px;
   object-fit: contain;
-  /* Si el ícono viene como imagen/SVG con color propio, esto lo
-     fuerza a blanco para que combine con el fondo rojo del grid.
-     Si el ícono ya es blanco de origen, esta línea no cambia nada. */
   filter: brightness(0) invert(1);
 }
 
@@ -440,11 +408,7 @@ width: 100% !important;
   }
 }
 
-/* ==========================================
-   VARIANTE SITIOS DE INTERÉS (tarjeta dentro del carrusel)
-   Rojo por defecto (logo y título en blanco); al pasar el mouse se
-   vuelve blanca (logo en sus colores originales, título en rojo).
-   ========================================== */
+/*VARIANTE SITIOS DE INTERÉS*/
 .tarjeta-sitio-interes {
   position: relative;
   height: 100%;
@@ -457,7 +421,9 @@ width: 100% !important;
   border: 1px solid transparent;
   border-radius: 12px;
   padding: 2rem 1.25rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .tarjeta-sitio-interes:hover {
@@ -476,10 +442,7 @@ width: 100% !important;
   height: 48px;
   object-fit: contain;
   transition: filter 0.3s ease;
-  /* Fuerza el logo a blanco sobre el fondo rojo. Si el logo tiene varios
-     colores (marca a color), esto lo aplana a una silueta blanca — si no
-     se ve bien así, quita esta línea y la de abajo (:hover) para dejarlo
-     siempre a color. */
+  /* Fuerza el logo a blanco sobre el fondo rojo*/
   filter: brightness(0) invert(1);
 }
 
@@ -513,24 +476,24 @@ width: 100% !important;
 }
 
 .tarjeta-sitio-interes__enlace a::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 10;
 }
 
-/* ==========================================
-   VARIANTE IMAGENES (solo imagen)
-   ========================================== */
+/*VARIANTE IMAGENES*/
 .tarjeta-imagen {
   position: relative;
   width: 100%;
-  max-width: 280px; /* <- límite máximo, ajústalo a tu gusto */
+  max-width: 280px;
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .tarjeta-imagen:hover {
@@ -549,7 +512,7 @@ width: 100% !important;
 .tarjeta-imagen img {
   display: block;
   width: 100%;
-  height: auto; /* respeta la proporción real de la imagen, sin recortes */
+  height: auto;
 }
 .tarjeta-imagen__enlace {
   position: absolute;
@@ -567,7 +530,7 @@ width: 100% !important;
 }
 
 .tarjeta-imagen__enlace a::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 10;

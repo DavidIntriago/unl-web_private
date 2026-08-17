@@ -1,19 +1,11 @@
-.container{
+.container {
+  width: min(100% - 4rem, var(--container-width));
 
-width:min(100% - 4rem, var(--container-width));
-
-margin:auto;
-
+  margin: auto;
 }
 
-
-
-@media(max-width:900px){
-
-.container{
-
-width:calc(100% - 2rem);
-
-}
-
+@media (max-width: 900px) {
+  .container {
+    width: calc(100% - 2rem);
+  }
 }

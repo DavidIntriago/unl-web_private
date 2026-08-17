@@ -1,0 +1,11 @@
+uuid: dccb6e29-d61f-4b5f-9c4e-2020fc6c302c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pagina_micrositio
+id: node.pagina_micrositio
+target_entity_type_id: node
+target_bundle: pagina_micrositio
+default_langcode: site_default
+language_alterable: false

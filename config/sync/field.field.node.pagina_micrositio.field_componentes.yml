@@ -1,0 +1,49 @@
+uuid: 9de0a732-413d-40bf-ba26-6ea9c907c1e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_componentes
+    - node.type.pagina_micrositio
+    - paragraphs.paragraphs_type.about
+  module:
+    - entity_reference_revisions
+id: node.pagina_micrositio.field_componentes
+field_name: field_componentes
+entity_type: node
+bundle: pagina_micrositio
+label: 'Componentes de la Pagina'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      about: about
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 8
+        enabled: true
+      diapositiva_hero:
+        weight: 9
+        enabled: false
+      grid_tarjetas:
+        weight: 10
+        enabled: false
+      hero_carrusel:
+        weight: 11
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 12
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 13
+        enabled: false
+      tarjeta:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,41 @@
+uuid: fefb5729-9b35-4957-be1a-e5c1754ce50c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.pagina_micrositio.field_componentes
+    - field.field.node.pagina_micrositio.field_imagen_hero
+    - node.type.pagina_micrositio
+  module:
+    - entity_reference_revisions
+    - user
+id: node.pagina_micrositio.default
+targetEntityType: node
+bundle: pagina_micrositio
+mode: default
+content:
+  field_componentes:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_imagen_hero:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

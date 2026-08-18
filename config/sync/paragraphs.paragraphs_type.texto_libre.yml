@@ -1,0 +1,10 @@
+uuid: 3abbec21-d4ee-49c4-9612-ecb7b904822c
+langcode: en
+status: true
+dependencies: {  }
+id: texto_libre
+label: 'Seccion de texto libre'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

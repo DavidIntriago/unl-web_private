@@ -1,0 +1,22 @@
+uuid: 09d8a020-7879-4fe8-ae2d-b08257fd789d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contenido
+    - paragraphs.paragraphs_type.texto_libre
+  module:
+    - text
+id: paragraph.texto_libre.field_contenido
+field_name: field_contenido
+entity_type: paragraph
+bundle: texto_libre
+label: Contenido
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

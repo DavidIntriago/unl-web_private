@@ -1,8 +1,51 @@
+/* ============================================
+   BASE: DISEÑO DEL HERO (ESCRITORIO)
+   ============================================ */
+/* ============================================
+   BASE: DISEÑO DEL HERO (ESCRITORIO)
+   ============================================ */
+
+/* ============================================
+   ESTRUCTURA AISLADA PARA MICROSITIOS
+   ============================================ */
+.layout-micrositio {
+  width: 100%; 
+  max-width: 1200px;
+  margin: 0 auto;    
+  padding: 40px 20px; 
+  display: flex;
+  align-items: flex-start;
+  gap: 40px; 
+}
+
+.sidebar-micrositio {
+  width: 300px; 
+  flex-shrink: 0; 
+}
+
+.layout-micrositio__contenido {
+  flex: 1; 
+  min-width: 0; 
+}
+
+@media (max-width: 850px) {
+  .layout-micrositio {
+    flex-direction: column; 
+    gap: 24px;
+  }
+  
+  .sidebar-micrositio {
+    width: 100%; 
+  }
+}
+
+
+
 .hero-micrositio {
   position: relative;
   width: 100%;
-  height: calc(100vh - 80px); 
-  
+  height: 55vh; 
+  min-height: 400px;
   overflow: hidden;
   z-index: 1; 
 }
@@ -15,15 +58,25 @@
   z-index: 1;
 }
 
+.hero-micrositio__fondo div,
+.hero-micrositio__fondo article,
+.hero-micrositio__fondo picture,
+.hero-micrositio__fondo span {
+  width: 100% ;
+  height: 100% ;
+  display: block;
+}
+
 .hero-micrositio__fondo img {
   width: 100%;
   height: 100%;
   object-fit: cover; 
   object-position: center; 
+  display: block;
 }
 
 .hero-micrositio__contenido {
-  position: absolute;
+  position: absolute; 
   z-index: 3;
   bottom: 10%;
   right: 5%;
@@ -41,3 +94,62 @@
   text-align: left;
   line-height: 1.2;
 }
+
+#zona-informacion {
+  scroll-margin-top: 120px; 
+}
+
+/* renderizado*/
+
+@media (max-width: 1024px) {
+  .hero-micrositio {
+    height: 60vh; 
+  }
+
+  .hero-micrositio__contenido {
+    max-width: 500px;
+    padding: 1.5rem 2rem;
+  }
+
+  .hero-micrositio__titulo {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-micrositio {
+    height: 60vh; 
+  }
+
+  .hero-micrositio__contenido {
+    position: absolute; 
+    bottom: 5%;
+    right: 5%;
+    left: 5%; 
+    max-width: 90%; 
+    padding: 1.5rem;
+    border-left: none;
+    border-top: 4px solid #93000b; 
+  }
+
+  .hero-micrositio__titulo {
+    font-size: 1.5rem;
+    text-align: center; 
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-micrositio {
+    height: 50vh; 
+  }
+
+  .hero-micrositio__contenido {
+    padding: 1.2rem;
+    bottom: 2%; 
+  }
+
+  .hero-micrositio__titulo {
+    font-size: 1.3rem;
+  }
+}
+

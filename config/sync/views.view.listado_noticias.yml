@@ -262,7 +262,12 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+      access:
+        type: perm
+        options:
+          perm: 'access content'
       defaults:
+        access: false
         pager: false
       display_extenders: {  }
       path: noticias

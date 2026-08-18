@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_componentes
     - node.type.pagina_micrositio
     - paragraphs.paragraphs_type.about
+    - paragraphs.paragraphs_type.texto_libre
   module:
     - entity_reference_revisions
 id: node.pagina_micrositio.field_componentes
@@ -23,6 +24,7 @@ settings:
   handler_settings:
     target_bundles:
       about: about
+      texto_libre: texto_libre
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -46,4 +48,7 @@ settings:
       tarjeta:
         weight: 14
         enabled: false
+      texto_libre:
+        weight: 9
+        enabled: true
 field_type: entity_reference_revisions

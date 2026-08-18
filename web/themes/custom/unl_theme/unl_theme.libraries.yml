@@ -24,6 +24,7 @@ global:
     components/header/header.js: {}
     components/menu_lateral/menu_lateral.js: {}
     assets/js/reproductor.js: {}
+    components/sidebar_micrositio/sidebar_micrositio.js: {}
   dependencies:
     - core/drupal
     - core/once

@@ -28,33 +28,17 @@
     </section>
   {% endif %}
 
- <main class="site-content">
-    
-    {% set menu_lateral_renderizado = page.sidebar_micrositio|render %}
-    
-    {% if menu_lateral_renderizado|trim %}
-      
-      {{ attach_library('unl_theme/hero_micrositio') }}
-      
-      <div class="layout-micrositio" id="zona-informacion">
-        <aside class="sidebar-micrositio">
-          
-          {{ menu_lateral_renderizado }}
-          
-        </aside>
-
-        <section class="layout-micrositio__contenido">
-          {{ page.content }}
-        </section>
+  <main class="site-content">
+  {% if page.sidebar_micrositio %}
+    <aside class="sidebar-micrositio">
+      <div class="sidebar-micrositio__viewport">
+        {{ page.sidebar_micrositio }}
       </div>
+    </aside>
+  {% endif %}
 
-    {% else %}
-      
-      {{ page.content }}
-      
-    {% endif %}
-    
-  </main>
+  {{ page.content }}
+</main>
 
   {% include '@unl_theme/components/footer/footer.html.twig' %}
 </div>

@@ -6,24 +6,27 @@
         const lista = viewport ? viewport.querySelector("ul:not(.contextual-links)") : null;
         if (!viewport || !lista) return;
 
-        const items = Array.from(lista.querySelectorAll("li"));
+        const items = Array.from(lista.children).filter((el) => el.tagName === "LI");
         if (items.length === 0) return;
 
         const ajustarAltura = () => {
           const esMobile = window.matchMedia("(max-width: 768px)").matches;
           const visibles = Math.min(esMobile ? 3 : 6, items.length);
           const ultimo = items[visibles - 1];
-          const altura = ultimo.offsetTop + ultimo.offsetHeight;
-          viewport.style.height = `${altura}px`;
+
+          const topViewport = viewport.getBoundingClientRect().top;
+          const bottomUltimo = ultimo.getBoundingClientRect().bottom;
+          const altura = bottomUltimo - topViewport;
+
+          viewport.style.height = `${Math.ceil(altura)}px`;
         };
 
-        // Espera a que las fuentes reales (Inter) terminen de cargar
-        // antes de medir, para no calcular con la fuente de respaldo.
         if (document.fonts && document.fonts.ready) {
           document.fonts.ready.then(ajustarAltura);
         }
 
-        ajustarAltura(); // cálculo inicial, por si acaso
+        ajustarAltura();
+        window.addEventListener("load", ajustarAltura);
         window.addEventListener("resize", ajustarAltura);
         window.addEventListener("orientationchange", ajustarAltura);
       });

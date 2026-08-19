@@ -23,12 +23,18 @@ img {
 a {
   color: inherit;
 }
+
+/*Condicional solo para que los micrositios con menu tengan el menu a la izq y el
+contenido a la derecha y se adapta siempre al centro - SIN EL CONDICIONAL HAS SE DAÑA TODA LA PÁGINA*/
 .site-content:has(.sidebar-micrositio) {
   padding-top: 32px;
   padding-left: 24px;
   padding-right: 24px;
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
 }
 
 @media (max-width: 768px) {
@@ -46,8 +52,4 @@ a {
     margin: 0 auto;
   }
 }
-.site-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 32px;
-}
+ /*=================================================================================*/

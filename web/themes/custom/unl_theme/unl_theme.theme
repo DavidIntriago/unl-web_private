@@ -12,3 +12,18 @@ function unl_theme_preprocess_page(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function unl_theme_page_attachments_alter(array &$attachments) {
+  $viewport = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1',
+    ],
+  ];
+  $attachments['#attached']['html_head'][] = [$viewport, 'viewport'];
+}

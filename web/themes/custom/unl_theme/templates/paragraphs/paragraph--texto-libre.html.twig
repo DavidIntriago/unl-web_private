@@ -1,0 +1,5 @@
+{% set contenido_limpio = content.field_contenido %}
+
+{{ include('unl_theme:texto_libre', {
+  texto_html: contenido_limpio
+}) }}

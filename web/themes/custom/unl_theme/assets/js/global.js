@@ -27,3 +27,34 @@
     },
   };
 })(Drupal, once);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible'); 
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { 
+    threshold: 0.1, 
+    rootMargin: "0px 0px -50px 0px" 
+  });
+
+  document.querySelectorAll('.animar-scroll').forEach(el => {
+    observer.observe(el);
+  });
+  
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  
+  const enlacesMenu = document.querySelectorAll('.sidebar-micrositio a');
+  
+  enlacesMenu.forEach(enlace => {
+    if (enlace.href && !enlace.href.includes('#zona-informacion')) {
+      enlace.href = enlace.href + '#zona-informacion';
+    }
+  });
+
+});

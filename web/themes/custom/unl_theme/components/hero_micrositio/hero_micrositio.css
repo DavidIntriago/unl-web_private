@@ -1,16 +1,6 @@
-/* ============================================
-   BASE: DISEÑO DEL HERO (ESCRITORIO)
-   ============================================ */
-/* ============================================
-   BASE: DISEÑO DEL HERO (ESCRITORIO)
-   ============================================ */
-
-/* ============================================
-   ESTRUCTURA AISLADA PARA MICROSITIOS
-   ============================================ */
 .layout-micrositio {
   width: 100%; 
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;    
   padding: 40px 20px; 
   display: flex;

@@ -1,0 +1,22 @@
+uuid: 77075cb5-aa4f-4ef1-bc24-7fffe00bab38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.texto_libre.field_contenido
+    - paragraphs.paragraphs_type.texto_libre
+  module:
+    - text
+id: paragraph.texto_libre.default
+targetEntityType: paragraph
+bundle: texto_libre
+mode: default
+content:
+  field_contenido:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

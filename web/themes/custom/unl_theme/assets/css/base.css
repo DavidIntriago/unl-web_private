@@ -30,7 +30,7 @@ contenido a la derecha y se adapta siempre al centro - SIN EL CONDICIONAL HAS SE
   padding-top: 32px;
   padding-left: 24px;
   padding-right: 24px;
-  max-width: 1200px;
+  max-width: 1420px;
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
@@ -52,4 +52,3 @@ contenido a la derecha y se adapta siempre al centro - SIN EL CONDICIONAL HAS SE
     margin: 0 auto;
   }
 }
- /*=================================================================================*/

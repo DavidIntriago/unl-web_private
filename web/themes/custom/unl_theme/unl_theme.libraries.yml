@@ -18,6 +18,7 @@ global:
       components/menu_lateral/menu_lateral.css: {}
       components/sidebar_micrositio/sidebar_micrositio.css: {}
       components/hero_micrositio/hero_micrositio.css: {}
+      components/texto_libre/texto_libre.css: {}
   js:
     assets/js/global.js: {}
     components/footer/footer.js: {}

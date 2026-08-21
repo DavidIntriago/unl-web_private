@@ -6,6 +6,9 @@ dependencies:
     - field.storage.node.field_componentes
     - node.type.pagina_micrositio
     - paragraphs.paragraphs_type.about
+    - paragraphs.paragraphs_type.grid_tarjetas
+    - paragraphs.paragraphs_type.recursos_descargables
+    - paragraphs.paragraphs_type.texto_libre
   module:
     - entity_reference_revisions
 id: node.pagina_micrositio.field_componentes
@@ -23,6 +26,9 @@ settings:
   handler_settings:
     target_bundles:
       about: about
+      texto_libre: texto_libre
+      grid_tarjetas: grid_tarjetas
+      recursos_descargables: recursos_descargables
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -33,7 +39,7 @@ settings:
         enabled: false
       grid_tarjetas:
         weight: 10
-        enabled: false
+        enabled: true
       hero_carrusel:
         weight: 11
         enabled: false
@@ -43,7 +49,13 @@ settings:
       listado_noticias_destacadas:
         weight: 13
         enabled: false
+      recursos_descargables:
+        weight: 10
+        enabled: true
       tarjeta:
         weight: 14
         enabled: false
+      texto_libre:
+        weight: 9
+        enabled: true
 field_type: entity_reference_revisions

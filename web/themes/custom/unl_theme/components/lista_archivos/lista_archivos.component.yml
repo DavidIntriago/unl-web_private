@@ -1,0 +1,8 @@
+name: 'Lista de Archivos'
+description: 'Muestra múltiples archivos descargables en formato de lista.'
+status: stable
+props:
+  type: object
+  properties:
+    archivos:
+      type: array

@@ -1,0 +1,22 @@
+uuid: 122ed43c-fb06-4a32-bf0a-fa9623f4826e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.recursos_descargables.field_archivos
+    - paragraphs.paragraphs_type.recursos_descargables
+id: paragraph.recursos_descargables.default
+targetEntityType: paragraph
+bundle: recursos_descargables
+mode: default
+content:
+  field_archivos:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

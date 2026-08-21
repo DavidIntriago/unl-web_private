@@ -1,0 +1,33 @@
+{% set cantidad_archivos = paragraph.field_archivos|length %}
+
+{% if cantidad_archivos == 1 %}
+  {% set media_unica = paragraph.field_archivos[0].entity %}
+  {% set nombre_mostrar = media_unica.name.value|default('Descargar Documento') %}
+  {% set url_real = file_url(media_unica.field_media_document.entity.uri.value) %}
+
+  {{ include('unl_theme:archivo_destacado', {
+    url: url_real,
+    nombre: nombre_mostrar
+  }) }}
+
+{% elseif cantidad_archivos > 1 %}
+
+  {% set lista_limpia = [] %}
+  {% for item in paragraph.field_archivos %}
+    
+    {% set media_item = item.entity %}
+    {% set nombre_mostrar = media_item.name.value|default('Documento') %}
+    {% set url_real = file_url(media_item.field_media_document.entity.uri.value) %}
+
+    {% set lista_limpia = lista_limpia|merge([{
+      url: url_real,
+      nombre: nombre_mostrar
+    }]) %}
+
+  {% endfor %}
+
+  {{ include('unl_theme:lista_archivos', {
+    archivos: lista_limpia
+  }) }}
+
+{% endif %}

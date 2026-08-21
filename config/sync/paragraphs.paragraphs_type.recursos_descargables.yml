@@ -1,0 +1,10 @@
+uuid: 1c6fa54b-a8d0-4129-a921-bfcf50e9550c
+langcode: en
+status: true
+dependencies: {  }
+id: recursos_descargables
+label: 'Recursos  Descargables'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

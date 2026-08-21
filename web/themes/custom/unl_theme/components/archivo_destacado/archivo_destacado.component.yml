@@ -1,0 +1,10 @@
+name: 'Archivo Destacado'
+description: 'Muestra un único archivo como una tarjeta principal destacada.'
+status: stable
+props:
+  type: object
+  properties:
+    url:
+      type: string
+    nombre:
+      type: string

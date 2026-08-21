@@ -96,6 +96,37 @@
     {% endif %}
 
   </article>
+{% elseif variante == 'autoridades' %}
+
+  {# ------autoridades: foto + overlay con nombre y cargo al hacer hover #}
+
+  <article class="tarjeta-autoridad">
+
+    {% if imagen %}
+      <div class="tarjeta-autoridad__imagen">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    <div class="tarjeta-autoridad__overlay">
+      <div class="tarjeta-autoridad__marco">
+        {% if titulo %}
+          <h3 class="tarjeta-autoridad__nombre">{{ titulo }}</h3>
+        {% endif %}
+
+        {% if descripcion %}
+          <div class="tarjeta-autoridad__cargo">{{ descripcion }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if enlace %}
+      <div class="tarjeta-autoridad__enlace">
+        {{ enlace }}
+      </div>
+    {% endif %}
+
+  </article>
 {% elseif variante == 'imagenes' %}
 
   {# ------imagenes: solo la imagen, sin título ni descripción #}

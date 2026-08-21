@@ -16,6 +16,7 @@ props:
         - 'sitios_interes'
         - 'imagenes'
         - 'sustantiva'
+        - 'autoridades'
       default: 'default'
 slots:
   items:

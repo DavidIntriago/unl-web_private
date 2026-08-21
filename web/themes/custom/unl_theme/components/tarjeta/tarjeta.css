@@ -535,3 +535,146 @@
   inset: 0;
   z-index: 10;
 }
+
+/*VARIANTE AUTORIDADES*/
+.tarjeta-autoridad {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  isolation: isolate;
+  max-width: 200px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+
+.tarjeta-autoridad__imagen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.tarjeta-autoridad__imagen,
+.tarjeta-autoridad__imagen div {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tarjeta-autoridad__imagen img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+}
+
+.tarjeta-autoridad__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: #93000b;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.tarjeta-autoridad:hover .tarjeta-autoridad__overlay,
+.tarjeta-autoridad:focus-within .tarjeta-autoridad__overlay {
+  opacity: 1;
+}
+
+.tarjeta-autoridad__nombre {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.tarjeta-autoridad__cargo {
+  margin: 0.4rem 0 0 0;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.tarjeta-autoridad__cargo * {
+  color: inherit;
+  margin: 0;
+}
+
+.tarjeta-autoridad__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.tarjeta-autoridad__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+.tarjeta-autoridad__enlace a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .tarjeta-autoridad {
+    aspect-ratio: unset;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #93000b;
+  }
+
+  .tarjeta-autoridad__imagen {
+    position: relative;
+    inset: unset;
+    flex: 0 0 110px;
+    width: 110px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .tarjeta-autoridad__overlay {
+    position: relative;
+    inset: unset;
+    opacity: 1;
+    flex: 1;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .tarjeta-autoridad__nombre,
+  .tarjeta-autoridad__cargo {
+    text-align: left;
+    color: #111827;
+  }
+
+  .tarjeta-autoridad__nombre {
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-autoridad__cargo {
+    font-size: 0.78rem;
+  }
+}

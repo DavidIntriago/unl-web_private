@@ -29,6 +29,9 @@ settings:
     -
       value: sustantiva
       label: sustantiva
+    -
+      value: autoridades
+      label: autoridades
   allowed_values_function: ''
 module: options
 locked: false

@@ -21,7 +21,9 @@
           ? 'grid-tarjetas-container--sitios_interes'
           : (variante == 'imagenes'
             ? 'grid-tarjetas-container--imagenes'
-            : 'grid-tarjetas-container--default')))) %}
+            : (variante == 'autoridades'
+              ? 'grid-tarjetas-container--autoridades'
+              : 'grid-tarjetas-container--default'))))) %}
 
   <section class="grid-tarjetas-container {{ modificador_grid }}">
     {% if variante == 'sitios_interes' %}

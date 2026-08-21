@@ -307,3 +307,43 @@
 .grid-tarjetas-wrapper--sustantiva {
   margin-top: 1.5rem;
 }
+
+/*VARIANTE AUTORIDADES*/
+.grid-tarjetas-container--autoridades .field,
+.grid-tarjetas-container--autoridades .field__items,
+.grid-tarjetas-container--autoridades .field__item {
+  display: contents;
+}
+
+.grid-tarjetas-container--autoridades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0rem auto 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.grid-tarjetas-container--autoridades > * {
+  flex: 0 0 200px;
+}
+
+@media (max-width: 768px) {
+  .grid-tarjetas-container--autoridades {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0 1rem;
+  }
+
+  .grid-tarjetas-container--autoridades > * {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+.grid-tarjetas-wrapper--autoridades {
+  margin-top: 1.5rem;
+}

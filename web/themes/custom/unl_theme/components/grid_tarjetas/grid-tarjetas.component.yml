@@ -17,6 +17,7 @@ props:
         - 'imagenes'
         - 'sustantiva'
         - 'autoridades'
+        - 'marcas'
       default: 'default'
 slots:
   items:

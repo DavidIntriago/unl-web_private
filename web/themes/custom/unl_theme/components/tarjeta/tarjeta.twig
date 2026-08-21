@@ -144,6 +144,25 @@
     {% endif %}
 
   </article>
+  {% elseif variante == 'marcas' %}
+
+  {# ------marcas: logo pequeño, gris por defecto, color al hover #}
+
+  <article class="tarjeta-marca">
+
+    {% if imagen %}
+      <div class="tarjeta-marca__img">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    {% if enlace %}
+      <div class="tarjeta-marca__enlace">
+        {{ enlace }}
+      </div>
+    {% endif %}
+
+  </article>
 {% else %}
   
   {# ------defaultttttttttttt #}

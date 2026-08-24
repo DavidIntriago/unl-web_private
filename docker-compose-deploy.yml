@@ -1,0 +1,112 @@
+version: '3.8'
+
+services:
+  unl-db:
+    image: postgres:16
+    container_name: unl-db-container
+    restart: unless-stopped
+    environment:
+      TZ: America/Guayaquil
+      POSTGRES_DB: drupaldb
+      POSTGRES_USER: drupal
+      POSTGRES_PASSWORD: drupalpass
+    volumes:
+      - unl-db-data:/var/lib/postgresql/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      unl-privada:
+        ipv4_address: 172.21.0.252
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+  unl-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: unl-drupal-api:latest
+    container_name: unl-app-container
+    restart: unless-stopped
+    environment:
+      - TZ=America/Guayaquil
+    volumes:
+      - unl-archivos-data:/opt/drupal/web/sites/default/files
+      - ./php-custom.ini:/usr/local/etc/php/conf.d/php-custom.ini:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      unl-db:
+        condition: service_healthy 
+    networks:
+      unl-privada:
+        ipv4_address: 172.21.0.2
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 512M
+
+  unl-webapp:
+    image: nginx:stable-alpine
+    container_name: unl-webapp-container
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./letsencrypt:/etc/ssl/certs:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - unl-app
+    networks:
+      unl-publica:
+      unl-privada:
+        ipv4_address: 172.21.0.3
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  unl-publica:
+    name: unl-publica
+    driver: bridge
+  unl-privada: # REd interna no sale a internet
+    name: unl-privada
+    driver: bridge
+    internal: true 
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/24
+
+volumes:
+  unl-db-data:
+    name: unl-db-data
+  unl-archivos-data:
+    name: unl-archivos-data

@@ -3,6 +3,7 @@
 /web/sites/*/private/
 /web/sites/*/files/config_*/
 /web/modules/contrib/
+/backups/
 
 .env
 .vscode/

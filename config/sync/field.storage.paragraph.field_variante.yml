@@ -19,19 +19,22 @@ settings:
       label: Default
     -
       value: contador
-      label: contador
+      label: Contador
     -
       value: sitios_interes
-      label: 'sitios interes'
+      label: 'Sitios Interes'
     -
       value: imagenes
-      label: imagenes
+      label: Imagenes
     -
       value: sustantiva
-      label: sustantiva
+      label: Sustantiva
     -
       value: autoridades
-      label: autoridades
+      label: Autoridades
+    -
+      value: marcas
+      label: marcas
   allowed_values_function: ''
 module: options
 locked: false

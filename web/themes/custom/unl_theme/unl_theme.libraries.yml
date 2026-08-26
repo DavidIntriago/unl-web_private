@@ -19,6 +19,7 @@ global:
       components/sidebar_micrositio/sidebar_micrositio.css: {}
       components/hero_micrositio/hero_micrositio.css: {}
       components/texto_libre/texto_libre.css: {}
+      components/klaro_cookies/klaro_cookies.css: {}
   js:
     assets/js/global.js: {}
     components/footer/footer.js: {}

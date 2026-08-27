@@ -20,6 +20,7 @@ global:
       components/hero_micrositio/hero_micrositio.css: {}
       components/texto_libre/texto_libre.css: {}
       components/klaro_cookies/klaro_cookies.css: {}
+      assets/css/html-completo.css: {}
   js:
     assets/js/global.js: {}
     components/footer/footer.js: {}

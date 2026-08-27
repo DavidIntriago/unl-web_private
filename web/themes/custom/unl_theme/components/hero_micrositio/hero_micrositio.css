@@ -34,7 +34,7 @@
 .hero-micrositio {
   position: relative;
   width: 100%;
-  height: 55vh; 
+  height: 60vh; 
   min-height: 400px;
   overflow: hidden;
   z-index: 1; 
@@ -61,7 +61,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover; 
-  object-position: center; 
+  object-position: top;
   display: block;
 }
 

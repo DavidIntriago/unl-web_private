@@ -38,32 +38,38 @@
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border: 2px solid #93000b;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.klaro .cn-buttons .cm-btn-accept,
+.klaro .cn-buttons button:focus,
+.klaro .cm-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(147, 0, 11, 0.25);
+}
+
 .klaro .cn-buttons .cm-btn-success {
-  background-color: #93000b;
-  color: #ffffff;
+  background-color: #93000b !important; 
+  border-color: #93000b !important;
+  color: #ffffff !important;
 }
 
-.klaro .cn-buttons .cm-btn-accept:hover,
+
 .klaro .cn-buttons .cm-btn-success:hover {
   background-color: #7a1220;
+  border-color: #7a1220;
 }
 
-.klaro .cn-buttons .cm-btn-decline {
-  background-color: transparent;
-  border-color: #93000b;
-  color: #93000b;
+.klaro .cn-buttons .cm-btn-danger  {
+  background-color: #fdf0f1 !important;
+  border-color: #93000b !important;
+  color: #93000b !important;
 }
 
-.klaro .cn-buttons .cm-btn-decline:hover {
-  background-color: #fdf0f1;
+.klaro .cn-buttons .cm-btn-danger:hover {
+  background-color: #f7dde0;
 }
 
-/* Botón de cierre (X) */
 .klaro .cookie-notice .cn-close {
   color: #2b2b2b;
 }

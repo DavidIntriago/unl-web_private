@@ -1,0 +1,10 @@
+uuid: 9d04c2d8-cd80-4e26-b764-fb14b425c04f
+langcode: en
+status: true
+dependencies: {  }
+id: repositorio_dinamico
+label: 'Repositorio Dinámico'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

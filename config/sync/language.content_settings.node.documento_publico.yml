@@ -1,0 +1,11 @@
+uuid: af170d74-1b79-4ef8-9cd7-d1ed935939a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.documento_publico
+id: node.documento_publico
+target_entity_type_id: node
+target_bundle: documento_publico
+default_langcode: site_default
+language_alterable: false

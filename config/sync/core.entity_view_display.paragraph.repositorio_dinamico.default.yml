@@ -1,0 +1,24 @@
+uuid: 2425c9bb-68d8-4be0-b3f2-703ceddc6fb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.repositorio_dinamico.field_repositorio_dinamico
+    - paragraphs.paragraphs_type.repositorio_dinamico
+  module:
+    - viewsreference
+id: paragraph.repositorio_dinamico.default
+targetEntityType: paragraph
+bundle: repositorio_dinamico
+mode: default
+content:
+  field_repositorio_dinamico:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

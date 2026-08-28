@@ -1,0 +1,27 @@
+uuid: d82fc355-98e7-4615-aa9d-2358a489616b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.repositorio_dinamico.field_repositorio_dinamico
+    - paragraphs.paragraphs_type.repositorio_dinamico
+  module:
+    - viewsreference
+id: paragraph.repositorio_dinamico.default
+targetEntityType: paragraph
+bundle: repositorio_dinamico
+mode: default
+content:
+  field_repositorio_dinamico:
+    type: viewsreference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

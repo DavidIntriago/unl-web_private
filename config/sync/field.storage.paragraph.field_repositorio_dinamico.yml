@@ -1,0 +1,21 @@
+uuid: 9aecd9cd-6075-443e-a8df-4bfdcf514593
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - views
+    - viewsreference
+id: paragraph.field_repositorio_dinamico
+field_name: field_repositorio_dinamico
+entity_type: paragraph
+type: viewsreference
+settings:
+  target_type: view
+module: viewsreference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

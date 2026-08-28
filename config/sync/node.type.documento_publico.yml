@@ -1,0 +1,18 @@
+uuid: a6f8bff9-a7fc-47fc-9eb9-8e76ba9e6aa7
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Documento Público'
+type: documento_publico
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,9 @@
+uuid: 84854c80-147d-4097-833a-f969769ce5c8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Categoria Documental'
+vid: categoria_documental
+description: null
+weight: 0
+new_revision: false

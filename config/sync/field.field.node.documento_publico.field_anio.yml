@@ -1,0 +1,29 @@
+uuid: 9597c590-9998-4b9c-9ef0-38156fdc1af1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anio
+    - node.type.documento_publico
+    - taxonomy.vocabulary.anio_fiscal
+id: node.documento_publico.field_anio
+field_name: field_anio
+entity_type: node
+bundle: documento_publico
+label: Año
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      anio_fiscal: anio_fiscal
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

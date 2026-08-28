@@ -1,0 +1,30 @@
+uuid: 7c490e69-06fb-4fad-a9a4-c5d6b6fc1530
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_repositorio_dinamico
+    - paragraphs.paragraphs_type.repositorio_dinamico
+  module:
+    - viewsreference
+id: paragraph.repositorio_dinamico.field_repositorio_dinamico
+field_name: field_repositorio_dinamico
+entity_type: paragraph
+bundle: repositorio_dinamico
+label: 'Repositorio Dinámico'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    repositorio_institucional: repositorio_institucional
+  enabled_settings: {  }
+field_type: viewsreference

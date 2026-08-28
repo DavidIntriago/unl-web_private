@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.about
     - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.recursos_descargables
+    - paragraphs.paragraphs_type.repositorio_dinamico
     - paragraphs.paragraphs_type.texto_libre
   module:
     - entity_reference_revisions
@@ -29,6 +30,7 @@ settings:
       texto_libre: texto_libre
       grid_tarjetas: grid_tarjetas
       recursos_descargables: recursos_descargables
+      repositorio_dinamico: repositorio_dinamico
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -51,6 +53,9 @@ settings:
         enabled: false
       recursos_descargables:
         weight: 10
+        enabled: true
+      repositorio_dinamico:
+        weight: 11
         enabled: true
       tarjeta:
         weight: 14

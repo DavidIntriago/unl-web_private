@@ -1,0 +1,11 @@
+uuid: 9c28b182-359a-45a5-a751-1b5d181c210f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.categoria_documental
+id: taxonomy_term.categoria_documental
+target_entity_type_id: taxonomy_term
+target_bundle: categoria_documental
+default_langcode: site_default
+language_alterable: false

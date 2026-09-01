@@ -51,7 +51,8 @@ http {
     server {
         listen 80;
         server_name ${DOMAIN_NAME};
-
+	
+	client_max_body_size 50M;
 #        location / {
 #             return 301 https://$host$request_uri;
 #        }

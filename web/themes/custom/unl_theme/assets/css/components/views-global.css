@@ -1,0 +1,190 @@
+/* TItulo de Views */
+.titulo-vista-global {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0; 
+  padding-bottom: 12px;
+  position: relative;
+  letter-spacing: -0.5px;
+  text-align: center; 
+}
+
+.titulo-vista-global::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 60px; 
+  height: 4px;
+  background-color: #900000;
+  border-radius: 2px;
+}
+
+/* Contenedor */
+.vista-contenida {
+  padding-top: 32px;
+  padding-bottom: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+  max-width: 1420px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; 
+}
+
+/* Tablas */
+.views-table-wrapper {
+  overflow-x: auto;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+table.views-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: inherit;
+  margin: 0;
+}
+
+table.views-table th {
+  background-color: #f8f9fa; 
+  color: #333333;
+  padding: 16px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 3px solid #900000;
+  text-transform: uppercase; 
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+table.views-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+  font-size: 0.95rem;
+  color: #444444;
+}
+
+table.views-table tbody tr:last-child td {
+  border-bottom: none; 
+}
+
+table.views-table tbody tr:hover {
+  background-color: #fcfcfc;
+}
+
+/* Forms de Filtros */
+form.views-exposed-form {
+  display: flex;
+  flex-direction: column; 
+  gap: 1.5rem;        
+  margin-bottom: 2rem; 
+  width: 100%;
+  background: transparent; 
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+form.views-exposed-form .form-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0; 
+  width: 100%; 
+  background-color: #ffffff; 
+  padding: 1.5rem; 
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid #900000; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+form.views-exposed-form .form-item label {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #333333;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+form.views-exposed-form input[type="text"],
+form.views-exposed-form select {
+  padding: 12px 16px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  width: 100%; 
+  box-sizing: border-box;
+  color: #333333;
+}
+
+form.views-exposed-form input[type="text"]:focus,
+form.views-exposed-form select:focus {
+  border-color: #900000;
+  box-shadow: 0 0 0 3px rgba(144, 0, 0, 0.1); 
+  outline: none;
+  background-color: #ffffff;
+}
+
+table.views-table td a {
+  display: block; 
+  position: relative;
+  padding-left: 18px; 
+  margin-bottom: 8px; 
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+table.views-table td a:last-child {
+  margin-bottom: 0; 
+}
+
+table.views-table td a:hover {
+  color: #900000;
+  text-decoration: underline;
+}
+
+table.views-table td a::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #900000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Botones */
+form.views-exposed-form .form-actions {
+  width: 100%; 
+  display: flex;
+  justify-content: center; 
+  margin: 0.5rem 0 0 0; 
+}
+
+.views-exposed-form .form-submit {
+  background-color: #900000;
+  color: white;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  height: 44px; 
+  transition: all 0.2s ease;
+}
+
+.views-exposed-form .form-submit:hover {
+  background-color: #700000;
+  transform: translateY(-2px); 
+}

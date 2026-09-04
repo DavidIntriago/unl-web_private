@@ -46,15 +46,3 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-  
-  const enlacesMenu = document.querySelectorAll('.sidebar-micrositio a');
-  
-  enlacesMenu.forEach(enlace => {
-    if (enlace.href && !enlace.href.includes('#zona-informacion')) {
-      enlace.href = enlace.href + '#zona-informacion';
-    }
-  });
-
-});

@@ -136,10 +136,11 @@
         if (subMenu) {
           li.classList.add("has-children");
 
-          // Si el <li> pertenece al primer nivel (hijo directo de la lista raíz),
-          // lo marcamos como disparador de mega menú.
+          // Si el <li> pertenece al primer nivel (hijo directo de la lista
+          // raíz), lo marcamos para que el CSS le apague el desplegable rojo
+          // genérico: sus hijos se muestran solo vía la franja blanca (subbar).
           if (topLevelList && li.parentElement === topLevelList) {
-            li.classList.add("has-mega-menu");
+            li.classList.add("is-top-level");
           }
         }
       });

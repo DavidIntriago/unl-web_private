@@ -10,9 +10,13 @@ display:
           action_title: 'Acci??n'
       pager:
         options:
+          tags:
+            next: ››
+            previous: ‹‹
           expose:
             items_per_page_label: 'Elementos por p??gina'
             items_per_page_options_all_label: '- Todo -'
+            offset_label: Desplazamiento
       exposed_form:
         options:
           submit_button: 'Aplicar filtros'

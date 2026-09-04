@@ -1,0 +1,11 @@
+uuid: c37f7111-f6ea-43c6-b6ef-9a452216f033
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_tarjetas
+id: paragraph.grid_tarjetas
+target_entity_type_id: paragraph
+target_bundle: grid_tarjetas
+default_langcode: site_default
+language_alterable: false

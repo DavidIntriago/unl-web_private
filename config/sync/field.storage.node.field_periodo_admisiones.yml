@@ -1,0 +1,20 @@
+uuid: bcd274b3-b360-4fb1-a57d-3a5b5cf2b419
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_periodo_admisiones
+field_name: field_periodo_admisiones
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

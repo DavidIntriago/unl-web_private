@@ -1,0 +1,11 @@
+uuid: 903ee91b-8ed9-4223-a701-cd2274ad7012
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.repositorio_dinamico
+id: paragraph.repositorio_dinamico
+target_entity_type_id: paragraph
+target_bundle: repositorio_dinamico
+default_langcode: site_default
+language_alterable: false

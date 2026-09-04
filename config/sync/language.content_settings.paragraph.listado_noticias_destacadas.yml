@@ -1,0 +1,11 @@
+uuid: 7bef0a16-17db-4e8f-976a-ded0b83098d6
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.listado_noticias_destacadas
+id: paragraph.listado_noticias_destacadas
+target_entity_type_id: paragraph
+target_bundle: listado_noticias_destacadas
+default_langcode: site_default
+language_alterable: false

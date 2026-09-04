@@ -1,0 +1,11 @@
+uuid: 96ffee00-512f-41ce-b47a-3b8b89df24be
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.recursos_descargables
+id: paragraph.recursos_descargables
+target_entity_type_id: paragraph
+target_bundle: recursos_descargables
+default_langcode: site_default
+language_alterable: false

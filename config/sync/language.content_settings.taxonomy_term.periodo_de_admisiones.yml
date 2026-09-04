@@ -1,0 +1,11 @@
+uuid: b767176b-acf0-4fd0-ac87-87f3732b1ad6
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.periodo_de_admisiones
+id: taxonomy_term.periodo_de_admisiones
+target_entity_type_id: taxonomy_term
+target_bundle: periodo_de_admisiones
+default_langcode: site_default
+language_alterable: false

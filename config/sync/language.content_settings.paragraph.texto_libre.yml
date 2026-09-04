@@ -1,0 +1,11 @@
+uuid: 26b15b62-9689-4601-a19d-70e1a4ce36d1
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.texto_libre
+id: paragraph.texto_libre
+target_entity_type_id: paragraph
+target_bundle: texto_libre
+default_langcode: site_default
+language_alterable: false

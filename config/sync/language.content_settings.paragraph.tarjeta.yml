@@ -1,0 +1,11 @@
+uuid: 20f568ed-9dc7-4117-b053-64f7d34c50e2
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.tarjeta
+id: paragraph.tarjeta
+target_entity_type_id: paragraph
+target_bundle: tarjeta
+default_langcode: site_default
+language_alterable: false

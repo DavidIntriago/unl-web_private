@@ -1,0 +1,46 @@
+uuid: e2853305-40c5-41ef-a33a-2dd6ff631b94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.preguntas_frecuentes.field_categoria
+    - field.field.node.preguntas_frecuentes.field_descripcion
+    - field.field.node.preguntas_frecuentes.field_periodo_admisiones
+    - node.type.preguntas_frecuentes
+  module:
+    - user
+id: node.preguntas_frecuentes.default
+targetEntityType: node
+bundle: preguntas_frecuentes
+mode: default
+content:
+  field_categoria:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_descripcion:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_periodo_admisiones:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

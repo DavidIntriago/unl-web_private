@@ -1,0 +1,11 @@
+uuid: ed7e36ef-ab3e-4f1b-9d57-42a7766c0798
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.listado_eventos_dinamico
+id: paragraph.listado_eventos_dinamico
+target_entity_type_id: paragraph
+target_bundle: listado_eventos_dinamico
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,11 @@
+uuid: abf0c6a7-fad5-475a-b116-cde860e7e24b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.resolucion_categoria
+id: taxonomy_term.resolucion_categoria
+target_entity_type_id: taxonomy_term
+target_bundle: resolucion_categoria
+default_langcode: es
+language_alterable: false

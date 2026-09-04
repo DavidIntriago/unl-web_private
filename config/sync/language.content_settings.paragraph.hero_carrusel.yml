@@ -1,0 +1,11 @@
+uuid: 203ab517-4ca5-4a8d-a979-78bfdb0f5e62
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.hero_carrusel
+id: paragraph.hero_carrusel
+target_entity_type_id: paragraph
+target_bundle: hero_carrusel
+default_langcode: site_default
+language_alterable: false

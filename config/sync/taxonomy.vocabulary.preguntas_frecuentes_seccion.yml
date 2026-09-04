@@ -1,0 +1,9 @@
+uuid: 8ad3f36e-eb23-4e1b-b793-034f6fc457fd
+langcode: es
+status: true
+dependencies: {  }
+name: 'Preguntas Frecuentes/Seccion'
+vid: preguntas_frecuentes_seccion
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,11 @@
+uuid: fc519b26-fc7e-4802-875a-058cbb8e324d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.resoluciones
+id: node.resoluciones
+target_entity_type_id: node
+target_bundle: resoluciones
+default_langcode: es
+language_alterable: false

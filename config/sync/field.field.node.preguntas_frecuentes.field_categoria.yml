@@ -1,0 +1,29 @@
+uuid: 18326be4-eae2-42ec-a4cc-1a0df3a672bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categoria
+    - node.type.preguntas_frecuentes
+    - taxonomy.vocabulary.preguntas_frecuentes_seccion
+id: node.preguntas_frecuentes.field_categoria
+field_name: field_categoria
+entity_type: node
+bundle: preguntas_frecuentes
+label: Categoría
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      preguntas_frecuentes_seccion: preguntas_frecuentes_seccion
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

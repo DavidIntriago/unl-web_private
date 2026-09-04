@@ -1,0 +1,29 @@
+uuid: 73f6bf2b-a93d-4d1b-8e41-1f21ae042d47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_periodo_admisiones
+    - node.type.preguntas_frecuentes
+    - taxonomy.vocabulary.periodo_de_admisiones
+id: node.preguntas_frecuentes.field_periodo_admisiones
+field_name: field_periodo_admisiones
+entity_type: node
+bundle: preguntas_frecuentes
+label: 'Periodo Admisiones'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      periodo_de_admisiones: periodo_de_admisiones
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

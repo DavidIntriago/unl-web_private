@@ -1,0 +1,9 @@
+uuid: 85a0feb1-7521-444e-a202-da7d54195360
+langcode: en
+status: true
+dependencies: {  }
+name: 'Resolución / Categoría'
+vid: resolucion_categoria
+description: null
+weight: 0
+new_revision: false

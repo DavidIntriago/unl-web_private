@@ -1,0 +1,9 @@
+uuid: 72756add-3bec-4b83-b7c1-0fcaa68f58c4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Periodo de Admisiones'
+vid: periodo_de_admisiones
+description: null
+weight: 0
+new_revision: false

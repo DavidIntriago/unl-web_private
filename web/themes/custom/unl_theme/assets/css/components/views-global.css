@@ -1,4 +1,4 @@
-/* TItulo de Views */
+/* titulo y contenedor */
 .titulo-vista-global {
   font-size: 2.2rem;
   font-weight: 700;
@@ -21,7 +21,6 @@
   border-radius: 2px;
 }
 
-/* Contenedor */
 .vista-contenida {
   padding-top: 32px;
   padding-bottom: 48px;
@@ -30,12 +29,15 @@
   max-width: 1420px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px; 
+  display: block; 
 }
 
-/* Tablas */
+.vista-contenida > header,
+.vista-contenida > form {
+  margin-bottom: 24px;
+}
+
+/* tablas */
 .views-table-wrapper {
   overflow-x: auto;
   background-color: #ffffff;
@@ -79,63 +81,6 @@ table.views-table tbody tr:hover {
   background-color: #fcfcfc;
 }
 
-/* Forms de Filtros */
-form.views-exposed-form {
-  display: flex;
-  flex-direction: column; 
-  gap: 1.5rem;        
-  margin-bottom: 2rem; 
-  width: 100%;
-  background: transparent; 
-  border: none;
-  box-shadow: none;
-  padding: 0;
-}
-
-form.views-exposed-form .form-item {
-  display: flex;
-  flex-direction: column;
-  margin: 0; 
-  width: 100%; 
-  background-color: #ffffff; 
-  padding: 1.5rem; 
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  border-left: 5px solid #900000; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  box-sizing: border-box;
-}
-
-form.views-exposed-form .form-item label {
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: #333333;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-form.views-exposed-form input[type="text"],
-form.views-exposed-form select {
-  padding: 12px 16px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #fafafa;
-  transition: all 0.3s ease;
-  width: 100%; 
-  box-sizing: border-box;
-  color: #333333;
-}
-
-form.views-exposed-form input[type="text"]:focus,
-form.views-exposed-form select:focus {
-  border-color: #900000;
-  box-shadow: 0 0 0 3px rgba(144, 0, 0, 0.1); 
-  outline: none;
-  background-color: #ffffff;
-}
-
 table.views-table td a {
   display: block; 
   position: relative;
@@ -164,27 +109,180 @@ table.views-table td a::before {
   font-weight: bold;
 }
 
-/* Botones */
-form.views-exposed-form .form-actions {
-  width: 100%; 
+/* filtros */
+form.views-exposed-form {
   display: flex;
-  justify-content: center; 
-  margin: 0.5rem 0 0 0; 
+  flex-direction: column; 
+  gap: 1.5rem;        
+  margin-bottom: 24px; 
+  width: 100%;
+  background: transparent; 
+
 }
 
-.views-exposed-form .form-submit {
-  background-color: #900000;
-  color: white;
-  padding: 12px 32px;
-  border: none;
+form.views-exposed-form .form-item:has(input[type="text"]),
+form.views-exposed-form .form-item:has(select) {
+  width: 100%; /* Ocupa todo el ancho */
+  background-color: #ffffff; 
+  padding: 1.5rem; 
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid #900000; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+form.views-exposed-form .form-item label {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #333333;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+form.views-exposed-form input[type="text"],
+form.views-exposed-form select {
+  padding: 12px 16px;
+  border: 1px solid #cccccc;
   border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  height: 44px; 
-  transition: all 0.2s ease;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  width: 100%; 
+  box-sizing: border-box;
+  color: #333333;
 }
 
-.views-exposed-form .form-submit:hover {
-  background-color: #700000;
-  transform: translateY(-2px); 
+form.views-exposed-form input[type="text"]:focus,
+form.views-exposed-form select:focus {
+  border-color: #900000;
+  box-shadow: 0 0 0 3px rgba(144, 0, 0, 0.1); 
+  outline: none;
+  background-color: #ffffff;
+}
+
+/* Viñetas (filtro) */
+form.views-exposed-form .form-item:has(.bef-links) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+form.views-exposed-form .bef-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #e0e0e0;
+  width: 100%;
+}
+
+form.views-exposed-form .bef-links li {
+  margin: 0;
+  padding: 0;
+  margin-bottom: -2px;
+  list-style: none;
+}
+
+form.views-exposed-form .bef-links li::before,
+form.views-exposed-form .bef-links li::after {
+  display: none;
+}
+
+form.views-exposed-form .bef-links a {
+  display: block;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: #900000; 
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: #ffffff; 
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0; 
+  transition: all 0.3s ease;
+}
+
+form.views-exposed-form .bef-links a:hover {
+  color: #ffffff;
+  background-color: #900000;
+  border-color: #900000;
+}
+
+form.views-exposed-form .bef-links a.bef-link--selected {
+  background-color: #900000;
+  color: #ffffff;
+  border-color: #900000;
+}
+
+/* Acordion */
+.acordeon-global-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; 
+  background-color: #ffffff;
+  overflow: hidden; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
+  transition: all 0.3s ease;
+}
+
+.acordeon-global-titulo {
+  padding: 18px 24px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #333333;
+  background-color: #ffffff; 
+  cursor: pointer;
+  list-style: none; 
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+}
+
+.acordeon-global-titulo::-webkit-details-marker {
+  display: none;
+}
+
+.acordeon-global-titulo::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 12px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: inherit; 
+}
+
+.acordeon-global-item[open] .acordeon-global-titulo {
+  background-color: #900000; 
+  color: #ffffff;
+}
+
+.acordeon-global-item[open] .acordeon-global-titulo::before {
+  transform: rotate(90deg);
+}
+
+.acordeon-global-contenido {
+  padding: 24px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444444;
+  border-top: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.acordeon-global-contenido a {
+  color: #900000;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.acordeon-global-contenido a:hover {
+  color: #700000;
 }

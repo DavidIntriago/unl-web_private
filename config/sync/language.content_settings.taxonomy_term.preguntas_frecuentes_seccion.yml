@@ -1,0 +1,11 @@
+uuid: 2eb413ac-d06b-4bbe-a2b5-c55baf6b2b1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.preguntas_frecuentes_seccion
+id: taxonomy_term.preguntas_frecuentes_seccion
+target_entity_type_id: taxonomy_term
+target_bundle: preguntas_frecuentes_seccion
+default_langcode: es
+language_alterable: false

@@ -1,0 +1,27 @@
+uuid: 79ddb451-c397-457c-872d-c1bdac85d3de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anexos
+    - node.type.resoluciones
+  module:
+    - file
+id: node.resoluciones.field_anexos
+field_name: field_anexos
+entity_type: node
+bundle: resoluciones
+label: Anexos
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'gaceta/anexo/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf docx doc'
+  max_filesize: '25 MB'
+  description_field: true
+field_type: file

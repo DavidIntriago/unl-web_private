@@ -1,0 +1,19 @@
+uuid: 5e4761cc-9221-4509-803e-bc736987b1ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_descripcion
+    - node.type.resoluciones
+id: node.resoluciones.field_descripcion
+field_name: field_descripcion
+entity_type: node
+bundle: resoluciones
+label: Descripción
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

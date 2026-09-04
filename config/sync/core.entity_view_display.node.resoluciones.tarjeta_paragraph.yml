@@ -1,0 +1,40 @@
+uuid: ebaaa055-93ab-42d6-8e6f-e9e4337164aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.tarjeta_paragraph
+    - field.field.node.resoluciones.field_anexos
+    - field.field.node.resoluciones.field_categoria
+    - field.field.node.resoluciones.field_descripcion
+    - field.field.node.resoluciones.field_documentos_principales
+    - field.field.node.resoluciones.field_fecha
+    - node.type.resoluciones
+  module:
+    - datetime
+    - user
+id: node.resoluciones.tarjeta_paragraph
+targetEntityType: node
+bundle: resoluciones
+mode: tarjeta_paragraph
+content:
+  field_fecha:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_anexos: true
+  field_categoria: true
+  field_descripcion: true
+  field_documentos_principales: true
+  langcode: true

@@ -1,0 +1,40 @@
+uuid: 0b3655c1-a6b6-4d3f-834b-eccc2ba7010b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resoluciones.field_anexos
+    - field.field.node.resoluciones.field_categoria
+    - field.field.node.resoluciones.field_descripcion
+    - field.field.node.resoluciones.field_documentos_principales
+    - field.field.node.resoluciones.field_fecha
+    - node.type.resoluciones
+  module:
+    - datetime
+    - user
+id: node.resoluciones.teaser
+targetEntityType: node
+bundle: resoluciones
+mode: teaser
+content:
+  field_fecha:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_anexos: true
+  field_categoria: true
+  field_descripcion: true
+  field_documentos_principales: true
+  langcode: true

@@ -1,0 +1,18 @@
+uuid: 87cd0d55-01d1-4c7c-84d1-1b09c85dda4d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Resoluciones
+type: resoluciones
+description: null
+help: 'Ejemplo: N° 271-R-UNL-2021'
+new_revision: true
+preview_mode: 0
+display_submitted: false

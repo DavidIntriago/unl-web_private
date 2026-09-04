@@ -1,0 +1,67 @@
+uuid: b271f36d-ebbf-434b-9858-6019aa83623b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.resoluciones.field_anexos
+    - field.field.node.resoluciones.field_categoria
+    - field.field.node.resoluciones.field_descripcion
+    - field.field.node.resoluciones.field_documentos_principales
+    - field.field.node.resoluciones.field_fecha
+    - node.type.resoluciones
+  module:
+    - datetime
+    - file
+    - user
+id: node.resoluciones.default
+targetEntityType: node
+bundle: resoluciones
+mode: default
+content:
+  field_anexos:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_categoria:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_descripcion:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_documentos_principales:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_fecha:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

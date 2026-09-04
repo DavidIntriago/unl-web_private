@@ -1,8 +1,13 @@
 /vendor/
-/web/sites/*/files/
+
+/web/sites/*/files/*
+!/web/sites/*/files/translations/
+
 /web/sites/*/private/
-/web/sites/*/files/config_*/
+/web/sites//files/config_/
+
 /web/modules/contrib/
+
 /backups/
 
 .env

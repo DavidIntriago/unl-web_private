@@ -12,7 +12,7 @@
       
       <div class="noticia-teaser__fecha-caja">
         <span class="fecha-dia">{{ node.createdtime|date('d') }}</span>
-        <span class="fecha-mes">{{ node.createdtime|date('M')|upper }}</span>
+        <span class="fecha-mes">{{ node.createdtime|format_date('custom', 'F')|slice(0, 3)|upper }}</span>
       </div>
 
 {#

@@ -3,8 +3,9 @@
   <div class="card-ev-parrafo__cuerpo">
     <header class="card-ev-parrafo__cabecera">
       <div class="card-ev-parrafo__fecha-cuadro">
-        <span class="dia">{{ node.field_fecha.value|date('d')|default('3') }}</span>
-        <span class="mes">{{ node.field_fecha.value|date('M')|upper|default('SEP') }}</span>
+        {% set fecha_ts = node.field_fecha.value|date('U') %}
+        <span class="dia">{{ fecha_ts|date('d')|default('3') }}</span>
+        <span class="mes">{{ fecha_ts|format_date('custom', 'F')|slice(0, 3)|upper|default('SEP') }}</span>
       </div>
       <div class="card-ev-parrafo__tag">
         {{ content.field_area|render|striptags|trim }}

@@ -1,0 +1,29 @@
+uuid: 236f9a84-11d6-4112-894a-14a840964cc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.menu-vinculacion
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_menuvinculacion
+theme: unl_theme
+region: sidebar_micrositio
+weight: 0
+provider: null
+plugin: 'system_menu_block:menu-vinculacion'
+settings:
+  id: 'system_menu_block:menu-vinculacion'
+  label: 'Menú Vinculación'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/vinculacion\r\n/vinculacion/*"

@@ -1,0 +1,8 @@
+uuid: e0957abf-2a19-478c-980d-d300629c1d6a
+langcode: en
+status: true
+dependencies: {  }
+id: menu-vinculacion
+label: 'Menú Vinculación'
+description: ''
+locked: false

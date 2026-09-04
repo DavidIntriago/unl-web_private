@@ -37,7 +37,6 @@ settings:
       - codeBlock
       - '|'
       - sourceEditing
-      - drupalMedia
       - code
   plugins:
     ckeditor5_alignment:
@@ -106,8 +105,7 @@ settings:
         styles: true
       multiBlock: true
     ckeditor5_sourceEditing:
-      allowed_tags:
-        - '<iframe src width height frameborder allowfullscreen allow>'
+      allowed_tags: {  }
     media_media:
       allow_view_mode_override: false
 image_upload:

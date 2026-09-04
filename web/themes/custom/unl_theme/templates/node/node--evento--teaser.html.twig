@@ -7,12 +7,13 @@
     {% endif %}
 
     {% if content.field_fecha|render|trim %}
+      {% set fecha_ts = node.field_fecha.value|date('U') %}
       <div class="evento-teaser__fecha">
         <span class="evento-teaser__dia">
-            {{ node.field_fecha.value|date('d') }}
+            {{ fecha_ts|date('d') }}
         </span>
         <span class="evento-teaser__mes">
-            {{ node.field_fecha.value|date('M') }}
+            {{ fecha_ts|format_date('custom', 'F')|slice(0, 3) }}
         </span>
       </div>
     {% endif %}

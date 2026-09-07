@@ -1,12 +1,12 @@
 uuid: e245e9fc-a111-42a5-a618-98ee117ea93b
-langcode: en
+langcode: es
 status: true
 dependencies: {  }
 _core:
   default_config_hash: VWUWqwszm5ZaqT3frIPWjyyVmvmWnWMFRphkVXCl8t0
 id: image
-label: Image
-description: 'A locally hosted image file.'
+label: Imagen
+description: 'Archivo de imagen alojado localmente.'
 source: image
 queue_thumbnail_downloads: false
 new_revision: true

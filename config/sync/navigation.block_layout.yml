@@ -34,7 +34,7 @@ sections:
         region: content
         configuration:
           id: 'navigation_menu:admin'
-          label: 'Administraci??n'
+          label: Administración
           label_display: '0'
           provider: navigation
           level: 2

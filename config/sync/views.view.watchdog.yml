@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: QxV85zTbzQHWnwqOjUQ9k-Hza0YP94TJebVvD1rVucg
 id: watchdog
-label: 'Guardi??n'
+label: Guardián
 module: views
 description: 'Mensajes recientes del registro'
 tag: ''
@@ -693,7 +693,7 @@ display:
       tags: {  }
   page:
     id: page
-    display_title: 'P??gina'
+    display_title: Página
     display_plugin: page
     position: 1
     display_options:

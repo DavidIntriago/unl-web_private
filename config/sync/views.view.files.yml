@@ -181,7 +181,7 @@ display:
           entity_type: file
           entity_field: filesize
           plugin_id: field
-          label: 'Tama??o'
+          label: Tamaño
           exclude: false
           alter:
             alter_text: false
@@ -526,8 +526,8 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'Siguiente >'
+            previous: '‹ Anterior'
           expose:
             items_per_page: false
             items_per_page_label: 'Elementos por p??gina'
@@ -1057,8 +1057,8 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'Siguiente >'
+            previous: '‹ Anterior'
           expose:
             items_per_page: false
             items_per_page_label: 'Elementos por p??gina'

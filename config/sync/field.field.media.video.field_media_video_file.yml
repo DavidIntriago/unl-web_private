@@ -1,5 +1,5 @@
 uuid: 2113075b-109b-4962-ba07-2348375f4298
-langcode: en
+langcode: es
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: media.video.field_media_video_file
 field_name: field_media_video_file
 entity_type: media
 bundle: video
-label: 'Video file'
+label: 'Archivo de vídeo'
 description: ''
 required: true
 translatable: true

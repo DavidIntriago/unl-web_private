@@ -28,6 +28,7 @@ global:
     assets/js/reproductor.js: {}
     components/sidebar_micrositio/sidebar_micrositio.js: {}
     components/listado_noticias_destacadas/listado_noticias_destacadas.js: {}
+    components/hero_micrositio/hero_micrositio.js: {}
   dependencies:
     - core/drupal
     - core/once

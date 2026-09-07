@@ -1,5 +1,5 @@
 uuid: 53826aea-58b3-4ace-8db9-f1b88edf23ae
-langcode: en
+langcode: es
 status: true
 dependencies:
   config:
@@ -16,7 +16,7 @@ id: media.image.field_media_image
 field_name: field_media_image
 entity_type: media
 bundle: image
-label: Image
+label: Imagen
 description: ''
 required: true
 translatable: true

@@ -142,7 +142,7 @@ display:
           exposed: false
           expose:
             operator_id: access_op
-            label: '??ltimo acceso'
+            label: 'Último acceso'
             description: 'A user is considered online for this long after they have last viewed a page.'
             use_operator: false
             operator: access_op

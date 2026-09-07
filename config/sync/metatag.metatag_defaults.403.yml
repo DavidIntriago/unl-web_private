@@ -1,11 +1,11 @@
 uuid: f9828bf2-58e5-4345-b8fc-e22a54382c7f
-langcode: en
+langcode: es
 status: true
 dependencies: {  }
 _core:
   default_config_hash: RDCkFL0NDt75Gwioooxo1iuA1S50xTVsBOgX__c6wTw
 id: '403'
-label: '403 access denied'
+label: '403 acceso denegado'
 tags:
   robots: noindex
   canonical_url: '[site:url]'

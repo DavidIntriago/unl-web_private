@@ -297,7 +297,7 @@ display:
           entity_type: user
           entity_field: access
           plugin_id: field
-          label: '??ltimo acceso'
+          label: 'Último acceso'
           exclude: false
           alter:
             alter_text: false
@@ -467,8 +467,8 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'Siguiente >'
+            previous: '‹ Anterior'
             first: '« First'
             last: 'Last »'
           expose:
@@ -871,7 +871,7 @@ display:
       show_admin_links: true
       use_more: false
       use_more_always: false
-      use_more_text: 'm??s'
+      use_more_text: más
       link_display: page_1
       link_url: ''
       display_comment: ''
@@ -888,7 +888,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: 'P??gina'
+    display_title: Página
     display_plugin: page
     position: 1
     display_options:

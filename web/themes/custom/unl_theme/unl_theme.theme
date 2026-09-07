@@ -3,11 +3,17 @@
 function unl_theme_preprocess_page(&$variables) {
   if (isset($variables['node']) && $variables['node'] instanceof \Drupal\node\NodeInterface) {
     $node = $variables['node'];
-    
+
     if ($node->hasField('field_imagen_hero') && !$node->get('field_imagen_hero')->isEmpty()) {
-      
-      $variables['hero_imagen_segura'] = $node->get('field_imagen_hero')->view('default');
-      
+
+      $build = $node->get('field_imagen_hero')->view('default');
+
+      $hero_diapositivas = [];
+      foreach (\Drupal\Core\Render\Element::children($build) as $delta) {
+        $hero_diapositivas[] = $build[$delta];
+      }
+
+      $variables['hero_diapositivas'] = $hero_diapositivas;
       $variables['hero_titulo_seguro'] = $node->getTitle();
     }
   }

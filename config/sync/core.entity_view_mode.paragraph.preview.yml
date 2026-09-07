@@ -1,5 +1,5 @@
 uuid: 86fb99a7-c0b0-4eb3-9bf2-147c8f8408ff
-langcode: en
+langcode: es
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: h3BeHVei4Lnyqbkao3YiF4KqoY-DhRvUNfEgKG8Rgjg
 id: paragraph.preview
-label: Preview
+label: 'Vista previa'
 description: null
 targetEntityType: paragraph
 cache: true

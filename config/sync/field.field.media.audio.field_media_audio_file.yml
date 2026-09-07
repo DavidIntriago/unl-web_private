@@ -1,5 +1,5 @@
 uuid: e93b46ed-5330-43f0-87ae-16d706c17b7a
-langcode: en
+langcode: es
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: media.audio.field_media_audio_file
 field_name: field_media_audio_file
 entity_type: media
 bundle: audio
-label: 'Audio file'
+label: 'Archivo de audio'
 description: ''
 required: true
 translatable: true

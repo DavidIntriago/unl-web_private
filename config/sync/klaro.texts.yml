@@ -1,6 +1,6 @@
 _core:
   default_config_hash: FHr6psQnRtYvXa9wwVyQsT3ytUtv2w9OvbvbdMDq4a0
-langcode: en
+langcode: es
 consentModal:
   title: 'Use of personal data and cookies'
   description: |
@@ -15,11 +15,11 @@ consentNotice:
   changeDescription: 'There were changes since your last visit, please update your consent.'
   description: |
     We use cookies and process personal data for the following purposes: {purposes}.
-  learnMore: Customize
+  learnMore: Personalizar
 ok: Accept
-save: Save
+save: Guardar
 decline: Decline
-close: Close
+close: Cerrar
 acceptAll: 'Accept all'
 acceptSelected: 'Accept selected'
 service:

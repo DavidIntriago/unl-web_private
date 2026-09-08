@@ -286,3 +286,80 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 .acordeon-global-contenido a:hover {
   color: #700000;
 }
+
+/* Archivos en Acordion */
+
+.acordeon-global-contenido .item-list ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.acordeon-global-contenido .item-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; 
+  white-space: nowrap; 
+  width: 100%; 
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+  color: #555555; 
+  font-size: 0.85rem;
+}
+
+.acordeon-global-contenido .item-list li:last-child {
+  border-bottom: none;
+}
+
+
+.acordeon-global-contenido .file {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  margin: 0 auto 0 0;
+  padding: 0;
+  background: transparent;
+}
+
+.acordeon-global-contenido .file a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+.acordeon-global-contenido .file a:hover {
+  text-decoration: underline;
+  color: #900000;
+}
+
+.acordeon-global-titulo .titulo-link-externo {
+  color: inherit; 
+  text-decoration: none;
+  display: inline;
+  width: auto;
+}
+
+.acordeon-global-item[open] .acordeon-global-titulo .titulo-link-externo {
+  color: #ffffff; 
+}
+
+.acordeon-global-titulo .titulo-link-externo:hover {
+  text-decoration: underline;
+}
+
+.acordeon-global-item.enlace-directo-item {
+  background-color: #ffffff;
+}
+
+.acordeon-global-titulo.sin-flecha::before {
+  display: none;
+}
+
+.acordeon-global-titulo.sin-flecha {
+  display: block;
+  padding-left: 24px;
+}

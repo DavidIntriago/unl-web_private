@@ -19,6 +19,9 @@ props:
     enlace:
       type: [string, 'null', 'object']
       title: 'Enlace'
+    informacion_adicional:
+      type: [string, 'null']
+      title: 'Información adicional variante autoridades (títulos, ORCID, reseña)'
     variante:
       type: [string, 'null']
       title: 'Variante de la Tarjeta'

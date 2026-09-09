@@ -98,7 +98,8 @@
   </article>
 {% elseif variante == 'autoridades' %}
 
-  {# ------autoridades: foto + overlay con nombre y cargo al hacer hover #}
+  {# ------autoridades: foto + overlay con nombre, cargo y botón
+     "Ver perfil completo" (abre modal con información adicional) #}
 
   <article class="tarjeta-autoridad">
 
@@ -116,6 +117,15 @@
 
         {% if descripcion %}
           <div class="tarjeta-autoridad__cargo">{{ descripcion }}</div>
+        {% endif %}
+
+        {% if informacion_adicional %}
+          <div class="tarjeta-autoridad__info" data-info-contenido hidden>
+            {{ informacion_adicional|raw }}
+          </div>
+          <button type="button" class="tarjeta-autoridad__ver-mas" data-info-toggle>
+            Ver perfil completo
+          </button>
         {% endif %}
       </div>
     </div>

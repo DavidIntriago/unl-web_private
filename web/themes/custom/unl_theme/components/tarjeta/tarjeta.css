@@ -612,6 +612,67 @@
   margin: 0;
 }
 
+/* Botón "ver más" — aparece siempre que el campo "Información adicional" tenga contenido */
+.tarjeta-autoridad__ver-mas {
+  display: block;
+  margin: 0.4rem auto 0 auto;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tarjeta-autoridad__ver-mas:hover {
+  opacity: 0.8;
+}
+
+/* Modal con la información completa (títulos, ORCID, reseña, etc.) */
+.tarjeta-autoridad-modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.tarjeta-autoridad-modal {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  color: #333333;
+  padding: 2rem 1.75rem 1.75rem 1.75rem;
+  border-radius: 10px;
+}
+
+.tarjeta-autoridad-modal__cerrar {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #333333;
+}
+
+.tarjeta-autoridad-modal__nombre {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #93000b;
+}
+
 .tarjeta-autoridad__enlace {
   margin: 0;
   padding: 0;
@@ -676,6 +737,12 @@
 
   .tarjeta-autoridad__cargo {
     font-size: 0.78rem;
+  }
+
+  .tarjeta-autoridad__ver-mas {
+    margin: 0.3rem 0 0 0;
+    color: #93000b;
+    text-align: left;
   }
 }
 

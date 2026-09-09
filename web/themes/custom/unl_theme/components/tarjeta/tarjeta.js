@@ -1,7 +1,8 @@
 /**
  * @file
  * Anima los números de la variante "contador" (0 -> valor final)
- * la primera vez que entran en pantalla.
+ * la primera vez que entran en pantalla, y controla el modal
+ * "ver más" de la variante "autoridades".
  */
 (function (Drupal, once) {
   "use strict";
@@ -11,7 +12,7 @@
       const numeros = once(
         "tarjeta-contador-animado",
         ".tarjeta-contador__numero",
-        context
+        context,
       );
 
       if (!numeros.length) {
@@ -37,7 +38,7 @@
         const formatear = (n) => n.toLocaleString("es-ES");
 
         const prefiereMenosMovimiento = window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
+          "(prefers-reduced-motion: reduce)",
         ).matches;
 
         if (prefiereMenosMovimiento) {
@@ -74,13 +75,59 @@
               }
             });
           },
-          { threshold: 0.4 }
+          { threshold: 0.4 },
         );
 
         numeros.forEach((el) => observer.observe(el));
       } else {
         numeros.forEach(animarNumero);
       }
+    },
+  };
+
+  Drupal.behaviors.tarjetaAutoridadDescripcion = {
+    attach: function (context) {
+      once(
+        "tarjeta-autoridad-descripcion",
+        "[data-info-toggle]",
+        context,
+      ).forEach((boton) => {
+        const marco = boton.closest(".tarjeta-autoridad__marco");
+        const info = marco.querySelector("[data-info-contenido]");
+        const nombre = marco.querySelector(".tarjeta-autoridad__nombre");
+
+        boton.addEventListener("click", () => {
+          const fondo = document.createElement("div");
+          fondo.className = "tarjeta-autoridad-modal-fondo";
+          fondo.innerHTML = `
+          <div class="tarjeta-autoridad-modal">
+            <button type="button" class="tarjeta-autoridad-modal__cerrar" aria-label="Cerrar">×</button>
+            ${nombre ? `<h4 class="tarjeta-autoridad-modal__nombre">${nombre.textContent}</h4>` : ""}
+            ${info.innerHTML}
+          </div>
+        `;
+          document.body.appendChild(fondo);
+          document.body.style.overflow = "hidden";
+
+          const cerrar = () => {
+            fondo.remove();
+            document.body.style.overflow = "";
+            document.removeEventListener("keydown", alPresionarEsc);
+          };
+
+          const alPresionarEsc = (e) => {
+            if (e.key === "Escape") cerrar();
+          };
+
+          fondo.addEventListener("click", (e) => {
+            if (e.target === fondo) cerrar();
+          });
+          fondo
+            .querySelector(".tarjeta-autoridad-modal__cerrar")
+            .addEventListener("click", cerrar);
+          document.addEventListener("keydown", alPresionarEsc);
+        });
+      });
     },
   };
 })(Drupal, once);

@@ -1,0 +1,19 @@
+uuid: df375116-7e6a-4375-b480-4760e98dc0c5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_informacion_adicional
+    - paragraphs.paragraphs_type.tarjeta
+id: paragraph.tarjeta.field_informacion_adicional
+field_name: field_informacion_adicional
+entity_type: paragraph
+bundle: tarjeta
+label: informacion_adicional
+description: 'Información adicional variante autoridades (títulos, ORCID, reseña)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

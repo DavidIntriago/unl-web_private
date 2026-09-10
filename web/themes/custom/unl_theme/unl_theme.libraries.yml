@@ -24,6 +24,7 @@ global:
   js:
     assets/js/global.js: {}
     assets/js/enlaces_externos.js: {}
+    assets/js/components/views-global.js: {}
     components/footer/footer.js: {}
     components/header/header.js: {}
     components/menu_lateral/menu_lateral.js: {}

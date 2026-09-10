@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_secciones_page_principal
     - node.type.pagina
     - paragraphs.paragraphs_type.about
+    - paragraphs.paragraphs_type.convenios
     - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.hero_carrusel
     - paragraphs.paragraphs_type.listado_eventos_dinamico
@@ -30,11 +31,15 @@ settings:
       grid_tarjetas: grid_tarjetas
       about: about
       listado_eventos_dinamico: listado_eventos_dinamico
+      convenios: convenios
       listado_noticias_destacadas: listado_noticias_destacadas
     negate: 0
     target_bundles_drag_drop:
       about:
         weight: 6
+        enabled: true
+      convenios:
+        weight: 12
         enabled: true
       diapositiva_hero:
         weight: 3
@@ -51,7 +56,16 @@ settings:
       listado_noticias_destacadas:
         weight: 13
         enabled: true
+      recursos_descargables:
+        weight: 19
+        enabled: false
+      repositorio_dinamico:
+        weight: 20
+        enabled: false
       tarjeta:
         weight: 8
+        enabled: false
+      texto_libre:
+        weight: 22
         enabled: false
 field_type: entity_reference_revisions

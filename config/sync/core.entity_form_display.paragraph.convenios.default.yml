@@ -1,0 +1,36 @@
+uuid: 707f2e9d-d1b5-40eb-8419-33c4e0a3bf6e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.convenios.field_titulo
+    - field.field.paragraph.convenios.field_vista_noticias
+    - paragraphs.paragraphs_type.convenios
+  module:
+    - viewsreference
+id: paragraph.convenios.default
+targetEntityType: paragraph
+bundle: convenios
+mode: default
+content:
+  field_titulo:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_vista_noticias:
+    type: viewsreference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

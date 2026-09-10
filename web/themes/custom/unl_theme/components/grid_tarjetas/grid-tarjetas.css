@@ -8,14 +8,14 @@
 
 .grid-tarjetas__titulo {
   font-size: 2rem;
-  color: #333;
+  color: var(--text-color);
   margin: 0;
 }
 
 .grid-tarjetas__divider {
   height: 4px;
   width: 100px;
-  background-color: #93000b;
+  background-color: var(--primary-color);
   margin: 0.75rem auto 0 auto;
 }
 /*Para limpiar de los elementos de control que trae drupal*/
@@ -130,16 +130,16 @@
   margin-top: 5rem;
   margin-bottom: 3rem;
   width: 100%;
-  background-color: #93000b;
+  background-color: var(--primary-color);
   padding: 3rem 0;
 }
 
 .grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
-  color: #ffffff;
+  color: var(--surface-color);
 }
 
 .grid-tarjetas-wrapper--contador .grid-tarjetas__divider {
-  background-color: #ffffff;
+  background-color: var(--surface-color);
 }
 
 .grid-tarjetas-container--contador {
@@ -209,8 +209,8 @@
   height: 44px;
   border: none;
   border-radius: 50%;
-  background: #93000b;
-  color: #fff;
+  background: var(--primary-color);
+  color: var(--surface-color);
   font-size: 20px;
   cursor: pointer;
   z-index: 3;
@@ -222,7 +222,7 @@
 
 .carrusel-sitios-flecha:hover,
 .carrusel-sitios-flecha:focus-visible {
-  background: #6e0008;
+  background: var(--primary-color-dark);
   opacity: 1;
 }
 
@@ -387,8 +387,8 @@
   height: 36px;
   border: none;
   border-radius: 50%;
-  background: #93000b;
-  color: #fff;
+  background: var(--primary-color);
+  color: var(--surface-color);
   font-size: 16px;
   cursor: pointer;
   z-index: 3;
@@ -398,7 +398,7 @@
 
 .carrusel-marcas-flecha:hover,
 .carrusel-marcas-flecha:focus-visible {
-  background: #6e0008;
+  background: var(--primary-color-dark);
   opacity: 1;
 }
 

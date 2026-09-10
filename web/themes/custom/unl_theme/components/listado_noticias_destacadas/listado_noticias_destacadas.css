@@ -18,21 +18,21 @@
 
 .noticias-destacadas__titulo {
   font-size: 2rem;
-  color: #333;
+  color: var(--text-color);
   margin: 0;
 }
 
 .noticias-destacadas__divider {
   height: 4px;
   width: 100px;
-  background-color: #93000b;
+  background-color: var(--primary-color);
   margin: 0.75rem auto 0 auto;
 }
 
 .noticias-destacadas__boton-superior a {
   display: inline-block;
-  background-color: #93000b;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
   padding: 0.8rem 2.5rem;
   border-radius: 6px;
   text-decoration: none;

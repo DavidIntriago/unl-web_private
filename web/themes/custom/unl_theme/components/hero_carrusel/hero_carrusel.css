@@ -62,7 +62,7 @@
   max-width: 700px;
   margin-left: 8%;
   padding: 1rem;
-  color: #fff;
+  color: var(--surface-color);
   text-align: left;
 }
 
@@ -73,7 +73,7 @@
 
 .slide-texto h2 {
   margin: 0 0 1.5rem;
-  color: #fff;
+  color: var(--surface-color);
   font-size: clamp(2.5rem, 6vw, 5rem);
   line-height: 1.05;
 }
@@ -90,7 +90,7 @@
   display: inline-block;
   padding: 16px 34px;
   border-radius: 999px;
-  background: #93000b;
+  background: var(--primary-color);
   color: #fdfdfd;
   font-weight: 700;
   text-decoration: none;
@@ -139,7 +139,7 @@
 
 .carrusel-indicador.active {
   width: 48px;
-  background: #ffffff;
+  background: var(--surface-color);
 }
 
 .carrusel-indicador {
@@ -247,24 +247,4 @@
 
 .slide-item.active .slide-bg--iframe {
   transform: translate(-50%, -50%) scale(1.05);
-}
-
-/* videos url*/
-.slide-bg--iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 56.25vw; 
-  min-height: 100vh;
-  min-width: 177.77vh;
-  transform: translate(-50%, -50%) scale(1.05); 
-  pointer-events: none; 
-  border: none;
-  z-index: 0;
-  transition: none; 
-}
-
-.slide-item.active .slide-bg--iframe {
-  transform: translate(-50%, -50%) scale(1.05); 
 }

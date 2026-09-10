@@ -14,7 +14,7 @@
   background: rgba(33, 33, 33, 0.55);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  color: #ffffff;
+  color: var(--surface-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -97,7 +97,7 @@
   display: flex;
   align-items: center;
   padding: 0.55rem 1.1rem;
-  color: var(--surface-color, #93000b);
+  color: var(--primary-color);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -107,7 +107,7 @@
 }
 
 .lateral-menu__panel a:hover {
-  background-color: rgba(147, 0, 11, 0.08);
+  background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
 }
 
 @media (max-width: 600px) {

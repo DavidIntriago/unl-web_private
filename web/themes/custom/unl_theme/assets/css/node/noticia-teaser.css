@@ -70,7 +70,7 @@
 }
 
 .noticia-teaser__fecha-caja {
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   color: #111827;
   padding: 0.4rem 0.6rem;
   border-radius: 8px;
@@ -89,12 +89,12 @@
 .noticia-teaser__fecha-caja .fecha-mes {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #93000b;
+  color: var(--primary-color);
   margin-top: 0.15rem;
 }
 
 .noticia-teaser__area-caja {
-  background-color: #93000b;
+  background-color: var(--primary-color);
   color: #ffffff;
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
@@ -131,8 +131,8 @@
 .noticia-teaser:hover .noticia-teaser__contenido {
   background: linear-gradient(
     to top,
-    rgba(147, 0, 11, 0.95) 0%,
-    rgba(147, 0, 11, 0.5) 70%,
+    color-mix(in srgb, var(--primary-color) 95%, transparent) 0%,
+    color-mix(in srgb, var(--primary-color) 50%, transparent) 70%,
     transparent 100%
   );
 }

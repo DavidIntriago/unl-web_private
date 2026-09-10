@@ -50,12 +50,12 @@
   box-sizing: border-box;
 
   padding: 1rem 1.25rem;
-  background-color: var(--surface-color, #93000b);
+  background-color: var(--primary-color);
 }
 
 .tarjeta-sustantiva__titulo {
   margin: 0;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.25;
@@ -66,7 +66,7 @@
 
 .tarjeta-sustantiva__mas {
   flex-shrink: 0;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
@@ -151,13 +151,13 @@
 
 .tarjeta-titulo {
   margin: 0;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.3;
   text-align: left;
 
-  border-left: 2.5px solid #ffffff;
+  border-left: 2.5px solid var(--surface-color);
   padding-left: 0.85rem;
 
   transition: transform 0.35s ease;
@@ -216,7 +216,7 @@
   background-color: #e7792b;
 } /* Naranja*/
 .bg-default {
-  background-color: #93000b;
+  background-color: var(--primary-color);
 } /* Rojo por defecto */
 .theme-farnr {
   background-color: #5bad3b;
@@ -249,7 +249,7 @@
 
 .tarjeta-default {
   position: relative;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -308,7 +308,7 @@
 .tarjeta-default__titulo {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-color);
   margin: 0;
   line-height: 1.3;
   transition: margin 0.4s ease;
@@ -379,7 +379,7 @@
   font-size: 2.75rem;
   font-weight: 800;
   line-height: 1;
-  color: #ffffff;
+  color: var(--surface-color);
 }
 
 .tarjeta-contador__etiqueta {
@@ -417,7 +417,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: var(--surface-color, #93000b);
+  background-color: var(--primary-color);
   border: 1px solid transparent;
   border-radius: 12px;
   padding: 2rem 1.25rem;
@@ -427,8 +427,8 @@
 }
 
 .tarjeta-sitio-interes:hover {
-  background-color: #ffffff;
-  border-color: var(--surface-color, #93000b);
+  background-color: var(--surface-color);
+  border-color: var(--primary-color);
 }
 
 .tarjeta-sitio-interes__icono {
@@ -453,7 +453,7 @@
 
 .tarjeta-sitio-interes__titulo {
   margin: 0;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.3;
@@ -461,7 +461,7 @@
 }
 
 .tarjeta-sitio-interes:hover .tarjeta-sitio-interes__titulo {
-  color: var(--surface-color, #93000b);
+  color: var(--primary-color);
 }
 
 .tarjeta-sitio-interes__enlace {
@@ -580,7 +580,7 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background-color: #93000b;
+  background-color: var(--primary-color);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -592,7 +592,7 @@
 
 .tarjeta-autoridad__nombre {
   margin: 0;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.3;
@@ -601,7 +601,7 @@
 
 .tarjeta-autoridad__cargo {
   margin: 0.4rem 0 0 0;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 0.85rem;
   font-weight: 500;
   text-align: center;
@@ -619,7 +619,7 @@
   padding: 0;
   border: none;
   background: none;
-  color: #ffffff;
+  color: var(--surface-color);
   font-size: 0.75rem;
   font-weight: 600;
   text-decoration: underline;
@@ -648,7 +648,7 @@
   width: 100%;
   max-height: 80vh;
   overflow-y: auto;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   color: #333333;
   padding: 2rem 1.75rem 1.75rem 1.75rem;
   border-radius: 10px;
@@ -670,7 +670,7 @@
   margin: 0 0 0.75rem 0;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #93000b;
+  color: var(--primary-color);
 }
 
 .tarjeta-autoridad__enlace {
@@ -700,8 +700,8 @@
     flex-direction: row;
     align-items: stretch;
     border-radius: 12px;
-    background-color: #ffffff;
-    border: 1px solid #93000b;
+    background-color: var(--surface-color);
+    border: 1px solid var(--primary-color);
   }
 
   .tarjeta-autoridad__imagen {
@@ -728,7 +728,7 @@
   .tarjeta-autoridad__nombre,
   .tarjeta-autoridad__cargo {
     text-align: left;
-    color: #111827;
+    color: var(--text-color);
   }
 
   .tarjeta-autoridad__nombre {
@@ -741,7 +741,7 @@
 
   .tarjeta-autoridad__ver-mas {
     margin: 0.3rem 0 0 0;
-    color: #93000b;
+    color: var(--primary-color);
     text-align: left;
   }
 }
@@ -754,7 +754,7 @@
   justify-content: center;
   height: 100px;
   padding: 1rem 1.5rem;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   border: 1.5px solid #e5e7eb;
   border-radius: 10px;
   transition:
@@ -763,8 +763,8 @@
 }
 
 .tarjeta-marca:hover {
-  border-color: #93000b;
-  box-shadow: 0 6px 16px rgba(147, 0, 11, 0.12);
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--primary-color) 12%, transparent);
 }
 
 .tarjeta-marca__img .field,

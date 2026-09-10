@@ -22,7 +22,7 @@
 /*Titulo 1*/
 .unl-about__title {
   font-size: 2.25rem;
-  color: #111827;
+  color: var(--text-color);
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.3;
@@ -30,7 +30,7 @@
 /*Titulo 2*/
 .unl-about__highlight {
   display: inline-block;
-  background-color: #93000b;
+  background-color: var(--primary-color);
   color: #ffffff;
   padding: 0.1rem 0.75rem;
   border-radius: 6px;
@@ -51,19 +51,23 @@
 .unl-about__action a {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #93000b;
+  background-color: var(--primary-color);
   color: #ffffff;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(147, 0, 11, 0.25);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--primary-color) 25%, transparent);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
 
 .unl-about__action a:hover {
-  background-color: #7a0009;
+  background-color: var(--primary-color-dark);
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(147, 0, 11, 0.4);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--primary-color) 40%, transparent);
 }
 
 /* videos, imagenes, link video */
@@ -135,5 +139,5 @@
 }
 
 .unl-about__divider.default {
-  background: #93000b;
+  background: var(--primary-color);
 }

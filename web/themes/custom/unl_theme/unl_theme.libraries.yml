@@ -1,6 +1,7 @@
 global:
   css:
     theme:
+      assets/css/layers.css: {}
       assets/css/variables.css: {}
       assets/css/base.css: {}
       assets/css/typography.css: {}
@@ -22,6 +23,7 @@ global:
       assets/css/components/views-global.css: {}
   js:
     assets/js/global.js: {}
+    assets/js/enlaces_externos.js: {}
     components/footer/footer.js: {}
     components/header/header.js: {}
     components/menu_lateral/menu_lateral.js: {}

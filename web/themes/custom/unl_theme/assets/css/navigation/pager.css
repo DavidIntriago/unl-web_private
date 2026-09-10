@@ -27,7 +27,7 @@
   padding: 0 0.9rem;
   border: 1px solid #d7dbe0;
   border-radius: 12px;
-  background: #fff;
+  background: var(--surface-color);
   color: #374151;
   text-decoration: none;
   font-weight: 600;
@@ -39,16 +39,16 @@
 }
 
 .pager__item a:hover {
-  background: #93000b;
-  color: #fff;
-  border-color: #93000b;
+  background: var(--primary-color);
+  color: var(--surface-color);
+  border-color: var(--primary-color);
   transform: translateY(-2px);
 }
 
 .pager__item.is-active a {
-  background: #93000b;
-  color: #fff;
-  border-color: #93000b;
+  background: var(--primary-color);
+  color: var(--surface-color);
+  border-color: var(--primary-color);
   pointer-events: none;
   cursor: default;
 }

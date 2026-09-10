@@ -6,6 +6,7 @@ base theme: false
 
 libraries:
   - unl_theme/global
+  - unl_theme/enlaces_externos
 
 regions:
   branding: Branding

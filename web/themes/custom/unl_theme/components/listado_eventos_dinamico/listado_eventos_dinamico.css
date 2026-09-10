@@ -16,14 +16,14 @@
 
 .seccion-eventos__titulo {
   font-size: 2rem;
-  color: #333;
+  color: var(--text-color);
   margin: 0;
 }
 
 .seccion-eventos__divider {
   height: 4px; 
   width: 100px; 
-  background-color: #93000b; 
+  background-color: var(--primary-color); 
   margin: 0.75rem auto 0 auto; 
 }
 

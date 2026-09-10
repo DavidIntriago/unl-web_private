@@ -42,7 +42,7 @@
   display: block;
   padding: 14px 16px;
   background-color: #3a3a3a;
-  color: #ffffff;
+  color: var(--surface-color);
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -50,13 +50,13 @@
 
 .sidebar-micrositio li a:hover,
 .sidebar-micrositio li a:focus {
-  background-color: #93000b;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
 }
 
 .sidebar-micrositio li a.is-active {
-  background-color: #93000b;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
 }
 
 .sidebar-micrositio li.tiene-submenu > a::after {
@@ -73,9 +73,9 @@
 
 .sidebar-micrositio li.tiene-submenu.submenu-abierto > a {
   background-color: #2a2a2a;
-  color: #ffffff;
+  color: var(--surface-color);
   font-weight: 700;
-  border-left: 8px solid #93000b;
+  border-left: 8px solid var(--primary-color);
   border-radius: 8px;
   cursor: default;
 }

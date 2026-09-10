@@ -9,9 +9,9 @@
 }
 
 .unl-lista-titulo {
-  color: var(--unl-rojo-oscuro, #8B0000);
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--unl-rojo-oscuro, #8B0000);
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
   display: inline-block;
 }
@@ -38,18 +38,18 @@
 }
 
 .unl-lista-enlace:hover {
-  background-color: var(--unl-rojo-oscuro, #8B0000);
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(139, 0, 0, 0.2);
+  box-shadow: 0 4px 6px color-mix(in srgb, var(--primary-color) 20%, transparent);
 }
 
 .unl-icono-doc {
-  color: var(--unl-rojo-oscuro, #8B0000);
+  color: var(--primary-color);
 }
 
 .unl-lista-enlace:hover .unl-icono-doc {
-  color: #ffffff;
+  color: var(--surface-color);
 }
 
 .unl-lista-nombre {

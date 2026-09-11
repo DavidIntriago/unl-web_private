@@ -1,16 +1,16 @@
-uuid: 95b6436c-f2b1-41e5-9ecd-effa7d9822b7
-langcode: en
+uuid: b12dc3b5-03be-4048-a02f-877f72f1cdb0
+langcode: es
 status: true
 dependencies:
   module:
-    - media
     - node
-id: node.field_archivo
-field_name: field_archivo
+id: node.field_prioridad
+field_name: field_prioridad
 entity_type: node
-type: entity_reference
+type: integer
 settings:
-  target_type: media
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1

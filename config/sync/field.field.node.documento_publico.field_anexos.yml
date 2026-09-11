@@ -1,0 +1,27 @@
+uuid: 4b51e685-b4e8-464b-9c98-f4c962879383
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anexos
+    - node.type.documento_publico
+  module:
+    - file
+id: node.documento_publico.field_anexos
+field_name: field_anexos
+entity_type: node
+bundle: documento_publico
+label: Archivos
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'documentos_publicos/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf docx doc xlsx'
+  max_filesize: '25 MB'
+  description_field: true
+field_type: file

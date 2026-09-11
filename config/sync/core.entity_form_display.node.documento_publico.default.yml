@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.documento_publico.field_anexos
     - field.field.node.documento_publico.field_anio
-    - field.field.node.documento_publico.field_archivo
     - field.field.node.documento_publico.field_categoria
     - node.type.documento_publico
   module:
-    - media_library
+    - file
     - path
 id: node.documento_publico.default
 targetEntityType: node
@@ -21,32 +21,24 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_anexos:
+    type: file_generic
+    weight: 124
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
   field_anio:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 123
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_archivo:
-    type: media_library_widget
-    weight: 121
-    region: content
-    settings:
-      media_types: {  }
+    settings: {  }
     third_party_settings: {  }
   field_categoria:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 122
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

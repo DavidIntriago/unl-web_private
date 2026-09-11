@@ -1,0 +1,31 @@
+uuid: 38000e77-b740-4ce8-aaa4-542f0591e959
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vista_noticias
+    - paragraphs.paragraphs_type.convenios
+  module:
+    - viewsreference
+id: paragraph.convenios.field_vista_noticias
+field_name: field_vista_noticias
+entity_type: paragraph
+bundle: convenios
+label: 'Vista Convenios'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    slider_convenios: slider_convenios
+  enabled_settings:
+    argument: argument
+field_type: viewsreference

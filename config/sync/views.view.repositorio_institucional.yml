@@ -1,16 +1,12 @@
-uuid: dc88f594-b899-4b2b-95ec-b7c84e417b9f
-langcode: en
+uuid: 63c7ccb0-98b2-47c4-a934-7da23b83c4c0
+langcode: es
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_document
-    - field.storage.node.field_anio
-    - field.storage.node.field_archivo
-    - field.storage.node.field_categoria
+    - field.storage.node.field_anexos
     - node.type.documento_publico
   module:
     - file
-    - media
     - node
     - user
 id: repositorio_institucional
@@ -29,144 +25,16 @@ display:
     display_options:
       title: 'Repositorio Institucional'
       fields:
-        field_anio:
-          id: field_anio
-          table: node__field_anio
-          field: field_anio
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Año
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_archivo:
-          id: field_archivo
-          table: node__field_archivo
-          field: field_archivo
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Archivo
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         title:
           id: title
-          table: node_field_revision
+          table: node_field_data
           field: title
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: field
-          label: Title
-          exclude: false
+          label: ''
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -221,21 +89,21 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_categoria:
-          id: field_categoria
-          table: node__field_categoria
-          field: field_categoria
+        field_anexos:
+          id: field_anexos
+          table: node__field_anexos
+          field: field_anexos
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Categoría
+          label: ''
           exclude: false
           alter:
             alter_text: false
             text: ''
             make_link: false
-            path: ''
+            path: '{{ field_enlace }}'
             absolute: false
             external: false
             replace_spaces: false
@@ -246,7 +114,7 @@ display:
             link_class: ''
             prefix: ''
             suffix: ''
-            target: ''
+            target: _blank
             nl2br: false
             max_length: 0
             word_boundary: true
@@ -271,71 +139,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: entity_reference_label
+          type: file_default
           settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_media_document:
-          id: field_media_document
-          table: media__field_media_document
-          field: field_media_document
-          relationship: field_archivo
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Document
-          exclude: false
-          alter:
-            alter_text: true
-            text: "<a href=\"{{ field_media_document }}\" class=\"btn-descarga-pdf\" target=\"_blank\" title=\"Descargar documento\">\r\n  <span class=\"icono-pdf\"></span>\r\n</a>"
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: file_url_plain
-          settings: {  }
+            use_description_as_link_text: true
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -343,38 +149,21 @@ display:
           delta_offset: 0
           delta_reversed: false
           delta_first_last: false
-          multi_type: separator
+          multi_type: ul
           separator: ', '
           field_api_classes: false
       pager:
-        type: full
+        type: some
         options:
           offset: 0
-          pagination_heading_level: h4
-          items_per_page: 20
-          total_pages: null
-          id: 0
-          tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
+          items_per_page: 5
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Aplicar
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Restablecer
+          exposed_sorts_label: 'Ordenar por'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -425,49 +214,15 @@ display:
           plugin_id: bundle
           value:
             documento_publico: documento_publico
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: string
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_op
-            label: Title
-            description: ''
-            use_operator: false
-            operator: title_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: Nombre
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            placeholder: 'Buscar Archivo'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
       style:
-        type: table
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       query:
@@ -478,17 +233,22 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships:
-        field_archivo:
-          id: field_archivo
-          table: node__field_archivo
-          field: field_archivo
+      relationships: {  }
+      css_class: 'unl-lista-docs unl-lista-docs__container'
+      header:
+        area:
+          id: area
+          table: views
+          field: area
           relationship: none
           group_type: group
-          admin_label: 'field_archivo: Media'
-          plugin_id: standard
-          required: true
-      header: {  }
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: '<h2 class="titulo-vista-global"> {{ title }} </h2>'
+            format: full_html
+          tokenize: true
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -496,15 +256,10 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_media_document'
-        - 'config:field.storage.node.field_anio'
-        - 'config:field.storage.node.field_archivo'
-        - 'config:field.storage.node.field_categoria'
+        - 'config:field.storage.node.field_anexos'
   block_1:
     id: block_1
     display_title: Block
@@ -517,12 +272,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_media_document'
-        - 'config:field.storage.node.field_anio'
-        - 'config:field.storage.node.field_archivo'
-        - 'config:field.storage.node.field_categoria'
+        - 'config:field.storage.node.field_anexos'

@@ -1,0 +1,11 @@
+uuid: 0cd6764e-7e82-4b37-b5fb-57d276764a5b
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.unidad
+id: taxonomy_term.unidad
+target_entity_type_id: taxonomy_term
+target_bundle: unidad
+default_langcode: site_default
+language_alterable: false

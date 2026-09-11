@@ -1,0 +1,11 @@
+uuid: f779938d-9b61-4976-b516-ffb9b50ee93a
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.formatos
+id: node.formatos
+target_entity_type_id: node
+target_bundle: formatos
+default_langcode: site_default
+language_alterable: false

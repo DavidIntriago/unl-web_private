@@ -14,7 +14,7 @@ mode: default
 content:
   field_repositorio_dinamico:
     type: viewsreference_formatter
-    label: hidden
+    label: inline
     settings:
       plugin_types:
         - block

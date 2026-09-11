@@ -1,6 +1,0 @@
-name: Repositorio Dinámico
-description: Contenedor para incrustar vistas de documentos con filtros.
-status: stable
-slots:
-  contenido_vista:
-    description: La vista renderizada con su tabla y filtros (inyectada vía bloque).

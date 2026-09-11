@@ -1,6 +1,6 @@
 /**
  * @file
- * Fuerza target="_blank" + rel="noopener noreferrer" en todo enlace externo del sitio, para prevenir tabnabbing (secuestro de pestaña vía window.opener) sin depender de que cada editor lo marque manual.
+ * Fuerza target="_blank" + rel="noopener noreferrer" en enlaces externos y descargas de documentos.
  */
 (function (Drupal, once) {
   "use strict";
@@ -8,6 +8,8 @@
   Drupal.behaviors.enlacesExternosSeguro = {
     attach: function (context) {
       const enlaces = once("enlace-externo-seguro", "a[href]", context);
+
+      const extensionesDoc = /\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
 
       enlaces.forEach((enlace) => {
         const href = enlace.getAttribute("href");
@@ -25,8 +27,9 @@
         }
 
         const esExterno = url.hostname !== window.location.hostname;
+        const esArchivoDoc = extensionesDoc.test(url.pathname);
 
-        if (esExterno) {
+        if (esExterno || esArchivoDoc) {
           enlace.setAttribute("target", "_blank");
 
           const relActual = (enlace.getAttribute("rel") || "").split(" ").filter(Boolean);

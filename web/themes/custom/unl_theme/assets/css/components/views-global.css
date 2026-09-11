@@ -21,6 +21,25 @@
   border-radius: 2px;
 }
 
+.titulo-vista-paragraph {
+  font-size: 2rem;
+  position: relative;
+  text-align: center; 
+  padding-bottom: 15px;
+}
+
+.titulo-vista-paragraph::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 100px; 
+  height: 4px;
+  background-color: #900000;
+  border-radius: 2px;
+}
+
 .vista-contenida {
   padding-top: 32px;
   padding-bottom: 48px;
@@ -451,4 +470,113 @@ form.views-exposed-form .bef-links a.bef-link--selected {
     /* 3 elementos */
     flex-basis: calc((100% - 2 * 1.5rem) / 3) !important;
   }
+}
+
+/* Para Lista de Documentos */
+.unl-lista-docs {
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.unl-lista-docs__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.unl-lista-docs .views-field-title {
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.unl-lista-docs .views-field-title a {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.unl-lista-docs .views-field-field-anexos .item-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.unl-lista-docs .views-field-field-anexos .file {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.unl-lista-docs .views-field-field-anexos .file a {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #fcfcfc;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333333;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.unl-lista-docs .views-field-field-anexos .file a:hover {
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px color-mix(in srgb, var(--primary-color) 20%, transparent);
+}
+
+.unl-lista-docs .views-field-field-anexos .file::before,
+.unl-lista-docs .views-field-field-anexos .file--mime-application-pdf::before {
+  display: none;
+}
+
+.unl-lista-docs .views-field-field-anexos .file a::before {
+  content: "";
+  display: inline-block;
+  min-width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  background-color: var(--primary-color);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center / contain;
+  transition: background-color 0.3s ease;
+}
+
+.unl-lista-docs .views-field-field-anexos .file a::after {
+  content: "";
+  display: inline-block;
+  min-width: 24px;
+  height: 24px;
+  margin-left: auto;
+  background-color: var(--primary-color);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.unl-lista-docs .views-field-field-anexos .file a:hover::before,
+.unl-lista-docs .views-field-field-anexos .file a:hover::after {
+  background-color: var(--surface-color);
+  opacity: 1;
+}
+
+.unl-lista-docs .views-field-field-anexos li > span:not(.file) {
+  display: none;
+}
+
+.unl-lista-docs .views-field-field-anexos ul,
+.unl-lista-docs .views-field-field-anexos li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

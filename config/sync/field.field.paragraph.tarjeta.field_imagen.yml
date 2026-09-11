@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_imagen
+    - media.type.icono_svg
     - media.type.image
     - paragraphs.paragraphs_type.tarjeta
 id: paragraph.tarjeta.field_imagen
@@ -20,10 +21,11 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      icono_svg: icono_svg
       image: image
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: icono_svg
 field_type: entity_reference

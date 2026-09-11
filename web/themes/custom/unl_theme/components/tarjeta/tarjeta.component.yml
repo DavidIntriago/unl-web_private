@@ -15,7 +15,6 @@ props:
     color:
       type: [string, 'null']
       title: 'Clase CSS del Color'
-      default: 'bg-gray-100'
     enlace:
       type: [string, 'null', 'object']
       title: 'Enlace'
@@ -26,12 +25,9 @@ props:
       type: [string, 'null']
       title: 'Variante de la Tarjeta'
       enum:
-        - 'default'
         - 'facultad'
         - 'contador'
         - 'sitios_interes'
         - 'imagenes'
         - 'sustantiva'
         - 'autoridades'
-        - 'marcas'
-      default: 'default'

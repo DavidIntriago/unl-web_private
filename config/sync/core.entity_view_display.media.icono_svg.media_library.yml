@@ -1,0 +1,33 @@
+uuid: 9510d400-6c8e-4ffd-918d-7565a15c8eda
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.icono_svg.field_media_image_1
+    - image.style.medium
+    - media.type.icono_svg
+  module:
+    - image
+id: media.icono_svg.media_library
+targetEntityType: media
+bundle: icono_svg
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_image_1: true
+  langcode: true
+  name: true
+  uid: true

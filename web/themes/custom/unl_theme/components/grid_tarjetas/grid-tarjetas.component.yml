@@ -10,15 +10,12 @@ props:
       type: [string, 'null']
       title: 'Variante del Grid'
       enum:
-        - 'default'
         - 'facultad'
         - 'contador'
         - 'sitios_interes'
         - 'imagenes'
         - 'sustantiva'
         - 'autoridades'
-        - 'marcas'
-      default: 'default'
 slots:
   items:
     title: 'Elementos del Grid'

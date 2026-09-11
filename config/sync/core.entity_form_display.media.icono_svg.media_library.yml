@@ -1,0 +1,38 @@
+uuid: d6aef5f7-cf45-4d96-abc9-cb95f9a876bc
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.icono_svg.field_media_image_1
+    - image.style.thumbnail
+    - media.type.icono_svg
+  module:
+    - image
+id: media.icono_svg.media_library
+targetEntityType: media
+bundle: icono_svg
+mode: media_library
+content:
+  field_media_image_1:
+    type: image_image
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  path: true
+  status: true
+  uid: true

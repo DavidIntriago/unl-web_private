@@ -21,21 +21,11 @@
 /*Para limpiar de los elementos de control que trae drupal*/
 .grid-tarjetas-container--facultad .field,
 .grid-tarjetas-container--facultad .field__items,
-.grid-tarjetas-container--default .field,
-.grid-tarjetas-container--default .field__items,
 .grid-tarjetas-container--contador .field,
 .grid-tarjetas-container--contador .field__items {
   display: contents;
 }
 
-.grid-tarjetas-container--default {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
 .grid-tarjetas-wrapper--sustantiva {
   margin-top: 1.5rem;
 }
@@ -346,99 +336,4 @@
 
 .grid-tarjetas-wrapper--autoridades {
   margin-top: 1.5rem;
-}
-
-/*VARIANTE MARCAS*/
-.grid-tarjetas-container--marcas {
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3.5rem;
-  box-sizing: border-box;
-}
-
-.carrusel-marcas-viewport {
-  overflow: hidden;
-  width: 100%;
-}
-
-.carrusel-marcas-track {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  touch-action: pan-y;
-  transition: transform 0.45s ease;
-}
-
-.carrusel-marcas-track > * {
-  flex: 0 0 calc((100% - 5 * 2.5rem) / 6);
-  min-width: 0;
-}
-
-.carrusel-marcas-flecha {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: var(--primary-color);
-  color: var(--surface-color);
-  font-size: 16px;
-  cursor: pointer;
-  z-index: 3;
-  opacity: 0.4;
-  transition: background 0.3s ease, opacity 0.3s ease;
-}
-
-.carrusel-marcas-flecha:hover,
-.carrusel-marcas-flecha:focus-visible {
-  background: var(--primary-color-dark);
-  opacity: 1;
-}
-
-.carrusel-marcas-flecha.prev { left: 0; }
-.carrusel-marcas-flecha.next { right: 0; }
-
-.carrusel-marcas-flecha:disabled {
-  opacity: 0.15;
-  cursor: default;
-  pointer-events: none;
-}
-
-@media (min-width: 769px) and (max-width: 1300px) {
-  .carrusel-marcas-track > * {
-    flex-basis: calc((100% - 3 * 2.5rem) / 4);
-  }
-}
-
-@media (max-width: 768px) {
-  .grid-tarjetas-container--marcas {
-    padding: 0 1rem;
-  }
-
-  .carrusel-marcas-viewport {
-    box-sizing: border-box;
-    padding: 0 24px;
-  }
-
-  .carrusel-marcas-track {
-    margin: 0 -24px;
-    gap: 1.5rem;
-  }
-
-  .carrusel-marcas-track > * {
-    flex-basis: calc((100% - 2 * 1.5rem) / 3);
-  }
-}
-
-@media (max-width: 768px) and (pointer: coarse) {
-  .carrusel-marcas-flecha {
-    display: none;
-  }
 }

@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #00930c;
+  --primary-color: #93000b;
 
   /*hovers*/
   --primary-color-dark: color-mix(in srgb, var(--primary-color) 75%, black);

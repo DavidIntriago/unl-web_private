@@ -1,0 +1,11 @@
+uuid: 84020656-0c92-42b2-a99c-4577588d305b
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.icono_svg
+id: media.icono_svg
+target_entity_type_id: media
+target_bundle: icono_svg
+default_langcode: site_default
+language_alterable: false

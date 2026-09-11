@@ -17,7 +17,7 @@
   transform: translateX(-50%);
   width: 60px; 
   height: 4px;
-  background-color: #900000;
+  background-color: var(--primary-color);
   border-radius: 2px;
 }
 
@@ -40,7 +40,7 @@
 /* tablas */
 .views-table-wrapper {
   overflow-x: auto;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -59,7 +59,7 @@ table.views-table th {
   padding: 16px;
   text-align: left;
   font-weight: bold;
-  border-bottom: 3px solid #900000;
+  border-bottom: 3px solid var(--primary-color);
   text-transform: uppercase; 
   font-size: 0.85rem;
   letter-spacing: 0.5px;
@@ -95,7 +95,7 @@ table.views-table td a:last-child {
 }
 
 table.views-table td a:hover {
-  color: #900000;
+  color: var(--primary-color);
   text-decoration: underline;
 }
 
@@ -104,7 +104,7 @@ table.views-table td a::before {
   position: absolute;
   left: 0;
   top: 0;
-  color: #900000;
+  color: var(--primary-color);
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -123,11 +123,11 @@ form.views-exposed-form {
 form.views-exposed-form .form-item:has(input[type="text"]),
 form.views-exposed-form .form-item:has(select) {
   width: 100%; /* Ocupa todo el ancho */
-  background-color: #ffffff; 
+  background-color: var(--surface-color); 
   padding: 1.5rem; 
   border-radius: 8px;
   border: 1px solid #e0e0e0;
-  border-left: 5px solid #900000; 
+  border-left: 5px solid var(--primary-color); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
   margin: 0;
@@ -158,10 +158,10 @@ form.views-exposed-form select {
 
 form.views-exposed-form input[type="text"]:focus,
 form.views-exposed-form select:focus {
-  border-color: #900000;
-  box-shadow: 0 0 0 3px rgba(144, 0, 0, 0.1); 
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 10%, transparent); 
   outline: none;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
 }
 
 /* Viñetas (filtro) */
@@ -201,10 +201,10 @@ form.views-exposed-form .bef-links a {
   display: block;
   padding: 12px 24px;
   text-decoration: none;
-  color: #900000; 
+  color: var(--primary-color); 
   font-weight: 600;
   font-size: 1rem;
-  background-color: #ffffff; 
+  background-color: var(--surface-color); 
   border: 1px solid #e0e0e0;
   border-bottom: none;
   border-radius: 12px 12px 0 0; 
@@ -212,22 +212,22 @@ form.views-exposed-form .bef-links a {
 }
 
 form.views-exposed-form .bef-links a:hover {
-  color: #ffffff;
-  background-color: #900000;
-  border-color: #900000;
+  color: var(--surface-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 form.views-exposed-form .bef-links a.bef-link--selected {
-  background-color: #900000;
-  color: #ffffff;
-  border-color: #900000;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  border-color: var(--primary-color);
 }
 
 /* Acordion */
 .acordeon-global-item {
   border: 1px solid #e0e0e0;
   border-radius: 12px; 
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   overflow: hidden; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
   transition: all 0.3s ease;
@@ -238,7 +238,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   font-weight: 600;
   font-size: 1.05rem;
   color: #333333;
-  background-color: #ffffff; 
+  background-color: var(--surface-color); 
   cursor: pointer;
   list-style: none; 
   position: relative;
@@ -260,8 +260,8 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 }
 
 .acordeon-global-item[open] .acordeon-global-titulo {
-  background-color: #900000; 
-  color: #ffffff;
+  background-color: var(--primary-color); 
+  color: var(--surface-color);
 }
 
 .acordeon-global-item[open] .acordeon-global-titulo::before {
@@ -274,17 +274,17 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   line-height: 1.7;
   color: #444444;
   border-top: 1px solid #e0e0e0;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
 }
 
 .acordeon-global-contenido a {
-  color: #900000;
+  color: var(--primary-color);
   text-decoration: underline;
   font-weight: 600;
 }
 
 .acordeon-global-contenido a:hover {
-  color: #700000;
+  color: var(--primary-color-dark);
 }
 
 /* Archivos en Acordion */
@@ -333,7 +333,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 
 .acordeon-global-contenido .file a:hover {
   text-decoration: underline;
-  color: #900000;
+  color: var(--primary-color);
 }
 
 .acordeon-global-titulo .titulo-link-externo {
@@ -344,7 +344,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 }
 
 .acordeon-global-item[open] .acordeon-global-titulo .titulo-link-externo {
-  color: #ffffff; 
+  color: var(--surface-color); 
 }
 
 .acordeon-global-titulo .titulo-link-externo:hover {
@@ -352,7 +352,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 }
 
 .acordeon-global-item.enlace-directo-item {
-  background-color: #ffffff;
+  background-color: var(--surface-color);
 }
 
 .acordeon-global-titulo.sin-flecha::before {
@@ -396,7 +396,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   min-width: 0;
   scroll-snap-align: start;
   
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
@@ -432,7 +432,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 }
 
 .slider-unl .views-field-title a:hover {
-  color: #900000;
+  color: var(--primary-color);
 }
 
 
@@ -452,9 +452,3 @@ form.views-exposed-form .bef-links a.bef-link--selected {
     flex-basis: calc((100% - 2 * 1.5rem) / 3) !important;
   }
 }
-
-
-
-
-
-

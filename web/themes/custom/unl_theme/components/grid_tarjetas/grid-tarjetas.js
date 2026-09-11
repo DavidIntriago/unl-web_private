@@ -143,9 +143,6 @@
     attach: function (context) {
       once("sitios-interes-carrusel-init", ".grid-tarjetas-container--sitios_interes", context)
         .forEach((contenedor) => inicializarCarrusel(contenedor, "sitios"));
-
-      once("marcas-carrusel-init", ".grid-tarjetas-container--marcas", context)
-        .forEach((contenedor) => inicializarCarrusel(contenedor, "marcas"));
     },
   };
 })(Drupal, once);

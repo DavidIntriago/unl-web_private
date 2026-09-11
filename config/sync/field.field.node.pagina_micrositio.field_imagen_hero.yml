@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_imagen_hero
-    - media.type.image
+    - media.type.imagen_hero_y_noticias
     - node.type.pagina_micrositio
 id: node.pagina_micrositio.field_imagen_hero
 field_name: field_imagen_hero
@@ -20,10 +20,10 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      imagen_hero_y_noticias: imagen_hero_y_noticias
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: image
 field_type: entity_reference

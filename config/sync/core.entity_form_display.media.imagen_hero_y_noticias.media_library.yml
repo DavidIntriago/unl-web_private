@@ -1,0 +1,38 @@
+uuid: 2f2403dc-6586-4b5e-b614-0857e207e812
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.imagen_hero_y_noticias.field_media_image_3
+    - image.style.thumbnail
+    - media.type.imagen_hero_y_noticias
+  module:
+    - svg_image
+id: media.imagen_hero_y_noticias.media_library
+targetEntityType: media
+bundle: imagen_hero_y_noticias
+mode: media_library
+content:
+  field_media_image_3:
+    type: image_image
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  path: true
+  status: true
+  uid: true

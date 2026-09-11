@@ -1,0 +1,11 @@
+uuid: 82ded5e8-c859-4ad5-bc07-a7d62201df60
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.imagen_cuadrada
+id: media.imagen_cuadrada
+target_entity_type_id: media
+target_bundle: imagen_cuadrada
+default_langcode: site_default
+language_alterable: false

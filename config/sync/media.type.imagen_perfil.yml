@@ -1,0 +1,13 @@
+uuid: cfbcf9c0-adc1-4b84-8960-e1817b373c74
+langcode: es
+status: true
+dependencies: {  }
+id: imagen_perfil
+label: 'Imagen Perfil'
+description: 'Imágenes tipo retrato para las tarjetas con variante "Autoridades"'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image_2
+field_map: {  }

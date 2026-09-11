@@ -1,0 +1,13 @@
+uuid: e5bb68af-05fb-486c-9f62-d503acf661d4
+langcode: es
+status: true
+dependencies: {  }
+id: imagen_cuadrada
+label: 'Imagen Cuadrada'
+description: 'Imágenes cuadradas para el carrusel de imágenes valido para las variantes "Rankings"'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image_5
+field_map: {  }

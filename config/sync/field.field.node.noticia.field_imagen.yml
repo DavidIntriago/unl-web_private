@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_imagen
-    - media.type.image
+    - media.type.horizontal_media_pantalla
     - node.type.noticia
 id: node.noticia.field_imagen
 field_name: field_imagen
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      horizontal_media_pantalla: horizontal_media_pantalla
     sort:
       field: _none
       direction: ASC

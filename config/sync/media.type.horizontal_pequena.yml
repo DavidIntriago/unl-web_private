@@ -1,0 +1,13 @@
+uuid: 2b9d43ad-6924-49cd-a85a-e691e53f7c42
+langcode: es
+status: true
+dependencies: {  }
+id: horizontal_pequena
+label: 'Horizontal Pequeña (Mínimo 350x175 px)'
+description: "Formato: fotografía horizontal pequeña (miniatura/tarjeta).\r\nTamaño mínimo: 350 x 175 px (proporción 2:1).\r\nRecomendaciones:\r\n- Centrar el contenido principal de la foto; evitar detalles importantes muy cerca de los bordes.\r\n- Evitar fotos verticales o cuadradas: se recortan al ajustarse a este formato horizontal."
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image_7
+field_map: {  }

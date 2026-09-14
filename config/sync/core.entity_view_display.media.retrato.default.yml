@@ -1,0 +1,35 @@
+uuid: 4f555048-3d7d-41af-95b0-1207891db3f5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.media.retrato.field_media_image_2
+    - media.type.retrato
+  module:
+    - svg_image
+id: media.retrato.default
+targetEntityType: media
+bundle: retrato
+mode: default
+content:
+  field_media_image_2:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

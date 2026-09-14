@@ -1,0 +1,11 @@
+uuid: 0b150531-5626-420a-bd3f-89d4d0908d43
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.horizontal_media_pantalla
+id: media.horizontal_media_pantalla
+target_entity_type_id: media
+target_bundle: horizontal_media_pantalla
+default_langcode: site_default
+language_alterable: false

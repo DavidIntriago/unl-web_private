@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_imagen
+    - media.type.cuadrada
+    - media.type.horizontal_pequena
     - media.type.icono_svg
-    - media.type.image
+    - media.type.retrato
     - paragraphs.paragraphs_type.tarjeta
 id: paragraph.tarjeta.field_imagen
 field_name: field_imagen
@@ -21,8 +23,10 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
+      cuadrada: cuadrada
+      horizontal_pequena: horizontal_pequena
       icono_svg: icono_svg
-      image: image
+      retrato: retrato
     sort:
       field: _none
       direction: ASC

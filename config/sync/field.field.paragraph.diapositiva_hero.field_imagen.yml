@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_imagen
-    - media.type.imagen_hero_y_noticias
+    - media.type.horizontal_pantalla_completa
     - media.type.remote_video
     - media.type.video
     - paragraphs.paragraphs_type.diapositiva_hero
@@ -22,7 +22,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      imagen_hero_y_noticias: imagen_hero_y_noticias
+      horizontal_pantalla_completa: horizontal_pantalla_completa
       remote_video: remote_video
       video: video
     sort:

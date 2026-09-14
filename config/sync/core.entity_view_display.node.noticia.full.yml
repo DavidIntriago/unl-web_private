@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.noticia.field_area
     - field.field.node.noticia.field_audio
     - field.field.node.noticia.field_body
-    - field.field.node.noticia.field_galeria
     - field.field.node.noticia.field_imagen
     - node.type.noticia
   module:
@@ -29,15 +28,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 104
-    region: content
-  field_galeria:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_imagen:
     type: entity_reference_entity_view

@@ -4,7 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_imagen
-    - media.type.imagen_convenio
+    - media.type.horizontal_pequena
+    - media.type.image
     - node.type.convenio
 id: node.convenio.field_imagen
 field_name: field_imagen
@@ -20,7 +21,8 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      imagen_convenio: imagen_convenio
+      horizontal_pequena: horizontal_pequena
+      image: image
     sort:
       field: _none
       direction: ASC

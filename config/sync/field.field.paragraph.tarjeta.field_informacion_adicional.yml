@@ -9,7 +9,7 @@ id: paragraph.tarjeta.field_informacion_adicional
 field_name: field_informacion_adicional
 entity_type: paragraph
 bundle: tarjeta
-label: informacion_adicional
+label: 'Información Adicional'
 description: 'Información adicional variante autoridades (títulos, ORCID, reseña)'
 required: false
 translatable: false

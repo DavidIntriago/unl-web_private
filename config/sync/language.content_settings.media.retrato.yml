@@ -1,0 +1,11 @@
+uuid: 1a13829a-531b-46f7-989b-1fd8dbeb69ef
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.retrato
+id: media.retrato
+target_entity_type_id: media
+target_bundle: retrato
+default_langcode: site_default
+language_alterable: false

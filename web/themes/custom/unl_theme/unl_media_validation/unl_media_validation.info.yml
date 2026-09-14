@@ -1,0 +1,5 @@
+name: 'UNL Media Validation'
+type: module
+description: 'Fuerza la validación de resolución mínima/máxima en el modal de Media Library.'
+package: UNL
+core_version_requirement: ^10 || ^11

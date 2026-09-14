@@ -1,0 +1,35 @@
+uuid: 8f29d254-c387-4ffa-956a-8dd5d21d0eb3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.media.horizontal_pequena.field_media_image_7
+    - media.type.horizontal_pequena
+  module:
+    - svg_image
+id: media.horizontal_pequena.default
+targetEntityType: media
+bundle: horizontal_pequena
+mode: default
+content:
+  field_media_image_7:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

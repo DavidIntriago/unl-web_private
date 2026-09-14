@@ -1,0 +1,11 @@
+uuid: 0ae9d726-da0a-4079-8e12-a7639408716f
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.horizontal_pequena
+id: media.horizontal_pequena
+target_entity_type_id: media
+target_bundle: horizontal_pequena
+default_langcode: site_default
+language_alterable: false

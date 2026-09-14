@@ -1,0 +1,38 @@
+uuid: d3b44159-e2ff-4a99-b3d8-fe6072531a63
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_image_5
+    - media.type.horizontal_pantalla_completa
+  module:
+    - image
+id: media.horizontal_pantalla_completa.field_media_image_5
+field_name: field_media_image_5
+entity_type: media
+bundle: horizontal_pantalla_completa
+label: Imagen
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 2000x1000
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

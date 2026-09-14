@@ -3,15 +3,14 @@ langcode: es
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_image
+    - field.storage.media.field_media_image_7
     - field.storage.node.field_enlace
-    - image.style.medium
     - node.type.convenio
   module:
-    - image
     - link
     - media
     - node
+    - svg_image
     - user
 id: slider_convenios
 label: 'Slider Convenios'
@@ -160,10 +159,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_media_image:
-          id: field_media_image
-          table: media__field_media_image
-          field: field_media_image
+        field_media_image_7:
+          id: field_media_image_7
+          table: media__field_media_image_7
+          field: field_media_image_7
           relationship: field_imagen
           group_type: group
           admin_label: ''
@@ -213,9 +212,13 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: medium
+            image_style: ''
             image_loading:
               attribute: lazy
+            svg_attributes:
+              width: null
+              height: null
+            svg_render_as_image: true
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -338,7 +341,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_media_image'
+        - 'config:field.storage.media.field_media_image_7'
         - 'config:field.storage.node.field_enlace'
   block_1:
     id: block_1
@@ -355,5 +358,5 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_media_image'
+        - 'config:field.storage.media.field_media_image_7'
         - 'config:field.storage.node.field_enlace'

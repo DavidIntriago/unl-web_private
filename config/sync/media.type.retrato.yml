@@ -1,0 +1,13 @@
+uuid: 7bf4c574-0dd8-40ff-928e-2f8792b66c67
+langcode: es
+status: true
+dependencies: {  }
+id: retrato
+label: 'Retrato (Mínimo 600x800 px)'
+description: "Formato: fotografía vertical (retrato), proporción 3:4.\r\nTamaño mínimo: 600 x 800 px.\r\nRecomendaciones:\r\n- Centrar el rostro verticalmente, dejando espacio arriba de la cabeza.\r\n- Encuadre desde los hombros/pecho hacia arriba.\r\n- Evitar fotos horizontales o cuadradas: la imagen se recorta automáticamente al subirla."
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image_2
+field_map: {  }

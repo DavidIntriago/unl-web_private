@@ -1,0 +1,35 @@
+uuid: e2fe9f79-5de1-435c-9242-ab87cba35f62
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.media.horizontal_media_pantalla.field_media_image_6
+    - media.type.horizontal_media_pantalla
+  module:
+    - svg_image
+id: media.horizontal_media_pantalla.default
+targetEntityType: media
+bundle: horizontal_media_pantalla
+mode: default
+content:
+  field_media_image_6:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

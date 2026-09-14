@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Fuerza la validación de resolución mínima/máxima en el modal de Media
+ * Library, que por un bug de Drupal core no respeta la configuración del
+ * campo de imagen. Ver: https://www.drupal.org/project/drupal/issues/3226629
+ *
+ * Versión estable: usa el plugin de restricción nativo de Drupal 11
+ * (FileImageDimensions) tal cual, sin intentar traducir su mensaje.
+ * El mensaje de error queda en inglés, pero la validación en sí
+ * (bloquear/aceptar imágenes) funciona de forma confiable.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for media_library_add_form_upload.
+ */
+function unl_media_validation_form_media_library_add_form_upload_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if (!isset($form['container']['upload'])) {
+    return;
+  }
+
+  $state = $form_state->get('media_library_state');
+  if (!$state) {
+    return;
+  }
+  $media_type_id = $state->getSelectedTypeId();
+
+  $media_type = \Drupal::entityTypeManager()
+    ->getStorage('media_type')
+    ->load($media_type_id);
+  if (!$media_type) {
+    return;
+  }
+
+  $source_field_name = $media_type->getSource()->getConfiguration()['source_field'] ?? NULL;
+  if (!$source_field_name) {
+    return;
+  }
+
+  $field_config = \Drupal::entityTypeManager()
+    ->getStorage('field_config')
+    ->load('media.' . $media_type_id . '.' . $source_field_name);
+  if (!$field_config) {
+    return;
+  }
+
+  $min_resolution = $field_config->getSetting('min_resolution');
+  $max_resolution = $field_config->getSetting('max_resolution');
+
+  if (empty($min_resolution) && empty($max_resolution)) {
+    return;
+  }
+
+  // Plugin de restricción real en Drupal 11 (reemplaza a la función
+  // deprecada file_validate_image_resolution). Usa un array asociativo.
+  $form['container']['upload']['#upload_validators']['FileImageDimensions'] = [
+    'minDimensions' => $min_resolution ?: 0,
+    'maxDimensions' => $max_resolution ?: 0,
+  ];
+}

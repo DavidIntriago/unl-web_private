@@ -1,0 +1,38 @@
+uuid: 4b76b90c-cf9a-4928-96e2-05c2a7ac36da
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_image_4
+    - media.type.cuadrada
+  module:
+    - image
+id: media.cuadrada.field_media_image_4
+field_name: field_media_image_4
+entity_type: media
+bundle: cuadrada
+label: Imagen
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 1024x1024
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

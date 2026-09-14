@@ -1,0 +1,35 @@
+uuid: 8f40d51d-1066-4d2b-aa9d-cf4cbb76b230
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.media.cuadrada.field_media_image_4
+    - media.type.cuadrada
+  module:
+    - svg_image
+id: media.cuadrada.default
+targetEntityType: media
+bundle: cuadrada
+mode: default
+content:
+  field_media_image_4:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,11 @@
+uuid: 4bd8949e-8e52-4a99-83f2-e6833e7eb898
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.cuadrada
+id: media.cuadrada
+target_entity_type_id: media
+target_bundle: cuadrada
+default_langcode: site_default
+language_alterable: false

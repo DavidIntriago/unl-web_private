@@ -11,8 +11,16 @@
       {% if media_entity %}
         {% set tipo_media = media_entity.bundle() %}
 
-        {% if tipo_media == 'image' %}
-          {% set url_media = file_url(media_entity.field_media_image.entity.uri.value) %}
+        {#
+        /**El tipo de multimedia es el que sale en nombre de sistema dentro de tipos de multimedia en la pestaña editar, tambien cambiar en el twg correspondiente al parrafo**/
+        #}
+
+        {% if tipo_media == 'horizontal_pantalla_completa' %}
+         {#
+        /**Tomar en cuenta field_media_image_5 ya que es el nombre de maquina de la imagen no del tipo de multimedia, este esta en administrar campos, al lado de editar **/
+        #}
+        
+          {% set url_media = file_url(media_entity.field_media_image_5.entity.uri.value) %}
         
         {% elseif tipo_media == 'video' %}
           {% set url_media = file_url(media_entity.field_media_video_file.entity.uri.value) %}

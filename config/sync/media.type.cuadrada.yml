@@ -1,0 +1,13 @@
+uuid: 05810404-8a6c-4856-8aa6-031ff48640fd
+langcode: es
+status: true
+dependencies: {  }
+id: cuadrada
+label: 'Cuadrada (Mínimo 1024x1024 px)'
+description: "Formato: fotografía cuadrada, proporción 1:1 (ancho = alto).\r\nTamaño mínimo: 1024 x 1024 px.\r\nRecomendaciones:\r\n- Centrar el elemento principal (rostro, logo, objeto) en el medio de la imagen.\r\n- Evitar fotos rectangulares u horizontales: se recortan automáticamente al ajustarse al formato cuadrado."
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image_4
+field_map: {  }

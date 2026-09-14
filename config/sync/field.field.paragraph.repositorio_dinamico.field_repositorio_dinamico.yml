@@ -26,5 +26,6 @@ settings:
     block: block
   preselect_views:
     repositorio_institucional: repositorio_institucional
-  enabled_settings: {  }
+  enabled_settings:
+    argument: argument
 field_type: viewsreference

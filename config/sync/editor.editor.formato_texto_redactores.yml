@@ -11,6 +11,7 @@ editor: ckeditor5
 settings:
   toolbar:
     items:
+      - style
       - bold
       - italic
       - underline
@@ -32,6 +33,8 @@ settings:
       - indent
       - undo
       - redo
+      - code
+      - sourceEditing
   plugins:
     ckeditor5_alignment:
       enabled_alignments:
@@ -54,6 +57,17 @@ settings:
         startIndex: true
         styles: true
       multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags:
+        - '<span>'
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Letra Capital'
+          element: '<span class="letra-capital">'
+        -
+          label: 'Párrafo Resaltado'
+          element: '<p class="caja-resaltada">'
     media_media:
       allow_view_mode_override: false
 image_upload:

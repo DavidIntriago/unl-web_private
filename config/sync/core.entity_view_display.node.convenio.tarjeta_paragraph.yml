@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.tarjeta_paragraph
-    - field.field.node.convenio.field_area
     - field.field.node.convenio.field_enlace
     - field.field.node.convenio.field_imagen
     - field.field.node.convenio.field_prioridad
@@ -16,14 +15,6 @@ targetEntityType: node
 bundle: convenio
 mode: tarjeta_paragraph
 content:
-  field_area:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 5
-    region: content
   field_imagen:
     type: entity_reference_entity_view
     label: hidden

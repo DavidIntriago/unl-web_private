@@ -3,7 +3,6 @@ langcode: es
 status: true
 dependencies:
   config:
-    - field.field.node.convenio.field_area
     - field.field.node.convenio.field_enlace
     - field.field.node.convenio.field_imagen
     - field.field.node.convenio.field_prioridad
@@ -16,14 +15,6 @@ targetEntityType: node
 bundle: convenio
 mode: default
 content:
-  field_area:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 104
-    region: content
   field_enlace:
     type: link
     label: above

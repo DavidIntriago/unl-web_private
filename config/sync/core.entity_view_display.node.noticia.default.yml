@@ -9,13 +9,8 @@ dependencies:
     - field.field.node.noticia.field_imagen
     - node.type.noticia
   module:
-    - layout_builder
     - text
     - user
-third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
 id: node.noticia.default
 targetEntityType: node
 bundle: noticia
@@ -27,38 +22,37 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 104
     region: content
   field_audio:
     type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: default
-      link: true
+      link: false
     third_party_settings: {  }
-    weight: 4
+    weight: 106
     region: content
   field_body:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 105
     region: content
   field_imagen:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: default
-      link: true
+      view_mode: full
+      link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 101
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 100
     region: content
 hidden:
   langcode: true
-  layout_builder__layout: true

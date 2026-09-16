@@ -1,0 +1,11 @@
+uuid: 0f1b2e14-6b50-4ff3-8992-e789a50e50e4
+langcode: es
+status: true
+dependencies:
+  module:
+    - media
+id: media.fondo_footer
+label: 'Fondo Footer'
+description: null
+targetEntityType: media
+cache: true

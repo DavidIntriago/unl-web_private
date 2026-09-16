@@ -1,0 +1,23 @@
+uuid: 043385ba-5a49-440d-85c8-d6f14c7e320b
+langcode: es
+status: false
+dependencies:
+  content:
+    - 'block_content:video_fondo_footer:5e4903fb-b714-456f-8247-9c85428d0dd9'
+  module:
+    - block_content
+  theme:
+    - unl_theme
+id: unl_theme_fondodelfooter
+theme: unl_theme
+region: branding
+weight: 0
+provider: null
+plugin: 'block_content:5e4903fb-b714-456f-8247-9c85428d0dd9'
+settings:
+  id: 'block_content:5e4903fb-b714-456f-8247-9c85428d0dd9'
+  label: 'Fondo del Footer'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

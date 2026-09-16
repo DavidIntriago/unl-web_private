@@ -23,7 +23,6 @@
       <div class="noticia-full__separador"></div>
     </header>
 
-
     {% set url_compartir = url('<current>')|render|url_encode %}
     {% set titulo_compartir = label|url_encode %}
 
@@ -94,10 +93,23 @@
             {{ node.field_audio.entity.field_descipcion_audio.value }}
           </div>
         {% endif %}
+
+      </div>
     {% endif %}
 
-    <div class="noticia-full__cuerpo">
-      {{ content.field_body }}
+    <div class="layout-dos-columnas">
+      
+      <div class="noticia-full__cuerpo">
+        {{ content.field_body }}
+      </div>
+
+      <aside class="layout-sidebar">
+        <h3 class="sidebar-titulo" style="font-size: 1.5rem; color: var(--text-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; margin-top:0; margin-bottom: 1.5rem;">Últimas Noticias</h3>
+        
+        {{ drupal_view('listado_noticias', 'block_2', node.id) }}
+      </aside>
+
     </div>
-  </div>
+
+  </div> 
 </article>

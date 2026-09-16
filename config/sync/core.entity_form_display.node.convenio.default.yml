@@ -3,6 +3,7 @@ langcode: es
 status: true
 dependencies:
   config:
+    - field.field.node.convenio.field_area
     - field.field.node.convenio.field_enlace
     - field.field.node.convenio.field_imagen
     - field.field.node.convenio.field_prioridad
@@ -21,6 +22,16 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_area:
+    type: entity_reference_autocomplete_tags
+    weight: 124
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_enlace:
     type: link_default

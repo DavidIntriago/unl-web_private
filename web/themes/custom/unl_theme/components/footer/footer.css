@@ -248,11 +248,13 @@
   height: 100%;
 }
 
-.site-footer__bg-video-source video {
+.site-footer__bg-video-source video,
+.site-footer__bg-video-source img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .site-footer__bg-overlay {

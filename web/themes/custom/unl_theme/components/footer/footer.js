@@ -34,37 +34,52 @@
         mapBlock.appendChild(wrapper);
       }
     }
-    // VIDEO DE FONDO
-    var videoSource = document.querySelector('.site-footer__bg-video-source');
 
-    if (videoSource) {
-      var videoLink = videoSource.querySelector('a[href]');
+    // VIDEO O IMAGEN DE FONDO DEL FOOTER
+    var mediaSource = document.querySelector('.site-footer__bg-video-source');
 
-      if (videoLink) {
-        var videoUrl = videoLink.getAttribute('href');
+    if (mediaSource) {
+      var mediaLink = mediaSource.querySelector('a[href]');
 
-        var video = document.createElement('video');
-        video.autoplay = true;
-        video.muted = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.setAttribute('aria-hidden', 'true');
+      if (mediaLink) {
+        var mediaUrl = mediaLink.getAttribute('href');
+        var extension = mediaUrl.split('.').pop().toLowerCase().split('?')[0];
 
-        var source = document.createElement('source');
-        source.src = videoUrl;
+        var extensionesVideo = ['mp4', 'webm', 'ogv'];
+        var extensionesImagen = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
 
-        var extension = videoUrl.split('.').pop().toLowerCase().split('?')[0];
-        var mimePorExtension = {
-          mp4: 'video/mp4',
-          webm: 'video/webm',
-          ogv: 'video/ogg',
-        };
-        source.type = mimePorExtension[extension] || 'video/mp4';
+        if (extensionesVideo.indexOf(extension) !== -1) {
+          var video = document.createElement('video');
+          video.autoplay = true;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.setAttribute('aria-hidden', 'true');
 
-        video.appendChild(source);
+          var source = document.createElement('source');
+          source.src = mediaUrl;
 
-        videoSource.innerHTML = '';
-        videoSource.appendChild(video);
+          var mimePorExtension = {
+            mp4: 'video/mp4',
+            webm: 'video/webm',
+            ogv: 'video/ogg',
+          };
+          source.type = mimePorExtension[extension] || 'video/mp4';
+
+          video.appendChild(source);
+
+          mediaSource.innerHTML = '';
+          mediaSource.appendChild(video);
+
+        } else if (extensionesImagen.indexOf(extension) !== -1) {
+          var mediaImg = document.createElement('img');
+          mediaImg.src = mediaUrl;
+          mediaImg.setAttribute('aria-hidden', 'true');
+          mediaImg.alt = '';
+
+          mediaSource.innerHTML = '';
+          mediaSource.appendChild(mediaImg);
+        }
       }
     }
   });

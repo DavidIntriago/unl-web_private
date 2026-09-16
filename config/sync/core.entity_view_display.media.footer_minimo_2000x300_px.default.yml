@@ -1,0 +1,36 @@
+uuid: 2ee73241-1355-4eb5-aeac-d796264bb91d
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.media.footer_minimo_2000x300_px.field_media_image_3
+    - image.style.large
+    - media.type.footer_minimo_2000x300_px
+  module:
+    - svg_image
+id: media.footer_minimo_2000x300_px.default
+targetEntityType: media
+bundle: footer_minimo_2000x300_px
+mode: default
+content:
+  field_media_image_3:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

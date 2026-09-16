@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: video_fondo_footer
-label: 'Video Fondo Footer'
+label: 'Fondo Footer'
 revision: false
 description: null

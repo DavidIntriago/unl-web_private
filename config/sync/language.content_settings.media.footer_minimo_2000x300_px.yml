@@ -1,0 +1,11 @@
+uuid: 6fe7e6b6-20e2-42df-8fec-07ac642921c6
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.footer_minimo_2000x300_px
+id: media.footer_minimo_2000x300_px
+target_entity_type_id: media
+target_bundle: footer_minimo_2000x300_px
+default_langcode: site_default
+language_alterable: false

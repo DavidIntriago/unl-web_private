@@ -1,0 +1,13 @@
+uuid: f67e65f5-0a9a-45c5-a3d0-2f1bf3eba23c
+langcode: es
+status: true
+dependencies: {  }
+id: footer_minimo_2000x300_px
+label: 'Footer (Mínimo 2000x400 px)'
+description: "Formato: fotografía horizontal panorámica (banner tipo franja).\r\nTamaño mínimo: 2000 x 300 px\r\nRecomendaciones:\r\nCentrar el contenido principal en el tercio central horizontal, igual que en el hero — pero aquí es aún más crítico, porque al ser una franja tan baja (300px), cualquier elemento que no esté centrado verticalmente también se recorta con facilidad.\r\nEvitar fotos con rostros o elementos clave cerca de los bordes superior/inferior, no solo laterales: con solo 300px de alto, el margen de seguridad vertical es mínimo.\r\nEvitar fotos verticales, cuadradas o con mucho detalle fino — al comprimir tanto la altura, texturas o rostros pequeños se pierden o se ven pixelados."
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image_3
+field_map: {  }

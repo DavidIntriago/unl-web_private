@@ -1,13 +1,13 @@
 <footer class="site-footer">
 
-  {% if page.footer_video %}
-    <div class="site-footer__bg-video-wrapper" aria-hidden="true">
-      <div class="site-footer__bg-video-source">
-        {{ page.footer_video }}
-      </div>
+{% if page.fondo_footer %}
+  <div class="site-footer__bg-video-wrapper" aria-hidden="true">
+    <div class="site-footer__bg-video-source">
+      {{ page.fondo_footer }}
     </div>
-    <div class="site-footer__bg-overlay" aria-hidden="true"></div>
-  {% endif %}
+  </div>
+  <div class="site-footer__bg-overlay" aria-hidden="true"></div>
+{% endif %}
 
   <div class="site-footer__container">
 

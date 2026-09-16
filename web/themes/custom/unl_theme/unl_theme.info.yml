@@ -16,5 +16,5 @@ regions:
   footer_map: Footer - Mapa
   lateral_menu: Menú lateral
   sidebar_micrositio: Sidebar de Micrositio
-  footer_video: Video de fondo del footer
   sidebar_rigth: "Barra lateral derecha"
+  fondo_footer: Fondo del footer

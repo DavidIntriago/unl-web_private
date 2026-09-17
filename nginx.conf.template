@@ -60,63 +60,9 @@ http {
         # -------------------------------------------------
         # PROXYs
         # -------------------------------------------------
-        location / {
-            # Apunta al nombre del contenedor de Drupal definido en el docker-compose
-            proxy_pass http://unl-app:80;
-            
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-
-            proxy_hide_header X-Powered-By;
-            add_header X-Backend-Server "unl-drupal-core" always;
-        }
-
-        location ~ /\. {
-            deny all;
-            access_log off;
-            log_not_found off;
-        }
-
-        location ~* /(composer\.(json|lock)|web\.config|package\.json|package-lock\.json|yarn\.lock)$ {
-            deny all;
-            access_log off;
-            log_not_found off;
-        }
-
-        location ^~ /vendor/ {
-            deny all;
-            return 404;
-        }
-    }
-
-    # ============================================
-    # SERVIDOR HTTPS
-    # ============================================
-    #server {
-    #    listen 443 ssl;
-    #    server_name ${DOMAIN_NAME};
-#
-        # CERTIFICADOS
-#        ssl_certificate /etc/ssl/certs/fullchain.pem; 
-#        ssl_certificate_key /etc/ssl/certs/privkey.pem; 
-#
-        # CONFIGURACION SSL
-#        ssl_prefer_server_ciphers on; 
-#        ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!MD5:!RC4:!DES:!3DES';
-#        ssl_protocols TLSv1.2 TLSv1.3;    
-#        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains" always;
-#        ssl_stapling on;
-#        ssl_stapling_verify on;
-
-#        client_max_body_size 100M;
-        # -------------------------------------------------
-        # PROXYs
-        # -------------------------------------------------
 #        location / {
 #            # Apunta al nombre del contenedor de Drupal definido en el docker-compose
-#            proxy_pass http://unl-app-container:80;
+#            proxy_pass http://unl-app:80;
 #            
 #            proxy_set_header Host $host;
 #            proxy_set_header X-Real-IP $remote_addr;
@@ -126,19 +72,73 @@ http {
 #            proxy_hide_header X-Powered-By;
 #            add_header X-Backend-Server "unl-drupal-core" always;
 #        }
+#
 #        location ~ /\. {
 #            deny all;
 #            access_log off;
 #            log_not_found off;
 #        }
+#
 #        location ~* /(composer\.(json|lock)|web\.config|package\.json|package-lock\.json|yarn\.lock)$ {
 #            deny all;
 #            access_log off;
 #            log_not_found off;
 #        }
+#
 #        location ^~ /vendor/ {
 #            deny all;
 #            return 404;
 #        }
 #    }
+
+    # ============================================
+    # SERVIDOR HTTPS
+    # ============================================
+    server {
+        listen 443 ssl;
+        server_name ${DOMAIN_NAME};
+
+        # CERTIFICADOS
+        ssl_certificate /etc/ssl/certs/fullchain.pem; 
+        ssl_certificate_key /etc/ssl/certs/privkey.pem; 
+
+        # CONFIGURACION SSL
+        ssl_prefer_server_ciphers on; 
+        ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!MD5:!RC4:!DES:!3DES';
+        ssl_protocols TLSv1.2 TLSv1.3;    
+        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains" always;
+        ssl_stapling on;
+        ssl_stapling_verify on;
+
+        client_max_body_size 100M;
+        # -------------------------------------------------
+        # PROXYs
+        # -------------------------------------------------
+        location / {
+            # Apunta al nombre del contenedor de Drupal definido en el docker-compose
+            proxy_pass http://unl-app-container:80;
+            
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_hide_header X-Powered-By;
+            add_header X-Backend-Server "unl-drupal-core" always;
+        }
+        location ~ /\. {
+            deny all;
+            access_log off;
+            log_not_found off;
+        }
+        location ~* /(composer\.(json|lock)|web\.config|package\.json|package-lock\.json|yarn\.lock)$ {
+            deny all;
+            access_log off;
+            log_not_found off;
+        }
+        location ^~ /vendor/ {
+            deny all;
+            return 404;
+        }
+    }
 }

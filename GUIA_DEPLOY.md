@@ -74,3 +74,14 @@ Aplica los cambios finalmente.
 ```bash
 sudo docker exec unl-app-container vendor/bin/drush cr
 ```
+
+## Actualizaciones de Certificados
+### Paso 1: Actualizar Certificados en Servidor
+Copia los nuevos certificados y pégalos en la ruta /etc/ssl/unl/ de tu servidor, sobrescribiendo los antiguos. Nota: Con los mismos nombres
+
+### Paso 2: Recarga de Certificados Nuevos 
+Ejecutar recarga en caliente. Como Nginx carga los certificados en la memoria RAM al encender, necesitas decirle que los lea de nuevo sin interrumpir los contendores. 
+
+```bash
+sudo docker exec unl-webapp-container nginx -s reload
+```

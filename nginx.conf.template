@@ -18,10 +18,17 @@ http {
     server_tokens off; #Oculta version de nginx en logs
 
     add_header X-Frame-Options "SAMEORIGIN" always; # bloquea clicsjackings
+    add_header Content-Security-Policy "default-src * data: 'unsafe-eval' 'unsafe-inline'" always;
     add_header X-Content-Type-Options "nosniff" always; # bloquea lectura de archivos raros
     add_header X-XSS-Protection "1; mode=block" always; # filtro para inyecciones
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;    
+    add_header X-Permitted-Cross-Domain-Policies none;
+    add_header Clear-Site-Data *;
+    add_header Cross-Origin-Embedder-Policy "require-corp";
+    add_header Cross-Origin-Opener-Policy "same-origin";
+    add_header Cross-Origin-Resource-Policy "same-origin";
+    add_header Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), payment=()";
+
     # Solo dominios de Drupal que puede cargar
     add_header Content-Security-Policy "
         default-src 'self'; 
@@ -99,16 +106,26 @@ http {
         server_name ${DOMAIN_NAME};
 
         # CERTIFICADOS
-        ssl_certificate /etc/ssl/certs/fullchain.pem; 
-        ssl_certificate_key /etc/ssl/certs/privkey.pem; 
-
+        ssl_certificate /etc/ssl/certs/ServerCertificateBundle.crt; 
+        ssl_certificate_key /etc/ssl/certs/*.unl.edu.ec.key;
+    
         # CONFIGURACION SSL
         ssl_prefer_server_ciphers on; 
         ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!MD5:!RC4:!DES:!3DES';
+        
+        # Disable SSLv3, TLSv1
         ssl_protocols TLSv1.2 TLSv1.3;    
-        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains" always;
+        
+        
+        # Enable HSTS
+        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+        add_header X-Content-Type-Options nosniff;
+        add_header X-XSS-Protection "1; mode=block";        
+
+
         ssl_stapling on;
         ssl_stapling_verify on;
+        ssl_trusted_certificate /etc/ssl/certs/TrustedRoot.crt;
 
         client_max_body_size 100M;
         # -------------------------------------------------
@@ -136,6 +153,10 @@ http {
             access_log off;
             log_not_found off;
         }
+        location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
+        expires max;
+        log_not_found off;
+        }
         location ^~ /vendor/ {
             deny all;
             return 404;

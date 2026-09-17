@@ -73,7 +73,7 @@ services:
       - ./nginx.conf.template:/etc/nginx/nginx.conf.template:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - ./letsencrypt:/etc/ssl/certs:ro
+      - /etc/ssl/unl:/etc/ssl/certs:ro
     ports:
       - "80:80"
       - "443:443"

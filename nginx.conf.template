@@ -1,165 +1,129 @@
-user  nginx;
-worker_processes  auto;
+user  nginx;
+worker_processes  auto;
 
-error_log  /var/log/nginx/error.log warn;
-pid        /var/run/nginx.pid;
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
 
 events {
-    worker_connections  1024;
+    worker_connections  1024;
 }
 
 http {
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
-    sendfile        on;
-    keepalive_timeout  65;
-    
-    # SEGURIDADD
-    server_tokens off; #Oculta version de nginx en logs
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
 
-    add_header X-Frame-Options "SAMEORIGIN" always; # bloquea clicsjackings
-    add_header Content-Security-Policy "default-src * data: 'unsafe-eval' 'unsafe-inline'" always;
-    add_header X-Content-Type-Options "nosniff" always; # bloquea lectura de archivos raros
-    add_header X-XSS-Protection "1; mode=block" always; # filtro para inyecciones
-    add_header Referrer-Policy "no-referrer-when-downgrade" always;    
-    add_header X-Permitted-Cross-Domain-Policies none;
-    add_header Clear-Site-Data *;
-    add_header Cross-Origin-Embedder-Policy "require-corp";
-    add_header Cross-Origin-Opener-Policy "same-origin";
-    add_header Cross-Origin-Resource-Policy "same-origin";
-    add_header Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), payment=()";
+    server_tokens off; # Oculta version de nginx en logs
 
-    # Solo dominios de Drupal que puede cargar
-    add_header Content-Security-Policy "
-        default-src 'self'; 
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-            https://www.googletagmanager.com 
-            https://www.google-analytics.com; 
-        style-src 'self' 'unsafe-inline' 
-            https://fonts.googleapis.com; 
-        img-src 'self' data: blob: https: 
-            https://www.google-analytics.com; 
-        font-src 'self' data: 
-            https://fonts.gstatic.com; 
-        connect-src 'self' 
-            https://www.google-analytics.com;
-    " always;
+    # Rendimiento
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css text/xml application/json application/javascript application/xml+rss application/atom+xml image/svg+xml;
 
-    # Rendimiento
-    gzip on;
-    gzip_vary on;
-    gzip_proxied any;
-    gzip_comp_level 6;
-    gzip_types text/plain text/css text/xml application/json application/javascript application/xml+rss application/atom+xml image/svg+xml;
+    # ============================================
+    # SERVIDOR HTTP (puerto 80) - redirige a HTTPS
+    # ============================================
+    server {
+        listen 80;
+        server_name ${DOMAIN_NAME};
 
-    # ============================================
-    # SERVIDOR HTTPPP
-    # ============================================
-    server {
-        listen 80;
-        server_name ${DOMAIN_NAME};
-	
-	client_max_body_size 50M;
-#        location / {
-#             return 301 https://$host$request_uri;
-#        }
+        client_max_body_size 50M;
 
-        # -------------------------------------------------
-        # PROXYs
-        # -------------------------------------------------
-#        location / {
-#            # Apunta al nombre del contenedor de Drupal definido en el docker-compose
-#            proxy_pass http://unl-app:80;
-#            
-#            proxy_set_header Host $host;
-#            proxy_set_header X-Real-IP $remote_addr;
-#            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-#            proxy_set_header X-Forwarded-Proto $scheme;
-#
-#            proxy_hide_header X-Powered-By;
-#            add_header X-Backend-Server "unl-drupal-core" always;
-#        }
-#
-#        location ~ /\. {
-#            deny all;
-#            access_log off;
-#            log_not_found off;
-#        }
-#
-#        location ~* /(composer\.(json|lock)|web\.config|package\.json|package-lock\.json|yarn\.lock)$ {
-#            deny all;
-#            access_log off;
-#            log_not_found off;
-#        }
-#
-#        location ^~ /vendor/ {
-#            deny all;
-#            return 404;
-#        }
-#    }
+        return 301 https://$host$request_uri;
+    }
 
-    # ============================================
-    # SERVIDOR HTTPS
-    # ============================================
-    server {
-        listen 443 ssl;
-        server_name ${DOMAIN_NAME};
+    # ============================================
+    # SERVIDOR HTTPS (puerto 443)
+    # ============================================
+    server {
+        listen 443 ssl;
+        server_name ${DOMAIN_NAME};
 
-        # CERTIFICADOS
-        ssl_certificate /etc/ssl/certs/ServerCertificateBundle.crt; 
-        ssl_certificate_key /etc/ssl/certs/*.unl.edu.ec.key;
-    
-        # CONFIGURACION SSL
-        ssl_prefer_server_ciphers on; 
-        ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!MD5:!RC4:!DES:!3DES';
-        
-        # Disable SSLv3, TLSv1
-        ssl_protocols TLSv1.2 TLSv1.3;    
-        
-        
-        # Enable HSTS
-        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-        add_header X-Content-Type-Options nosniff;
-        add_header X-XSS-Protection "1; mode=block";        
+        # CERTIFICADOS
+        ssl_certificate /etc/ssl/certs/ServerCertificateBundle.crt;
+        ssl_certificate_key /etc/ssl/certs/*.unl.edu.ec.key;
 
+        # CONFIGURACION SSL
+        ssl_prefer_server_ciphers on;
+        ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!MD5:!RC4:!DES:!3DES';
 
-        ssl_stapling on;
-        ssl_stapling_verify on;
-        ssl_trusted_certificate /etc/ssl/certs/TrustedRoot.crt;
+        # Disable SSLv3, TLSv1
+        ssl_protocols TLSv1.2 TLSv1.3;
 
-        client_max_body_size 100M;
-        # -------------------------------------------------
-        # PROXYs
-        # -------------------------------------------------
-        location / {
-            # Apunta al nombre del contenedor de Drupal definido en el docker-compose
-            proxy_pass http://unl-app-container:80;
-            
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+        ssl_stapling on;
+        ssl_stapling_verify on;
+        ssl_trusted_certificate /etc/ssl/certs/TrustedRoot.crt;
 
-            proxy_hide_header X-Powered-By;
-            add_header X-Backend-Server "unl-drupal-core" always;
-        }
-        location ~ /\. {
-            deny all;
-            access_log off;
-            log_not_found off;
-        }
-        location ~* /(composer\.(json|lock)|web\.config|package\.json|package-lock\.json|yarn\.lock)$ {
-            deny all;
-            access_log off;
-            log_not_found off;
-        }
-        location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
-        expires max;
-        log_not_found off;
-        }
-        location ^~ /vendor/ {
-            deny all;
-            return 404;
-        }
-    }
+        # ---------------------------------------------------
+        # SEGURIDAD - todas las cabeceras van aquí para que
+        # realmente se apliquen (este server no hereda nada
+        # de http{} en cuanto define su propio add_header)
+        # ---------------------------------------------------
+        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload" always;
+        add_header X-Content-Type-Options "nosniff" always; # bloquea lectura de archivos raros
+        add_header X-XSS-Protection "1; mode=block" always; # filtro para inyecciones
+        add_header X-Frame-Options "SAMEORIGIN" always; # bloquea clickjacking
+        add_header Referrer-Policy "no-referrer-when-downgrade" always;
+        add_header X-Permitted-Cross-Domain-Policies none always;
+        add_header Clear-Site-Data * always;
+        add_header Cross-Origin-Embedder-Policy "require-corp" always;
+        add_header Cross-Origin-Opener-Policy "same-origin" always;
+        add_header Cross-Origin-Resource-Policy "same-origin" always;
+        add_header Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), payment=()" always;
+
+        # Solo dominios de Drupal que puede cargar
+        add_header Content-Security-Policy "
+            default-src 'self';
+            script-src 'self' 'unsafe-inline' 'unsafe-eval'
+                https://www.googletagmanager.com
+                https://www.google-analytics.com;
+            style-src 'self' 'unsafe-inline'
+                https://fonts.googleapis.com;
+            img-src 'self' data: blob: https:
+                https://www.google-analytics.com;
+            font-src 'self' data:
+                https://fonts.gstatic.com;
+            connect-src 'self'
+                https://www.google-analytics.com;
+        " always;
+
+        client_max_body_size 100M;
+
+        # -------------------------------------------------
+        # PROXYs
+        # -------------------------------------------------
+        location / {
+            # Apunta al nombre del contenedor de Drupal definido en el docker-compose
+            proxy_pass http://unl-app-container:80;
+
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_hide_header X-Powered-By;
+            add_header X-Backend-Server "unl-drupal-core" always;
+        }
+        location ~ /\. {
+            deny all;
+            access_log off;
+            log_not_found off;
+        }
+        location ~* /(composer\.(json|lock)|web\.config|package\.json|package-lock\.json|yarn\.lock)$ {
+            deny all;
+            access_log off;
+            log_not_found off;
+        }
+        location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
+            expires max;
+            log_not_found off;
+        }
+        location ^~ /vendor/ {
+            deny all;
+            return 404;
+        }
+    }
 }

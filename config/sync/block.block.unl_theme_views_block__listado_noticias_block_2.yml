@@ -1,6 +1,6 @@
 uuid: fc73516f-f934-4b7c-8863-d93656543e74
 langcode: es
-status: true
+status: false
 dependencies:
   config:
     - views.view.listado_noticias
@@ -11,7 +11,7 @@ dependencies:
     - unl_theme
 id: unl_theme_views_block__listado_noticias_block_2
 theme: unl_theme
-region: sidebar_rigth
+region: branding
 weight: 0
 provider: null
 plugin: 'views_block:listado_noticias-block_2'

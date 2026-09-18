@@ -586,6 +586,32 @@
   z-index: 10;
 }
 
+/*ÍCONOS DE REDES DENTRO DEL MODAL DE AUTORIDADES*/
+.tarjeta-autoridad__redes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tarjeta-autoridad__red-icono {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  transition: opacity 0.2s ease;
+}
+
+.tarjeta-autoridad__red-icono:hover {
+  opacity: 0.7;
+}
+
+.tarjeta-autoridad__red-icono svg {
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 768px) {
   .tarjeta-autoridad {
     aspect-ratio: unset;

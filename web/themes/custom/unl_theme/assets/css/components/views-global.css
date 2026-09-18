@@ -2,20 +2,20 @@
 .titulo-vista-global {
   font-size: 2.2rem;
   font-weight: 700;
-  margin: 0; 
+  margin: 0;
   padding-bottom: 12px;
   position: relative;
   letter-spacing: -0.5px;
-  text-align: center; 
+  text-align: center;
 }
 
 .titulo-vista-global::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%; 
+  left: 50%;
   transform: translateX(-50%);
-  width: 60px; 
+  width: 60px;
   height: 4px;
   background-color: var(--primary-color);
   border-radius: 2px;
@@ -24,7 +24,7 @@
 .titulo-vista-paragraph {
   font-size: 2rem;
   position: relative;
-  text-align: center; 
+  text-align: center;
   padding-bottom: 15px;
 }
 
@@ -32,9 +32,9 @@
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%; 
+  left: 50%;
   transform: translateX(-50%);
-  width: 100px; 
+  width: 100px;
   height: 4px;
   background-color: #900000;
   border-radius: 2px;
@@ -48,7 +48,7 @@
   max-width: 1420px;
   width: 100%;
   margin: 0 auto;
-  display: block; 
+  display: block;
 }
 
 .vista-contenida > header,
@@ -73,13 +73,13 @@ table.views-table {
 }
 
 table.views-table th {
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
   color: #333333;
   padding: 16px;
   text-align: left;
   font-weight: bold;
   border-bottom: 3px solid var(--primary-color);
-  text-transform: uppercase; 
+  text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
@@ -93,7 +93,7 @@ table.views-table td {
 }
 
 table.views-table tbody tr:last-child td {
-  border-bottom: none; 
+  border-bottom: none;
 }
 
 table.views-table tbody tr:hover {
@@ -101,16 +101,16 @@ table.views-table tbody tr:hover {
 }
 
 table.views-table td a {
-  display: block; 
+  display: block;
   position: relative;
-  padding-left: 18px; 
-  margin-bottom: 8px; 
+  padding-left: 18px;
+  margin-bottom: 8px;
   text-decoration: none;
   line-height: 1.4;
 }
 
 table.views-table td a:last-child {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 table.views-table td a:hover {
@@ -131,22 +131,21 @@ table.views-table td a::before {
 /* filtros */
 form.views-exposed-form {
   display: flex;
-  flex-direction: column; 
-  gap: 1.5rem;        
-  margin-bottom: 24px; 
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 24px;
   width: 100%;
-  background: transparent; 
-
+  background: transparent;
 }
 
 form.views-exposed-form .form-item:has(input[type="text"]),
 form.views-exposed-form .form-item:has(select) {
   width: 100%; /* Ocupa todo el ancho */
-  background-color: var(--surface-color); 
-  padding: 1.5rem; 
+  background-color: var(--surface-color);
+  padding: 1.5rem;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
-  border-left: 5px solid var(--primary-color); 
+  border-left: 5px solid var(--primary-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
   margin: 0;
@@ -170,7 +169,7 @@ form.views-exposed-form select {
   font-size: 1rem;
   background-color: #fafafa;
   transition: all 0.3s ease;
-  width: 100%; 
+  width: 100%;
   box-sizing: border-box;
   color: #333333;
 }
@@ -178,7 +177,8 @@ form.views-exposed-form select {
 form.views-exposed-form input[type="text"]:focus,
 form.views-exposed-form select:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 10%, transparent); 
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--primary-color) 10%, transparent);
   outline: none;
   background-color: var(--surface-color);
 }
@@ -196,7 +196,7 @@ form.views-exposed-form .form-item:has(.bef-links) {
 form.views-exposed-form .bef-links ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; 
+  gap: 10px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -220,13 +220,13 @@ form.views-exposed-form .bef-links a {
   display: block;
   padding: 12px 24px;
   text-decoration: none;
-  color: var(--primary-color); 
+  color: var(--primary-color);
   font-weight: 600;
   font-size: 1rem;
-  background-color: var(--surface-color); 
+  background-color: var(--surface-color);
   border: 1px solid #e0e0e0;
   border-bottom: none;
-  border-radius: 12px 12px 0 0; 
+  border-radius: 12px 12px 0 0;
   transition: all 0.3s ease;
 }
 
@@ -245,10 +245,10 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 /* Acordion */
 .acordeon-global-item {
   border: 1px solid #e0e0e0;
-  border-radius: 12px; 
+  border-radius: 12px;
   background-color: var(--surface-color);
-  overflow: hidden; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
 }
 
@@ -257,11 +257,13 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   font-weight: 600;
   font-size: 1.05rem;
   color: #333333;
-  background-color: var(--surface-color); 
+  background-color: var(--surface-color);
   cursor: pointer;
-  list-style: none; 
+  list-style: none;
   position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   margin: 0;
 }
 
@@ -275,11 +277,11 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   margin-right: 12px;
   font-size: 1.2rem;
   transition: transform 0.3s ease;
-  color: inherit; 
+  color: inherit;
 }
 
 .acordeon-global-item[open] .acordeon-global-titulo {
-  background-color: var(--primary-color); 
+  background-color: var(--primary-color);
   color: var(--surface-color);
 }
 
@@ -320,19 +322,18 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 .acordeon-global-contenido .item-list li {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap; 
-  white-space: nowrap; 
-  width: 100%; 
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 100%;
   padding: 12px 0;
   border-bottom: 1px solid #e0e0e0;
-  color: #555555; 
+  color: #555555;
   font-size: 0.85rem;
 }
 
 .acordeon-global-contenido .item-list li:last-child {
   border-bottom: none;
 }
-
 
 .acordeon-global-contenido .file {
   display: inline-flex;
@@ -356,14 +357,14 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 }
 
 .acordeon-global-titulo .titulo-link-externo {
-  color: inherit; 
+  color: inherit;
   text-decoration: none;
   display: inline;
   width: auto;
 }
 
 .acordeon-global-item[open] .acordeon-global-titulo .titulo-link-externo {
-  color: var(--surface-color); 
+  color: var(--surface-color);
 }
 
 .acordeon-global-titulo .titulo-link-externo:hover {
@@ -383,12 +384,11 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   padding-left: 24px;
 }
 
-
 .slider-unl {
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem; 
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 
@@ -400,9 +400,9 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 .slider-unl .item-list ul {
   display: flex;
   align-items: center;
-  justify-content: safe center; 
-  gap: 2.5rem; 
-  padding: 1rem 4px 2rem 4px; 
+  justify-content: safe center;
+  gap: 2.5rem;
+  padding: 1rem 4px 2rem 4px;
   margin: 0;
   list-style: none;
   overflow-x: auto;
@@ -411,17 +411,19 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 }
 
 .slider-unl .item-list li {
-  flex: 0 0 calc((100% - 5 * 2.5rem) / 6) !important; 
+  flex: 0 0 calc((100% - 5 * 2.5rem) / 6) !important;
   min-width: 0;
   scroll-snap-align: start;
-  
+
   background-color: var(--surface-color);
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .slider-unl .item-list li:hover {
@@ -431,9 +433,8 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 
 .slider-unl .views-field img {
   width: 100%;
-  height: 120px;
+  height: 85px;
   object-fit: contain;
-  padding: 16px;
   box-sizing: border-box;
   display: block;
 }
@@ -453,7 +454,6 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 .slider-unl .views-field-title a:hover {
   color: var(--primary-color);
 }
-
 
 @media (min-width: 769px) and (max-width: 1300px) {
   .slider-unl .item-list li {
@@ -531,7 +531,8 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   background-color: var(--primary-color);
   color: var(--surface-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px color-mix(in srgb, var(--primary-color) 20%, transparent);
+  box-shadow: 0 4px 6px
+    color-mix(in srgb, var(--primary-color) 20%, transparent);
 }
 
 .unl-lista-docs .views-field-field-anexos .file::before,
@@ -546,8 +547,10 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   height: 24px;
   margin-right: 1rem;
   background-color: var(--primary-color);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center / contain;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center / contain;
   transition: background-color 0.3s ease;
 }
 
@@ -558,8 +561,10 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   height: 24px;
   margin-left: auto;
   background-color: var(--primary-color);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E") no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E") no-repeat center / contain;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E")
+    no-repeat center / contain;
   opacity: 0.5;
   transition: all 0.3s ease;
 }

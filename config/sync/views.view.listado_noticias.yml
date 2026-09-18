@@ -369,8 +369,18 @@ display:
           break_phrase: false
           not: true
       defaults:
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
         arguments: false
       display_description: ''
+      use_more: true
+      use_more_always: true
+      use_more_text: 'Ver más'
+      link_display: custom_url
+      link_url: /noticias
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -409,8 +419,21 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
       defaults:
         pager: false
+        style: false
+        row: false
       display_extenders: {  }
       path: noticias
     cache_metadata:

@@ -527,7 +527,7 @@ display:
           exposed: true
           expose:
             operator_id: field_categoria_target_id_op
-            label: 'Categoría (field_categoria)'
+            label: Categoría
             description: ''
             use_operator: false
             operator: field_categoria_target_id_op

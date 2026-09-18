@@ -384,6 +384,99 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   padding-left: 24px;
 }
 
+/* Acordion para Files*/
+.acordeon-global-contenido ul,
+.acordeon-global-contenido li {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.acordeon-global-contenido li::before {
+  display: none;
+}
+
+.acordeon-global-contenido li > span:not(.file) {
+  display: none;
+}
+
+.acordeon-global-contenido .file {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.5px;
+}
+
+.acordeon-global-contenido .file > a {
+  flex-grow: 1;
+  margin-right: 16px; 
+  display: flex;
+  align-items: center; 
+  pointer-events: none;
+  color: #444444; 
+  text-decoration: none; 
+  cursor: default;
+}
+
+.acordeon-global-contenido .file > a::after {
+  content: "";
+  flex-grow: 1; 
+  border-bottom: 2px dotted #cccccc; 
+  margin-left: 16px; 
+  min-width: 30px; 
+  position: relative;
+  top: 4px; 
+  opacity: 0.7;
+}
+
+.acordeon-global-contenido .file::before,
+.acordeon-global-contenido .file--mime-application-pdf::before {
+  display: none;
+}
+
+.archivo-acciones {
+  display: flex;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+.btn-archivo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: var(--primary-color);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 0;
+}
+
+.btn-archivo svg {
+  width: 24px;
+  height: 39px;
+  display: block;
+  margin: auto;
+}
+
+.btn-archivo:hover {
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  transform: translateY(-2px);
+}
+
+.btn-archivo:hover svg {
+  stroke: var(--surface-color);
+  color: var(--surface-color);
+}
+
+/* SLIDER*/
 .slider-unl {
   position: relative;
   max-width: 1400px;

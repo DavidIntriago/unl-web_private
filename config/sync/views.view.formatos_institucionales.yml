@@ -104,7 +104,7 @@ display:
           exclude: true
           alter:
             alter_text: false
-            text: ''
+            text: '{{ field_anexos__description }}'
             make_link: false
             path: ''
             absolute: false
@@ -335,10 +335,9 @@ display:
           empty_zero: false
           hide_alter_empty: false
       pager:
-        type: some
+        type: none
         options:
           offset: 0
-          items_per_page: 5
       exposed_form:
         type: basic
         options:

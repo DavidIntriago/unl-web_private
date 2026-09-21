@@ -2,40 +2,37 @@ _core:
   default_config_hash: FHr6psQnRtYvXa9wwVyQsT3ytUtv2w9OvbvbdMDq4a0
 langcode: es
 consentModal:
-  title: 'Use of personal data and cookies'
-  description: |
-    Please choose the services and 3rd party applications we would like to use.
+  title: 'Uso de datos personales y cookies'
+  description: 'Por favor, elige los servicios y las aplicaciones de terceros que nos gustaría utilizar.'
   privacyPolicy:
-    name: 'privacy policy'
-    text: |
-      To learn more, please read our {privacyPolicy}.
-    url: 'internal:/<front>'
+    name: 'política de privacidad'
+    text: "Para obtener más información, lee nuestra {privacyPolicy}.\r\n"
+    url: 'internal:/politica-de-privacidad'
 consentNotice:
-  title: 'Use of personal data and cookies'
-  changeDescription: 'There were changes since your last visit, please update your consent.'
-  description: |
-    We use cookies and process personal data for the following purposes: {purposes}.
+  title: 'Uso de datos personales y cookies'
+  changeDescription: 'Se han producido cambios desde tu última visita; por favor, actualiza tu consentimiento.'
+  description: "Utilizamos cookies y tratamos datos personales con los siguientes fines: {purposes}.\r\n"
   learnMore: Personalizar
-ok: Accept
+ok: Aceptar
 save: Guardar
-decline: Decline
+decline: Rechazar
 close: Cerrar
-acceptAll: 'Accept all'
-acceptSelected: 'Accept selected'
+acceptAll: 'Aceptar todas'
+acceptSelected: 'Aceptar Seleccionados'
 service:
   disableAll:
-    title: 'Toggle all services'
-    description: 'Use this switch to enable/disable all services.'
+    title: 'Aceptar todos'
+    description: 'Utiliza este interruptor para activar o desactivar todos los servicios.'
   optOut:
-    title: (opt-out)
-    description: 'This service is loaded by default (opt-out possible).'
+    title: '(exclusión voluntaria)'
+    description: 'Este servicio se activa de forma predeterminada (se puede desactivar).'
   required:
-    title: '(always required)'
-    description: 'This service is always required.'
-  purposes: Purposes
-  purpose: Purpose
+    title: '(siempre obligatorio)'
+    description: 'Este servicio es siempre obligatorio.'
+  purposes: Objetivos
+  purpose: Objetivo
 contextualConsent:
-  acceptAlways: Always
-  acceptOnce: 'Yes (this time)'
-  description: 'Load external content supplied by {title}?'
-poweredBy: 'Powered by Klaro!'
+  acceptAlways: Siempre
+  acceptOnce: 'Si (solo esta vez)'
+  description: 'Cargar contenido externo proporcionado por {title}?'
+poweredBy: 'Desarrollado por Klaro!'

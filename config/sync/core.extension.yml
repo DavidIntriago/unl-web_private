@@ -8,6 +8,7 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  cas: 0
   ckeditor5: 0
   config: 0
   contextual: 0
@@ -53,6 +54,7 @@ module:
   user: 0
   views_ui: 0
   viewsreference: 0
+  externalauth: 10
   views: 10
   paragraphs: 11
   standard: 1000

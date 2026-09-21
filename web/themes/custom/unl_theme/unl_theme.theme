@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * Implements hook_form_FORM_ID_alter() for user_login_form.
+ */
+function unl_theme_form_user_login_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  // Envuelve usuario, contraseña y botón "Iniciar sesión" en un contenedor oculto.
+  $form['name']['#prefix'] = '<div id="admin-login-fields">';
+  $form['actions']['#suffix'] = '</div>';
+
+  $form['admin_login_toggle'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'button',
+    '#value' => t('Inicio de sesión administradores'),
+    '#attributes' => [
+      'type' => 'button',
+      'id' => 'admin-login-toggle',
+      'class' => ['admin-login-toggle'],
+    ],
+    '#weight' => 100,
+  ];
+
+  $form['#attached']['library'][] = 'unl_theme/admin-login-toggle';
+}
 function unl_theme_preprocess_page(&$variables) {
   if (isset($variables['node']) && $variables['node'] instanceof \Drupal\node\NodeInterface) {
     $node = $variables['node'];

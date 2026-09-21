@@ -21,6 +21,7 @@ global:
       components/hero_micrositio/hero_micrositio.css: {}
       components/klaro_cookies/klaro_cookies.css: {}
       assets/css/components/views-global.css: {}
+      assets/css/components/cas_login.css: {}
   js:
     assets/js/global.js: {}
     assets/js/enlaces_externos.js: {}
@@ -45,3 +46,9 @@ wavesurfer:
   dependencies:
     - core/drupal
     - core/once
+
+admin-login-toggle:
+  js:
+    assets/js/admin-login-toggle.js: {}
+  dependencies:
+    - core/drupal

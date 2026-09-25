@@ -1,0 +1,19 @@
+name: Acordeón de Importaciones
+machineName: acordeon_importaciones
+status: stable
+props:
+  type: object
+  properties:
+    titulo:
+      type:
+        - string
+        - object
+      title: Título del acordeón
+    descripcion:
+      type:
+        - string
+        - object
+      title: Descripción detallada
+slots:
+  archivos:
+    title: Lista de archivos anidados

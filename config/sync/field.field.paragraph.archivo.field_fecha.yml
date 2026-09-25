@@ -1,0 +1,24 @@
+uuid: 8f9ea866-5817-43ad-9f1a-f068803b66fd
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_fecha
+    - paragraphs.paragraphs_type.archivo
+  module:
+    - datetime
+id: paragraph.archivo.field_fecha
+field_name: field_fecha
+entity_type: paragraph
+bundle: archivo
+label: Fecha
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

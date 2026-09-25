@@ -1,0 +1,43 @@
+uuid: fc516c1a-9ce3-49a6-bf84-93a5e7788aae
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.importaciones.field_archivos_detalle
+    - field.field.paragraph.importaciones.field_descripcion_html
+    - field.field.paragraph.importaciones.field_titulo
+    - paragraphs.paragraphs_type.importaciones
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.importaciones.default
+targetEntityType: paragraph
+bundle: importaciones
+mode: default
+content:
+  field_archivos_detalle:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_descripcion_html:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_titulo:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

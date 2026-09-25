@@ -1,0 +1,48 @@
+uuid: 32cfc5e1-e791-4b03-ab47-d6ed28688373
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.seccion_importaciones
+    - field.field.block_content.seccion_importaciones.field_componente_acordeon
+  module:
+    - paragraphs
+id: block_content.seccion_importaciones.default
+targetEntityType: block_content
+bundle: seccion_importaciones
+mode: default
+content:
+  field_componente_acordeon:
+    type: paragraphs
+    weight: 26
+    region: content
+    settings:
+      title: Párrafo
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,67 @@
+uuid: 842c2248-7f37-443b-9670-f820963bccdb
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.seccion_importaciones
+    - field.storage.block_content.field_componente_acordeon
+    - paragraphs.paragraphs_type.importaciones
+  module:
+    - entity_reference_revisions
+id: block_content.seccion_importaciones.field_componente_acordeon
+field_name: field_componente_acordeon
+entity_type: block_content
+bundle: seccion_importaciones
+label: 'Componente Acordeon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      importaciones: importaciones
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 14
+        enabled: false
+      archivo:
+        weight: 15
+        enabled: false
+      convenios:
+        weight: 16
+        enabled: false
+      diapositiva_hero:
+        weight: 17
+        enabled: false
+      grid_tarjetas:
+        weight: 18
+        enabled: false
+      hero_carrusel:
+        weight: 19
+        enabled: false
+      importaciones:
+        weight: 20
+        enabled: true
+      listado_eventos_dinamico:
+        weight: 21
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 22
+        enabled: false
+      recursos_descargables:
+        weight: 23
+        enabled: false
+      repositorio_dinamico:
+        weight: 24
+        enabled: false
+      tarjeta:
+        weight: 25
+        enabled: false
+      texto_libre:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,11 @@
+uuid: 3eeb81fa-277e-465f-9283-f015cbcf937a
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.seccion_importaciones
+id: block_content.seccion_importaciones
+target_entity_type_id: block_content
+target_bundle: seccion_importaciones
+default_langcode: site_default
+language_alterable: false

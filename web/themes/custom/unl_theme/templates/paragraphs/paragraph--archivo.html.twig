@@ -1,0 +1,17 @@
+<div class="file-row">
+  <div class="file-data">
+    <div class="file-title">
+      {{ content.field_titulo }}
+    </div>
+    
+    {% if content.field_fecha|render|trim is not empty %}
+      <span class="file-date">
+        {{ content.field_fecha }}
+      </span>
+    {% endif %}
+  </div>
+  
+  <div class="file-action">
+    {{ content.field_archivo }}
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{% embed 'unl_theme:acordeon_importaciones' with {
+  titulo: content.field_titulo,
+  descripcion: content.field_descripcion_html|render
+} %}
+  
+  {% block archivos %}
+    {{ content.field_archivos_detalle }}
+  {% endblock %}
+
+{% endembed %}

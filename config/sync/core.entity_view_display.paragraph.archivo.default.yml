@@ -1,0 +1,44 @@
+uuid: 78f978cd-c267-43dc-803d-398db8319285
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.archivo.field_archivo
+    - field.field.paragraph.archivo.field_fecha
+    - field.field.paragraph.archivo.field_titulo
+    - paragraphs.paragraphs_type.archivo
+  module:
+    - datetime
+    - file
+id: paragraph.archivo.default
+targetEntityType: paragraph
+bundle: archivo
+mode: default
+content:
+  field_archivo:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_fecha:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_titulo:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

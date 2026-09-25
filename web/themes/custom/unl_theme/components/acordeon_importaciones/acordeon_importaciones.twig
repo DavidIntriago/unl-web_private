@@ -1,0 +1,21 @@
+<div class="acordeon-importaciones" {{ attributes }}>
+  <details class="acordeon-item" name="acordeon-grupo">
+    <summary class="acordeon-trigger">
+      <span class="acordeon-title">{{ titulo }}</span>
+      <span class="acordeon-icon" aria-hidden="true"></span>
+    </summary>
+
+    <div class="acordeon-content">
+      {% if descripcion %}
+        <div class="acordeon-descripcion">
+            {{ descripcion }}
+        </div>
+      {% endif %}
+
+      <div class="acordeon-files-list">
+        {% block archivos %}
+        {% endblock %}
+      </div>
+    </div>
+  </details>
+</div>

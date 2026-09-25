@@ -44,22 +44,31 @@
   box-shadow: 0 4px 6px color-mix(in srgb, var(--primary-color) 20%, transparent);
 }
 
-.unl-icono-doc {
-  color: var(--primary-color);
-}
-
-.unl-lista-enlace:hover .unl-icono-doc {
-  color: var(--surface-color);
-}
-
 .unl-lista-nombre {
   flex-grow: 1;
   margin-left: 1rem;
   font-weight: 500;
 }
 
+.unl-icono-doc {
+  min-width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
 .unl-icono-descarga {
+  min-width: 24px;
+  height: 24px;
+  margin-left: auto; 
+  color: var(--primary-color);
   opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.unl-lista-enlace:hover .unl-icono-doc,
+.unl-lista-enlace:hover .unl-icono-descarga {
+  color: var(--surface-color);
 }
 
 .unl-lista-enlace:hover .unl-icono-descarga {

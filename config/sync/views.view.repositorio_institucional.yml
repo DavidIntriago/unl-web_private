@@ -103,7 +103,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: ''
+            text: "<span class=\"file\">\r\n  <a href=\"{{ field_anexos }}\" target=\"_blank\" class=\"unl-lista-enlace\">\r\n    <span class=\"unl-lista-nombre\">\r\n      {{ field_anexos__description | default(field_anexos) }}\r\n    </span>\r\n  </a>\r\n</span>"
             make_link: false
             path: '{{ field_enlace }}'
             absolute: false
@@ -152,7 +152,7 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: ul
-          separator: ', '
+          separator: ''
           field_api_classes: false
         field_categoria:
           id: field_categoria
@@ -411,14 +411,11 @@ display:
           value:
             documento_publico: documento_publico
       style:
-        type: html_list
+        type: default
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          type: ul
-          wrapper_class: item-list
-          class: ''
       row:
         type: fields
       query:

@@ -7,3 +7,19 @@
  * Cualquier CSS que NO esté envuelto en un @layer siempre gana contra el contenido de estas capas — sin importar especificidad, sin necesidad de !important. Por eso estas capas sirven como "valores por defecto" seguros: cualquier componente los puede sobreescribir
  */
 @layer base, typography;
+
+#block-unl-theme-importaciones {
+  max-width: 1420px;
+  margin: 32px auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #block-unl-theme-importaciones {
+    margin: 16px auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

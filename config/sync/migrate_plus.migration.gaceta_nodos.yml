@@ -1,4 +1,4 @@
-uuid: d801f258-8c21-4832-a11f-d2a83841aeea
+uuid: c7b6afa5-ed07-4886-bfb7-d40f4c6a1058
 langcode: en
 status: true
 dependencies: {  }
@@ -37,6 +37,21 @@ source:
     -
       name: field_archivo
       selector: field_archivo
+    -
+      name: autor_nombre
+      selector: autor_nombre
+    -
+      name: revision_timestamp
+      selector: revision_timestamp
+    -
+      name: changed
+      selector: changed
+    -
+      name: status
+      selector: status
+    -
+      name: uid
+      selector: uid
 process:
   type:
     plugin: default_value
@@ -58,6 +73,48 @@ process:
     bundle: resolucion_categoria
     entity_type: taxonomy_term
     ignore_case: true
+  status:
+    plugin: default_value
+    default_value: 1
+  created:
+    -
+      plugin: explode
+      delimiter: ', '
+      source: revision_timestamp
+    -
+      plugin: extract
+      index:
+        - 1
+    -
+      plugin: format_date
+      from_format: 'd/m/Y - H:i'
+      to_format: U
+  changed:
+    -
+      plugin: explode
+      delimiter: ', '
+      source: changed
+    -
+      plugin: extract
+      index:
+        - 1
+    -
+      plugin: format_date
+      from_format: 'd/m/Y - H:i'
+      to_format: U
+  uid:
+    -
+      plugin: callback
+      callable: trim
+      source: uid
+    -
+      plugin: entity_lookup
+      entity_type: user
+      value_key: name
+      ignore_case: true
+    -
+      plugin: default_value
+      default_value: 1
   field_documentos_principales/target_id:
     plugin: migration_lookup
     migration: gaceta_archivos

@@ -1,0 +1,20 @@
+uuid: 9747d51d-e95f-4af6-874f-c8b1616c53c5
+langcode: es
+status: true
+dependencies:
+  theme:
+    - unl_theme
+id: unl_theme_pestanas
+theme: unl_theme
+region: content
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Pestañas
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

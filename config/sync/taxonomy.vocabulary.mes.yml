@@ -1,0 +1,9 @@
+uuid: 48d945de-92ec-4cd3-809b-fd313923521b
+langcode: es
+status: true
+dependencies: {  }
+name: 'Mes LOTAIP'
+vid: mes
+description: null
+weight: 0
+new_revision: false

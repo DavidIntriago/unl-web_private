@@ -1,0 +1,25 @@
+uuid: 6321fafb-6e9a-4e98-ba1f-4653d05f83a3
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.seccion_importaciones
+    - field.field.block_content.seccion_importaciones.field_componente_acordeon
+  module:
+    - entity_reference_revisions
+id: block_content.seccion_importaciones.default
+targetEntityType: block_content
+bundle: seccion_importaciones
+mode: default
+content:
+  field_componente_acordeon:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

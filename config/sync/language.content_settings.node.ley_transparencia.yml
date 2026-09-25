@@ -1,0 +1,11 @@
+uuid: 5ff1bac0-1b4e-4f52-9445-6225cc418ae7
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.ley_transparencia
+id: node.ley_transparencia
+target_entity_type_id: node
+target_bundle: ley_transparencia
+default_langcode: site_default
+language_alterable: false

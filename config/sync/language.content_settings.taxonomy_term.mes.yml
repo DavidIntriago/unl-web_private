@@ -1,0 +1,11 @@
+uuid: 4d47aa69-b6b3-4c50-a36b-c48f3cec6c34
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mes
+id: taxonomy_term.mes
+target_entity_type_id: taxonomy_term
+target_bundle: mes
+default_langcode: site_default
+language_alterable: false

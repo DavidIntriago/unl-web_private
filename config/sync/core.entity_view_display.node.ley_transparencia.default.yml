@@ -1,0 +1,57 @@
+uuid: 8bc4a6ed-a355-4978-86b0-2a5f474a9c34
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.ley_transparencia.field_anio
+    - field.field.node.ley_transparencia.field_documentos_principales
+    - field.field.node.ley_transparencia.field_literales
+    - field.field.node.ley_transparencia.field_mes
+    - node.type.ley_transparencia
+  module:
+    - file
+    - text
+    - user
+id: node.ley_transparencia.default
+targetEntityType: node
+bundle: ley_transparencia
+mode: default
+content:
+  field_anio:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_documentos_principales:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_literales:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_mes:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

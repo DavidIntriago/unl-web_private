@@ -1,0 +1,15 @@
+{% if title %}
+  <details class="acordeon-global-item mb-3">
+    <summary class="acordeon-global-titulo">{{ title }}</summary>
+    <div class="acordeon-global-contenido">
+      {% for row in rows %}
+        {{ row.content }}
+      {% endfor %}
+    </div>
+  </details>
+{% else %}
+  {% for row in rows %}
+    {{ row.content }}
+  {% endfor %}
+{% endif %}
+

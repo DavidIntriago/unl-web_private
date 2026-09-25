@@ -1,0 +1,27 @@
+uuid: 76922c44-a050-474f-b0b6-110ec303f72d
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_documentos_principales
+    - node.type.ley_transparencia
+  module:
+    - file
+id: node.ley_transparencia.field_documentos_principales
+field_name: field_documentos_principales
+entity_type: node
+bundle: ley_transparencia
+label: 'Documentos principales'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'gaceta/resolucion/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf docx doc'
+  max_filesize: '25 MB'
+  description_field: true
+field_type: file

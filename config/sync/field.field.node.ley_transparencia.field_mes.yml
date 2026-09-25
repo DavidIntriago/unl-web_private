@@ -1,0 +1,29 @@
+uuid: 96972743-8277-4dc3-8bd0-b165726f1730
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mes
+    - node.type.ley_transparencia
+    - taxonomy.vocabulary.mes
+id: node.ley_transparencia.field_mes
+field_name: field_mes
+entity_type: node
+bundle: ley_transparencia
+label: Mes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      mes: mes
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

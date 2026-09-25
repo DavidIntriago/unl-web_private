@@ -1,0 +1,30 @@
+uuid: 63170add-43c5-46fa-b98a-743a17484400
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_literales
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.plain_text
+    - filter.format.restricted_html
+    - node.type.ley_transparencia
+  module:
+    - text
+id: node.ley_transparencia.field_literales
+field_name: field_literales
+entity_type: node
+bundle: ley_transparencia
+label: Literales
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+    - plain_text
+field_type: text_long

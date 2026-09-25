@@ -1,0 +1,24 @@
+uuid: 5391ff2d-457c-42ac-b613-63737b06a869
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_titulodelapagina
+theme: unl_theme
+region: content
+weight: -8
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Título de la página'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/universidad/transparencias\r\n/universidad/transparencias/*"

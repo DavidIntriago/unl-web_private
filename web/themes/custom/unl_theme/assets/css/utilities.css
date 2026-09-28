@@ -106,6 +106,26 @@
 }
 
 /* =========================================================
+   LÍNEA ROJA AL LADO DE LOS TÍTULOS DE SECCIÓN
+   Una sola regla para todos: noticias, eventos, grids y vistas.
+   Grosor de la línea: cambia los 3px.
+   ========================================================= */
+.noticias-destacadas__titulo,
+.seccion-eventos__titulo,
+.grid-tarjetas__titulo,
+.titulo-vista-global,
+.titulo-vista-paragraph {
+  padding-left: var(--espacio-3);
+  border-left: 3px solid var(--color-primario);
+  font-weight: var(--peso-medio);
+}
+
+/* Sobre la franja roja del contador, la línea va en blanco */
+.grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
+  border-left-color: var(--texto-sobre-primario);
+}
+
+/* =========================================================
    CORTAR TEXTO EN N LÍNEAS
    ========================================================= */
 .recortar-2,

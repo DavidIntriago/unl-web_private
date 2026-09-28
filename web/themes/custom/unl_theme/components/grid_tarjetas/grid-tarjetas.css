@@ -4,25 +4,41 @@
  */
 
 /* =========================================================
-   CABECERA (título + barra)
+   CABECERA
+   Igual que noticias destacadas: título a la izquierda, sin barra,
+   "Ver más" a la derecha si lo hay.
+   Todas las variantes arrancan en el mismo borde que noticias y
+   eventos (--contenedor-secciones).
+   El margen lateral (1.25rem) es el mismo que tienen esas secciones.
    ========================================================= */
 .grid-tarjetas__header {
-  margin-bottom: var(--espacio-6);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4) var(--espacio-6);
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: 0 auto var(--espacio-titulo-seccion);
+  text-align: left;
 }
 
 .grid-tarjetas__titulo {
   margin: 0;
-  font-size: var(--texto-xl);
   color: var(--color-texto);
+  font-size: var(--texto-titulo-seccion);
+  text-align: left;
 }
 
 .grid-tarjetas__divider {
-  width: var(--barra-titulo-ancho);
-  height: var(--barra-titulo-alto);
-  margin: var(--espacio-3) auto 0;
-  border-radius: 2px;
-  background-color: var(--color-primario);
+  display: none;
+}
+
+/* =========================================================
+   ESPACIO ENTRE SECCIONES
+   Todas las variantes dejan el mismo espacio grande arriba.
+   ========================================================= */
+[class*="grid-tarjetas-wrapper--"] {
+  margin-top: var(--espacio-entre-secciones);
 }
 
 /* =========================================================
@@ -46,15 +62,10 @@
 /* =========================================================
    VARIANTE SUSTANTIVA
    ========================================================= */
-.grid-tarjetas-wrapper--sustantiva {
-  margin-top: var(--espacio-6);
-}
-
 .grid-tarjetas-container--sustantiva {
   display: flex;
   gap: var(--espacio-2);
   width: 100%;
-  margin-top: var(--espacio-8);
 }
 
 .grid-tarjetas-container--sustantiva > * {
@@ -70,62 +81,26 @@
 
 /* =========================================================
    VARIANTE FACULTAD
-   Escritorio: fila que se ensancha al hover.
-   Tablet: grid de 3. Móvil: columna.
+   Cuadros iguales en una sola fila, de lado a lado de la pantalla.
+   En todas las pantallas son 6 en fila: en celular la franja
+   simplemente se hace más pequeña.
    ========================================================= */
-.grid-tarjetas-wrapper--facultad {
-  margin-top: var(--espacio-16);
-}
-
 .grid-tarjetas-container--facultad {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--espacio-1);
   width: 100%;
-  margin-top: var(--espacio-8);
+  margin: 0;
 }
 
 .grid-tarjetas-container--facultad > * {
-  flex: 1 1 0;
   min-width: 0;
 }
 
-@media (min-width: 769px) and (max-width: 1300px) {
+/* En celular la franja solo se achica: siguen las 6 en una fila */
+@media (max-width: 600px) {
   .grid-tarjetas-container--facultad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .grid-tarjetas-container--facultad > * {
-    flex: none;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-institucional {
-    height: 10.625rem;
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-contenido {
-    justify-content: flex-start;
-    padding: var(--espacio-4) var(--espacio-5);
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-titulo {
-    padding-left: var(--espacio-2);
-    font-size: var(--texto-sm);
-  }
-}
-
-@media (max-width: 768px) {
-  .grid-tarjetas-container--facultad {
-    flex-direction: column;
-    height: auto;
-    margin-left: 0;
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-institucional,
-  .grid-tarjetas-container--facultad .tarjeta-institucional:is(:hover, :focus-within) {
-    flex: none;
-    height: 6.25rem;
+    gap: 2px;
   }
 }
 
@@ -135,18 +110,12 @@
 .grid-tarjetas-wrapper--contador {
   --color-foco: var(--color-superficie);
   width: 100%;
-  margin-top: var(--espacio-20);
-  margin-bottom: var(--espacio-12);
   padding: var(--espacio-12) 0;
   background-color: var(--color-primario);
 }
 
 .grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
   color: var(--texto-sobre-primario);
-}
-
-.grid-tarjetas-wrapper--contador .grid-tarjetas__divider {
-  background-color: var(--texto-sobre-primario);
 }
 
 .grid-tarjetas-container--contador {
@@ -317,9 +286,7 @@
 /* =========================================================
    VARIANTE AUTORIDADES
    ========================================================= */
-.grid-tarjetas-wrapper--autoridades {
-  margin-top: var(--espacio-6);
-}
+
 
 .grid-tarjetas-container--autoridades {
   display: flex;
@@ -327,7 +294,7 @@
   justify-content: center;
   gap: var(--espacio-8);
   max-width: var(--contenedor-ancho);
-  margin: 0 auto var(--espacio-8);
+  margin: 0 auto;
   padding: 0 var(--espacio-6);
 }
 

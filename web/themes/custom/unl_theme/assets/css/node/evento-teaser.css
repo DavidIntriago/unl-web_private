@@ -1,91 +1,65 @@
 /**
- * TEASER DE EVENTO — tarjeta con imagen, fecha, título y datos.
+ * TEASER DE EVENTO (página /eventos) — formato agenda
+ * Se ve igual que los eventos de la portada (.card-ev-parrafo):
+ * caja de fecha a la izquierda; título y datos a la derecha,
+ * sin imagen ni tarjeta.
+ * Si cambias algo aquí, cambia lo mismo en evento-tarjeta-paragraph.css.
  */
 .evento-teaser {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: var(--radio-lg);
-  background: var(--color-superficie);
-  box-shadow: var(--sombra-md);
-  transition:
-    transform var(--duracion-normal) ease,
-    box-shadow var(--duracion-normal) ease;
-}
-
-.evento-teaser:hover {
-  transform: translateY(var(--elevar-tarjeta));
-  box-shadow: var(--sombra-lg);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: start;
+  column-gap: var(--espacio-4);
+  /* Línea fina debajo de cada evento. Como los eventos de una misma
+     fila tienen la misma altura, las líneas quedan alineadas */
+  padding-bottom: var(--espacio-6);
+  border-bottom: 1px solid var(--color-borde);
 }
 
 /* =========================================================
-   IMAGEN
+   IMAGEN: no se muestra, solo queda la fecha
    ========================================================= */
 .evento-teaser__imagen {
-  position: relative;
-  flex-shrink: 0;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--color-borde);
+  grid-column: 1;
 }
 
-/* Drupal: .contextual-region rompe el position: absolute de la imagen */
-.evento-teaser__imagen .contextual-region {
-  position: static !important;
+.evento-teaser__imagen > :not(.evento-teaser__fecha) {
+  display: none;
 }
 
+/* Drupal: el enlace de edición no debe verse encima de la fecha */
 .evento-teaser__imagen [data-contextual-id] {
   display: none !important;
 }
 
-.evento-teaser .evento-teaser__imagen img,
-.evento-teaser .evento-teaser__imagen picture {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
-  transition: transform var(--duracion-lenta) ease;
-}
-
-.evento-teaser:hover .evento-teaser__imagen img {
-  transform: scale(1.08);
-}
-
 /* =========================================================
-   FECHA (misma caja que en el teaser de noticia)
+   FECHA — caja gris con borde rojo abajo (igual que en la portada)
    ========================================================= */
 .evento-teaser__fecha {
-  position: absolute;
-  top: var(--espacio-3);
-  left: var(--espacio-3);
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 3.5rem;
-  padding: var(--espacio-2) var(--espacio-3);
+  width: 4.375rem;
+  padding: var(--espacio-4) 0;
+  border: 1px solid var(--color-borde);
+  border-bottom: var(--barra-titulo-alto) solid var(--color-primario);
   border-radius: var(--radio-md);
-  background: var(--color-superficie);
-  color: var(--color-texto);
-  box-shadow: var(--sombra-md);
+  background-color: var(--color-fondo-gris);
   line-height: 1;
 }
 
 .evento-teaser__dia {
+  color: var(--color-texto);
   font-size: var(--texto-lg);
   font-weight: var(--peso-negrita);
 }
 
 .evento-teaser__mes {
   margin-top: var(--espacio-1);
-  color: var(--color-primario);
+  color: var(--color-texto-secundario);
   font-size: var(--texto-xs);
-  font-weight: var(--peso-negrita);
+  font-weight: var(--peso-medio);
   text-transform: uppercase;
 }
 
@@ -93,91 +67,54 @@
    CONTENIDO
    ========================================================= */
 .evento-teaser__contenido {
+  grid-column: 2;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  padding: var(--espacio-6) var(--espacio-6) 1.75rem;
 }
 
 .evento-teaser__titulo {
   margin: 0;
-  color: var(--color-texto);
-  font-size: var(--texto-lg);
-  font-weight: var(--peso-negrita);
+  color: var(--color-primario);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-normal);
   line-height: var(--interlineado-ajustado);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
 }
 
-.evento-teaser__divider {
-  width: 3rem;
-  height: var(--barra-titulo-alto);
-  margin: var(--espacio-3) 0;
-  border-radius: 2px;
-  background-color: var(--color-primario);
+.evento-teaser__titulo a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* ---------- Lugar, área y hora ---------- */
+.evento-teaser__titulo a:hover {
+  text-decoration: underline;
+}
+
+.evento-teaser__divider,
+.evento-teaser__cuerpo {
+  display: none;
+}
+
+/* ---------- Lugar, área y hora: líneas simples ---------- */
 .evento-teaser__meta {
   display: flex;
   flex-direction: column;
-  gap: var(--espacio-2);
-  margin-top: 0;
+  gap: 0;
+  margin-top: var(--espacio-2);
 }
 
 .evento-teaser__meta-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--espacio-2);
-  color: var(--color-texto-tenue);
-  font-size: var(--texto-sm);
-  line-height: var(--interlineado-base);
-}
-
-/* Íconos: salen de variables.css */
-.evento-teaser__meta-item--ubicacion::before,
-.evento-teaser__meta-item--area::before,
-.evento-teaser__meta-item--hora::before {
-  content: "";
-  flex-shrink: 0;
-  width: var(--icono-sm);
-  height: var(--icono-sm);
-  margin-top: 0.15rem;
-  background-color: var(--color-primario);
-  -webkit-mask: var(--icono) no-repeat center / contain;
-  mask: var(--icono) no-repeat center / contain;
-}
-
-.evento-teaser__meta-item--ubicacion::before {
-  --icono: var(--icono-ubicacion);
-}
-
-.evento-teaser__meta-item--area::before {
-  --icono: var(--icono-area);
-}
-
-.evento-teaser__meta-item--hora::before {
-  --icono: var(--icono-reloj);
-}
-
-/* ---------- Resumen ---------- */
-.evento-teaser__cuerpo {
-  margin-top: var(--espacio-4);
-  padding-top: var(--espacio-4);
-  border-top: 1px solid var(--color-borde);
   color: var(--color-texto-secundario);
   font-size: var(--texto-sm);
-  line-height: var(--interlineado-base);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  overflow: hidden;
+  line-height: 1.5;
 }
 
-.evento-teaser__cuerpo p {
-  margin: 0;
+/* El área va en rojo, como en la portada */
+.evento-teaser__meta-item--area,
+.evento-teaser__meta-item--area a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+.evento-teaser__meta-item--area a:hover {
+  text-decoration: underline;
 }

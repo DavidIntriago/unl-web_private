@@ -134,8 +134,14 @@
   gap: var(--espacio-3);
   width: 12.5rem;
   max-width: 100%;
-  padding: var(--espacio-4) var(--espacio-5);
-  background-color: var(--color-primario);
+  /* Todas las franjas miden lo mismo: el alto de un título de dos líneas.
+     Los de una sola línea quedan centrados verticalmente. */
+  min-height: calc(2 * var(--interlineado-ajustado) * var(--texto-sm) + 2 * var(--espacio-2));
+  padding: var(--espacio-2) var(--espacio-4);
+  /* Rojo con opacidad: deja ver un poco la foto de atrás */
+  background-color: color-mix(in srgb, var(--color-primario) 80%, transparent);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .tarjeta-sustantiva__titulo {
@@ -151,7 +157,7 @@
 .tarjeta-sustantiva__mas {
   flex-shrink: 0;
   color: var(--texto-sobre-primario);
-  font-size: var(--icono-md);
+  font-size: var(--texto-lg);
   font-weight: var(--peso-negrita);
   line-height: 1;
   transition: transform var(--duracion-normal) ease;
@@ -176,25 +182,25 @@
     display: none;
   }
 
+  /* En celular no hay foto detrás: el rojo va sólido */
   .tarjeta-sustantiva__etiqueta {
     width: 100%;
     height: 100%;
+    padding: var(--espacio-4) var(--espacio-5);
+    background-color: var(--color-primario);
   }
 }
 
 /* =========================================================
    VARIANTE INSTITUCIONAL (FACULTADES)
+   Solo la imagen (ya trae el color, la sigla y el nombre) y el enlace.
+   Cuadrada; el grid la pone de lado a lado de la pantalla.
    ========================================================= */
 .tarjeta-institucional {
   position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  transition:
-    flex var(--duracion-lenta) var(--curva-suave),
-    transform var(--duracion-normal) ease;
 }
 
 .tarjeta-funcion {
@@ -203,72 +209,29 @@
   height: 100%;
 }
 
+/* La imagen llena todo el cuadro */
 .tarjeta-bg-img {
-  transition:
-    opacity var(--duracion-lenta) ease,
-    transform var(--duracion-lenta) ease;
+  position: absolute;
+  inset: 0;
 }
 
-.tarjeta-contenido {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.tarjeta-bg-img .contextual-region {
+  position: static !important;
+}
+
+.tarjeta-bg-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  padding: var(--espacio-6) var(--espacio-8);
-  transition: transform var(--duracion-normal) ease;
+  max-width: none;
+  object-fit: cover;
+  transition: transform var(--duracion-lenta) ease;
 }
 
-.tarjeta-titulo {
-  margin: 0;
-  padding-left: var(--espacio-3);
-  border-left: 2.5px solid var(--texto-sobre-primario);
-  color: var(--texto-sobre-primario);
-  font-size: var(--texto-base);
-  font-weight: var(--peso-negrita);
-  line-height: var(--interlineado-ajustado);
-  text-align: left;
-  transition: transform var(--duracion-normal) ease;
-}
-
-.tarjeta-titulo strong {
-  font-weight: var(--peso-negrita);
-}
-
-.tarjeta-institucional:is(:hover, :focus-within) {
-  flex: 3;
-  z-index: var(--z-elevado);
-  transform: translateY(var(--elevar-tarjeta));
-}
-
-.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-bg-img {
-  opacity: 0.35;
+/* Al pasar el mouse la imagen crece un poco */
+.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-bg-img img {
   transform: scale(1.05);
-}
-
-.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-contenido,
-.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-titulo {
-  transform: none;
-}
-
-@media (max-width: 768px) {
-  .tarjeta-institucional {
-    flex: none;
-    height: auto;
-    min-height: 5.625rem;
-  }
-
-  .tarjeta-contenido {
-    justify-content: flex-start;
-    padding: var(--espacio-4) var(--espacio-5);
-  }
-
-  .tarjeta-titulo {
-    padding-left: var(--espacio-3);
-    border-left-width: 2px;
-    font-size: var(--texto-sm);
-  }
 }
 
 /* =========================================================

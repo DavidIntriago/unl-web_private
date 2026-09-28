@@ -4,10 +4,13 @@
  */
 .unl-about {
   width: 100%;
-  padding: var(--espacio-16) var(--espacio-4);
+  margin-top: var(--espacio-entre-secciones);
+  padding: 0 var(--espacio-4);
 }
 
-/* No pasa de 1200px y en teléfono todo va en 1 columna */
+/* Más estrecho que las demás secciones (1200px, como al inicio):
+   no tiene título de sección, así que no necesita alinearse con ellas.
+   En teléfono todo va en 1 columna. */
 .unl-about__container {
   display: grid;
   grid-template-columns: 1fr;
@@ -17,9 +20,10 @@
   margin: 0 auto;
 }
 
+/* Escritorio: el texto ocupa más que la imagen (60% / 40%) */
 @media (min-width: 769px) {
   .unl-about__container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 2fr;
     gap: var(--espacio-16);
   }
 }
@@ -29,6 +33,7 @@
   margin-top: 0;
   margin-bottom: var(--espacio-2);
   font-size: var(--texto-xl);
+  font-weight: var(--peso-medio);
   line-height: var(--interlineado-ajustado);
   color: var(--color-texto);
 }
@@ -81,9 +86,9 @@
    Sin clase de facultad, queda en rojo institucional. */
 .unl-about__divider {
   width: 100%;
-  height: 0.625rem;
+  height: 4px;
   margin-bottom: var(--espacio-6);
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--color-tema, var(--color-primario));
 }
 

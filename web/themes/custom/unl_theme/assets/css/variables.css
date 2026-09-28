@@ -92,7 +92,9 @@
   --texto-base: 1rem;
   --texto-md: 1.125rem;   /* cuerpo de noticias/eventos, descripciones */
   --texto-lg: 1.25rem;    /* títulos de tarjeta */
-  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);      /* títulos de sección */
+  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);      /* h2 */
+  /* Títulos de sección con enlace "Ver más" (18px en móvil → 22px en escritorio) */
+  --texto-titulo-seccion: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
   --texto-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem); /* títulos de página */
   --texto-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);       /* título del hero */
   --texto-numero: clamp(2rem, 1.6rem + 1.5vw, 2.75rem); /* contador */
@@ -126,6 +128,12 @@
   --espacio-16: 4rem;
   --espacio-20: 5rem;
 
+  /* Ritmo vertical de la portada:
+     - entre una sección y la siguiente: espacio grande (48px en móvil → 80px en escritorio)
+     - entre el título de una sección y su contenido: espacio pequeño (24px) */
+  --espacio-entre-secciones: clamp(3rem, 2rem + 3vw, 5rem);
+  --espacio-titulo-seccion: var(--espacio-6);
+
   /* Margen a los lados de la página: 1rem en móvil → 1.5rem en escritorio */
   --margen-lateral: clamp(1rem, 0.6rem + 1.5vw, 1.5rem);
 
@@ -134,8 +142,16 @@
      ========================================================= */
   --contenedor-lectura: 75rem;   /* 1200px — noticias, eventos, listas */
   --contenedor-normal: 80rem;    /* 1280px — header y footer */
-  --contenedor-ancho: 88.75rem;  /* 1420px — vistas, micrositios, grids */
+  /* Vistas, micrositios, grids y secciones de la portada.
+     Ocupa el 90% de la pantalla, hasta un máximo de 1680px
+     (en una pantalla de 1920px quedan unos 120px a cada lado). */
+  --contenedor-ancho: min(90vw, 105rem);
   --sidebar-ancho: 16.25rem;     /* 260px */
+  /* Ancho de las secciones de la portada y de sus títulos.
+     Es el borde interior de los grids de tarjetas (1420px menos
+     su margen de 1.5rem a cada lado = 1372px), así todo arranca
+     en la misma línea. Para mover todas juntas, cambia solo esto. */
+  --contenedor-secciones: calc(var(--contenedor-ancho) - 2 * var(--espacio-6));
 
   --header-altura: 5rem;         /* 80px */
 

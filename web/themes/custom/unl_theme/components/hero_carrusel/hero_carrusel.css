@@ -11,7 +11,7 @@
 .hero-carrusel-contenedor {
   position: relative;
   width: 100%;
-  height: 90svh;
+  height: 100svh;
   min-height: 43.75rem;
   overflow: hidden;
   background-color: var(--color-oscuro);
@@ -99,27 +99,6 @@
   overflow: hidden;
 }
 
-/* NOTIFICACIONES FLOTANTES */
-.hero-notificaciones-flotantes {
-  position: absolute;
-  top: 13%; 
-  right: 4%; 
-  width: fit-content;
-  transform: translateY(-50%) scale(1.20); 
-  transform-origin: right center; 
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  pointer-events: none;
-}
-
-.hero-notificaciones-flotantes > * {
-  pointer-events: auto; 
-}
-
-
-
 /* =========================================================
    SOLO CON MOUSE: descripción y botón aparecen al pasar el mouse
    ========================================================= */
@@ -166,50 +145,61 @@
   .slide-texto p {
     overflow-wrap: anywhere;
   }
+}
 
-  /* Notificaciones flotantes */
+/* =========================================================
+   NOTIFICACIONES FLOTANTES (móvil)
+   En pantallas chicas las alertas dejan de flotar y se vuelven
+   una franja de lado a lado, arriba del hero, una debajo de otra.
+   ========================================================= */
+@media (max-width: 768px) {
   .hero-notificaciones-flotantes {
     top: 0;
     left: 0;
     right: 0;
+    align-items: stretch;
+    gap: 0;
     width: 100%;
     max-width: 100%;
     transform: none;
-    gap: 0;
-    align-items: stretch; 
   }
+
   .hero-notificaciones-flotantes > * {
+    display: block;
     width: 100%;
     max-width: 100%;
-    display: block;
   }
+
   .hero-notificaciones-flotantes > .unl-alert__container {
-    border-radius: 0; 
-    transform: none; 
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-    padding: 0.8em 1em; 
-    border: none; 
-    box-sizing: border-box; 
+    padding: var(--espacio-3) var(--espacio-4);
+    border: none;
+    border-radius: 0;
+    transform: none;
   }
-  .hero-notificaciones-flotantes > .unl-alert__container:nth-child(n+2) {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  /* Línea fina entre una alerta y la siguiente */
+  .hero-notificaciones-flotantes > .unl-alert__container:nth-child(n + 2) {
+    border-top: 1px solid rgb(0 0 0 / 0.1);
   }
+
   .hero-notificaciones-flotantes .unl-alert__text {
-    flex-grow: 1; 
-    min-width: 0; 
+    flex-grow: 1;
+    min-width: 0;
   }
+
   .hero-notificaciones-flotantes .unl-alert__icon {
+    flex-shrink: 0;
     width: 2.5rem;
-    height: 2.5rem;
     min-width: 2.5rem;
     max-width: 2.5rem;
-    flex-shrink: 0;
+    height: 2.5rem;
   }
+
   .hero-notificaciones-flotantes .unl-alert__icon::before {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: var(--icono-md);
+    height: var(--icono-md);
   }
 }
-

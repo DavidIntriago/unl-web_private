@@ -4,33 +4,37 @@
  * views/listados.css; aquí solo va lo propio de esta sección.
  */
 .seccion-eventos {
-  margin-top: var(--espacio-4);
-  padding: var(--espacio-4) var(--espacio-5) var(--espacio-2);
+  margin-top: var(--espacio-entre-secciones);
+  padding: 0 var(--espacio-5);
 }
 
 .seccion-eventos__contenedor {
-  max-width: var(--contenedor-lectura);
+  max-width: var(--contenedor-secciones);
   margin: 0 auto;
 }
 
-/* ---------- Cabecera ---------- */
+/* ---------- Cabecera ----------
+   Igual que noticias destacadas: título a la izquierda, sin barra.
+   Si algún día lleva "Ver todos", va a la derecha en la misma fila. */
 .seccion-eventos__cabecera {
-  margin-bottom: var(--espacio-6);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4) var(--espacio-6);
+  margin-bottom: var(--espacio-titulo-seccion);
+  text-align: left;
 }
 
 .seccion-eventos__titulo {
   margin: 0;
-  font-size: var(--texto-xl);
   color: var(--color-texto);
+  font-size: var(--texto-titulo-seccion);
+  text-align: left;
 }
 
 .seccion-eventos__divider {
-  width: var(--barra-titulo-ancho);
-  height: var(--barra-titulo-alto);
-  margin: var(--espacio-3) auto 0;
-  border-radius: 2px;
-  background-color: var(--color-primario);
+  display: none;
 }
 
 /* Si la vista no devuelve eventos, no se muestra el título */
@@ -38,7 +42,36 @@
   display: none;
 }
 
-/* ---------- Grid ---------- */
+/* ---------- Enlace "Ver más eventos" ----------
+   En el Twig, dentro de .seccion-eventos__cabecera:
+   <a class="seccion-eventos__ver-mas" href="/eventos">Ver más eventos</a> */
+.seccion-eventos__ver-mas {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--espacio-2);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--duracion-rapida) ease;
+}
+
+.seccion-eventos__ver-mas::before {
+  content: "";
+  border-left: 0.375rem solid var(--color-primario);
+  border-block: 0.25rem solid transparent;
+}
+
+.seccion-eventos__ver-mas:hover {
+  color: var(--color-primario);
+}
+
+/* ---------- Grid ----------
+   Los eventos arrancan siempre a la izquierda, alineados con el título,
+   aunque haya uno o dos. */
 /* La vista no necesita el padding del listado general */
 .seccion-eventos .eventos {
   padding: 0;
@@ -47,8 +80,8 @@
 .seccion-eventos__contenido .eventos__contenedor {
   display: grid;
   grid-template-columns: 1fr;
-  align-items: stretch;
-  gap: var(--espacio-8);
+  align-items: start;
+  gap: var(--espacio-8) var(--espacio-8);
   width: 100%;
   margin: 0;
 }
@@ -64,55 +97,16 @@
 
 @media (min-width: 769px) {
   .seccion-eventos__contenido .eventos__contenedor {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Un solo evento: centrado */
-  .seccion-eventos__contenido .eventos__contenedor:has(> .eventos__item:only-child) {
-    grid-template-columns: minmax(0, 23.75rem);
-    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* Escritorio: 4 eventos por fila */
 @media (min-width: 1025px) {
   .seccion-eventos__contenido .eventos__contenedor {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .seccion-eventos__contenido .eventos__contenedor:has(> .eventos__item:only-child) {
-    grid-template-columns: minmax(0, 23.75rem);
-    justify-content: center;
-  }
-
-  /* Exactamente dos eventos: el par centrado */
-  .seccion-eventos__contenido .eventos__contenedor:has(> .eventos__item:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, minmax(0, 23.75rem));
-    justify-content: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-/* ---------- Móvil: carrusel horizontal ---------- */
-@media (max-width: 768px) {
-  .seccion-eventos__contenido .eventos__contenedor {
-    display: flex;
-    align-items: stretch;
-    gap: var(--espacio-4);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding-bottom: var(--espacio-4);
-  }
-
-  .seccion-eventos__contenido .eventos__contenedor::-webkit-scrollbar {
-    display: none;
-  }
-
-  .seccion-eventos__contenido .eventos__item {
-    flex: 0 0 85%;
-    scroll-snap-align: center;
-  }
-
-  .seccion-eventos__contenido .card-ev-parrafo {
-    height: auto;
-  }
-}
+/* ---------- Móvil ----------
+   Una columna: los eventos quedan uno debajo de otro, como una agenda. */

@@ -92,7 +92,11 @@
   min-width: 3.5rem;
   padding: var(--espacio-2) var(--espacio-3);
   border-radius: var(--radio-md);
-  background-color: var(--color-superficie);
+  /* Blanco semitransparente: deja ver un poco la foto de atrás.
+     El desenfoque mantiene el número legible sobre cualquier imagen. */
+  background-color: color-mix(in srgb, var(--color-superficie) 88%, transparent);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   color: var(--color-texto);
   box-shadow: var(--sombra-md);
   line-height: 1;
@@ -110,6 +114,23 @@
   font-size: var(--texto-xs);
   font-weight: var(--peso-negrita);
   text-transform: uppercase;
+}
+
+/* La fecha solo aparece al pasar el mouse (o al llegar con el teclado).
+   En celulares y tablets, que no tienen mouse, se ve siempre. */
+@media (hover: hover) {
+  .noticia-teaser__fecha-caja {
+    opacity: 0;
+    transform: translateY(-0.375rem);
+    transition:
+      opacity var(--duracion-normal) ease,
+      transform var(--duracion-normal) ease;
+  }
+
+  .noticia-teaser:is(:hover, :focus-within) .noticia-teaser__fecha-caja {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .noticia-teaser__area-caja {

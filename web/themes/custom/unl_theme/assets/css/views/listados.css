@@ -86,3 +86,8 @@
     gap: var(--espacio-6);
   }
 }
+
+/* Eventos: mismo espacio arriba y abajo de la línea separadora */
+.eventos__contenedor {
+  row-gap: var(--espacio-6);
+}

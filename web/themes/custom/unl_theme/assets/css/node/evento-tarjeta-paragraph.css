@@ -1,68 +1,47 @@
 /**
- * TARJETA DE EVENTO (párrafo) — sin imagen, con todos los datos.
- * La animación .animar-scroll ahora vive en utilities.css.
+ * TARJETA DE EVENTO (párrafo) — formato de agenda
+ * Caja de fecha a la izquierda; título, área y datos a la derecha.
+ * Sin fondo ni borde de tarjeta.
+ * La animación .animar-scroll vive en utilities.css.
  */
 .card-ev-parrafo {
-  position: relative;
-  display: flex;
-  flex-direction: column;
   height: 100%;
-  overflow: hidden;
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio-lg);
-  background-color: var(--color-superficie);
-  transition:
-    box-shadow var(--duracion-normal) ease,
-    border-color var(--duracion-normal) ease;
 }
 
-.card-ev-parrafo:hover {
-  border-color: var(--color-primario);
-  box-shadow: var(--sombra-lg);
-}
-
-/* Barra roja que se llena arriba al hover */
-.card-ev-parrafo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: var(--barra-titulo-alto);
-  background-color: var(--color-primario);
-  transition: width var(--duracion-normal) ease;
-}
-
-.card-ev-parrafo:hover::before {
-  width: 100%;
-}
-
+/* Dos columnas: fecha | contenido.
+   Sin separación automática entre filas: cada pieza pone su propio
+   margen arriba, así si falta el área no queda un hueco. */
 .card-ev-parrafo__cuerpo {
-  flex-grow: 1;
-  padding: var(--espacio-8) var(--espacio-8) var(--espacio-10);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: start;
+  column-gap: var(--espacio-4);
+  row-gap: 0;
 }
 
+/* La cabecera deja de ser una caja: la fecha y el área
+   pasan a ser piezas sueltas del grid */
 .card-ev-parrafo__cabecera {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--espacio-6);
+  display: contents;
 }
 
 /* =========================================================
-   FECHA (misma medida que los teasers, versión sobre fondo claro)
+   FECHA — caja gris con borde rojo abajo
    ========================================================= */
 .card-ev-parrafo__fecha-cuadro {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  align-self: start;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 3.5rem;
-  padding: var(--espacio-2) var(--espacio-3);
+  justify-content: center;
+  width: 4.375rem;
+  padding: var(--espacio-4) 0;
   border: 1px solid var(--color-borde);
-  border-top: var(--barra-titulo-alto) solid var(--color-primario);
+  border-bottom: var(--barra-titulo-alto) solid var(--color-primario);
   border-radius: var(--radio-md);
-  background-color: var(--color-fondo-suave);
-  box-shadow: var(--sombra-sm);
+  background-color: var(--color-fondo-gris);
   line-height: 1;
 }
 
@@ -74,83 +53,86 @@
 
 .card-ev-parrafo__fecha-cuadro .mes {
   margin-top: var(--espacio-1);
-  color: var(--color-primario);
+  color: var(--color-texto-secundario);
   font-size: var(--texto-xs);
-  font-weight: var(--peso-negrita);
-  text-transform: uppercase;
-}
-
-.card-ev-parrafo__tag {
-  color: var(--color-texto-tenue);
-  font-size: var(--texto-xs);
-  font-weight: var(--peso-negrita);
+  font-weight: var(--peso-medio);
   text-transform: uppercase;
 }
 
 /* =========================================================
-   TÍTULO
+   TÍTULO Y ÁREA
    ========================================================= */
 .card-ev-parrafo__titulo {
-  margin: 0 0 var(--espacio-4);
-  color: var(--color-texto);
-  font-size: var(--texto-lg);
-  font-weight: var(--peso-negrita);
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  color: var(--color-primario);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-normal);
   line-height: var(--interlineado-ajustado);
 }
 
-.card-ev-parrafo__separador {
-  width: 3rem;
-  height: var(--barra-titulo-alto);
-  margin-bottom: var(--espacio-6);
-  border-radius: 2px;
-  background-color: var(--color-borde);
-  transition: background-color var(--duracion-normal) ease;
+.card-ev-parrafo__titulo a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.card-ev-parrafo:hover .card-ev-parrafo__separador {
-  background-color: var(--color-primario);
+.card-ev-parrafo__titulo a:hover {
+  text-decoration: underline;
+}
+
+/* Facultad o área, pequeña debajo del título */
+.card-ev-parrafo__tag {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: var(--espacio-1);
+  color: var(--color-primario);
+  font-size: var(--texto-sm);
+}
+
+.card-ev-parrafo__separador {
+  display: none;
 }
 
 /* =========================================================
-   DETALLES (lugar, hora, etc.)
+   DATOS (fecha, lugar, modalidad) — líneas simples
    ========================================================= */
 .card-ev-parrafo__detalles {
+  grid-column: 2;
+  grid-row: 3;
   display: flex;
   flex-direction: column;
-  gap: var(--espacio-5);
+  gap: 0;
+  margin-top: var(--espacio-2);
 }
 
 .detalle-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--espacio-4);
+  display: block;
 }
 
 .detalle-item .icono {
-  flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: var(--espacio-2);
-  border-radius: var(--radio-circulo);
-  background: var(--color-primario-fondo);
-  color: var(--color-primario);
+  display: none;
 }
 
 .detalle-item .info {
-  display: flex;
-  flex-direction: column;
-  padding-top: 0.125rem;
+  display: block;
+  padding: 0;
 }
 
+/* "Fecha", "Lugar"… no se ven, pero los lectores de pantalla sí los leen */
 .detalle-item .label {
-  color: var(--color-texto-tenue);
-  font-size: var(--texto-xs);
-  font-weight: var(--peso-seminegrita);
-  text-transform: uppercase;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .detalle-item .valor {
-  color: var(--color-texto-cuerpo);
+  color: var(--color-texto-secundario);
   font-size: var(--texto-sm);
-  font-weight: var(--peso-medio);
+  font-weight: var(--peso-normal);
+  line-height: 1.5;
 }

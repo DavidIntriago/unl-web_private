@@ -1,23 +1,28 @@
+/**
+ * SIDEBAR MICROSITIO
+ * El layout (sidebar a la izquierda + contenido) vive en layout.css.
+ */
 .sidebar-micrositio {
-  flex: 0 0 260px;
-  max-width: 260px;
+  flex: 0 0 var(--sidebar-ancho);
+  max-width: var(--sidebar-ancho);
 }
 
 .sidebar-micrositio nav {
+  position: relative;
   width: 100%;
   overflow: hidden;
-  position: relative;
 }
 
 .sidebar-micrositio ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--espacio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
+/* ---------- Navegación entre niveles ---------- */
 .sidebar-micrositio ul ul {
   display: none;
 }
@@ -38,45 +43,43 @@
   position: relative;
 }
 
+/* ---------- Ítems ---------- */
 .sidebar-micrositio li a {
   display: block;
-  padding: 14px 16px;
-  background-color: #3a3a3a;
-  color: var(--surface-color);
+  padding: 0.875rem var(--espacio-4);
+  border-radius: var(--radio-md);
+  background-color: var(--color-oscuro-elevado);
+  color: var(--texto-sobre-primario);
   text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color var(--duracion-rapida) ease,
+    color var(--duracion-rapida) ease;
 }
 
 .sidebar-micrositio li a:hover,
-.sidebar-micrositio li a:focus {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
-}
-
+.sidebar-micrositio li a:focus-visible,
 .sidebar-micrositio li a.is-active {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
 }
 
 .sidebar-micrositio li.tiene-submenu > a::after {
   content: "›";
   float: right;
-  font-weight: bold;
+  font-weight: var(--peso-negrita);
 }
 
+/* ---------- Ítem con submenú abierto ---------- */
 .sidebar-micrositio li.tiene-submenu.submenu-abierto {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--espacio-3);
 }
 
 .sidebar-micrositio li.tiene-submenu.submenu-abierto > a {
-  background-color: #2a2a2a;
-  color: var(--surface-color);
-  font-weight: 700;
-  border-left: 8px solid var(--primary-color);
-  border-radius: 8px;
+  background-color: var(--color-oscuro);
+  font-weight: var(--peso-negrita);
+  border-left: var(--borde-acento) solid var(--color-primario);
   cursor: default;
 }
 
@@ -85,22 +88,13 @@
 }
 
 .sidebar-micrositio li.tiene-submenu.submenu-abierto > ul.is-visible {
-  margin-top: 4px;
+  margin-top: var(--espacio-1);
 }
 
+/* ---------- Móvil ---------- */
 @media (max-width: 768px) {
   .sidebar-micrositio {
     flex: 1 1 100%;
     max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .site-content {
-    flex-direction: column;
-  }
-
-  .site-content > *:not(.sidebar-micrositio) {
-    order: 1;
   }
 }

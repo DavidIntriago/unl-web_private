@@ -1,16 +1,237 @@
+/**
+ * VARIABLES GLOBALES — unl_theme
+ *
+ * Única fuente de verdad del sitio. Si un valor se repite en dos
+ * componentes, tiene que salir de aquí.
+ *
+ * BREAKPOINTS (no pueden ser variables dentro de @media, se escriben a mano):
+ *   600px  → móvil             @media (max-width: 600px)
+ *   768px  → tablet            @media (max-width: 768px)  / (min-width: 769px)
+ *   1024px → escritorio chico  @media (max-width: 1024px) / (min-width: 1025px)
+ *   1300px → SOLO grids de 4 columnas
+ */
 :root {
-  --primary-color: #93000b;
+  /* =========================================================
+     COLOR PRIMARIO
+     ========================================================= */
+  --color-primario: #93000b;
+  --color-primario-oscuro: color-mix(in srgb, var(--color-primario) 75%, black);
+  /* Rojo muy claro: fondos de subbar, círculos de ícono, botón claro */
+  --color-primario-fondo: color-mix(in srgb, var(--color-primario) 5%, white);
+  /* Rojo muy claro para hover sobre fondo blanco o rojo-fondo */
+  --color-primario-hover: color-mix(in srgb, var(--color-primario) 10%, white);
 
-  /*hovers*/
-  --primary-color-dark: color-mix(in srgb, var(--primary-color) 75%, black);
-  --secondary-color: #5c5f60;
+  /* =========================================================
+     SUPERFICIES Y FONDOS
+     ========================================================= */
+  --color-superficie: #ffffff;
+  --color-fondo-pagina: #f6f4f1;
+  --color-fondo-suave: #f9fafb;   /* reemplaza #f8f9fa, #fafafa, #fcfcfc */
+  --color-fondo-gris: #f3f4f6;    /* reemplaza #f0f0f0 */
 
-  --surface-color: #ffffff;
-  --background-color: #f6f4f1;
+  /* =========================================================
+     TEXTO
+     ========================================================= */
+  --color-texto: #151c27;             /* títulos — reemplaza #111827 */
+  --color-texto-cuerpo: #374151;      /* párrafos — reemplaza #333, #444 */
+  --color-texto-secundario: #4b5563;  /* reemplaza #555, #5c5f60 */
+  --color-texto-tenue: #6b7280;       /* fechas, meta — reemplaza #666, #777, #5d6b84 */
 
-  --text-color: #151c27;
+  /* =========================================================
+     BORDES
+     ========================================================= */
+  --color-borde: #e5e7eb;         /* reemplaza #e0e0e0, #e2e6ea, #e9ecef, #d7dbe0 */
+  --color-borde-fuerte: #d1d5db;  /* inputs — reemplaza #cccccc */
 
-  --container-width: 1280px;
+  /* =========================================================
+     SUPERFICIES OSCURAS (footer, hero, sidebar, menú lateral)
+     ========================================================= */
+  --color-oscuro: #212121;          /* reemplaza #1a1a1a, #111, #2a2a2a, #2b2b2b */
+  --color-oscuro-elevado: #3a3a3a;  /* ítems del sidebar */
+  --texto-sobre-oscuro: #d7d7d7;    /* reemplaza #d5d5d5 */
+  --texto-sobre-oscuro-tenue: #a3a3a3; /* reemplaza #9a9a9a, #bdbdbd */
+  --overlay-oscuro: rgb(0 0 0 / 0.55);
 
-  --header-height: 80px;
+  /* =========================================================
+     TEXTO Y DETALLES SOBRE FONDO ROJO
+     ========================================================= */
+  --texto-sobre-primario: #ffffff;
+  --texto-sobre-primario-suave: rgb(255 255 255 / 0.9);
+  --blanco-hover: rgb(255 255 255 / 0.12);
+  --blanco-borde: rgb(255 255 255 / 0.15);
+  --blanco-borde-fuerte: rgb(255 255 255 / 0.4);
+
+  /* =========================================================
+     FACULTADES
+     ========================================================= */
+  --color-fjsa: #c23329;
+  --color-fsh: #45b5dd;
+  --color-feirnnr: #e7792b;
+  --color-farnr: #5bad3b;
+  --color-feac: #eebb30;
+  --color-ued: #7b378d;
+  --degradado-facultades: linear-gradient(
+    90deg,
+    var(--color-fsh) 0%,
+    var(--color-farnr) 20%,
+    var(--color-feac) 40%,
+    var(--color-feirnnr) 60%,
+    var(--color-fjsa) 80%,
+    var(--color-ued) 100%
+  );
+
+  /* =========================================================
+     TIPOGRAFÍA
+     clamp(mínimo, preferido, máximo): el valor preferido mezcla
+     rem + un poco de vw, así crece con la pantalla SIN romper el zoom.
+     ========================================================= */
+  --fuente-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --texto-xs: 0.75rem;    /* mes de fechas, etiquetas pequeñas */
+  --texto-sm: 0.875rem;   /* meta, etiquetas, submenús */
+  --texto-base: 1rem;
+  --texto-md: 1.125rem;   /* cuerpo de noticias/eventos, descripciones */
+  --texto-lg: 1.25rem;    /* títulos de tarjeta */
+  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);      /* h2 */
+  --texto-titulo-seccion: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem); /* títulos de grids, listados y vistas */
+  --texto-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem); /* títulos de página */
+  --texto-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);       /* título del hero */
+  --texto-numero: clamp(2rem, 1.6rem + 1.5vw, 2.75rem); /* contador */
+
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-seminegrita: 600;
+  --peso-negrita: 700;
+
+  /* Cambia estos dos y cambia todo el sitio */
+  --peso-texto: var(--peso-normal);
+  --peso-titulo: var(--peso-seminegrita);
+
+  --interlineado-titulo: 1.2;
+  --interlineado-ajustado: 1.35;  /* títulos de tarjeta */
+  --interlineado-base: 1.6;
+  --interlineado-lectura: 1.8;    /* cuerpo de noticias/eventos */
+
+  /* =========================================================
+     ESPACIOS (múltiplos de 0.25rem = 4px)
+     ========================================================= */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 0.75rem;
+  --espacio-4: 1rem;
+  --espacio-5: 1.25rem;
+  --espacio-6: 1.5rem;
+  --espacio-8: 2rem;
+  --espacio-10: 2.5rem;
+  --espacio-12: 3rem;
+  --espacio-16: 4rem;
+  --espacio-20: 5rem;
+
+  /* Margen a los lados de la página: 1rem en móvil → 1.5rem en escritorio */
+  --margen-lateral: clamp(1rem, 0.6rem + 1.5vw, 1.5rem);
+
+  /* =========================================================
+     CONTENEDORES
+     ========================================================= */
+  --contenedor-lectura: 75rem;   /* 1200px — noticias, eventos, listas */
+  --contenedor-normal: 80rem;    /* 1280px — header y footer */
+  --contenedor-ancho: 88.75rem;  /* 1420px — vistas, micrositios, grids */
+  --sidebar-ancho: 16.25rem;     /* 260px */
+  /* Todas las cabeceras de sección arrancan en este mismo borde,
+     sin importar el ancho de las tarjetas de abajo */
+  --contenedor-titulos: var(--contenedor-lectura);
+
+  --header-altura: 5rem;         /* 80px */
+
+  /* =========================================================
+     BORDES Y RADIOS
+     ========================================================= */
+  --radio-sm: 0.375rem;   /* 6px */
+  --radio-md: 0.5rem;     /* 8px — botones, inputs, tablas */
+  --radio-lg: 0.75rem;    /* 12px — tarjetas, acordeón, pestañas */
+  --radio-xl: 1rem;       /* 16px — imágenes grandes */
+  --radio-pastilla: 999px;
+  --radio-circulo: 50%;
+
+  --borde-acento: 4px;          /* borde rojo lateral de tarjetas y cajas */
+  --barra-titulo-ancho: 6.25rem; /* 100px */
+  --barra-titulo-alto: 4px;
+
+  /* =========================================================
+     SOMBRAS
+     ========================================================= */
+  --sombra-sm: 0 0.125rem 0.5rem rgb(0 0 0 / 0.05);
+  --sombra-md: 0 0.25rem 1rem rgb(0 0 0 / 0.08);
+  --sombra-lg: 0 1.25rem 2.5rem -0.625rem rgb(0 0 0 / 0.15);
+  --sombra-primaria: 0 0.25rem 0.875rem
+    color-mix(in srgb, var(--color-primario) 25%, transparent);
+
+  /* =========================================================
+     FOCO (teclado)
+     ========================================================= */
+  --color-foco: var(--color-primario);
+  --anillo-foco: 0 0 0 3px
+    color-mix(in srgb, var(--color-primario) 25%, transparent);
+
+  /* =========================================================
+     ANIMACIÓN
+     ========================================================= */
+  --duracion-rapida: 0.2s;
+  --duracion-normal: 0.3s;
+  --duracion-lenta: 0.5s;
+  --curva-suave: cubic-bezier(0.4, 0, 0.2, 1);
+  --curva-salida: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --elevar-boton: -0.125rem;    /* 2px hacia arriba al hover */
+  --elevar-tarjeta: -0.375rem;  /* 6px hacia arriba al hover */
+
+  /* =========================================================
+     CAPAS (z-index) — siempre usar estas, nunca números sueltos
+     ========================================================= */
+  --z-base: 1;
+  --z-elevado: 5;
+  --z-dropdown: 10;
+  --z-flotante: 900;   /* menú lateral */
+  --z-header: 1000;
+  --z-modal: 1100;     /* siempre por encima del header */
+
+  /* =========================================================
+     TAMAÑOS DE CONTROLES E ÍCONOS
+     ========================================================= */
+  --boton-icono: 2.5rem;        /* 40px */
+  --boton-icono-grande: 3rem;   /* 48px */
+  --icono-sm: 1rem;
+  --icono-md: 1.5rem;
+  --icono-lg: 3rem;
+
+  /* =========================================================
+     ÍCONOS (se usan como máscara: toman el color de background-color)
+     ========================================================= */
+  --icono-ubicacion: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+  --icono-telefono: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E");
+  --icono-correo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3Cpolyline points='22,6 12,13 2,6'/%3E%3C/svg%3E");
+  --icono-archivo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E");
+  --icono-descarga: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E");
+  --icono-reloj: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z'/%3E%3C/svg%3E");
+  --icono-area: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 21V7l8-4 8 4v14h-6v-6h-4v6H4z'/%3E%3C/svg%3E");
+
+  /* =========================================================
+     COMPATIBILIDAD — nombres antiguos que usan los componentes.
+     Se borran cuando todos los componentes estén migrados.
+     ========================================================= */
+  --primary-color: var(--color-primario);
+  --primary-color-dark: var(--color-primario-oscuro);
+  --secondary-color: var(--color-texto-secundario);
+  --surface-color: var(--color-superficie);
+  --background-color: var(--color-fondo-pagina);
+  --text-color: var(--color-texto);
+  --container-width: var(--contenedor-normal);
+  --header-height: var(--header-altura);
+}
+
+/* El header baja a 70px en móvil: se cambia la variable, no la altura */
+@media (max-width: 600px) {
+  :root {
+    --header-altura: 4.375rem;
+  }
 }

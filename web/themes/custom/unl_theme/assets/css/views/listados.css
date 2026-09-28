@@ -1,0 +1,88 @@
+/**
+ * LISTADOS DE EVENTOS Y NOTICIAS (vistas)
+ * Reemplaza a eventos.css y noticias.css, que eran el mismo archivo.
+ * Grid de 4 → 3 → 2 → 1 columnas con entrada escalonada.
+ */
+
+/* ---------- Sección ---------- */
+.eventos,
+.noticias {
+  padding: var(--espacio-16) 0 var(--espacio-20);
+  background: transparent;
+}
+
+/* ---------- Grid ---------- */
+.eventos__contenedor,
+.noticias__contenedor {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--espacio-10) var(--espacio-8);
+  width: min(100% - 2 * var(--margen-lateral), var(--contenedor-ancho));
+  margin: 0 auto;
+}
+
+.eventos__item,
+.noticias__item {
+  display: flex;
+  opacity: 0;
+  animation: listado-entrada var(--duracion-lenta) ease forwards;
+}
+
+.eventos__item .evento-teaser,
+.noticias__item .noticia-teaser {
+  width: 100%;
+}
+
+/* Entrada escalonada: cada tarjeta aparece un poco después.
+   Con "movimiento reducido" base.css la deja visible de inmediato. */
+.eventos__item:nth-child(1),
+.noticias__item:nth-child(1) { animation-delay: 0.02s; }
+.eventos__item:nth-child(2),
+.noticias__item:nth-child(2) { animation-delay: 0.08s; }
+.eventos__item:nth-child(3),
+.noticias__item:nth-child(3) { animation-delay: 0.14s; }
+.eventos__item:nth-child(4),
+.noticias__item:nth-child(4) { animation-delay: 0.2s; }
+.eventos__item:nth-child(n + 5),
+.noticias__item:nth-child(n + 5) { animation-delay: 0.24s; }
+
+@keyframes listado-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(0.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1300px) {
+  .eventos__contenedor,
+  .noticias__contenedor {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .eventos__contenedor,
+  .noticias__contenedor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-8) var(--espacio-5);
+  }
+}
+
+@media (max-width: 600px) {
+  .eventos,
+  .noticias {
+    padding: var(--espacio-10) 0 var(--espacio-12);
+  }
+
+  .eventos__contenedor,
+  .noticias__contenedor {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-6);
+  }
+}

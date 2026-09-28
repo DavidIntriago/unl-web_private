@@ -1,143 +1,92 @@
+/**
+ * ABOUT — texto + imagen/video en dos columnas.
+ * El botón toma su estilo de botones.css.
+ */
 .unl-about {
-  padding: 4rem 1rem;
   width: 100%;
+  padding: var(--espacio-16) var(--espacio-4);
 }
 
-/* responsividad no pasa de 1200 y en telefono todo se hace 1 columna */
+/* No pasa de 1200px y en teléfono todo va en 1 columna */
 .unl-about__container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
   align-items: center;
+  gap: var(--espacio-10);
+  max-width: var(--contenedor-lectura);
+  margin: 0 auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .unl-about__container {
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: var(--espacio-16);
   }
 }
-/*Titulo 1*/
+
+/* ---------- Texto ---------- */
 .unl-about__title {
-  font-size: 2.25rem;
-  color: var(--text-color);
   margin-top: 0;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
+  margin-bottom: var(--espacio-2);
+  font-size: var(--texto-titulo-seccion);
+  line-height: var(--interlineado-ajustado);
+  color: var(--color-texto);
 }
-/*Titulo 2*/
+
 .unl-about__highlight {
   display: inline-block;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  padding: 0.1rem 0.75rem;
-  border-radius: 6px;
-  margin-left: 0.5rem;
-  font-weight: 800;
+  margin-left: var(--espacio-2);
+  padding: 0.1rem var(--espacio-3);
+  border-radius: var(--radio-sm);
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+  font-weight: var(--peso-negrita);
   transform: skew(-5deg);
 }
 
 .unl-about__description {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #374151;
-  margin-bottom: 2rem;
+  margin-bottom: var(--espacio-8);
+  font-size: var(--texto-md);
+  line-height: var(--interlineado-lectura);
+  color: var(--color-texto-cuerpo);
   text-align: justify;
 }
 
-/* Boton */
-.unl-about__action a {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--primary-color) 25%, transparent);
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-}
-
-.unl-about__action a:hover {
-  background-color: var(--primary-color-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--primary-color) 40%, transparent);
-}
-
-/* videos, imagenes, link video */
+/* ---------- Imagen, video local o YouTube ---------- */
 .unl-about__media {
   width: 100%;
-  border-radius: 16px;
+  border-radius: var(--radio-xl);
   overflow: hidden;
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--sombra-lg);
 }
 
-/* imagen y video local */
 .unl-about__media img,
 .unl-about__media video {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
   object-fit: cover;
 }
 
-/* video youtube */
 .unl-about__media iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   border: none;
 }
 
-/* divisor de color */
+/* ---------- Divisor de color ----------
+   El color sale de la clase .theme-* (ver utilities.css).
+   Sin clase de facultad, queda en rojo institucional. */
 .unl-about__divider {
-  height: 10px;
   width: 100%;
+  height: 0.625rem;
+  margin-bottom: var(--espacio-6);
   border-radius: 4px;
-  margin-bottom: 1.5rem;
+  background: var(--color-tema, var(--color-primario));
 }
 
 .unl-about__divider--multicolor {
-  background: linear-gradient(
-    90deg,
-    #5fbfe2 0%,
-    #5bad3b 20%,
-    #fac947 40%,
-    #ed8942 60%,
-    #e3463c 80%,
-    #7b378d 100%
-  );
-}
-
-.unl-about__divider.theme-fjsa {
-  background: #e53e3e;
-}
-
-.unl-about__divider.theme-fsh {
-  background: #3182ce;
-}
-
-.unl-about__divider.theme-feirnnr {
-  background: #ffab03;
-}
-
-.unl-about__divider.theme-farnr {
-  background: #38a169;
-}
-
-.unl-about__divider.theme-feac {
-  background: #c7c4cc;
-}
-
-.unl-about__divider.default {
-  background: var(--primary-color);
+  background: var(--degradado-facultades);
 }

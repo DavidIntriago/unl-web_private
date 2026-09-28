@@ -1,102 +1,116 @@
+/**
+ * KLARO — aviso de cookies.
+ * El HTML lo genera el módulo, no se le puede poner class="boton",
+ * así que aquí se usan los mismos tokens. Los !important son
+ * necesarios para ganarle al CSS del módulo.
+ */
+
+/* ---------- Aviso ---------- */
 .klaro .cookie-notice {
-  background-color: var(--surface-color);
-  border: 2px solid var(--primary-color); 
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 1.5rem;
-  max-width: 480px;
-  font-family: inherit; 
+  max-width: 30rem;
+  padding: var(--espacio-6);
+  border: 2px solid var(--color-primario);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-lg);
+  font-family: inherit;
 }
 
 .klaro .cookie-notice .cn-body p {
-  color: #2b2b2b;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: var(--texto-sm);
+  line-height: var(--interlineado-base);
+  color: var(--color-texto);
 }
 
 .klaro .cookie-notice .cn-body strong {
-  color: var(--primary-color);
+  color: var(--color-primario);
 }
 
 .klaro .cookie-notice .cn-body a,
 .klaro .cm-link {
-  color: var(--primary-color);
+  color: var(--color-primario);
+  font-weight: var(--peso-seminegrita);
   text-decoration: underline;
-  font-weight: 600;
 }
 
 .klaro .cookie-notice .cn-body a:hover,
 .klaro .cm-link:hover {
-  color: var(--primary-color-dark);
-}
-
-.klaro .cn-buttons button,
-.klaro .cm-btn {
-  border-radius: 6px;
-  padding: 0.6rem 1.4rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  border: 2px solid var(--primary-color);
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.klaro .cn-buttons button:focus,
-.klaro .cm-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
-}
-
-.klaro .cn-buttons .cm-btn-success {
-  background-color: var(--primary-color) !important; 
-  border-color: var(--primary-color) !important;
-  color: var(--surface-color) !important;
-}
-
-
-.klaro .cn-buttons .cm-btn-success:hover {
-  background-color: var(--primary-color-dark);
-  border-color: var(--primary-color-dark);
-}
-
-.klaro .cn-buttons .cm-btn-danger  {
-  background-color: color-mix(in srgb, var(--primary-color) 6%, white) !important;
-  border-color: var(--primary-color) !important;
-  color: var(--primary-color) !important;
-}
-
-.klaro .cn-buttons .cm-btn-danger:hover {
-  background-color: #f7dde0;
+  color: var(--color-primario-oscuro);
 }
 
 .klaro .cookie-notice .cn-close {
-  color: #2b2b2b;
+  color: var(--color-texto);
 }
 
 .klaro .cookie-notice .cn-close:hover {
-  color: var(--primary-color);
+  color: var(--color-primario);
 }
 
+/* ---------- Botones (mismas medidas que .boton) ---------- */
+.klaro .cn-buttons button,
+.klaro .cm-btn {
+  padding: var(--espacio-3) var(--espacio-6);
+  border: 2px solid var(--color-primario);
+  border-radius: var(--radio-md);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  cursor: pointer;
+  transition:
+    background-color var(--duracion-rapida) ease,
+    border-color var(--duracion-rapida) ease,
+    color var(--duracion-rapida) ease;
+}
 
+.klaro .cn-buttons button:focus-visible,
+.klaro .cm-btn:focus-visible {
+  outline: 2px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+/* Aceptar: primario */
+.klaro .cn-buttons .cm-btn-success {
+  background-color: var(--color-primario) !important;
+  border-color: var(--color-primario) !important;
+  color: var(--texto-sobre-primario) !important;
+}
+
+.klaro .cn-buttons .cm-btn-success:hover {
+  background-color: var(--color-primario-oscuro) !important;
+  border-color: var(--color-primario-oscuro) !important;
+}
+
+/* Rechazar: claro */
+.klaro .cn-buttons .cm-btn-danger {
+  background-color: var(--color-primario-fondo) !important;
+  border-color: var(--color-primario) !important;
+  color: var(--color-primario) !important;
+}
+
+.klaro .cn-buttons .cm-btn-danger:hover {
+  background-color: var(--color-primario-hover) !important;
+}
+
+/* ---------- Modal de preferencias ---------- */
 .klaro .cookie-modal .cm-modal {
-  border-radius: 8px;
+  border-radius: var(--radio-md);
   font-family: inherit;
 }
 
 .klaro .cookie-modal .cm-header h1,
 .klaro .cookie-modal .cm-header h2 {
-  color: var(--primary-color);
-  font-weight: 700;
+  color: var(--color-primario);
+  font-weight: var(--peso-negrita);
 }
 
 .klaro .cm-list-input:checked + .cm-list-label .slider {
-  background-color: var(--primary-color);
+  background-color: var(--color-primario);
 }
 
+/* ---------- Botón flotante para reabrir ---------- */
 .klaro .cookie-notice-hidden ~ .klaro-toggle,
 .klaro .cm-toggle-button {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radio-circulo);
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+  box-shadow: var(--sombra-md);
 }

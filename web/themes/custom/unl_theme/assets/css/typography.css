@@ -1,28 +1,108 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap");
 
+/**
+ * TIPOGRAFÍA — escala global.
+ * Para cambiar el tamaño de todos los títulos de sección del sitio,
+ * se cambia --texto-xl en variables.css. Nada más.
+ */
 @layer typography {
   body {
-    font-family: "Inter", sans-serif;
+    letter-spacing: normal;
+    font-family: var(--fuente-base);
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-size: var(--texto-base);
+    font-weight: var(--peso-texto);
+    line-height: var(--interlineado-base);
   }
 
   h1,
   h2,
-  h3 {
-    font-weight: 500;
-    color: var(--text-color);
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: var(--peso-titulo);
+    line-height: var(--interlineado-titulo);
+    color: var(--color-texto);
   }
 
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
+  h1 { font-size: var(--texto-2xl); }
+  h2 { font-size: var(--texto-xl); }
+  h3 { font-size: var(--texto-lg); }
+  h4 { font-size: var(--texto-md); }
+  h5,
+  h6 { font-size: var(--texto-base); }
 
   p {
-    line-height: 1.6;
+    line-height: var(--interlineado-base);
+  }
+
+  strong,
+  b {
+    font-weight: var(--peso-negrita);
+  }
+
+  /* =========================================================
+     CLASES DE TEXTO REUTILIZABLES
+     ========================================================= */
+
+  /* Título de página completa (noticia, evento) */
+  .titulo-pagina {
+    font-size: var(--texto-2xl);
+    line-height: var(--interlineado-titulo);
+    margin: 0;
+  }
+
+  /* Título de sección (listados, grids, vistas) */
+  .titulo-seccion {
+    font-size: var(--texto-titulo-seccion);
+    text-align: left;
+    margin: 0;
+  }
+
+  /* Título del hero */
+  .titulo-hero {
+    font-size: var(--texto-3xl);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  /* Título dentro de una tarjeta */
+  .titulo-tarjeta {
+    font-size: var(--texto-lg);
+    line-height: var(--interlineado-ajustado);
+    margin: 0;
+  }
+
+  /* Barra roja bajo los títulos */
+  .separador {
+    width: var(--barra-titulo-ancho);
+    height: var(--barra-titulo-alto);
+    margin: var(--espacio-3) 0 0;
+    background-color: var(--color-primario);
+    border-radius: 2px;
+  }
+
+  .separador--centro {
+    margin-inline: auto;
+  }
+
+  .separador--tarjeta {
+    width: 3rem;
+    margin: var(--espacio-3) 0;
+  }
+
+  /* Texto pequeño en mayúsculas: área, "Compartir", encabezados de tabla */
+  .etiqueta {
+    font-size: var(--texto-sm);
+    font-weight: var(--peso-negrita);
+    text-transform: uppercase;
+    color: var(--color-texto-tenue);
+  }
+
+  /* Fechas, ubicación, datos secundarios */
+  .texto-meta {
+    font-size: var(--texto-sm);
+    color: var(--color-texto-tenue);
   }
 }

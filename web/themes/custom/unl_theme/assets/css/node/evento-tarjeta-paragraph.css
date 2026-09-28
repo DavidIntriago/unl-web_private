@@ -1,29 +1,36 @@
+/**
+ * TARJETA DE EVENTO (párrafo) — sin imagen, con todos los datos.
+ * La animación .animar-scroll ahora vive en utilities.css.
+ */
 .card-ev-parrafo {
-  background-color: var(--surface-color);
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-  position: relative;
   overflow: hidden;
-  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie);
+  transition:
+    box-shadow var(--duracion-normal) ease,
+    border-color var(--duracion-normal) ease;
 }
 
 .card-ev-parrafo:hover {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary-color);
+  border-color: var(--color-primario);
+  box-shadow: var(--sombra-lg);
 }
 
+/* Barra roja que se llena arriba al hover */
 .card-ev-parrafo::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 0;
-  height: 4px;
-  background-color: var(--primary-color);
-  transition: width 0.4s ease;
+  height: var(--barra-titulo-alto);
+  background-color: var(--color-primario);
+  transition: width var(--duracion-normal) ease;
 }
 
 .card-ev-parrafo:hover::before {
@@ -31,121 +38,119 @@
 }
 
 .card-ev-parrafo__cuerpo {
-  padding: 2rem 2rem 2.5rem 2rem;
   flex-grow: 1;
+  padding: var(--espacio-8) var(--espacio-8) var(--espacio-10);
 }
 
 .card-ev-parrafo__cabecera {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--espacio-6);
 }
 
+/* =========================================================
+   FECHA (misma medida que los teasers, versión sobre fondo claro)
+   ========================================================= */
 .card-ev-parrafo__fecha-cuadro {
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-top: 4px solid var(--primary-color);
-  border-radius: 8px;
-  width: 65px;
-  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.card-ev-parrafo__fecha-cuadro .dia {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #111827;
+  min-width: 3.5rem;
+  padding: var(--espacio-2) var(--espacio-3);
+  border: 1px solid var(--color-borde);
+  border-top: var(--barra-titulo-alto) solid var(--color-primario);
+  border-radius: var(--radio-md);
+  background-color: var(--color-fondo-suave);
+  box-shadow: var(--sombra-sm);
   line-height: 1;
 }
 
+.card-ev-parrafo__fecha-cuadro .dia {
+  color: var(--color-texto);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-negrita);
+}
+
 .card-ev-parrafo__fecha-cuadro .mes {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
+  margin-top: var(--espacio-1);
+  color: var(--color-primario);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-negrita);
   text-transform: uppercase;
-  margin-top: 4px;
 }
 
 .card-ev-parrafo__tag {
-  color: #6b7280;
-  font-size: 0.8rem;
-  font-weight: 700;
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-negrita);
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
+/* =========================================================
+   TÍTULO
+   ========================================================= */
 .card-ev-parrafo__titulo {
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1.4;
-  margin: 0 0 1rem 0;
-  color: var(--text-color);
+  margin: 0 0 var(--espacio-4);
+  color: var(--color-texto);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-ajustado);
 }
 
 .card-ev-parrafo__separador {
-  width: 40px;
-  height: 3px;
-  background-color: #e5e7eb;
-  margin-bottom: 1.5rem;
-  transition: background-color 0.4s ease;
+  width: 3rem;
+  height: var(--barra-titulo-alto);
+  margin-bottom: var(--espacio-6);
+  border-radius: 2px;
+  background-color: var(--color-borde);
+  transition: background-color var(--duracion-normal) ease;
 }
 
 .card-ev-parrafo:hover .card-ev-parrafo__separador {
-  background-color: var(--primary-color);
+  background-color: var(--color-primario);
 }
 
+/* =========================================================
+   DETALLES (lugar, hora, etc.)
+   ========================================================= */
 .card-ev-parrafo__detalles {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem; 
+  gap: var(--espacio-5);
 }
 
 .detalle-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--espacio-4);
 }
 
 .detalle-item .icono {
-  color: var(--primary-color);
   flex-shrink: 0;
-  background: color-mix(in srgb, var(--primary-color) 4%, white);
-  padding: 8px;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: var(--espacio-2);
+  border-radius: var(--radio-circulo);
+  background: var(--color-primario-fondo);
+  color: var(--color-primario);
 }
 
 .detalle-item .info {
   display: flex;
   flex-direction: column;
-  padding-top: 2px;
+  padding-top: 0.125rem;
 }
 
 .detalle-item .label {
-  color: #6b7280;
-  font-size: 0.75rem;
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-seminegrita);
   text-transform: uppercase;
-  font-weight: 600;
 }
 
 .detalle-item .valor {
-  color: #374151;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.animar-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.animar-scroll.visible {
-  opacity: 1;
-  transform: translateY(0); 
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-medio);
 }

@@ -1,34 +1,38 @@
+/**
+ * TEXTO LIBRE — bloques donde el personal pega su propio HTML.
+ * A propósito tiene muy pocas reglas: no debe pisar lo que pegan.
+ */
 .unl-texto-libre {
   width: 100%;
 }
 
 .unl-texto-libre__container {
-  max-width: 1200px;
+  max-width: var(--contenedor-lectura);
   margin: 0 auto;
 }
 
 .unl-texto-libre table {
+  display: table;
   width: 100%;
-  display: table; 
-  table-layout: auto;
+  margin: var(--espacio-8) 0;
   border-collapse: collapse;
-  margin: 2rem 0;
-  font-size: 0.95rem;
-}
-
-@media (max-width: 768px) {
-  .unl-texto-libre table {
-    display: block; 
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap; 
-  }
+  font-size: var(--texto-sm);
+  table-layout: auto;
 }
 
 .unl-texto-libre img {
+  display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 1.5rem auto;
-  display: block;
+  margin: var(--espacio-6) auto;
+  border-radius: var(--radio-md);
+}
+
+/* En móvil las tablas se deslizan de lado en lugar de romper la página */
+@media (max-width: 768px) {
+  .unl-texto-libre table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }

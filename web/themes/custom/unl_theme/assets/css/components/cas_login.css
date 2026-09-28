@@ -1,95 +1,34 @@
-/* Separa el contenido del header y centra la página de login */
-/*.site-content {
-  padding-top: 40px;
-  padding-bottom: 60px;
-}
-*/
-
+/**
+ * LOGIN (CAS + administradores)
+ * Los botones toman su estilo de botones.css y los inputs de base.css.
+ * Aquí solo queda la distribución.
+ */
 #user-login-form {
-  max-width: 380px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--espacio-4);
+  max-width: 23.75rem; /* 380px */
+  margin: 0 auto;
 }
 
 #user-login-form label {
-  font-weight: 600;
-  color: #3a3a3a;
-  margin-bottom: 6px;
   display: block;
-}
-
-#user-login-form input[type="text"],
-#user-login-form input[type="password"] {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid #e2e6ea;
-  border-radius: 8px;
-  box-sizing: border-box;
+  margin-bottom: 0.375rem;
 }
 
 #user-login-form input[type="submit"] {
-  background-color: #93000b;
-  color: #ffffff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
   align-self: center;
 }
 
-/* Centra el botón de CAS dentro de esa misma columna */
+/* Botón de CAS centrado en la misma columna */
 .cas-login-link {
   align-self: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--espacio-5);
 }
 
-.cas-login-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  gap: 8px;
-  padding: 12px 28px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background-color: #93000b;
-  color: #ffffff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.cas-login-link:hover,
-.cas-login-link:focus {
-  background-color: #6e0008;
-  color: #ffffff;
-  text-decoration: none;
-  transform: translateY(-2px);
-}
-
-.cas-login-link:focus-visible {
-  outline: 3px solid #fbecec;
-  outline-offset: 2px;
-}
-
+/* "Inicio de sesión administradores" */
 .admin-login-toggle {
-  display: inline-block;
-  margin-top: 10px;
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  color: #5d6b84;
-  font-size: 0.9em;
-  text-decoration: underline;
-}
-
-.admin-login-toggle:hover {
-  color: #93000b;
+  margin-top: 0.625rem;
 }
 
 #admin-login-fields {

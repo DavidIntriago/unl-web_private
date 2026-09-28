@@ -1,0 +1,97 @@
+/**
+ * CONTENIDO ENRIQUECIDO — el cuerpo que se escribe en CKEditor
+ * en noticias y eventos: imágenes alineadas, pies de foto,
+ * letra capital y caja resaltada.
+ *
+ * No se aplica a .unl-texto-libre a propósito: ahí se pegan
+ * bloques HTML que deben quedar aislados del tema.
+ */
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo)::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) :is(h2, h3) {
+  margin-top: var(--espacio-8);
+  color: var(--color-texto);
+}
+
+/* =========================================================
+   IMÁGENES Y VIDEOS
+   ========================================================= */
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) :is(figure, img, video) {
+  max-width: 100%;
+  height: auto;
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) :is(.align-left, .image-style-align-left) {
+  float: left;
+  max-width: 50%;
+  height: auto;
+  margin-right: var(--espacio-6);
+  margin-bottom: var(--espacio-4);
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) :is(.align-right, .image-style-align-right) {
+  float: right;
+  max-width: 50%;
+  height: auto;
+  margin-left: var(--espacio-6);
+  margin-bottom: var(--espacio-4);
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) .align-center {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--espacio-6);
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) figcaption {
+  margin-top: 0;
+  padding: var(--espacio-3) var(--espacio-4);
+  border-bottom: 3px solid var(--color-primario);
+  border-radius: 0 0 var(--radio-sm) var(--radio-sm);
+  background-color: var(--color-fondo-gris);
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-sm);
+  text-align: center;
+}
+
+/* =========================================================
+   LETRA CAPITAL Y CAJA RESALTADA (estilos de CKEditor)
+   ========================================================= */
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) .letra-capital {
+  float: left;
+  margin-top: 0.3rem;
+  margin-right: 0.6rem;
+  color: var(--color-primario);
+  font-size: 4.5rem;
+  font-weight: var(--peso-medio);
+  line-height: 0.7;
+  text-transform: uppercase;
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) .caja-resaltada {
+  margin: var(--espacio-8) 0;
+  padding: var(--espacio-6) var(--espacio-8);
+  border-left: var(--borde-acento) solid var(--color-primario);
+  border-radius: 0 var(--radio-md) var(--radio-md) 0;
+  background-color: var(--color-fondo-gris);
+  color: var(--color-texto-cuerpo);
+  font-style: italic;
+  box-shadow: var(--sombra-sm);
+}
+
+/* En móvil las imágenes flotantes ocupan todo el ancho */
+@media (max-width: 600px) {
+  :is(.noticia-full__cuerpo, .evento-detalle__cuerpo) :is(.align-left, .align-right) {
+    float: none;
+    display: block;
+    max-width: 100%;
+    margin: 0 0 var(--espacio-6) 0;
+  }
+}

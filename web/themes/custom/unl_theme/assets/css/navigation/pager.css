@@ -1,17 +1,21 @@
+/**
+ * PAGINADOR
+ * Blanco con borde → se llena de rojo al hover y en la página actual.
+ */
 .pager {
   display: flex;
   justify-content: center;
-  margin: 4rem 0 2rem;
+  margin: var(--espacio-16) 0 var(--espacio-8);
 }
 
 .pager__items {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
-  list-style: none;
+  gap: var(--espacio-2);
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;
+  list-style: none;
 }
 
 .pager__item {
@@ -22,46 +26,48 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 46px;
-  height: 46px;
-  padding: 0 0.9rem;
-  border: 1px solid #d7dbe0;
-  border-radius: 12px;
-  background: var(--surface-color);
-  color: #374151;
+  min-width: var(--boton-icono-grande);
+  height: var(--boton-icono-grande);
+  padding: 0 var(--espacio-4);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  background: var(--color-superficie);
+  color: var(--color-texto-cuerpo);
+  font-weight: var(--peso-seminegrita);
   text-decoration: none;
-  font-weight: 600;
   transition:
-    background-color 0.25s,
-    color 0.25s,
-    border-color 0.25s,
-    transform 0.25s;
+    background-color var(--duracion-rapida) ease,
+    color var(--duracion-rapida) ease,
+    border-color var(--duracion-rapida) ease,
+    transform var(--duracion-rapida) ease;
+}
+
+.pager__item a:hover,
+.pager__item a:focus-visible,
+.pager__item.is-active a {
+  border-color: var(--color-primario);
+  background: var(--color-primario);
+  color: var(--texto-sobre-primario);
 }
 
 .pager__item a:hover {
-  background: var(--primary-color);
-  color: var(--surface-color);
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
+  transform: translateY(var(--elevar-boton));
 }
 
 .pager__item.is-active a {
-  background: var(--primary-color);
-  color: var(--surface-color);
-  border-color: var(--primary-color);
   pointer-events: none;
   cursor: default;
 }
 
 .pager__item--previous a,
 .pager__item--next a {
-  padding: 0 1.2rem;
   min-width: auto;
+  padding: 0 var(--espacio-5);
 }
 
 .pager__item--first a,
 .pager__item--last a {
-  width: 46px;
+  width: var(--boton-icono-grande);
   padding: 0;
 }
 
@@ -69,23 +75,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
-  color: #6b7280;
-  font-weight: 700;
+  width: var(--boton-icono-grande);
+  height: var(--boton-icono-grande);
+  color: var(--color-texto-tenue);
+  font-weight: var(--peso-negrita);
 }
 
 @media (max-width: 768px) {
   .pager {
-    margin: 3rem 0 1rem;
+    margin: var(--espacio-12) 0 var(--espacio-4);
   }
+
   .pager__items {
-    gap: 0.35rem;
+    gap: var(--espacio-1);
   }
+
   .pager__item a {
-    height: 42px;
-    min-width: 42px;
-    font-size: 0.95rem;
+    min-width: var(--boton-icono);
+    height: var(--boton-icono);
+    font-size: var(--texto-sm);
   }
 
   .pager__item--first,

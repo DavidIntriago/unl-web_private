@@ -1,0 +1,96 @@
+/**
+ * CARRUSEL BASE — compartido por hero_carrusel y hero_micrositio.
+ * Diapositivas con fundido e indicadores tipo rayita.
+ * Cada hero solo agrega lo que lo hace distinto.
+ */
+
+/* =========================================================
+   DIAPOSITIVAS
+   ========================================================= */
+.slide-item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Con sesión iniciada, Drupal agrega .contextual-region con
+   position: relative y las diapositivas dejan de superponerse */
+.slide-item.contextual-region {
+  position: absolute;
+}
+
+.slide-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* =========================================================
+   INDICADORES
+   ========================================================= */
+.carrusel-controles {
+  position: absolute;
+  bottom: var(--espacio-6);
+  left: 0;
+  z-index: var(--z-elevado);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--espacio-2);
+  width: 100%;
+  padding: 0 var(--espacio-5);
+}
+
+.carrusel-indicador {
+  position: relative;
+  width: 2rem;
+  height: 3px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radio-pastilla);
+  background: var(--blanco-borde-fuerte);
+  cursor: pointer;
+  transition:
+    background-color var(--duracion-normal) ease,
+    width var(--duracion-normal) ease;
+}
+
+/* Área de clic más grande que la rayita visible */
+.carrusel-indicador::after {
+  content: "";
+  position: absolute;
+  inset: -0.625rem -0.25rem;
+}
+
+.carrusel-indicador:hover {
+  background: rgb(255 255 255 / 0.7);
+}
+
+.carrusel-indicador.active {
+  width: 3rem;
+  background: var(--color-superficie);
+}
+
+@media (max-width: 768px) {
+  .carrusel-controles {
+    bottom: var(--espacio-4);
+  }
+
+  .carrusel-indicador {
+    width: 1.375rem;
+  }
+
+  .carrusel-indicador.active {
+    width: 2.125rem;
+  }
+}

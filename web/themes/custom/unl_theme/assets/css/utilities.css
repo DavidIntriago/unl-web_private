@@ -1,46 +1,292 @@
-.fondo-decorativo {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+/**
+ * UTILIDADES — piezas pequeñas que se repetían en varios componentes.
+ * Fuera de @layer: deben ganar al CSS de Drupal core/contrib.
+ */
+
+/* =========================================================
+   QUITAR ENVOLTORIOS DE DRUPAL
+   Los .field / .field__items dejan de existir para el layout y
+   sus hijos pasan a ser hijos directos del grid o flex.
+   ========================================================= */
+.sin-envoltorios .field,
+.sin-envoltorios .field__items,
+.sin-envoltorios .field__item {
+  display: contents;
 }
 
-.fondo-decorativo__atomo-grande {
+/* =========================================================
+   ARREGLO DE .contextual-region
+   Drupal le pone position: relative y rompe los absolute.
+   ========================================================= */
+.sin-contextual .contextual-region {
+  position: static !important;
+}
+
+/* =========================================================
+   ENLACE ESTIRADO — toda la tarjeta es clickeable
+   La tarjeta necesita position: relative.
+   Uso: <div class="enlace-estirado"><a href="...">Texto</a></div>
+   ========================================================= */
+.enlace-estirado {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.enlace-estirado a {
+  color: transparent;
+  font-size: 0;
+}
+
+.enlace-estirado a::after {
+  content: "";
   position: absolute;
-  width: 800px;
-  height: 800px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%2393000b' stroke-width='4'%3E%3Cline x1='200' y1='200' x2='120' y2='90' /%3E%3Cline x1='200' y1='200' x2='300' y2='110' /%3E%3Cline x1='200' y1='200' x2='90' y2='230' /%3E%3Cline x1='200' y1='200' x2='305' y2='240' /%3E%3Cline x1='200' y1='200' x2='140' y2='320' /%3E%3Cline x1='200' y1='200' x2='290' y2='330' /%3E%3C/g%3E%3Cg fill='%23fff' stroke='%2393000b' stroke-width='4'%3E%3Ccircle cx='200' cy='200' r='55' /%3E%3Ccircle cx='120' cy='90' r='30' /%3E%3Ccircle cx='300' cy='110' r='24' /%3E%3Ccircle cx='90' cy='230' r='22' /%3E%3Ccircle cx='305' cy='240' r='30' /%3E%3Ccircle cx='140' cy='320' r='28' /%3E%3Ccircle cx='290' cy='330' r='30' /%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.08;
-  animation: girar-atomo 60s linear infinite;
+  inset: 0;
+  z-index: var(--z-dropdown);
+  border-radius: inherit;
 }
 
-@keyframes girar-atomo {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* El foco se dibuja sobre toda la tarjeta */
+.enlace-estirado a:focus-visible {
+  outline: none;
+}
+
+.enlace-estirado a:focus-visible::after {
+  outline: 2px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   IMAGEN QUE CUBRE TODO SU CONTENEDOR
+   El contenedor necesita position: relative.
+   ========================================================= */
+.imagen-cubre img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================================
+   ÍCONOS CON MÁSCARA
+   El ícono toma el color del texto (currentColor).
+   Uso: <span class="icono-mascara icono-mascara--ubicacion"></span>
+   (no se llama .icono porque esa clase ya existe en la tarjeta de evento)
+   En ::before de un componente:
+     background-color: currentColor;
+     mask: var(--icono-telefono) no-repeat center / contain;
+   ========================================================= */
+.icono-mascara {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--icono-tamano, var(--icono-sm));
+  height: var(--icono-tamano, var(--icono-sm));
+  background-color: currentColor;
+  -webkit-mask: var(--icono) no-repeat center / contain;
+  mask: var(--icono) no-repeat center / contain;
+}
+
+.icono-mascara--ubicacion { --icono: var(--icono-ubicacion); }
+.icono-mascara--telefono  { --icono: var(--icono-telefono); }
+.icono-mascara--correo    { --icono: var(--icono-correo); }
+.icono-mascara--archivo   { --icono: var(--icono-archivo); }
+.icono-mascara--descarga  { --icono: var(--icono-descarga); }
+.icono-mascara--reloj     { --icono: var(--icono-reloj); }
+.icono-mascara--area      { --icono: var(--icono-area); }
+
+.icono-mascara--md { --icono-tamano: var(--icono-md); }
+.icono-mascara--lg { --icono-tamano: var(--icono-lg); }
+
+/* Fuerza un logo o SVG a blanco (sobre fondo rojo u oscuro) */
+.icono-blanco {
+  filter: brightness(0) invert(1);
+}
+
+/* =========================================================
+   CABECERA DE SECCIÓN — igual en todo el sitio
+   Título a la izquierda, enlace "Ver más" a la derecha, sin barra.
+   Todas arrancan en el mismo borde (--contenedor-titulos),
+   sin importar si las tarjetas de abajo son más anchas o angostas.
+   ========================================================= */
+.grid-tarjetas__header,
+.seccion-eventos__cabecera,
+.noticias-destacadas__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4) var(--espacio-6);
+  width: 100%;
+  max-width: var(--contenedor-titulos);
+  margin: 0 auto var(--espacio-8);
+  padding: 0;
+  text-align: left;
+}
+
+/* El grid de tarjetas va a todo el ancho de la página:
+   aquí la cabecera pone su propio margen lateral */
+.grid-tarjetas__header {
+  width: min(100% - 2 * var(--margen-lateral), var(--contenedor-titulos));
+}
+
+.grid-tarjetas__titulo,
+.seccion-eventos__titulo,
+.noticias-destacadas__titulo,
+.titulo-vista-global,
+.titulo-vista-paragraph {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: var(--texto-titulo-seccion);
+  text-align: left;
+}
+
+.titulo-vista-global,
+.titulo-vista-paragraph {
+  max-width: var(--contenedor-titulos);
+  margin-inline: auto;
+}
+
+/* Sin barra roja debajo */
+.grid-tarjetas__divider,
+.seccion-eventos__divider,
+.noticias-destacadas__divider {
+  display: none;
+}
+
+/* =========================================================
+   ENLACE "VER MÁS" EN CABECERAS DE SECCIÓN
+   Texto pequeño en mayúsculas con un triángulo rojo delante.
+   Uso en Twig: <a class="enlace-ver-mas" href="...">Ver más eventos</a>
+   Los selectores largos son los enlaces que ya existen sin esa clase.
+   ========================================================= */
+.enlace-ver-mas,
+.noticias-destacadas__boton-superior a,
+.grid-tarjetas__header > a,
+.seccion-eventos__cabecera > a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--duracion-rapida) ease;
+}
+
+.enlace-ver-mas::before,
+.noticias-destacadas__boton-superior a::before,
+.grid-tarjetas__header > a::before,
+.seccion-eventos__cabecera > a::before {
+  content: "";
+  border-left: 0.375rem solid var(--color-primario);
+  border-block: 0.25rem solid transparent;
+}
+
+.enlace-ver-mas:hover,
+.noticias-destacadas__boton-superior a:hover,
+.grid-tarjetas__header > a:hover,
+.seccion-eventos__cabecera > a:hover {
+  color: var(--color-primario);
+}
+
+/* =========================================================
+   CORTAR TEXTO EN N LÍNEAS
+   ========================================================= */
+.recortar-2,
+.recortar-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recortar-2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.recortar-3 {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* =========================================================
+   CARRUSEL HORIZONTAL EN MÓVIL
+   El contenedor pasa de grid a una fila deslizable.
+   --tablet lo activa desde 1024px hacia abajo.
+   ========================================================= */
+@media (max-width: 768px) {
+  .carrusel-movil {
+    display: flex;
+    gap: var(--espacio-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: var(--espacio-4);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .fondo-decorativo__atomo-grande {
-    animation: none;
+@media (max-width: 1024px) {
+  .carrusel-movil--tablet {
+    display: flex;
+    gap: var(--espacio-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: var(--espacio-4);
+  }
+}
+
+@media (max-width: 1024px) {
+  .carrusel-movil::-webkit-scrollbar,
+  .carrusel-movil--tablet::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carrusel-movil--tablet > * {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
   }
 }
 
 @media (max-width: 768px) {
-  .fondo-decorativo__atomo-grande {
-    width: 500px;
-    height: 500px;
-    right: -150px;
+  .carrusel-movil > * {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
   }
 }
 
-#page-wrapper {
-  position: relative;
-  z-index: 1;
+/* =========================================================
+   ANIMACIÓN AL HACER SCROLL (antes en evento-tarjeta-paragraph.css)
+   El JS agrega .visible. El movimiento reducido ya lo apaga base.css.
+   ========================================================= */
+.animar-scroll {
+  opacity: 0;
+  transform: translateY(2.5rem);
+  transition:
+    opacity 0.7s var(--curva-salida),
+    transform 0.7s var(--curva-salida);
 }
+
+.animar-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   TEMAS DE FACULTADES
+   Solo definen --color-tema; cada componente decide dónde usarlo:
+   background-color: var(--color-tema);
+   ========================================================= */
+.theme-fjsa    { --color-tema: var(--color-fjsa); }
+.theme-fsh     { --color-tema: var(--color-fsh); }
+.theme-feirnnr { --color-tema: var(--color-feirnnr); }
+.theme-farnr   { --color-tema: var(--color-farnr); }
+.theme-feac    { --color-tema: var(--color-feac); }
+.theme-ued     { --color-tema: var(--color-ued); }
+.bg-default,
+.default       { --color-tema: var(--color-primario); }

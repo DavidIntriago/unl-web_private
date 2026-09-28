@@ -1,0 +1,191 @@
+/**
+ * BOTONES — un solo botón base y variantes.
+ *
+ * Cada variante solo cambia variables (--boton-fondo, --boton-texto…).
+ * Si mañana los botones deben ser más redondeados, se cambia
+ * --boton-radio y cambian todos a la vez.
+ *
+ * Uso en Twig:
+ *   <a class="boton">Ver más</a>                       → primario
+ *   <a class="boton boton--claro">Rechazar</a>
+ *   <a class="boton boton--invertido boton--pastilla">Acceso</a>
+ *   <button class="boton boton--icono boton--circulo">…</button>
+ *
+ * Todo va con :where() → especificidad 0. Así las variantes y los
+ * ajustes de cada componente (márgenes, alineación) siempre le ganan.
+ */
+@layer componentes {
+  /* =========================================================
+     BOTÓN BASE
+     Además de .boton, aquí se suman los botones que Drupal o los
+     Twig generan con otra clase. Si algún día el Twig ya tiene
+     class="boton", ese selector se quita de las listas.
+     ========================================================= */
+  :where(
+    .boton,
+    #user-login-form input[type="submit"],
+    .cas-login-link,
+    .admin-login-toggle,
+    .unl-about__action a,
+    .unl-btn-descarga,
+    .site-header__actions .button-primary,
+    .btn-universidad,
+    .btn-archivo,
+    .btn-compartir,
+    .audio-ondas-btn
+  ) {
+    --boton-fondo: var(--color-primario);
+    --boton-texto: var(--texto-sobre-primario);
+    --boton-borde: var(--color-primario);
+    --boton-fondo-hover: var(--color-primario-oscuro);
+    --boton-texto-hover: var(--texto-sobre-primario);
+    --boton-borde-hover: var(--color-primario-oscuro);
+    --boton-radio: var(--radio-md);
+    --boton-padding: var(--espacio-3) var(--espacio-6);
+    --boton-texto-tamano: var(--texto-base);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    padding: var(--boton-padding);
+    border: 2px solid var(--boton-borde);
+    border-radius: var(--boton-radio);
+    background-color: var(--boton-fondo);
+    color: var(--boton-texto);
+    font: inherit;
+    font-size: var(--boton-texto-tamano);
+    font-weight: var(--peso-seminegrita);
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color var(--duracion-normal) ease,
+      color var(--duracion-normal) ease,
+      border-color var(--duracion-normal) ease,
+      transform var(--duracion-normal) ease;
+  }
+
+  :where(.boton, .cas-login-link) svg {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;
+  }
+
+  :where(.boton):disabled,
+  :where(.boton)[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* =========================================================
+     VARIANTES DE COLOR
+     ========================================================= */
+
+  /* Claro: rojo muy suave que se llena de rojo al hover */
+  :where(.boton--claro, .btn-archivo) {
+    --boton-fondo: var(--color-primario-fondo);
+    --boton-texto: var(--color-primario);
+    --boton-borde: var(--color-primario-fondo);
+    --boton-fondo-hover: var(--color-primario);
+    --boton-texto-hover: var(--texto-sobre-primario);
+    --boton-borde-hover: var(--color-primario);
+  }
+
+  /* Contorno: blanco con borde rojo */
+  :where(.boton--contorno) {
+    --boton-fondo: var(--color-superficie);
+    --boton-texto: var(--color-primario);
+    --boton-borde: var(--color-primario);
+    --boton-fondo-hover: var(--color-primario);
+    --boton-texto-hover: var(--texto-sobre-primario);
+    --boton-borde-hover: var(--color-primario);
+  }
+
+  /* Invertido: blanco sobre fondo rojo u oscuro (header, hero) */
+  :where(.boton--invertido, .site-header__actions .button-primary) {
+    --boton-fondo: var(--color-superficie);
+    --boton-texto: var(--color-primario);
+    --boton-borde: var(--color-superficie);
+    --boton-fondo-hover: var(--color-primario-oscuro);
+    --boton-texto-hover: var(--texto-sobre-primario);
+    --boton-borde-hover: var(--color-primario-oscuro);
+  }
+
+  /* Enlace: parece texto subrayado */
+  :where(.boton--enlace, .admin-login-toggle) {
+    --boton-fondo: transparent;
+    --boton-texto: var(--color-texto-tenue);
+    --boton-borde: transparent;
+    --boton-fondo-hover: transparent;
+    --boton-texto-hover: var(--color-primario);
+    --boton-borde-hover: transparent;
+    --boton-padding: 0;
+    --boton-texto-tamano: var(--texto-sm);
+    border-width: 0;
+    font-weight: var(--peso-normal);
+    text-decoration: underline;
+  }
+
+  /* =========================================================
+     TAMAÑOS Y FORMAS
+     ========================================================= */
+  :where(.boton--grande, .btn-universidad) {
+    --boton-padding: var(--espacio-4) var(--espacio-8);
+    --boton-texto-tamano: var(--texto-md);
+    font-weight: var(--peso-negrita);
+  }
+
+  :where(.boton--pastilla, .site-header__actions .button-primary, .btn-universidad) {
+    --boton-radio: var(--radio-pastilla);
+  }
+
+  /* Solo ícono (compartir, audio, flechas, archivos) */
+  :where(.boton--icono, .btn-archivo, .btn-compartir, .audio-ondas-btn) {
+    --boton-padding: 0;
+    width: var(--boton-icono);
+    height: var(--boton-icono);
+  }
+
+  :where(.boton--icono.boton--grande) {
+    width: var(--boton-icono-grande);
+    height: var(--boton-icono-grande);
+  }
+
+  :where(.boton--circulo, .btn-compartir, .audio-ondas-btn) {
+    --boton-radio: var(--radio-circulo);
+  }
+
+  /* =========================================================
+     HOVER — solo con mouse, para que en el celular no se
+     quede "pegado" después de tocar
+     ========================================================= */
+  @media (hover: hover) {
+    :where(
+      .boton,
+      #user-login-form input[type="submit"],
+      .cas-login-link,
+      .admin-login-toggle,
+      .unl-about__action a,
+      .unl-btn-descarga,
+      .site-header__actions .button-primary,
+      .btn-universidad,
+      .btn-archivo,
+      .btn-compartir,
+      .audio-ondas-btn
+    ):hover {
+      background-color: var(--boton-fondo-hover);
+      color: var(--boton-texto-hover);
+      border-color: var(--boton-borde-hover);
+      text-decoration: none;
+      transform: translateY(var(--elevar-boton));
+    }
+
+    :where(.boton--enlace, .admin-login-toggle):hover {
+      transform: none;
+      text-decoration: underline;
+    }
+  }
+}

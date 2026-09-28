@@ -1,87 +1,35 @@
+/**
+ * ACORDEÓN DE IMPORTACIONES
+ * La caja, el título, la flechita y el contenido son los mismos del
+ * acordeón global y viven en views-global.css. Aquí solo va lo propio:
+ * la lista de archivos con fecha.
+ */
 .acordeon-importaciones {
   width: 100%;
   margin: 0;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  background-color: var(--surface-color, #ffffff);
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
-}
-
-.acordeon-item {
-  transition: all 0.2s ease-in-out;
 }
 
 .acordeon-trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 24px;
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: #333333;
-  background-color: var(--surface-color, #ffffff);
-  cursor: pointer;
-  list-style: none;
-  position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0;
-}
-
-.acordeon-trigger::-webkit-details-marker {
-  display: none;
-}
-
-.acordeon-trigger::before {
-  content: "▸";
-  display: inline-block;
-  margin-right: 12px;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-  color: inherit;
 }
 
 .acordeon-title {
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .acordeon-icon {
   display: none;
 }
 
-.acordeon-item[open] .acordeon-trigger {
-  background-color: var(--primary-color, #2563eb);
-  color: var(--surface-color, #ffffff);
-}
-
-.acordeon-item[open] .acordeon-trigger::before {
-  transform: rotate(90deg);
-}
-
-.acordeon-content {
-  padding: 24px;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #444444;
-  border-top: 1px solid #e0e0e0;
-  background-color: var(--surface-color, #ffffff);
-}
-
 .acordeon-descripcion {
-  margin-bottom: 24px;
+  margin-bottom: var(--espacio-6);
 }
 
-.acordeon-descripcion a {
-  color: var(--primary-color, #2563eb);
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.acordeon-descripcion a:hover {
-  color: var(--primary-color-dark, #1d4ed8);
-}
-
+/* =========================================================
+   LISTA DE ARCHIVOS
+   ========================================================= */
 .acordeon-files-list {
   display: flex;
   flex-direction: column;
@@ -92,10 +40,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--espacio-4);
   width: 100%;
-  padding: 12px 0;
-  border-bottom: 1px solid #e0e0e0;
-  gap: 16px;
+  padding: var(--espacio-3) 0;
+  border-bottom: 1px solid var(--color-borde);
 }
 
 .file-row:last-child {
@@ -108,57 +56,47 @@
   flex-grow: 1;
 }
 
+/* La línea punteada después del nombre está en views-global.css */
 .file-title {
-  color: #555555;
-  font-size: 0.95rem;
-  font-weight: 500;
   display: flex;
   align-items: center;
-}
-
-.file-title::after {
-  content: "";
-  flex-grow: 1;
-  border-bottom: 2px dotted #cccccc;
-  margin-left: 16px;
-  min-width: 30px;
-  position: relative;
-  top: 0;
-  opacity: 0.7;
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-medio);
 }
 
 .file-date {
-  font-size: 0.85rem;
-  color: #777777;
-  margin-top: 4px;
+  margin-top: var(--espacio-1);
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-sm);
 }
 
 .file-action {
   display: flex;
-  gap: 8px;
-  margin-left: auto;
   align-items: center;
+  gap: var(--espacio-2);
+  margin-left: auto;
 }
 
 .file-action .file {
-  background: transparent;
-  padding: 0;
   display: inline-flex;
-}
-
-.file-action .file a {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--primary-color, #2563eb);
-}
-
-.file-action .file a:hover {
-  text-decoration: underline;
-  color: var(--primary-color-dark, #1d4ed8);
+  padding: 0;
+  background: transparent;
 }
 
 .file-action .file::before,
 .file-action .file--mime-application-pdf::before {
   display: none;
+}
+
+.file-action .file a {
+  color: var(--color-primario);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+}
+
+.file-action .file a:hover {
+  color: var(--color-primario-oscuro);
+  text-decoration: underline;
 }

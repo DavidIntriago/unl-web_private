@@ -1,0 +1,89 @@
+/**
+ * LAYOUT GLOBAL — estructura de la página.
+ * Fuera de @layer a propósito: estas reglas deben ganar
+ * a los estilos de Drupal core/contrib.
+ */
+
+/* =========================================================
+   CONTENEDORES
+   Uso: <div class="contenedor contenedor--ancho">
+   Cada modificador solo cambia la variable --contenedor.
+   ========================================================= */
+.contenedor {
+  --contenedor: var(--contenedor-normal);
+  width: min(100% - 2 * var(--margen-lateral), var(--contenedor));
+  margin-inline: auto;
+}
+
+.contenedor--lectura {
+  --contenedor: var(--contenedor-lectura);
+}
+
+.contenedor--ancho {
+  --contenedor: var(--contenedor-ancho);
+}
+
+/* =========================================================
+   ENVOLTORIO DE PÁGINA
+   ========================================================= */
+#page-wrapper {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+body > .navbar {
+  display: block !important;
+}
+
+/* =========================================================
+   BLOQUE DE IMPORTACIONES (antes en layers.css)
+   ========================================================= */
+#block-unl-theme-importaciones {
+  width: 100%;
+  max-width: var(--contenedor-ancho);
+  margin: var(--espacio-8) auto;
+  padding-left: var(--espacio-6);
+  padding-right: var(--espacio-6);
+}
+
+@media (max-width: 768px) {
+  #block-unl-theme-importaciones {
+    margin: var(--espacio-4) auto;
+    padding-left: var(--espacio-4);
+    padding-right: var(--espacio-4);
+  }
+}
+
+/* =========================================================
+   MICROSITIOS CON MENÚ LATERAL (antes en base.css)
+   Menú a la izquierda y contenido a la derecha, siempre centrado.
+   IMPORTANTE: sin el :has() se daña toda la página.
+   ========================================================= */
+.site-content:has(.sidebar-micrositio) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espacio-8);
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding-top: var(--espacio-8);
+  padding-left: var(--espacio-6);
+  padding-right: var(--espacio-6);
+}
+
+@media (max-width: 768px) {
+  .site-content:has(.sidebar-micrositio) {
+    flex-direction: column;
+    align-items: center;
+    padding: var(--espacio-4);
+    gap: var(--espacio-4);
+  }
+
+  /* El sidebar queda arriba y el contenido debajo
+     (antes estaba en sidebar_micrositio.css sin el :has) */
+  .site-content:has(.sidebar-micrositio) > *:not(.sidebar-micrositio) {
+    order: 1;
+  }
+}

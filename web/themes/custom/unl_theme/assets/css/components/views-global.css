@@ -1,97 +1,68 @@
-/* titulo y contenedor */
-.titulo-vista-global {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0;
-  padding-bottom: 12px;
-  position: relative;
-  letter-spacing: -0.5px;
-  text-align: center;
-}
+/**
+ * VIEWS GLOBAL — piezas que usan las vistas de todo el sitio:
+ * títulos, contenedor, tablas, filtros, pestañas, acordeones,
+ * listas de archivos y slider de logos.
+ *
+ * Varias reglas llevan dos o más selectores porque el mismo diseño
+ * se usa en vistas y en SDC (p. ej. acordeón global y acordeón de
+ * importaciones). Se escriben una sola vez aquí, que carga en todo el sitio.
+ */
 
-.titulo-vista-global::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary-color);
-  border-radius: 2px;
-}
+/* Los títulos de vista (.titulo-vista-global / -paragraph) usan
+   el mismo estilo de todas las cabeceras: utilities.css */
 
-.titulo-vista-paragraph {
-  font-size: 2rem;
-  position: relative;
-  text-align: center;
-  padding-bottom: 15px;
-}
-
-.titulo-vista-paragraph::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background-color: #900000;
-  border-radius: 2px;
-}
-
+/* =========================================================
+   CONTENEDOR DE VISTA
+   ========================================================= */
 .vista-contenida {
-  padding-top: 32px;
-  padding-bottom: 48px;
-  padding-left: 24px;
-  padding-right: 24px;
-  max-width: 1420px;
-  width: 100%;
-  margin: 0 auto;
   display: block;
+  width: 100%;
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: var(--espacio-8) var(--espacio-6) var(--espacio-12);
 }
 
 .vista-contenida > header,
 .vista-contenida > form {
-  margin-bottom: 24px;
+  margin-bottom: var(--espacio-6);
 }
 
-/* tablas */
+/* =========================================================
+   TABLAS
+   ========================================================= */
 .views-table-wrapper {
   overflow-x: auto;
-  background-color: var(--surface-color);
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-sm);
 }
 
 table.views-table {
   width: 100%;
+  margin: 0;
   border-collapse: collapse;
   font-family: inherit;
-  margin: 0;
-  table-layout: fixed; 
+  table-layout: fixed;
 }
 
 table.views-table th {
-  background-color: #f8f9fa;
-  color: #333333;
-  padding: 16px;
+  padding: var(--espacio-4);
+  border-bottom: 3px solid var(--color-primario);
+  background-color: var(--color-fondo-suave);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-negrita);
   text-align: left;
-  font-weight: bold;
-  border-bottom: 3px solid var(--primary-color);
   text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
 }
 
 table.views-table td {
-  padding: 16px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: var(--espacio-4);
+  border-bottom: 1px solid var(--color-borde);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
   vertical-align: middle;
-  font-size: 0.95rem;
-  color: #444444;
-  word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -101,16 +72,17 @@ table.views-table tbody tr:last-child td {
 }
 
 table.views-table tbody tr:hover {
-  background-color: #fcfcfc;
+  background-color: var(--color-fondo-suave);
 }
 
+/* Enlaces dentro de la tabla: con viñeta roja */
 table.views-table td a {
-  display: block;
   position: relative;
-  padding-left: 18px;
-  margin-bottom: 8px;
+  display: block;
+  margin-bottom: var(--espacio-2);
+  padding-left: 1.125rem;
+  line-height: var(--interlineado-ajustado);
   text-decoration: none;
-  line-height: 1.4;
 }
 
 table.views-table td a:last-child {
@@ -118,294 +90,265 @@ table.views-table td a:last-child {
 }
 
 table.views-table td a:hover {
-  color: var(--primary-color);
+  color: var(--color-primario);
   text-decoration: underline;
 }
 
 table.views-table td a::before {
   content: "•";
   position: absolute;
-  left: 0;
   top: 0;
-  color: var(--primary-color);
+  left: 0;
+  color: var(--color-primario);
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: var(--peso-negrita);
 }
 
-/* Campo fecha mas pequeño */
+/* Columna de fecha más angosta */
 table.views-table th.views-field-field-fecha {
-  width: 12%; 
-  text-align: center; 
+  width: 12%;
+  text-align: center;
 }
+
 table.views-table td.views-field-field-fecha {
   text-align: center;
 }
 
-/* filtros */
+/* =========================================================
+   FILTROS
+   Los inputs y selects toman su estilo de base.css.
+   ========================================================= */
 form.views-exposed-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 24px;
+  gap: var(--espacio-6);
   width: 100%;
+  margin-bottom: var(--espacio-6);
   background: transparent;
 }
 
+/* Cada filtro de texto o lista va en una caja con acento lateral */
 form.views-exposed-form .form-item:has(input[type="text"]),
 form.views-exposed-form .form-item:has(select) {
-  width: 100%; /* Ocupa todo el ancho */
-  background-color: var(--surface-color);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  border-left: 5px solid var(--primary-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  box-sizing: border-box;
+  width: 100%;
   margin: 0;
+  padding: var(--espacio-6);
+  border: 1px solid var(--color-borde);
+  border-left: var(--borde-acento) solid var(--color-primario);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-sm);
 }
 
 form.views-exposed-form .form-item label {
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: #333333;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   display: block;
+  margin-bottom: var(--espacio-3);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-negrita);
+  text-transform: uppercase;
 }
 
-form.views-exposed-form input[type="text"],
-form.views-exposed-form select {
-  padding: 12px 16px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #fafafa;
-  transition: all 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
-  color: #333333;
-}
-
-form.views-exposed-form input[type="text"]:focus,
-form.views-exposed-form select:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px
-    color-mix(in srgb, var(--primary-color) 10%, transparent);
-  outline: none;
-  background-color: var(--surface-color);
-}
-
-/* Viñetas (filtro) */
+/* El filtro de pestañas no lleva caja */
 form.views-exposed-form .form-item:has(.bef-links) {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
+/* =========================================================
+   PESTAÑAS
+   Las mismas para las pestañas de Drupal (ver / editar)
+   y para los filtros tipo pestaña (bef-links).
+   Reemplaza a tabs.css.
+   ========================================================= */
+ul.tabs.primary,
 form.views-exposed-form .bef-links ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-bottom: 2px solid #e0e0e0;
+  gap: var(--espacio-3);
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid var(--color-borde);
+  list-style: none;
 }
 
+ul.tabs.primary li,
 form.views-exposed-form .bef-links li {
   margin: 0;
-  padding: 0;
   margin-bottom: -2px;
+  padding: 0;
   list-style: none;
 }
 
+ul.tabs.primary li::before,
+ul.tabs.primary li::after,
 form.views-exposed-form .bef-links li::before,
 form.views-exposed-form .bef-links li::after {
   display: none;
 }
 
+ul.tabs.primary a,
 form.views-exposed-form .bef-links a {
   display: block;
-  padding: 12px 24px;
-  text-decoration: none;
-  color: var(--primary-color);
-  font-weight: 600;
-  font-size: 1rem;
-  background-color: var(--surface-color);
-  border: 1px solid #e0e0e0;
+  padding: var(--espacio-3) var(--espacio-6);
+  border: 1px solid var(--color-borde);
   border-bottom: none;
-  border-radius: 12px 12px 0 0;
-  transition: all 0.3s ease;
-}
-
-form.views-exposed-form .bef-links a:hover {
-  color: var(--surface-color);
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-}
-
-form.views-exposed-form .bef-links a.bef-link--selected {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
-  border-color: var(--primary-color);
-}
-
-/* Acordion */
-.acordeon-global-item {
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  background-color: var(--surface-color);
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
-}
-
-.acordeon-global-titulo {
-  padding: 18px 24px;
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: #333333;
-  background-color: var(--surface-color);
-  cursor: pointer;
-  list-style: none;
-  position: relative;
+  border-radius: var(--radio-lg) var(--radio-lg) 0 0;
+  background-color: var(--color-superficie);
+  color: var(--color-primario);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-  margin: 0;
+    background-color var(--duracion-normal) ease,
+    color var(--duracion-normal) ease,
+    border-color var(--duracion-normal) ease;
 }
 
-.acordeon-global-titulo::-webkit-details-marker {
+ul.tabs.primary a:hover,
+ul.tabs.primary a.is-active,
+ul.tabs.primary li.is-active a,
+form.views-exposed-form .bef-links a:hover,
+form.views-exposed-form .bef-links a.bef-link--selected {
+  border-color: var(--color-primario);
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+}
+
+/* =========================================================
+   ACORDEÓN
+   El mismo para el acordeón global de vistas y el de importaciones.
+   ========================================================= */
+.acordeon-global-item,
+.acordeon-importaciones {
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-sm);
+}
+
+.acordeon-global-titulo,
+.acordeon-trigger {
+  position: relative;
+  margin: 0;
+  padding: 1.125rem var(--espacio-6);
+  background-color: var(--color-superficie);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-seminegrita);
+  list-style: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duracion-normal) ease,
+    color var(--duracion-normal) ease;
+}
+
+.acordeon-global-titulo::-webkit-details-marker,
+.acordeon-trigger::-webkit-details-marker {
   display: none;
 }
 
-.acordeon-global-titulo::before {
+/* Flechita que gira al abrir */
+.acordeon-global-titulo::before,
+.acordeon-trigger::before {
   content: "▸";
   display: inline-block;
-  margin-right: 12px;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  margin-right: var(--espacio-3);
   color: inherit;
+  font-size: 1.2rem;
+  transition: transform var(--duracion-normal) ease;
 }
 
-.acordeon-global-item[open] .acordeon-global-titulo {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
+.acordeon-global-item[open] .acordeon-global-titulo,
+.acordeon-item[open] .acordeon-trigger {
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
 }
 
-.acordeon-global-item[open] .acordeon-global-titulo::before {
+.acordeon-global-item[open] .acordeon-global-titulo::before,
+.acordeon-item[open] .acordeon-trigger::before {
   transform: rotate(90deg);
 }
 
-.acordeon-global-contenido {
-  padding: 24px;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #444444;
-  border-top: 1px solid #e0e0e0;
-  background-color: var(--surface-color);
+/* El foco va por dentro: el acordeón recorta lo que sale del borde */
+.acordeon-global-titulo:focus-visible,
+.acordeon-trigger:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: -3px;
 }
 
-.acordeon-global-contenido a {
-  color: var(--primary-color);
+.acordeon-global-item[open] .acordeon-global-titulo:focus-visible,
+.acordeon-item[open] .acordeon-trigger:focus-visible {
+  outline-color: var(--color-superficie);
+}
+
+.acordeon-global-contenido,
+.acordeon-content {
+  padding: var(--espacio-6);
+  border-top: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  line-height: var(--interlineado-base);
+}
+
+.acordeon-global-contenido a,
+.acordeon-descripcion a {
+  color: var(--color-primario);
+  font-weight: var(--peso-seminegrita);
   text-decoration: underline;
-  font-weight: 600;
 }
 
-.acordeon-global-contenido a:hover {
-  color: var(--primary-color-dark);
+.acordeon-global-contenido a:hover,
+.acordeon-descripcion a:hover {
+  color: var(--color-primario-oscuro);
 }
 
-/* Archivos en Acordion */
-
-.acordeon-global-contenido .item-list ul {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.acordeon-global-contenido .item-list li {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  width: 100%;
-  padding: 12px 0;
-  border-bottom: 1px solid #e0e0e0;
-  color: #555555;
-  font-size: 0.85rem;
-}
-
-.acordeon-global-contenido .item-list li:last-child {
-  border-bottom: none;
-}
-
-.acordeon-global-contenido .file {
-  display: inline-flex;
-  align-items: center;
-  width: auto;
-  margin: 0 auto 0 0;
-  padding: 0;
-  background: transparent;
-}
-
-.acordeon-global-contenido .file a {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  display: inline-block;
-}
-
-.acordeon-global-contenido .file a:hover {
-  text-decoration: underline;
-  color: var(--primary-color);
-}
-
+/* ---------- Solo acordeón global ---------- */
 .acordeon-global-titulo .titulo-link-externo {
-  color: inherit;
-  text-decoration: none;
   display: inline;
   width: auto;
+  color: inherit;
+  text-decoration: none;
 }
 
 .acordeon-global-item[open] .acordeon-global-titulo .titulo-link-externo {
-  color: var(--surface-color);
+  color: var(--texto-sobre-primario);
 }
 
 .acordeon-global-titulo .titulo-link-externo:hover {
   text-decoration: underline;
 }
 
-.acordeon-global-item.enlace-directo-item {
-  background-color: var(--surface-color);
+.acordeon-global-titulo.sin-flecha {
+  display: block;
+  padding-left: var(--espacio-6);
 }
 
 .acordeon-global-titulo.sin-flecha::before {
   display: none;
 }
 
-.acordeon-global-titulo.sin-flecha {
-  display: block;
-  padding-left: 24px;
-}
-
-/* Acordion para Files*/
+/* =========================================================
+   ARCHIVOS DENTRO DEL ACORDEÓN GLOBAL
+   Nombre + línea punteada + botones de ver/descargar.
+   ========================================================= */
 .acordeon-global-contenido ul,
 .acordeon-global-contenido li {
-  list-style: none;
-  padding-left: 0;
   margin-left: 0;
+  padding-left: 0;
+  list-style: none;
 }
 
-.acordeon-global-contenido li::before {
+.acordeon-global-contenido li::before,
+.acordeon-global-contenido .file::before,
+.acordeon-global-contenido .file--mime-application-pdf::before {
   display: none;
 }
 
@@ -413,204 +356,139 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   display: none;
 }
 
+.acordeon-global-contenido .item-list ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.acordeon-global-contenido .item-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: var(--espacio-3) 0;
+  border-bottom: 1px solid var(--color-borde);
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-sm);
+  white-space: nowrap;
+}
+
+.acordeon-global-contenido .item-list li:last-child {
+  border-bottom: none;
+}
+
 .acordeon-global-contenido .file {
   display: flex;
   align-items: center;
-  width: 100%;
   justify-content: space-between;
-  padding: 1.5px;
+  width: 100%;
+  margin: 0 auto 0 0;
+  padding: 0;
+  background: transparent;
 }
 
+/* El nombre del archivo no es clickeable: se usan los botones */
 .acordeon-global-contenido .file > a {
-  flex-grow: 1;
-  margin-right: 16px; 
   display: flex;
-  align-items: center; 
+  align-items: center;
+  flex-grow: 1;
+  margin-right: var(--espacio-4);
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
   pointer-events: none;
-  color: #444444; 
-  text-decoration: none; 
   cursor: default;
 }
 
-.acordeon-global-contenido .file > a::after {
+/* Línea punteada entre el nombre y los botones
+   (la misma en el acordeón de importaciones) */
+.acordeon-global-contenido .file > a::after,
+.acordeon-importaciones .file-title::after {
   content: "";
-  flex-grow: 1; 
-  border-bottom: 2px dotted #cccccc; 
-  margin-left: 16px; 
-  min-width: 30px; 
+  flex-grow: 1;
   position: relative;
-  top: 4px; 
+  min-width: 1.875rem;
+  margin-left: var(--espacio-4);
+  border-bottom: 2px dotted var(--color-borde-fuerte);
   opacity: 0.7;
 }
 
-.acordeon-global-contenido .file::before,
-.acordeon-global-contenido .file--mime-application-pdf::before {
-  display: none;
+.acordeon-global-contenido .file > a::after {
+  top: 0.25rem;
 }
 
 .archivo-acciones {
   display: flex;
-  gap: 8px;
-  margin-left: 16px;
+  gap: var(--espacio-2);
+  margin-left: var(--espacio-4);
 }
 
-.btn-archivo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  border-radius: 6px;
-  background-color: #f0f0f0;
-  color: var(--primary-color);
-  transition: all 0.2s ease;
-  text-decoration: none;
-  box-sizing: border-box;
-  line-height: 0;
-}
-
+/* .btn-archivo toma su forma de botones.css (claro + ícono) */
 .btn-archivo svg {
-  width: 24px;
-  height: 39px;
   display: block;
-  margin: auto;
+  width: var(--icono-md);
+  height: var(--icono-md);
 }
 
-.btn-archivo:hover {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
-  transform: translateY(-2px);
-}
-
-.btn-archivo:hover svg {
-  stroke: var(--surface-color);
-  color: var(--surface-color);
-}
-
-/* SLIDER*/
-.slider-unl {
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-.slider-unl .item-list {
-  overflow: hidden;
-  width: 100%;
-}
-
-.slider-unl .item-list ul {
-  display: flex;
-  align-items: center;
-  justify-content: safe center;
-  gap: 2.5rem;
-  padding: 1rem 4px 2rem 4px;
-  margin: 0;
-  list-style: none;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.slider-unl .item-list li {
-  flex: 0 0 calc((100% - 5 * 2.5rem) / 6) !important;
-  min-width: 0;
-  scroll-snap-align: start;
-
-  background-color: var(--surface-color);
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.slider-unl .item-list li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.slider-unl .views-field img {
-  width: 100%;
-  height: 85px;
-  object-fit: contain;
-  box-sizing: border-box;
-  display: block;
-}
-
-.slider-unl .views-field-title {
-  padding: 0 12px 16px 12px;
-  text-align: center;
-}
-
-.slider-unl .views-field-title a {
-  color: #333333;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.slider-unl .views-field-title a:hover {
-  color: var(--primary-color);
-}
-
-@media (min-width: 769px) and (max-width: 1300px) {
-  .slider-unl .item-list li {
-    /* 4 elementos */
-    flex-basis: calc((100% - 3 * 2.5rem) / 4) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .slider-unl .item-list ul {
-    gap: 1.5rem;
-  }
-  .slider-unl .item-list li {
-    /* 3 elementos */
-    flex-basis: calc((100% - 2 * 1.5rem) / 3) !important;
-  }
-}
-
-/* Para Lista de Documentos */
+/* =========================================================
+   LISTA DE DOCUMENTOS
+   La misma para la vista (campo de anexos) y el SDC lista_archivos.
+   ========================================================= */
 .unl-lista-docs {
-  padding: 2rem 1rem;
   width: 100%;
+  padding: var(--espacio-8) var(--espacio-4);
 }
 
 .unl-lista-docs__container {
-  max-width: 1200px;
+  max-width: var(--contenedor-lectura);
   margin: 0 auto;
 }
 
-.unl-lista-docs .views-field-title {
-  margin-bottom: 1.5rem;
-  margin-top: 2rem;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.5rem;
+/* Título de la lista */
+.unl-lista-docs .views-field-title,
+.unl-lista-titulo {
   display: inline-block;
+  margin-bottom: var(--espacio-6);
+  padding-bottom: var(--espacio-2);
+  border-bottom: 2px solid var(--color-primario);
+  color: var(--color-primario);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-seminegrita);
+}
+
+.unl-lista-docs .views-field-title {
+  margin-top: var(--espacio-8);
 }
 
 .unl-lista-docs .views-field-title a {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  font-weight: 600;
+  color: inherit;
   text-decoration: none;
 }
 
-.unl-lista-docs .views-field-field-anexos .item-list ul {
-  list-style: none;
-  padding: 0;
+/* Lista */
+.unl-lista-docs .views-field-field-anexos ul,
+.unl-lista-docs .views-field-field-anexos li {
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unl-lista-docs .views-field-field-anexos .item-list ul,
+.unl-lista {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unl-lista-docs .views-field-field-anexos li > span:not(.file) {
+  display: none;
 }
 
 .unl-lista-docs .views-field-field-anexos .file {
@@ -620,74 +498,154 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   background: transparent;
 }
 
-.unl-lista-docs .views-field-field-anexos .file a {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #fcfcfc;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #333333;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.unl-lista-docs .views-field-field-anexos .file a:hover {
-  background-color: var(--primary-color);
-  color: var(--surface-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px
-    color-mix(in srgb, var(--primary-color) 20%, transparent);
-}
-
 .unl-lista-docs .views-field-field-anexos .file::before,
 .unl-lista-docs .views-field-field-anexos .file--mime-application-pdf::before {
   display: none;
 }
 
-.unl-lista-docs .views-field-field-anexos .file a::before {
-  content: "";
-  display: inline-block;
-  min-width: 24px;
-  height: 24px;
-  margin-right: 1rem;
-  background-color: var(--primary-color);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E")
-    no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3C/svg%3E")
-    no-repeat center / contain;
-  transition: background-color 0.3s ease;
+/* Cada documento: fila gris que se llena de rojo al hover */
+.unl-lista-docs .views-field-field-anexos .file a,
+.unl-lista-enlace {
+  display: flex;
+  align-items: center;
+  padding: var(--espacio-4) var(--espacio-6);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background-color: var(--color-fondo-suave);
+  color: var(--color-texto-cuerpo);
+  font-weight: var(--peso-medio);
+  text-decoration: none;
+  transition:
+    background-color var(--duracion-normal) ease,
+    color var(--duracion-normal) ease,
+    transform var(--duracion-normal) ease,
+    box-shadow var(--duracion-normal) ease;
 }
 
+.unl-lista-docs .views-field-field-anexos .file a:hover,
+.unl-lista-enlace:hover {
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+  box-shadow: var(--sombra-primaria);
+  transform: translateY(var(--elevar-boton));
+}
+
+/* Íconos de la vista (el SDC usa sus propios SVG, ver lista_archivos.css) */
+.unl-lista-docs .views-field-field-anexos .file a::before,
 .unl-lista-docs .views-field-field-anexos .file a::after {
   content: "";
   display: inline-block;
-  min-width: 24px;
-  height: 24px;
+  min-width: var(--icono-md);
+  height: var(--icono-md);
+  background-color: var(--color-primario);
+  -webkit-mask: var(--icono) no-repeat center / contain;
+  mask: var(--icono) no-repeat center / contain;
+  transition:
+    background-color var(--duracion-normal) ease,
+    opacity var(--duracion-normal) ease;
+}
+
+.unl-lista-docs .views-field-field-anexos .file a::before {
+  --icono: var(--icono-archivo);
+  margin-right: var(--espacio-4);
+}
+
+.unl-lista-docs .views-field-field-anexos .file a::after {
+  --icono: var(--icono-descarga);
   margin-left: auto;
-  background-color: var(--primary-color);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E")
-    no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='7 10 12 15 17 10'%3E%3C/polyline%3E%3Cline x1='12' y1='15' x2='12' y2='3'%3E%3C/line%3E%3C/svg%3E")
-    no-repeat center / contain;
   opacity: 0.5;
-  transition: all 0.3s ease;
 }
 
 .unl-lista-docs .views-field-field-anexos .file a:hover::before,
 .unl-lista-docs .views-field-field-anexos .file a:hover::after {
-  background-color: var(--surface-color);
+  background-color: var(--texto-sobre-primario);
   opacity: 1;
 }
 
-.unl-lista-docs .views-field-field-anexos li > span:not(.file) {
-  display: none;
+/* =========================================================
+   SLIDER DE LOGOS
+   6 por vista → 4 en tablet → 3 en móvil
+   ========================================================= */
+.slider-unl {
+  position: relative;
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: 0 var(--espacio-4);
 }
 
-.unl-lista-docs .views-field-field-anexos ul,
-.unl-lista-docs .views-field-field-anexos li {
-  list-style: none;
+.slider-unl .item-list {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-unl .item-list ul {
+  display: flex;
+  align-items: center;
+  justify-content: safe center;
+  gap: var(--espacio-10);
   margin: 0;
-  padding: 0;
+  padding: var(--espacio-4) 4px var(--espacio-8);
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.slider-unl .item-list li {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc((100% - 5 * var(--espacio-10)) / 6);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie);
+  scroll-snap-align: start;
+  transition:
+    transform var(--duracion-normal) ease,
+    box-shadow var(--duracion-normal) ease;
+}
+
+.slider-unl .item-list li:hover {
+  box-shadow: var(--sombra-md);
+  transform: translateY(var(--elevar-tarjeta));
+}
+
+.slider-unl .views-field img {
+  display: block;
+  width: 100%;
+  height: 5.3125rem;
+  object-fit: contain;
+}
+
+.slider-unl .views-field-title {
+  padding: 0 var(--espacio-3) var(--espacio-4);
+  text-align: center;
+}
+
+.slider-unl .views-field-title a {
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+}
+
+.slider-unl .views-field-title a:hover {
+  color: var(--color-primario);
+}
+
+@media (min-width: 769px) and (max-width: 1300px) {
+  .slider-unl .item-list li {
+    flex-basis: calc((100% - 3 * var(--espacio-10)) / 4);
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-unl .item-list ul {
+    gap: var(--espacio-6);
+  }
+
+  .slider-unl .item-list li {
+    flex-basis: calc((100% - 2 * var(--espacio-6)) / 3);
+  }
 }

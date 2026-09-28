@@ -1,45 +1,47 @@
-.grid-tarjetas-wrapper--facultad {
-  margin-top: 4rem;
-}
-.grid-tarjetas__header {
-  text-align: center;
-  margin-bottom: 1.5rem;
+/**
+ * GRID DE TARJETAS — cómo se acomodan las tarjetas en cada variante.
+ * El aspecto de cada tarjeta está en tarjeta.css.
+ */
+
+/* La cabecera (título + "Ver más") es la misma de todo el sitio:
+   está en utilities.css → CABECERA DE SECCIÓN */
+
+/* Separación entre secciones que no tenían margen propio */
+.grid-tarjetas-wrapper--sitios_interes,
+.grid-tarjetas-wrapper--imagenes {
+  margin-top: var(--espacio-12);
 }
 
-.grid-tarjetas__titulo {
-  font-size: 2rem;
-  color: var(--text-color);
-  margin: 0;
-}
-
-.grid-tarjetas__divider {
-  height: 4px;
-  width: 100px;
-  background-color: var(--primary-color);
-  margin: 0.75rem auto 0 auto;
-}
-/*Para limpiar de los elementos de control que trae drupal*/
+/* =========================================================
+   QUITAR ENVOLTORIOS DE DRUPAL
+   Los hijos de .field__items pasan a ser hijos directos del grid.
+   ========================================================= */
 .grid-tarjetas-container--facultad .field,
 .grid-tarjetas-container--facultad .field__items,
 .grid-tarjetas-container--contador .field,
-.grid-tarjetas-container--contador .field__items {
-  display: contents;
-}
-
-.grid-tarjetas-wrapper--sustantiva {
-  margin-top: 1.5rem;
-}
-
+.grid-tarjetas-container--contador .field__items,
 .grid-tarjetas-container--sustantiva .field,
-.grid-tarjetas-container--sustantiva .field__items {
+.grid-tarjetas-container--sustantiva .field__items,
+.grid-tarjetas-container--imagenes .field,
+.grid-tarjetas-container--imagenes .field__items,
+.grid-tarjetas-container--autoridades .field,
+.grid-tarjetas-container--autoridades .field__items,
+.grid-tarjetas-container--autoridades .field__item {
   display: contents;
+}
+
+/* =========================================================
+   VARIANTE SUSTANTIVA
+   ========================================================= */
+.grid-tarjetas-wrapper--sustantiva {
+  margin-top: var(--espacio-6);
 }
 
 .grid-tarjetas-container--sustantiva {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--espacio-2);
   width: 100%;
-  margin-top: 2rem;
+  margin-top: var(--espacio-8);
 }
 
 .grid-tarjetas-container--sustantiva > * {
@@ -50,14 +52,22 @@
 @media (max-width: 768px) {
   .grid-tarjetas-container--sustantiva {
     flex-direction: column;
-    width: 100%;
   }
+}
+
+/* =========================================================
+   VARIANTE FACULTAD
+   Escritorio: fila que se ensancha al hover.
+   Tablet: grid de 3. Móvil: columna.
+   ========================================================= */
+.grid-tarjetas-wrapper--facultad {
+  margin-top: var(--espacio-16);
 }
 
 .grid-tarjetas-container--facultad {
   display: flex;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: var(--espacio-8);
 }
 
 .grid-tarjetas-container--facultad > * {
@@ -65,71 +75,61 @@
   min-width: 0;
 }
 
-@media (max-width: 768px) {
-  .grid-tarjetas-container--facultad {
-    flex-direction: column;
-    width: 100%;
-    margin-left: 0;
-    height: auto;
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-institucional {
-    flex: none;
-    height: 100px;
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-institucional:hover {
-    flex: none;
-  }
-}
-
 @media (min-width: 769px) and (max-width: 1300px) {
   .grid-tarjetas-container--facultad {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .grid-tarjetas-container--facultad > * {
-    flex: none !important;
-    min-width: 0 !important;
-    width: 100% !important;
+    flex: none;
+    width: 100%;
+    min-width: 0;
   }
 
   .grid-tarjetas-container--facultad .tarjeta-institucional {
-    height: 170px !important;
+    height: 10.625rem;
   }
 
   .grid-tarjetas-container--facultad .tarjeta-contenido {
-    padding: 1rem 1.25rem !important;
-    justify-content: flex-start !important;
-  }
-
-  .grid-tarjetas-container--facultad .tarjeta-institucional:hover {
-    transform: translateY(-8px) !important;
-    z-index: 5;
+    justify-content: flex-start;
+    padding: var(--espacio-4) var(--espacio-5);
   }
 
   .grid-tarjetas-container--facultad .tarjeta-titulo {
-    font-size: 0.8rem !important;
-    padding-left: 0.6rem !important;
+    padding-left: var(--espacio-2);
+    font-size: var(--texto-sm);
   }
 }
-/*VARIANTE CONTADOR*/
+
+@media (max-width: 768px) {
+  .grid-tarjetas-container--facultad {
+    flex-direction: column;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .grid-tarjetas-container--facultad .tarjeta-institucional,
+  .grid-tarjetas-container--facultad .tarjeta-institucional:is(:hover, :focus-within) {
+    flex: none;
+    height: 6.25rem;
+  }
+}
+
+/* =========================================================
+   VARIANTE CONTADOR — franja roja con números
+   ========================================================= */
 .grid-tarjetas-wrapper--contador {
-  margin-top: 5rem;
-  margin-bottom: 3rem;
+  --color-foco: var(--color-superficie);
   width: 100%;
-  background-color: var(--primary-color);
-  padding: 3rem 0;
+  margin-top: var(--espacio-20);
+  margin-bottom: var(--espacio-12);
+  padding: var(--espacio-12) 0;
+  background-color: var(--color-primario);
 }
 
 .grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
-  color: var(--surface-color);
-}
-
-.grid-tarjetas-wrapper--contador .grid-tarjetas__divider {
-  background-color: var(--surface-color);
+  color: var(--texto-sobre-primario);
 }
 
 .grid-tarjetas-container--contador {
@@ -137,24 +137,24 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 3rem 2rem;
-  max-width: 1400px;
+  gap: var(--espacio-12) var(--espacio-8);
+  max-width: var(--contenedor-ancho);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--espacio-6);
 }
 
 .grid-tarjetas-container--contador > * {
-  flex: 1 1 180px;
-  max-width: 260px;
+  flex: 1 1 11.25rem;
+  max-width: 16.25rem;
 }
 
 @media (max-width: 768px) {
   .grid-tarjetas-wrapper--contador {
-    padding: 2.5rem 0;
+    padding: var(--espacio-10) 0;
   }
 
   .grid-tarjetas-container--contador {
-    gap: 2rem 1.5rem;
+    gap: var(--espacio-8) var(--espacio-6);
   }
 
   .grid-tarjetas-container--contador > * {
@@ -162,57 +162,59 @@
   }
 }
 
-/*VARIANTE SITIOS DE INTERÉS*/
+/* =========================================================
+   VARIANTE SITIOS DE INTERÉS — carrusel con flechas
+   ========================================================= */
 .grid-tarjetas-container--sitios_interes {
   position: relative;
-  max-width: 1400px;
+  max-width: var(--contenedor-ancho);
   margin: 0 auto;
   padding: 0 3.5rem;
-  box-sizing: border-box;
 }
 
 .carrusel-sitios-viewport {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
 .carrusel-sitios-track {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--espacio-6);
   touch-action: pan-y;
-  transition: transform 0.45s ease;
+  transition: transform var(--duracion-lenta) ease;
 }
 
+/* 4 por vista */
 .carrusel-sitios-track > * {
-  flex: 0 0 calc((100% - 3 * 1.5rem) / 4);
+  flex: 0 0 calc((100% - 3 * var(--espacio-6)) / 4);
   min-width: 0;
 }
 
 .carrusel-sitios-flecha {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  z-index: var(--z-elevado);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: var(--boton-icono-grande);
+  height: var(--boton-icono-grande);
   border: none;
-  border-radius: 50%;
-  background: var(--primary-color);
-  color: var(--surface-color);
-  font-size: 20px;
+  border-radius: var(--radio-circulo);
+  background: var(--color-primario);
+  color: var(--texto-sobre-primario);
+  font-size: 1.25rem;
   cursor: pointer;
-  z-index: 3;
   opacity: 0.45;
+  transform: translateY(-50%);
   transition:
-    background 0.3s ease,
-    opacity 0.3s ease;
+    background-color var(--duracion-normal) ease,
+    opacity var(--duracion-normal) ease;
 }
 
 .carrusel-sitios-flecha:hover,
 .carrusel-sitios-flecha:focus-visible {
-  background: var(--primary-color-dark);
+  background: var(--color-primario-oscuro);
   opacity: 1;
 }
 
@@ -230,110 +232,103 @@
   pointer-events: none;
 }
 
+/* 3 por vista */
 @media (min-width: 769px) and (max-width: 1300px) {
   .carrusel-sitios-track > * {
-    flex-basis: calc((100% - 2 * 1.5rem) / 3);
+    flex-basis: calc((100% - 2 * var(--espacio-6)) / 3);
   }
 }
 
+/* 1 por vista, asomando la siguiente */
 @media (max-width: 768px) {
   .grid-tarjetas-container--sitios_interes {
-    padding: 0 1rem;
+    padding: 0 var(--espacio-4);
   }
 
   .carrusel-sitios-viewport {
-    box-sizing: border-box;
-    padding: 0 28px;
+    padding: 0 1.75rem;
   }
 
   .carrusel-sitios-track {
-    margin: 0 -28px;
+    margin: 0 -1.75rem;
   }
 
   .carrusel-sitios-track > * {
-    flex-basis: calc(100% - 56px);
+    flex-basis: calc(100% - 3.5rem);
   }
 }
 
+/* En pantallas táctiles se desliza con el dedo */
 @media (max-width: 768px) and (pointer: coarse) {
   .carrusel-sitios-flecha {
     display: none;
   }
 }
 
-.grid-tarjetas-container--imagenes .field,
-.grid-tarjetas-container--imagenes .field__items {
-  display: contents;
-}
-
-/*VARIANTE IMAGENES*/
+/* =========================================================
+   VARIANTE IMÁGENES — 5 por fila
+   ========================================================= */
 .grid-tarjetas-container--imagenes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
-  max-width: 1400px;
+  gap: var(--espacio-6);
+  max-width: var(--contenedor-ancho);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--espacio-6);
 }
 
 .grid-tarjetas-container--imagenes > * {
-  flex: 1 1 260px;
-  max-width: 300px;
+  flex: 0 1 calc((100% - 4 * var(--espacio-6)) / 5);
+  min-width: 11.25rem;
+  max-width: 18.75rem;
 }
 
 @media (max-width: 768px) {
   .grid-tarjetas-container--imagenes {
-    gap: 1rem;
-    padding: 0 1rem;
+    gap: var(--espacio-4);
+    padding: 0 var(--espacio-4);
   }
 
   .grid-tarjetas-container--imagenes > * {
     flex: 1 1 45%;
+    min-width: 0;
     max-width: none;
   }
 }
 
-.grid-tarjetas-wrapper--sustantiva {
-  margin-top: 1.5rem;
-}
-
-/*VARIANTE AUTORIDADES*/
-.grid-tarjetas-container--autoridades .field,
-.grid-tarjetas-container--autoridades .field__items,
-.grid-tarjetas-container--autoridades .field__item {
-  display: contents;
+/* =========================================================
+   VARIANTE AUTORIDADES
+   ========================================================= */
+.grid-tarjetas-wrapper--autoridades {
+  margin-top: var(--espacio-6);
 }
 
 .grid-tarjetas-container--autoridades {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  max-width: 1400px;
-  margin: 0rem auto 2rem auto;
-  padding: 0 1.5rem;
+  gap: var(--espacio-8);
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto var(--espacio-8);
+  padding: 0 var(--espacio-6);
 }
 
 .grid-tarjetas-container--autoridades > * {
-  flex: 0 0 200px;
+  flex: 0 0 12.5rem;
 }
 
 @media (max-width: 768px) {
   .grid-tarjetas-container--autoridades {
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
-    padding: 0 1rem;
+    gap: var(--espacio-5);
+    padding: 0 var(--espacio-4);
   }
 
   .grid-tarjetas-container--autoridades > * {
     flex: 0 0 auto;
     width: 100%;
-    max-width: 420px;
+    max-width: 26.25rem;
   }
-}
-
-.grid-tarjetas-wrapper--autoridades {
-  margin-top: 1.5rem;
 }

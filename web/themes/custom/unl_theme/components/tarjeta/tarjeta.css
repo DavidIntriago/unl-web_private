@@ -1,15 +1,110 @@
-/*VARIANTE SUSTANTIVA*/
+/**
+ * TARJETA — todas las variantes:
+ * sustantiva, institucional (facultades), contador, sitios de interés,
+ * imágenes y autoridades (con modal).
+ *
+ * El tamaño de cada tarjeta dentro de un grid lo decide grid-tarjetas.css.
+ * Aquí solo va cómo se ve la tarjeta.
+ */
+
+/* =========================================================
+   PIEZAS COMPARTIDAS POR TODAS LAS VARIANTES
+   ========================================================= */
+
+/* Quitar los envoltorios de Drupal alrededor de la imagen */
+.tarjeta-sustantiva__img .field,
+.tarjeta-sustantiva__img .field__items,
+.tarjeta-sustantiva__img .field__item,
+.tarjeta-sustantiva__img article,
+.tarjeta-sustantiva__img picture,
+.tarjeta-imagen .field,
+.tarjeta-imagen .field__items,
+.tarjeta-imagen .field__item,
+.tarjeta-imagen article,
+.tarjeta-imagen picture {
+  display: contents;
+}
+
+/* Enlace estirado: toda la tarjeta es clickeable.
+   La tarjeta necesita position: relative. */
+.tarjeta-sustantiva__enlace,
+.tarjeta-institucional__enlace,
+.tarjeta-sitio-interes__enlace,
+.tarjeta-imagen__enlace,
+.tarjeta-autoridad__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.tarjeta-sustantiva__enlace a,
+.tarjeta-institucional__enlace a,
+.tarjeta-sitio-interes__enlace a,
+.tarjeta-imagen__enlace a,
+.tarjeta-autoridad__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+.tarjeta-sustantiva__enlace a::after,
+.tarjeta-institucional__enlace a::after,
+.tarjeta-sitio-interes__enlace a::after,
+.tarjeta-imagen__enlace a::after,
+.tarjeta-autoridad__enlace a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-dropdown);
+  border-radius: inherit;
+}
+
+/* Al navegar con teclado, el foco se dibuja alrededor de toda la tarjeta */
+.tarjeta-sustantiva__enlace a:focus-visible,
+.tarjeta-institucional__enlace a:focus-visible,
+.tarjeta-sitio-interes__enlace a:focus-visible,
+.tarjeta-imagen__enlace a:focus-visible,
+.tarjeta-autoridad__enlace a:focus-visible {
+  outline: none;
+}
+
+.tarjeta-sustantiva__enlace a:focus-visible::after,
+.tarjeta-institucional__enlace a:focus-visible::after,
+.tarjeta-sitio-interes__enlace a:focus-visible::after,
+.tarjeta-imagen__enlace a:focus-visible::after,
+.tarjeta-autoridad__enlace a:focus-visible::after {
+  outline: 3px solid var(--color-superficie);
+  outline-offset: -3px;
+}
+
+/* Colores de facultades: el color sale de utilities.css (--color-tema).
+   :where() deja la regla en especificidad 0, así cualquier
+   componente puede cambiar el fondo sin pelear. */
+:where(
+  .theme-fjsa,
+  .theme-fsh,
+  .theme-feirnnr,
+  .theme-farnr,
+  .theme-feac,
+  .theme-ued,
+  .bg-default
+) {
+  background-color: var(--color-tema);
+}
+
+/* =========================================================
+   VARIANTE SUSTANTIVA — se ensancha al pasar el mouse
+   ========================================================= */
 .tarjeta-sustantiva {
   position: relative;
   flex: 1;
   display: flex;
   align-items: flex-end;
+  min-height: 20rem;
   overflow: hidden;
-  min-height: 320px;
-  transition: flex 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: flex var(--duracion-lenta) var(--curva-suave);
 }
 
-.tarjeta-sustantiva:hover {
+.tarjeta-sustantiva:is(:hover, :focus-within) {
   flex: 3;
 }
 
@@ -19,22 +114,15 @@
   z-index: 0;
 }
 
-.tarjeta-sustantiva__img .field,
-.tarjeta-sustantiva__img .field__items,
-.tarjeta-sustantiva__img .field__item,
-.tarjeta-sustantiva__img article,
-.tarjeta-sustantiva__img picture {
-  display: contents;
-}
-
 .tarjeta-sustantiva__img img {
   position: absolute;
   inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
   display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 .tarjeta-sustantiva__etiqueta {
@@ -43,65 +131,44 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-
-  width: 200px;
+  gap: var(--espacio-3);
+  width: 12.5rem;
   max-width: 100%;
-  box-sizing: border-box;
-
-  padding: 1rem 1.25rem;
-  background-color: var(--primary-color);
+  padding: var(--espacio-4) var(--espacio-5);
+  background-color: var(--color-primario);
 }
 
 .tarjeta-sustantiva__titulo {
   margin: 0;
-  color: var(--surface-color);
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.25;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-ajustado);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
   text-align: left;
 }
 
 .tarjeta-sustantiva__mas {
   flex-shrink: 0;
-  color: var(--surface-color);
-  font-size: 1.5rem;
-  font-weight: 700;
+  color: var(--texto-sobre-primario);
+  font-size: var(--icono-md);
+  font-weight: var(--peso-negrita);
   line-height: 1;
-  transition: transform 0.3s ease;
+  transition: transform var(--duracion-normal) ease;
 }
 
-.tarjeta-sustantiva:hover .tarjeta-sustantiva__mas {
+.tarjeta-sustantiva:is(:hover, :focus-within) .tarjeta-sustantiva__mas {
   transform: rotate(90deg);
-}
-
-.tarjeta-sustantiva__enlace {
-  margin: 0;
-  padding: 0;
-  height: 0;
-}
-
-.tarjeta-sustantiva__enlace a {
-  color: transparent;
-  font-size: 0;
-}
-.tarjeta-sustantiva__enlace a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
 }
 
 @media (max-width: 768px) {
   .tarjeta-sustantiva {
     flex: none;
-    min-height: 90px;
     align-items: stretch;
+    min-height: 5.625rem;
   }
 
-  .tarjeta-sustantiva:hover {
+  .tarjeta-sustantiva:is(:hover, :focus-within) {
     flex: none;
   }
 
@@ -115,27 +182,31 @@
   }
 }
 
+/* =========================================================
+   VARIANTE INSTITUCIONAL (FACULTADES)
+   ========================================================= */
 .tarjeta-institucional {
   position: relative;
   flex: 1;
   display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   transition:
-    flex 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-    transform 0.35s ease;
+    flex var(--duracion-lenta) var(--curva-suave),
+    transform var(--duracion-normal) ease;
 }
 
-.tarjeta-institucional,
 .tarjeta-funcion {
-  height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .tarjeta-bg-img {
   transition:
-    opacity 0.4s ease,
-    transform 0.5s ease;
+    opacity var(--duracion-lenta) ease,
+    transform var(--duracion-lenta) ease;
 }
 
 .tarjeta-contenido {
@@ -145,263 +216,187 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 1.5rem 2rem;
-  transition: transform 0.35s ease;
+  padding: var(--espacio-6) var(--espacio-8);
+  transition: transform var(--duracion-normal) ease;
 }
 
 .tarjeta-titulo {
   margin: 0;
-  color: var(--surface-color);
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.3;
+  padding-left: var(--espacio-3);
+  border-left: 2.5px solid var(--texto-sobre-primario);
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-ajustado);
   text-align: left;
-
-  border-left: 2.5px solid var(--surface-color);
-  padding-left: 0.85rem;
-
-  transition: transform 0.35s ease;
+  transition: transform var(--duracion-normal) ease;
 }
 
 .tarjeta-titulo strong {
-  font-weight: 700;
+  font-weight: var(--peso-negrita);
 }
 
-.tarjeta-institucional:hover {
+.tarjeta-institucional:is(:hover, :focus-within) {
   flex: 3;
-  transform: translateY(-8px);
-  z-index: 5;
+  z-index: var(--z-elevado);
+  transform: translateY(var(--elevar-tarjeta));
 }
 
-.tarjeta-institucional:hover .tarjeta-bg-img {
+.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-bg-img {
   opacity: 0.35;
   transform: scale(1.05);
 }
 
-.tarjeta-institucional:hover .tarjeta-contenido,
-.tarjeta-institucional:hover .tarjeta-titulo {
+.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-contenido,
+.tarjeta-institucional:is(:hover, :focus-within) .tarjeta-titulo {
   transform: none;
 }
 
-/*ENLACE ESTIRADO (TARJETA COMPLETA CLICKEABLE)*/
-.tarjeta-institucional__enlace {
-  margin: 0;
-  padding: 0;
-  height: 0;
-}
-
-.tarjeta-institucional__enlace a {
-  color: transparent;
-  font-size: 0;
-}
-
-.tarjeta-institucional__enlace a::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-}
-
-/*TEMAS DE FACULTADES*/
-.theme-fjsa {
-  background-color: #c23329;
-} /* Rojo */
-.theme-fsh {
-  background-color: #45b5dd;
-} /* Azul */
-.theme-feirnnr {
-  background-color: #e7792b;
-} /* Naranja*/
-.bg-default {
-  background-color: var(--primary-color);
-} /* Rojo por defecto */
-.theme-farnr {
-  background-color: #5bad3b;
-} /* Verde */
-.theme-feac {
-  background-color: #eebb30;
-} /* Amarillo */
-.theme-ued {
-  background-color: #7b378d;
-} /* Morado */
-
 @media (max-width: 768px) {
   .tarjeta-institucional {
-    min-height: 90px;
-    height: auto;
     flex: none;
+    height: auto;
+    min-height: 5.625rem;
   }
 
   .tarjeta-contenido {
-    padding: 1rem 1.25rem;
     justify-content: flex-start;
+    padding: var(--espacio-4) var(--espacio-5);
   }
 
   .tarjeta-titulo {
-    font-size: 0.9rem;
-    padding-left: 0.75rem;
+    padding-left: var(--espacio-3);
     border-left-width: 2px;
+    font-size: var(--texto-sm);
   }
 }
 
-/*VARIANTE CONTADOR*/
+/* =========================================================
+   VARIANTE CONTADOR — número grande sobre fondo rojo
+   ========================================================= */
 .tarjeta-contador {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  text-align: center;
   width: 100%;
+  text-align: center;
 }
 
 .tarjeta-contador__icono {
-  margin-bottom: 0.85rem;
+  margin-bottom: var(--espacio-3);
   line-height: 0;
 }
 
 .tarjeta-contador__icono svg,
 .tarjeta-contador__icono img {
-  width: 48px;
-  height: 48px;
+  width: var(--icono-lg);
+  height: var(--icono-lg);
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
 .tarjeta-contador__numero {
-  font-size: 2.75rem;
-  font-weight: 800;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-numero);
+  font-weight: var(--peso-negrita);
   line-height: 1;
-  color: var(--surface-color);
 }
 
 .tarjeta-contador__etiqueta {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  margin-top: var(--espacio-2);
+  color: var(--texto-sobre-primario-suave);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  line-height: var(--interlineado-ajustado);
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.3;
 }
 
 @media (max-width: 768px) {
-  .tarjeta-contador__numero {
-    font-size: 2rem;
-  }
-
   .tarjeta-contador__icono svg,
   .tarjeta-contador__icono img {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .tarjeta-contador__etiqueta {
-    font-size: 0.75rem;
+    font-size: var(--texto-xs);
   }
 }
 
-/*VARIANTE SITIOS DE INTERÉS*/
+/* =========================================================
+   VARIANTE SITIOS DE INTERÉS — roja, se vuelve blanca al hover
+   ========================================================= */
 .tarjeta-sitio-interes {
   position: relative;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  background-color: var(--primary-color);
+  height: 100%;
+  padding: var(--espacio-8) var(--espacio-5);
   border: 1px solid transparent;
-  border-radius: 12px;
-  padding: 2rem 1.25rem;
+  border-radius: var(--radio-lg);
+  background-color: var(--color-primario);
+  text-align: center;
   transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
+    background-color var(--duracion-normal) ease,
+    border-color var(--duracion-normal) ease;
 }
 
-.tarjeta-sitio-interes:hover {
-  background-color: var(--surface-color);
-  border-color: var(--primary-color);
+.tarjeta-sitio-interes:is(:hover, :focus-within) {
+  border-color: var(--color-primario);
+  background-color: var(--color-superficie);
 }
 
 .tarjeta-sitio-interes__icono {
-  margin-bottom: 1rem;
+  margin-bottom: var(--espacio-4);
   line-height: 0;
 }
 
+/* El logo va en blanco sobre rojo y con sus colores sobre blanco */
 .tarjeta-sitio-interes__icono svg,
 .tarjeta-sitio-interes__icono img {
-  width: 48px;
-  height: 48px;
+  width: var(--icono-lg);
+  height: var(--icono-lg);
   object-fit: contain;
-  transition: filter 0.3s ease;
-  /* Fuerza el logo a blanco sobre el fondo rojo*/
   filter: brightness(0) invert(1);
+  transition: filter var(--duracion-normal) ease;
 }
 
-.tarjeta-sitio-interes:hover .tarjeta-sitio-interes__icono svg,
-.tarjeta-sitio-interes:hover .tarjeta-sitio-interes__icono img {
-  filter: none; /* colores originales del logo sobre fondo blanco */
+.tarjeta-sitio-interes:is(:hover, :focus-within) .tarjeta-sitio-interes__icono svg,
+.tarjeta-sitio-interes:is(:hover, :focus-within) .tarjeta-sitio-interes__icono img {
+  filter: none;
 }
 
 .tarjeta-sitio-interes__titulo {
   margin: 0;
-  color: var(--surface-color);
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.3;
-  transition: color 0.3s ease;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-ajustado);
+  transition: color var(--duracion-normal) ease;
 }
 
-.tarjeta-sitio-interes:hover .tarjeta-sitio-interes__titulo {
-  color: var(--primary-color);
+.tarjeta-sitio-interes:is(:hover, :focus-within) .tarjeta-sitio-interes__titulo {
+  color: var(--color-primario);
 }
 
-.tarjeta-sitio-interes__enlace {
-  margin: 0;
-  padding: 0;
-  height: 0;
+/* El foco del enlace estirado va en rojo porque la tarjeta se vuelve blanca */
+.tarjeta-sitio-interes__enlace a:focus-visible::after {
+  outline-color: var(--color-primario);
 }
 
-.tarjeta-sitio-interes__enlace a {
-  color: transparent;
-  font-size: 0;
-}
-
-.tarjeta-sitio-interes__enlace a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-}
-
-/*VARIANTE IMAGENES*/
+/* =========================================================
+   VARIANTE IMÁGENES — logos o banners clickeables
+   ========================================================= */
 .tarjeta-imagen {
   position: relative;
   width: 100%;
-  max-width: 280px;
+  max-width: 17.5rem;
   margin: 0 auto;
-  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.tarjeta-imagen:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
-}
-
-.tarjeta-imagen .field,
-.tarjeta-imagen .field__items,
-.tarjeta-imagen .field__item,
-.tarjeta-imagen article,
-.tarjeta-imagen picture {
-  display: contents;
+  border-radius: var(--radio-xl);
 }
 
 .tarjeta-imagen img {
@@ -409,41 +404,18 @@
   width: 100%;
   height: auto;
 }
-.tarjeta-imagen__enlace {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-}
 
-.tarjeta-imagen__enlace a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-indent: -9999px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.tarjeta-imagen__enlace a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-}
-
-/*VARIANTE AUTORIDADES*/
+/* =========================================================
+   VARIANTE AUTORIDADES — foto con datos al pasar el mouse
+   ========================================================= */
 .tarjeta-autoridad {
   position: relative;
   width: 100%;
+  max-width: 12.5rem;
   aspect-ratio: 3 / 4;
-  border-radius: 12px;
   overflow: hidden;
+  border-radius: var(--radio-lg);
   isolation: isolate;
-  max-width: 200px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -o-border-radius: 12px;
 }
 
 .tarjeta-autoridad__imagen {
@@ -454,17 +426,17 @@
 
 .tarjeta-autoridad__imagen,
 .tarjeta-autoridad__imagen div {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
 }
 
 .tarjeta-autoridad__imagen img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .tarjeta-autoridad__overlay {
@@ -472,51 +444,51 @@
   inset: 0;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  background-color: var(--primary-color);
+  padding: var(--espacio-6);
+  background-color: var(--color-primario);
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity var(--duracion-normal) ease;
 }
 
-.tarjeta-autoridad:hover .tarjeta-autoridad__overlay,
-.tarjeta-autoridad:focus-within .tarjeta-autoridad__overlay {
+.tarjeta-autoridad:is(:hover, :focus-within) .tarjeta-autoridad__overlay {
   opacity: 1;
 }
 
 .tarjeta-autoridad__nombre {
   margin: 0;
-  color: var(--surface-color);
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.3;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-ajustado);
   text-align: center;
 }
 
 .tarjeta-autoridad__cargo {
-  margin: 0.4rem 0 0 0;
-  color: var(--surface-color);
-  font-size: 0.85rem;
-  font-weight: 500;
+  margin: var(--espacio-2) 0 0;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-medio);
   text-align: center;
 }
 
 .tarjeta-autoridad__cargo * {
-  color: inherit;
   margin: 0;
+  color: inherit;
 }
 
-/* Botón "ver más" — aparece siempre que el campo "Información adicional" tenga contenido */
+/* "Ver más" — aparece cuando "Información adicional" tiene contenido */
 .tarjeta-autoridad__ver-mas {
   display: block;
-  margin: 0.4rem auto 0 auto;
+  margin: var(--espacio-2) auto 0;
   padding: 0;
   border: none;
   background: none;
-  color: var(--surface-color);
-  font-size: 0.75rem;
-  font-weight: 600;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-seminegrita);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -525,82 +497,64 @@
   opacity: 0.8;
 }
 
-/* Modal con la información completa (títulos, ORCID, reseña, etc.) */
+/* ---------- Modal con la información completa ---------- */
 .tarjeta-autoridad-modal-fondo {
   position: fixed;
   inset: 0;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.55);
+  z-index: var(--z-modal);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: var(--espacio-6);
+  background-color: var(--overlay-oscuro);
 }
 
 .tarjeta-autoridad-modal {
   position: relative;
-  max-width: 420px;
   width: 100%;
-  max-height: 80vh;
+  max-width: 26.25rem;
+  max-height: 80dvh;
   overflow-y: auto;
-  background-color: var(--surface-color);
-  color: #333333;
-  padding: 2rem 1.75rem 1.75rem 1.75rem;
-  border-radius: 10px;
+  padding: var(--espacio-8) var(--espacio-6) var(--espacio-6);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie);
+  color: var(--color-texto-cuerpo);
 }
 
 .tarjeta-autoridad-modal__cerrar {
   position: absolute;
-  top: 0.6rem;
-  right: 0.75rem;
+  top: var(--espacio-2);
+  right: var(--espacio-3);
   border: none;
   background: none;
-  font-size: 1.4rem;
+  color: var(--color-texto-cuerpo);
+  font-size: var(--icono-md);
   line-height: 1;
   cursor: pointer;
-  color: #333333;
 }
 
 .tarjeta-autoridad-modal__nombre {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary-color);
+  margin: 0 0 var(--espacio-3);
+  color: var(--color-primario);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-negrita);
 }
 
-.tarjeta-autoridad__enlace {
-  margin: 0;
-  padding: 0;
-  height: 0;
-}
-
-.tarjeta-autoridad__enlace a {
-  color: transparent;
-  font-size: 0;
-}
-
-.tarjeta-autoridad__enlace a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-}
-
-/*ÍCONOS DE REDES DENTRO DEL MODAL DE AUTORIDADES*/
+/* ---------- Redes sociales dentro del modal ---------- */
 .tarjeta-autoridad__redes {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-4);
 }
 
 .tarjeta-autoridad__red-icono {
   display: inline-flex;
-  width: 24px;
-  height: 24px;
-  color: var(--primary-color);
-  transition: opacity 0.2s ease;
+  width: var(--icono-md);
+  height: var(--icono-md);
+  color: var(--color-primario);
+  transition: opacity var(--duracion-rapida) ease;
 }
 
 .tarjeta-autoridad__red-icono:hover {
@@ -612,57 +566,58 @@
   height: 100%;
 }
 
+/* ---------- Móvil: foto a la izquierda, datos a la derecha ---------- */
 @media (max-width: 768px) {
   .tarjeta-autoridad {
-    aspect-ratio: unset;
-    max-width: 100%;
-    height: auto;
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    border-radius: 12px;
-    background-color: var(--surface-color);
-    border: 1px solid var(--primary-color);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: unset;
+    border: 1px solid var(--color-primario);
+    background-color: var(--color-superficie);
   }
 
   .tarjeta-autoridad__imagen {
     position: relative;
     inset: unset;
-    flex: 0 0 110px;
-    width: 110px;
+    flex: 0 0 6.875rem;
+    width: 6.875rem;
     aspect-ratio: 3 / 4;
   }
 
   .tarjeta-autoridad__overlay {
     position: relative;
     inset: unset;
-    opacity: 1;
     flex: 1;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    padding: 1rem;
+    padding: var(--espacio-4);
+    background-color: transparent;
+    opacity: 1;
   }
 
   .tarjeta-autoridad__nombre,
   .tarjeta-autoridad__cargo {
+    color: var(--color-texto);
     text-align: left;
-    color: var(--text-color);
   }
 
   .tarjeta-autoridad__nombre {
-    font-size: 0.9rem;
+    font-size: var(--texto-sm);
   }
 
   .tarjeta-autoridad__cargo {
-    font-size: 0.78rem;
+    font-size: var(--texto-xs);
   }
 
   .tarjeta-autoridad__ver-mas {
-    margin: 0.3rem 0 0 0;
-    color: var(--primary-color);
+    margin: var(--espacio-1) 0 0;
+    color: var(--color-primario);
     text-align: left;
+  }
+
+  .tarjeta-autoridad__enlace a:focus-visible::after {
+    outline-color: var(--color-primario);
   }
 }

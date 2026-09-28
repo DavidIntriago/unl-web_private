@@ -13,8 +13,8 @@ global:
       assets/css/node/evento-teaser.css: {}
       assets/css/node/noticia-teaser.css: {}
       assets/css/node/evento-tarjeta-paragraph.css: {}
-      assets/css/views/eventos.css: {}
-      assets/css/views/noticias.css: {}
+
+      assets/css/views/listados.css: {}
       assets/css/navigation/pager.css: {}
       components/menu_lateral/menu_lateral.css: {}
       components/sidebar_micrositio/sidebar_micrositio.css: {}
@@ -22,6 +22,9 @@ global:
       components/klaro_cookies/klaro_cookies.css: {}
       assets/css/components/views-global.css: {}
       assets/css/components/cas_login.css: {}
+      assets/css/components/carrusel.css: {}
+      assets/css/components/contenido-enriquecido.css: {}
+      assets/css/botones.css: {}
   js:
     assets/js/global.js: {}
     assets/js/enlaces_externos.js: {}

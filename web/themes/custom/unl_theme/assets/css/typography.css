@@ -55,8 +55,8 @@
 
   /* Título de sección (listados, grids, vistas) */
   .titulo-seccion {
-    font-size: var(--texto-titulo-seccion);
-    text-align: left;
+    font-size: var(--texto-xl);
+    text-align: center;
     margin: 0;
   }
 
@@ -78,13 +78,13 @@
   .separador {
     width: var(--barra-titulo-ancho);
     height: var(--barra-titulo-alto);
-    margin: var(--espacio-3) 0 0;
+    margin: var(--espacio-3) auto 0;
     background-color: var(--color-primario);
     border-radius: 2px;
   }
 
-  .separador--centro {
-    margin-inline: auto;
+  .separador--izquierda {
+    margin-inline: 0;
   }
 
   .separador--tarjeta {

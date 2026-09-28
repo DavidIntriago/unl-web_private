@@ -28,7 +28,7 @@
 .unl-about__title {
   margin-top: 0;
   margin-bottom: var(--espacio-2);
-  font-size: var(--texto-titulo-seccion);
+  font-size: var(--texto-xl);
   line-height: var(--interlineado-ajustado);
   color: var(--color-texto);
 }

@@ -28,6 +28,7 @@
     .admin-login-toggle,
     .unl-about__action a,
     .unl-btn-descarga,
+    .noticias-destacadas__boton-superior a,
     .site-header__actions .button-primary,
     .btn-universidad,
     .btn-archivo,
@@ -132,7 +133,7 @@
   /* =========================================================
      TAMAÑOS Y FORMAS
      ========================================================= */
-  :where(.boton--grande, .btn-universidad) {
+  :where(.boton--grande, .btn-universidad, .noticias-destacadas__boton-superior a) {
     --boton-padding: var(--espacio-4) var(--espacio-8);
     --boton-texto-tamano: var(--texto-md);
     font-weight: var(--peso-negrita);
@@ -170,6 +171,7 @@
       .admin-login-toggle,
       .unl-about__action a,
       .unl-btn-descarga,
+      .noticias-destacadas__boton-superior a,
       .site-header__actions .button-primary,
       .btn-universidad,
       .btn-archivo,

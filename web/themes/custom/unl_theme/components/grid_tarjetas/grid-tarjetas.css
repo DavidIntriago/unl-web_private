@@ -3,13 +3,26 @@
  * El aspecto de cada tarjeta está en tarjeta.css.
  */
 
-/* La cabecera (título + "Ver más") es la misma de todo el sitio:
-   está en utilities.css → CABECERA DE SECCIÓN */
+/* =========================================================
+   CABECERA (título + barra)
+   ========================================================= */
+.grid-tarjetas__header {
+  margin-bottom: var(--espacio-6);
+  text-align: center;
+}
 
-/* Separación entre secciones que no tenían margen propio */
-.grid-tarjetas-wrapper--sitios_interes,
-.grid-tarjetas-wrapper--imagenes {
-  margin-top: var(--espacio-12);
+.grid-tarjetas__titulo {
+  margin: 0;
+  font-size: var(--texto-xl);
+  color: var(--color-texto);
+}
+
+.grid-tarjetas__divider {
+  width: var(--barra-titulo-ancho);
+  height: var(--barra-titulo-alto);
+  margin: var(--espacio-3) auto 0;
+  border-radius: 2px;
+  background-color: var(--color-primario);
 }
 
 /* =========================================================
@@ -130,6 +143,10 @@
 
 .grid-tarjetas-wrapper--contador .grid-tarjetas__titulo {
   color: var(--texto-sobre-primario);
+}
+
+.grid-tarjetas-wrapper--contador .grid-tarjetas__divider {
+  background-color: var(--texto-sobre-primario);
 }
 
 .grid-tarjetas-container--contador {

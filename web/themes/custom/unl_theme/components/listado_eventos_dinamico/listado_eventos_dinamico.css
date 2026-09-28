@@ -13,8 +13,25 @@
   margin: 0 auto;
 }
 
-/* ---------- Cabecera ----------
-   Es la misma de todo el sitio: utilities.css → CABECERA DE SECCIÓN */
+/* ---------- Cabecera ---------- */
+.seccion-eventos__cabecera {
+  margin-bottom: var(--espacio-6);
+  text-align: center;
+}
+
+.seccion-eventos__titulo {
+  margin: 0;
+  font-size: var(--texto-xl);
+  color: var(--color-texto);
+}
+
+.seccion-eventos__divider {
+  width: var(--barra-titulo-ancho);
+  height: var(--barra-titulo-alto);
+  margin: var(--espacio-3) auto 0;
+  border-radius: 2px;
+  background-color: var(--color-primario);
+}
 
 /* Si la vista no devuelve eventos, no se muestra el título */
 .seccion-eventos:not(:has(.eventos__item)) .seccion-eventos__cabecera {

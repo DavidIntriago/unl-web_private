@@ -13,11 +13,44 @@
   margin: 0 auto;
 }
 
-/* ---------- Cabecera ----------
-   Es la misma de todo el sitio: utilities.css → CABECERA DE SECCIÓN.
-   El enlace "Ver todas" toma su estilo de utilities.css ("ver más"). */
-.noticias-destacadas__boton-superior {
-  flex-shrink: 0;
+/* ---------- Cabecera: título al centro, botón a la derecha ---------- */
+.noticias-destacadas__cabecera {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-6);
+  margin-bottom: var(--espacio-10);
+  text-align: center;
+}
+
+.noticias-destacadas__titulo {
+  margin: 0;
+  font-size: var(--texto-xl);
+  color: var(--color-texto);
+}
+
+.noticias-destacadas__divider {
+  width: var(--barra-titulo-ancho);
+  height: var(--barra-titulo-alto);
+  margin: var(--espacio-3) auto 0;
+  border-radius: 2px;
+  background-color: var(--color-primario);
+}
+
+@media (min-width: 769px) {
+  .noticias-destacadas__cabecera {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+  }
+
+  .noticias-destacadas__titulos {
+    grid-column: 2;
+  }
+
+  .noticias-destacadas__boton-superior {
+    grid-column: 3;
+    justify-self: end;
+    padding-bottom: var(--espacio-1);
+  }
 }
 
 /* ---------- Grid de noticias ---------- */

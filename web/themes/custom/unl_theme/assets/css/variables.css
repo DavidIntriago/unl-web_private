@@ -92,8 +92,7 @@
   --texto-base: 1rem;
   --texto-md: 1.125rem;   /* cuerpo de noticias/eventos, descripciones */
   --texto-lg: 1.25rem;    /* títulos de tarjeta */
-  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);      /* h2 */
-  --texto-titulo-seccion: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem); /* títulos de grids, listados y vistas */
+  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);      /* títulos de sección */
   --texto-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem); /* títulos de página */
   --texto-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);       /* título del hero */
   --texto-numero: clamp(2rem, 1.6rem + 1.5vw, 2.75rem); /* contador */
@@ -137,9 +136,6 @@
   --contenedor-normal: 80rem;    /* 1280px — header y footer */
   --contenedor-ancho: 88.75rem;  /* 1420px — vistas, micrositios, grids */
   --sidebar-ancho: 16.25rem;     /* 260px */
-  /* Todas las cabeceras de sección arrancan en este mismo borde,
-     sin importar el ancho de las tarjetas de abajo */
-  --contenedor-titulos: var(--contenedor-lectura);
 
   --header-altura: 5rem;         /* 80px */
 

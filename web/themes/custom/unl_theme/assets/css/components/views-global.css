@@ -8,8 +8,30 @@
  * importaciones). Se escriben una sola vez aquí, que carga en todo el sitio.
  */
 
-/* Los títulos de vista (.titulo-vista-global / -paragraph) usan
-   el mismo estilo de todas las cabeceras: utilities.css */
+/* =========================================================
+   TÍTULOS DE VISTA (mismo estándar que los títulos de sección)
+   ========================================================= */
+.titulo-vista-global,
+.titulo-vista-paragraph {
+  position: relative;
+  margin: 0;
+  padding-bottom: calc(var(--espacio-3) + var(--barra-titulo-alto));
+  font-size: var(--texto-xl);
+  text-align: center;
+}
+
+.titulo-vista-global::after,
+.titulo-vista-paragraph::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: var(--barra-titulo-ancho);
+  height: var(--barra-titulo-alto);
+  border-radius: 2px;
+  background-color: var(--color-primario);
+  transform: translateX(-50%);
+}
 
 /* =========================================================
    CONTENEDOR DE VISTA

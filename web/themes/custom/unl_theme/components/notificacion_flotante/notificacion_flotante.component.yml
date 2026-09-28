@@ -1,0 +1,11 @@
+name: Notificación Flotante
+description: Alerta tipo píldora con enlace y botón de cierre.
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+    descripcion:
+      type: string
+    url:
+      type: string

@@ -1,6 +1,7 @@
 {% block paragraph %}
   {% set slides_data = [] %}
 
+  {# 1. PROCESAMOS LAS DIAPOSITIVAS #}
   {% for key, child in content.field_diapositivas %}
     {% if key|first != '#' %}
       
@@ -11,23 +12,12 @@
       {% if media_entity %}
         {% set tipo_media = media_entity.bundle() %}
 
-        {#
-        /**El tipo de multimedia es el que sale en nombre de sistema dentro de tipos de multimedia en la pestaña editar, tambien cambiar en el twg correspondiente al parrafo**/
-        #}
-
         {% if tipo_media == 'horizontal_pantalla_completa' %}
-         {#
-        /**Tomar en cuenta field_media_image_5 ya que es el nombre de maquina de la imagen no del tipo de multimedia, este esta en administrar campos, al lado de editar **/
-        #}
-        
           {% set url_media = file_url(media_entity.field_media_image_5.entity.uri.value) %}
-        
         {% elseif tipo_media == 'video' %}
           {% set url_media = file_url(media_entity.field_media_video_file.entity.uri.value) %}
-        
         {% elseif tipo_media == 'remote_video' %}
           {% set url_media = media_entity.field_media_oembed_video.value %}
-        
         {% endif %}
       {% endif %}
 
@@ -43,7 +33,18 @@
     {% endif %}
   {% endfor %}
 
+  {# 2. PROCESAMOS Y LIMPIAMOS LAS NOTIFICACIONES #}
+  {% set notificaciones_limpias = [] %}
+  {% for key, child in content.field_notificacion_flotante %}
+    {% if key|first != '#' %}
+      {% set notificaciones_limpias = notificaciones_limpias|merge([child]) %}
+    {% endif %}
+  {% endfor %}
+
+  {# 3. ENVIAMOS TODO AL COMPONENTE SDC #}
   {% include 'unl_theme:hero_carrusel' with {
-    diapositivas: slides_data
+    diapositivas: slides_data,
+    notificaciones: notificaciones_limpias
   } %}
-{% endblock %}
+  
+{% endblock paragraph %}

@@ -1,0 +1,9 @@
+{% set titulo = content.field_titulo_corto|render|striptags|trim %}
+{% set descripcion = content.field_descripcion_corta|render|striptags|trim|default('') %}
+{% set url = paragraph.field_enlace.0.url|default('#') %}
+
+{% include 'unl_theme:notificacion_flotante' with {
+  titulo: titulo,
+  descripcion: descripcion,
+  url: url
+} %}

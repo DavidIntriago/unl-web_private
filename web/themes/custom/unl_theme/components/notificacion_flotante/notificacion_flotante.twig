@@ -1,0 +1,14 @@
+<div class="unl-alert__container">
+  <a href="{{ url }}" class="unl-alert__link" target="_blank" rel="noopener noreferrer">
+    <div class="unl-alert__icon"></div>
+
+    <div class="unl-alert__text">
+      <span class="unl-alert__title">{{ titulo }}</span>
+      {% if descripcion %}
+        <span class="unl-alert__description">{{ descripcion }}</span>
+      {% endif %}
+    </div>
+  </a>
+
+<!-- Agrega js-close-alert aquí -->
+<button class="unl-alert__close js-close-alert" aria-label="Cerrar"></button></div>

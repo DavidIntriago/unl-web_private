@@ -53,6 +53,14 @@
       </div>
     {% endfor %}
   </div>
-  {# Indicadores (uno por diapositiva, generados dinámicamente por JS) #}
+
+  {% if notificaciones|length > 0 %}
+    <div class="hero-notificaciones-flotantes">
+      {% for notificacion in notificaciones %}
+        {{ notificacion }}
+      {% endfor %}
+    </div>
+  {% endif %}
+
   <div class="carrusel-controles" role="tablist" aria-label="Diapositivas del carrusel"></div>
 </div>

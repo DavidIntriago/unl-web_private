@@ -11,6 +11,14 @@
     </div>
   {% endif %}
 
+  {% if variante == 'imagenes' %}
+    <div class="grid-tarjetas__acciones-top">
+      <div class="grid-tarjetas__btn-ver-mas">
+        <a href="{{ enlace }}" class="grid-tarjetas__btn-ver-mas" aria-label="Ver más">Ver más</a>
+      </div>
+    </div>
+  {% endif %}
+    
   {% set modificador_grid = variante == 'sustantiva'
     ? 'grid-tarjetas-container--sustantiva'
     : (variante == 'facultad'
@@ -34,7 +42,6 @@
 
     {% block items %}
     {% endblock %}
-
     {% if variante == 'sitios_interes' %}
         </div>
       </div>

@@ -64,6 +64,8 @@
 /* =========================================================
    LETRA CAPITAL Y CAJA RESALTADA (estilos de CKEditor)
    ========================================================= */
+
+   /* Letra capital */
 :is(.noticia-full__cuerpo, .evento-detalle__cuerpo) .letra-capital {
   float: left;
   margin-top: 0.3rem;
@@ -74,7 +76,8 @@
   line-height: 0.7;
   text-transform: uppercase;
 }
-
+  
+/* Caja resaltada */
 :is(.noticia-full__cuerpo, .evento-detalle__cuerpo) .caja-resaltada {
   margin: var(--espacio-8) 0;
   padding: var(--espacio-6) var(--espacio-8);
@@ -84,6 +87,50 @@
   color: var(--color-texto-cuerpo);
   font-style: italic;
   box-shadow: var(--sombra-sm);
+}
+
+  /* lista importante */
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) ul.lista-importante {
+  list-style-type: none;
+  background-color: var(--color-fondo-gris);
+  border: 1px solid rgba(0, 0, 0, 0.05); 
+  border-top: var(--borde-acento) solid var(--color-primario); /* Borde superior de color */
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-sm);
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) ul.lista-importante li {
+  position: relative;
+  padding-left: var(--espacio-8); 
+  margin-bottom: var(--espacio-4);
+  color: var(--color-texto-cuerpo);
+  line-height: 1.6;
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) ul.lista-importante li:last-child {
+  margin-bottom: 0;
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) ul.lista-importante li::before {
+  content: "\2713"; 
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-primario);
+  font-size: 1.3rem; 
+  font-weight: 900;
+}
+
+  /* subtitulo importante h3 */
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo) h3.subtitulo-importante {
+  display: inline-block; 
+  color: var(--color-primario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: var(--espacio-2); 
+  border-bottom: 3px solid var(--color-primario);
+  margin-top: var(--espacio-8);
+  margin-bottom: var(--espacio-4);
 }
 
 /* En móvil las imágenes flotantes ocupan todo el ancho */

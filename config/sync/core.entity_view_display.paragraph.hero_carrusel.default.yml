@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.hero_carrusel.field_diapositivas
-    - field.field.paragraph.hero_carrusel.field_notificacion_flotante
     - paragraphs.paragraphs_type.hero_carrusel
   module:
     - entity_reference_revisions
@@ -21,14 +20,5 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_notificacion_flotante:
-    type: entity_reference_revisions_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 1
     region: content
 hidden: {  }

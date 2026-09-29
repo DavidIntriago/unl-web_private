@@ -148,6 +148,31 @@
 }
 
 /* =========================================================
+   NOTIFICACIONES FLOTANTES (escritorio)
+   Arriba a la derecha del hero, una debajo de otra.
+   Solo el contenedor: el diseño de cada alerta está en unl_alert.css.
+   ========================================================= */
+.hero-notificaciones-flotantes {
+  position: absolute;
+  top: 13%;
+  right: 4%;
+  z-index: var(--z-dropdown);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+  width: fit-content;
+  transform: translateY(-50%) scale(1.2);
+  transform-origin: right center;
+  /* El contenedor deja pasar los clics al hero;
+     solo las alertas se pueden tocar */
+  pointer-events: none;
+}
+
+.hero-notificaciones-flotantes > * {
+  pointer-events: auto;
+}
+
+/* =========================================================
    NOTIFICACIONES FLOTANTES (móvil)
    En pantallas chicas las alertas dejan de flotar y se vuelven
    una franja de lado a lado, arriba del hero, una debajo de otra.

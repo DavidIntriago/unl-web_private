@@ -6,7 +6,6 @@ dependencies:
     - block_content.type.video_fondo_footer
     - field.storage.block_content.field_fondo_footer
     - media.type.footer_minimo_2000x300_px
-    - media.type.video_fondo_footer
 id: block_content.video_fondo_footer.field_fondo_footer
 field_name: field_fondo_footer
 entity_type: block_content
@@ -22,7 +21,6 @@ settings:
   handler_settings:
     target_bundles:
       footer_minimo_2000x300_px: footer_minimo_2000x300_px
-      video_fondo_footer: video_fondo_footer
     sort:
       field: _none
       direction: ASC

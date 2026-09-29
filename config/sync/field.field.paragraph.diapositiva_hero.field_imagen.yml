@@ -6,7 +6,6 @@ dependencies:
     - field.storage.paragraph.field_imagen
     - media.type.horizontal_pantalla_completa
     - media.type.remote_video
-    - media.type.video
     - paragraphs.paragraphs_type.diapositiva_hero
 id: paragraph.diapositiva_hero.field_imagen
 field_name: field_imagen
@@ -24,7 +23,6 @@ settings:
     target_bundles:
       horizontal_pantalla_completa: horizontal_pantalla_completa
       remote_video: remote_video
-      video: video
     sort:
       field: _none
       direction: ASC

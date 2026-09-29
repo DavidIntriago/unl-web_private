@@ -3,7 +3,7 @@ langcode: es
 status: true
 dependencies: {  }
 id: horizontal_media_pantalla
-label: 'Horizontal Media Pantalla (Mínimo 2000x600 px)'
+label: 'Horizontal Media Pantalla (2000x600 px)'
 description: "Formato: fotografía horizontal panorámica, más baja que un banner de pantalla completa.\r\nTamaño mínimo: 2000 x 600 px.\r\nRecomendaciones:\r\n- Centrar el contenido principal en el tercio central de la foto; evitar rostros o texto cerca de los bordes izquierdo/derecho, donde se recorta primero en pantallas anchas.\r\n- Evitar fotos verticales o cuadradas: se recortan demasiado en este formato tan panorámico.\r\n- Al ser una proporción muy ancha y baja, evitar fotos donde el elemento importante esté arriba o abajo del centro — se puede perder en el recorte vertical."
 source: image
 queue_thumbnail_downloads: false

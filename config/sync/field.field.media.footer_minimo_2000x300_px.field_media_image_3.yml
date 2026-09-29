@@ -21,9 +21,9 @@ settings:
   handler: 'default:file'
   handler_settings: {  }
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'jpg jpeg webp'
-  max_filesize: '2 MB'
-  max_resolution: ''
+  file_extensions: 'jpg jpeg webp gif'
+  max_filesize: '1 MB'
+  max_resolution: 2000x400
   min_resolution: 2000x400
   alt_field: true
   alt_field_required: true

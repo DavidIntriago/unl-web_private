@@ -3,7 +3,7 @@ langcode: es
 status: true
 dependencies: {  }
 id: horizontal_pantalla_completa
-label: 'Horizontal Pantalla Completa (Mínimo 2000x1000 px)'
+label: 'Horizontal Pantalla Completa (2000x1000 px)'
 description: "Formato: fotografía horizontal panorámica.\r\nTamaño mínimo: 2000 x 1000 px (proporción 2:1).\r\nRecomendaciones:\r\n- Centrar el contenido principal (rostros, elementos clave) en el tercio central de la foto, evitando los bordes izquierdo/derecho donde se recorta primero en pantallas muy anchas.\r\n- Evitar fotos verticales o cuadradas: no se ajustan bien a este formato y quedan muy recortadas."
 source: image
 queue_thumbnail_downloads: false

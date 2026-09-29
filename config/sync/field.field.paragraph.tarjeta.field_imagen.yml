@@ -7,7 +7,6 @@ dependencies:
     - media.type.cuadrada
     - media.type.horizontal_pequena
     - media.type.icono_svg
-    - media.type.retrato
     - paragraphs.paragraphs_type.tarjeta
 id: paragraph.tarjeta.field_imagen
 field_name: field_imagen
@@ -26,7 +25,6 @@ settings:
       cuadrada: cuadrada
       horizontal_pequena: horizontal_pequena
       icono_svg: icono_svg
-      retrato: retrato
     sort:
       field: _none
       direction: ASC

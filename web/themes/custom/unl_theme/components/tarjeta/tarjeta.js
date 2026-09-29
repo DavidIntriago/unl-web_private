@@ -1,8 +1,8 @@
 /**
  * @file
  * Anima los números de la variante "contador" (0 -> valor final)
- * la primera vez que entran en pantalla, y controla el modal
- * "ver más" de la variante "autoridades".
+ * la primera vez que entran en pantalla, y controla el panel lateral
+ * "Ver perfil" de la variante "autoridades".
  */
 (function (Drupal, once) {
   "use strict";
@@ -161,19 +161,34 @@
     return { enlaces, textoLimpio };
   }
 
+  /**
+   * Escapa texto para meterlo dentro de HTML sin riesgo.
+   */
+  function escaparHtml(texto) {
+    const div = document.createElement("div");
+    div.textContent = texto;
+    return div.innerHTML;
+  }
+
   Drupal.behaviors.tarjetaAutoridadDescripcion = {
     attach: function (context) {
       once(
         "tarjeta-autoridad-descripcion",
         "[data-info-toggle]",
         context,
-      ).forEach((boton) => {
+      ).forEach((boton, indice) => {
+        const tarjeta = boton.closest(".tarjeta-autoridad");
         const marco = boton.closest(".tarjeta-autoridad__marco");
         const info = marco.querySelector("[data-info-contenido]");
         const nombre = marco.querySelector(".tarjeta-autoridad__nombre");
+        const cargo = marco.querySelector(".tarjeta-autoridad__cargo");
+        const foto = tarjeta
+          ? tarjeta.querySelector(".tarjeta-autoridad__imagen img")
+          : null;
 
         boton.addEventListener("click", () => {
           const { enlaces, textoLimpio } = extraerEnlaces(info.innerHTML);
+          const idTitulo = `autoridad-modal-titulo-${indice}`;
 
           const iconosHtml = enlaces.length
             ? `<div class="tarjeta-autoridad__redes">
@@ -186,36 +201,95 @@
     </div>`
             : "";
 
+          // Foto de la misma tarjeta (la versión que el navegador ya cargó)
+          const fotoHtml = foto
+            ? `<img class="tarjeta-autoridad-modal__foto" src="${foto.currentSrc || foto.src}" alt="${escaparHtml(foto.alt || "")}">`
+            : "";
+
+          const nombreTexto = nombre ? nombre.textContent.trim() : "";
+          const cargoTexto = cargo ? cargo.textContent.trim() : "";
+
           const fondo = document.createElement("div");
           fondo.className = "tarjeta-autoridad-modal-fondo";
           fondo.innerHTML = `
-    <div class="tarjeta-autoridad-modal">
+    <div class="tarjeta-autoridad-modal" role="dialog" aria-modal="true" ${nombreTexto ? `aria-labelledby="${idTitulo}"` : 'aria-label="Perfil"'}>
       <button type="button" class="tarjeta-autoridad-modal__cerrar" aria-label="Cerrar">×</button>
-      ${nombre ? `<h4 class="tarjeta-autoridad-modal__nombre">${nombre.textContent}</h4>` : ""}
-      ${textoLimpio}
-      ${iconosHtml}
+      <header class="tarjeta-autoridad-modal__cabecera">
+        ${fotoHtml}
+        <div class="tarjeta-autoridad-modal__datos">
+          ${nombreTexto ? `<h4 class="tarjeta-autoridad-modal__nombre" id="${idTitulo}">${escaparHtml(nombreTexto)}</h4>` : ""}
+          ${cargoTexto ? `<p class="tarjeta-autoridad-modal__cargo">${escaparHtml(cargoTexto)}</p>` : ""}
+        </div>
+      </header>
+      <div class="tarjeta-autoridad-modal__cuerpo">
+        ${textoLimpio}
+        ${iconosHtml}
+      </div>
     </div>
   `;
           document.body.appendChild(fondo);
           document.body.style.overflow = "hidden";
 
+          const panel = fondo.querySelector(".tarjeta-autoridad-modal");
+          const botonCerrar = fondo.querySelector(
+            ".tarjeta-autoridad-modal__cerrar",
+          );
+
+          // Se agrega .is-open en el siguiente cuadro para que el panel
+          // entre deslizándose desde la derecha (y no aparezca de golpe)
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => fondo.classList.add("is-open"));
+          });
+          botonCerrar.focus();
+
+          let cerrado = false;
           const cerrar = () => {
-            fondo.remove();
-            document.body.style.overflow = "";
-            document.removeEventListener("keydown", alPresionarEsc);
+            if (cerrado) return;
+            cerrado = true;
+            fondo.classList.remove("is-open");
+            document.removeEventListener("keydown", alPresionarTecla);
+
+            const quitar = () => {
+              fondo.remove();
+              document.body.style.overflow = "";
+              boton.focus();
+            };
+            // Espera a que termine la salida; si no hay animación
+            // (movimiento reducido), igual se quita a los 450 ms
+            panel.addEventListener("transitionend", quitar, { once: true });
+            setTimeout(() => {
+              if (fondo.isConnected) quitar();
+            }, 450);
           };
 
-          const alPresionarEsc = (e) => {
-            if (e.key === "Escape") cerrar();
+          // Esc cierra; Tab no se escapa del panel mientras está abierto
+          const alPresionarTecla = (e) => {
+            if (e.key === "Escape") {
+              cerrar();
+              return;
+            }
+            if (e.key !== "Tab") return;
+
+            const enfocables = panel.querySelectorAll(
+              'a[href], button, [tabindex]:not([tabindex="-1"])',
+            );
+            const primero = enfocables[0];
+            const ultimo = enfocables[enfocables.length - 1];
+
+            if (e.shiftKey && document.activeElement === primero) {
+              e.preventDefault();
+              ultimo.focus();
+            } else if (!e.shiftKey && document.activeElement === ultimo) {
+              e.preventDefault();
+              primero.focus();
+            }
           };
 
           fondo.addEventListener("click", (e) => {
             if (e.target === fondo) cerrar();
           });
-          fondo
-            .querySelector(".tarjeta-autoridad-modal__cerrar")
-            .addEventListener("click", cerrar);
-          document.addEventListener("keydown", alPresionarEsc);
+          botonCerrar.addEventListener("click", cerrar);
+          document.addEventListener("keydown", alPresionarTecla);
         });
       });
     },

@@ -2,10 +2,7 @@ uuid: 17d1b1ef-c1b4-4668-86a2-67cfbca19d39
 langcode: es
 status: true
 dependencies:
-  content:
-    - 'block_content:seccion_importaciones:c1e04adb-e1d6-4175-a27e-fc5b07f15095'
   module:
-    - block_content
     - system
   theme:
     - unl_theme

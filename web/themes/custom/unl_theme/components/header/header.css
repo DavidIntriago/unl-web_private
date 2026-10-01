@@ -655,3 +655,32 @@
     height: 2.625rem;
   }
 }
+
+/* Lupa de búsqueda */
+.site-header__search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--boton-icono);
+  height: var(--boton-icono);
+  border-radius: var(--radio-circulo);
+  color: var(--texto-sobre-primario);
+  transition: background-color var(--duracion-rapida) ease;
+}
+
+.site-header__search:hover,
+.site-header__search:focus-visible {
+  background-color: var(--blanco-hover);
+  color: var(--texto-sobre-primario);
+}
+
+.site-header__search:focus-visible {
+  outline: 2px solid var(--texto-sobre-primario);
+  outline-offset: 2px;
+}
+
+.site-header__search-icon {
+  width: var(--icono-md);
+  height: var(--icono-md);
+}

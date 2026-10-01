@@ -1,0 +1,20 @@
+uuid: ec5e70e6-66a6-4504-80b0-6e0f173fcb76
+langcode: es
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_notificacion_flotante
+field_name: field_notificacion_flotante
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

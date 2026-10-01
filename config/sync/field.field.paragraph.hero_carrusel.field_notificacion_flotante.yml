@@ -1,0 +1,70 @@
+uuid: e19bede5-dc3b-4712-b689-78f823b00066
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_notificacion_flotante
+    - paragraphs.paragraphs_type.hero_carrusel
+    - paragraphs.paragraphs_type.notificacion_flotante
+  module:
+    - entity_reference_revisions
+id: paragraph.hero_carrusel.field_notificacion_flotante
+field_name: field_notificacion_flotante
+entity_type: paragraph
+bundle: hero_carrusel
+label: 'Notificación Flotante'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      notificacion_flotante: notificacion_flotante
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 16
+        enabled: false
+      archivo:
+        weight: 17
+        enabled: false
+      convenios:
+        weight: 18
+        enabled: false
+      diapositiva_hero:
+        weight: 19
+        enabled: false
+      grid_tarjetas:
+        weight: 20
+        enabled: false
+      hero_carrusel:
+        weight: 21
+        enabled: false
+      importaciones:
+        weight: 22
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 23
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 24
+        enabled: false
+      notificacion_flotante:
+        weight: 15
+        enabled: true
+      recursos_descargables:
+        weight: 25
+        enabled: false
+      repositorio_dinamico:
+        weight: 26
+        enabled: false
+      tarjeta:
+        weight: 27
+        enabled: false
+      texto_libre:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

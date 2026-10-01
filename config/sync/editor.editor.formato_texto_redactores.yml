@@ -68,6 +68,12 @@ settings:
         -
           label: 'Párrafo Resaltado'
           element: '<p class="caja-resaltada">'
+        -
+          label: 'Datos Importantes'
+          element: '<ul class="lista-importante">'
+        -
+          label: 'Subtítulo Importante'
+          element: '<h3 class="subtitulo-importante">'
     media_media:
       allow_view_mode_override: false
 image_upload:

@@ -13,7 +13,7 @@ global:
       assets/css/node/evento-teaser.css: {}
       assets/css/node/noticia-teaser.css: {}
       assets/css/node/evento-tarjeta-paragraph.css: {}
-
+      assets/css/node/node-global.css: {}
       assets/css/views/listados.css: {}
       assets/css/navigation/pager.css: {}
       components/menu_lateral/menu_lateral.css: {}

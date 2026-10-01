@@ -1,0 +1,34 @@
+{#Plantilla genrica para componets /node/*#}
+
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'unl-nodo-generico'
+  ]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+  
+  <div class="unl-nodo-generico__contenedor">
+    
+    {% if not page %}
+      <h2{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% else %}
+      <header class="unl-nodo-generico__cabecera">
+        <h1{{ title_attributes.addClass('unl-nodo-generico__titulo') }}>{{ label }}</h1>
+      </header>
+    {% endif %}
+
+    <div{{ content_attributes.addClass('unl-nodo-generico__contenido') }}>
+      {{ content }}
+    </div>
+
+  </div>
+</article>

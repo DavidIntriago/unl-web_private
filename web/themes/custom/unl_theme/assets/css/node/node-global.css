@@ -1,0 +1,45 @@
+/* Diseño generico para nodos*/
+
+.node--view-mode-full.unl-nodo-generico {
+  background-color: #f9fafb; 
+  padding: 60px 20px;
+  min-height: 60vh;
+}
+
+.node--view-mode-full .unl-nodo-generico__contenedor {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-top: 5px solid #8c0f14; 
+}
+
+.unl-nodo-generico__cabecera {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.unl-nodo-generico__titulo {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #003366; 
+  margin: 0;
+  line-height: 1.2;
+}
+
+.unl-nodo-generico__contenido {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444444;
+}
+
+.unl-nodo-generico__contenido img,
+.unl-nodo-generico__contenido iframe {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+}

@@ -183,16 +183,25 @@ form.views-exposed-form .form-item:has(.bef-links) {
    PESTAÑAS
    Las mismas para las pestañas de Drupal (ver / editar)
    y para los filtros tipo pestaña (bef-links).
-   Reemplaza a tabs.css.
    ========================================================= */
+
+ul.tabs.primary {
+  max-width: var(--contenedor-ancho); 
+  margin: 0 auto; 
+  padding: var(--espacio-8) var(--espacio-6) 0; 
+}
+
+form.views-exposed-form .bef-links ul {
+  margin: 0;
+  padding: 0;
+}
+
 ul.tabs.primary,
 form.views-exposed-form .bef-links ul {
   display: flex;
   flex-wrap: wrap;
   gap: var(--espacio-3);
   width: 100%;
-  margin: 0;
-  padding: 0;
   border-bottom: 2px solid var(--color-borde);
   list-style: none;
 }
@@ -200,7 +209,7 @@ form.views-exposed-form .bef-links ul {
 ul.tabs.primary li,
 form.views-exposed-form .bef-links li {
   margin: 0;
-  margin-bottom: -2px;
+  margin-bottom: -2px; 
   padding: 0;
   list-style: none;
 }
@@ -239,6 +248,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
   background-color: var(--color-primario);
   color: var(--texto-sobre-primario);
 }
+
 
 /* =========================================================
    ACORDEÓN
@@ -321,7 +331,7 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 .acordeon-global-contenido a,
 .acordeon-descripcion a {
   color: var(--color-primario);
-  font-weight: var(--peso-seminegrita);
+  /*font-weight: var(--peso-seminegrita);*/
   text-decoration: underline;
 }
 
@@ -492,7 +502,6 @@ form.views-exposed-form .bef-links a.bef-link--selected {
 /* Lista */
 .unl-lista-docs .views-field-field-anexos ul,
 .unl-lista-docs .views-field-field-anexos li {
-  margin: 0;
   padding: 0;
   list-style: none;
 }

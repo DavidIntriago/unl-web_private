@@ -1,6 +1,5 @@
 /**
- * PAGINADOR
- * Blanco con borde → se llena de rojo al hover y en la página actual.
+ * PAGINADOR 
  */
 .pager {
   display: flex;
@@ -12,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--espacio-2);
+  gap: var(--espacio-4); 
   margin: 0;
   padding: 0;
   list-style: none;
@@ -26,57 +25,43 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--boton-icono-grande);
-  height: var(--boton-icono-grande);
-  padding: 0 var(--espacio-4);
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio-lg);
-  background: var(--color-superficie);
+  padding: var(--espacio-2) var(--espacio-3); 
+  background: transparent; 
+  border: none; 
   color: var(--color-texto-cuerpo);
   font-weight: var(--peso-seminegrita);
   text-decoration: none;
-  transition:
-    background-color var(--duracion-rapida) ease,
-    color var(--duracion-rapida) ease,
-    border-color var(--duracion-rapida) ease,
-    transform var(--duracion-rapida) ease;
+  transition: color var(--duracion-rapida) ease;
 }
 
 .pager__item a:hover,
-.pager__item a:focus-visible,
-.pager__item.is-active a {
-  border-color: var(--color-primario);
-  background: var(--color-primario);
-  color: var(--texto-sobre-primario);
-}
-
-.pager__item a:hover {
-  transform: translateY(var(--elevar-boton));
+.pager__item a:focus-visible {
+  color: var(--color-primario);
+  background: transparent;
 }
 
 .pager__item.is-active a {
+  color: var(--color-primario);
+  font-weight: var(--peso-negrita);
   pointer-events: none;
   cursor: default;
 }
 
 .pager__item--previous a,
 .pager__item--next a {
-  min-width: auto;
-  padding: 0 var(--espacio-5);
+  padding: var(--espacio-2) var(--espacio-4);
 }
 
 .pager__item--first a,
 .pager__item--last a {
-  width: var(--boton-icono-grande);
-  padding: 0;
+  padding: var(--espacio-2);
 }
 
 .pager__item--ellipsis {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--boton-icono-grande);
-  height: var(--boton-icono-grande);
+  padding: var(--espacio-2) var(--espacio-3);
   color: var(--color-texto-tenue);
   font-weight: var(--peso-negrita);
 }
@@ -87,13 +72,12 @@
   }
 
   .pager__items {
-    gap: var(--espacio-1);
+    gap: var(--espacio-2);
   }
 
   .pager__item a {
-    min-width: var(--boton-icono);
-    height: var(--boton-icono);
     font-size: var(--texto-sm);
+    padding: var(--espacio-1) var(--espacio-2);
   }
 
   .pager__item--first,

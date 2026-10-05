@@ -1,19 +1,22 @@
-uuid: 17d1b1ef-c1b4-4668-86a2-67cfbca19d39
+uuid: e6f169e5-16d9-4e70-8fcc-0859474709db
 langcode: es
 status: true
 dependencies:
+  content:
+    - 'block_content:seccion_importaciones:5bcd2b20-4de9-4720-a8a3-f841637c28b0'
   module:
+    - block_content
     - system
   theme:
     - unl_theme
 id: unl_theme_importaciones
 theme: unl_theme
 region: content
-weight: -3
+weight: 0
 provider: null
-plugin: 'block_content:c1e04adb-e1d6-4175-a27e-fc5b07f15095'
+plugin: 'block_content:5bcd2b20-4de9-4720-a8a3-f841637c28b0'
 settings:
-  id: 'block_content:c1e04adb-e1d6-4175-a27e-fc5b07f15095'
+  id: 'block_content:5bcd2b20-4de9-4720-a8a3-f841637c28b0'
   label: Importaciones
   label_display: visible
   provider: block_content

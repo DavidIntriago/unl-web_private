@@ -1,0 +1,9 @@
+{% set pdf_url = file_url(paragraph.field_documento.entity.uri.value) %}
+
+{% block content %}
+  {% if pdf_url %}
+    {% include 'unl_theme:visor_pdf' with {
+      url: pdf_url
+    } %}
+  {% endif %}
+{% endblock %}

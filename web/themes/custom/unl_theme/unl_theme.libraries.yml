@@ -20,6 +20,7 @@ global:
       components/sidebar_micrositio/sidebar_micrositio.css: {}
       components/hero_micrositio/hero_micrositio.css: {}
       components/klaro_cookies/klaro_cookies.css: {}
+      components/visor_pdf/visor_pdf.css: {}
       assets/css/components/views-global.css: {}
       assets/css/components/cas_login.css: {}
       assets/css/components/carrusel.css: {}

@@ -1,0 +1,10 @@
+uuid: 401e93cc-b06a-4f2e-900c-32ee2541e1db
+langcode: es
+status: true
+dependencies: {  }
+id: visor_pdf
+label: 'Visor PDF'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.recursos_descargables
     - paragraphs.paragraphs_type.repositorio_dinamico
     - paragraphs.paragraphs_type.texto_libre
+    - paragraphs.paragraphs_type.visor_pdf
   module:
     - entity_reference_revisions
 id: node.pagina_micrositio.field_componentes
@@ -31,11 +32,18 @@ settings:
       grid_tarjetas: grid_tarjetas
       recursos_descargables: recursos_descargables
       repositorio_dinamico: repositorio_dinamico
+      visor_pdf: visor_pdf
     negate: 0
     target_bundles_drag_drop:
       about:
         weight: 8
         enabled: true
+      archivo:
+        weight: 17
+        enabled: false
+      convenios:
+        weight: 18
+        enabled: false
       diapositiva_hero:
         weight: 9
         enabled: false
@@ -45,11 +53,17 @@ settings:
       hero_carrusel:
         weight: 11
         enabled: false
+      importaciones:
+        weight: 22
+        enabled: false
       listado_eventos_dinamico:
         weight: 12
         enabled: false
       listado_noticias_destacadas:
         weight: 13
+        enabled: false
+      notificacion_flotante:
+        weight: 25
         enabled: false
       recursos_descargables:
         weight: 10
@@ -62,5 +76,8 @@ settings:
         enabled: false
       texto_libre:
         weight: 9
+        enabled: true
+      visor_pdf:
+        weight: 30
         enabled: true
 field_type: entity_reference_revisions

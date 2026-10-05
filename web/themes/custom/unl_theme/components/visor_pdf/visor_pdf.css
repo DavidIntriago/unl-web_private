@@ -1,0 +1,41 @@
+.unl-visor-pdf {
+  margin: 30px 0;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.unl-visor-pdf__iframe-wrapper iframe {
+  display: block;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.unl-visor-pdf__acciones {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f9fafb;
+}
+
+.unl-boton-descargar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #8c0f14; /* Rojo Institucional */
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.unl-boton-descargar:hover {
+  background-color: #6a0b0f;
+  color: #ffffff;
+  transform: translateY(-2px);
+  text-decoration: none;
+}

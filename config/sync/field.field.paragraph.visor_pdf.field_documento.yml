@@ -1,0 +1,27 @@
+uuid: 25114708-869e-4860-9f53-23114b3d7635
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_documento
+    - paragraphs.paragraphs_type.visor_pdf
+  module:
+    - file
+id: paragraph.visor_pdf.field_documento
+field_name: field_documento
+entity_type: paragraph
+bundle: visor_pdf
+label: Documento
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

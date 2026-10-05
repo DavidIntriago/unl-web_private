@@ -1,0 +1,8 @@
+name: Visor PDF
+description: 'Muestra el documento pdf en un visor embebido en la página.'
+props:
+  type: object
+  properties:
+    url:
+      type: string
+      

@@ -1,0 +1,11 @@
+uuid: d557617b-2b79-4ef5-ab61-f650a90e3058
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.logos_footer
+id: block_content.logos_footer
+target_entity_type_id: block_content
+target_bundle: logos_footer
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,38 @@
+uuid: 1cd55fbb-d254-40f0-883a-30055650d759
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.logo_footer.field_enlace_logo
+    - field.field.paragraph.logo_footer.field_logo
+    - paragraphs.paragraphs_type.logo_footer
+  module:
+    - link
+id: paragraph.logo_footer.default
+targetEntityType: paragraph
+bundle: logo_footer
+mode: default
+content:
+  field_enlace_logo:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_logo:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: logo_footer
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

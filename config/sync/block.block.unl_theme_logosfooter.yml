@@ -1,0 +1,23 @@
+uuid: 42035ab4-c067-409a-9b25-56c5f7001213
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:logos_footer:d870dd09-a4ba-4177-8928-d9e473851a38'
+  module:
+    - block_content
+  theme:
+    - unl_theme
+id: unl_theme_logosfooter
+theme: unl_theme
+region: footer_logos
+weight: 0
+provider: null
+plugin: 'block_content:d870dd09-a4ba-4177-8928-d9e473851a38'
+settings:
+  id: 'block_content:d870dd09-a4ba-4177-8928-d9e473851a38'
+  label: 'Logos Footer'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

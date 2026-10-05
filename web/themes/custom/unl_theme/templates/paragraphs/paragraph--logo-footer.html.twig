@@ -1,0 +1,8 @@
+{% set url = paragraph.field_enlace.0.url %}
+<div{{ attributes }}>
+  {% if url %}
+    <a href="{{ url.toString() }}">{{ content.field_logo }}</a>
+  {% else %}
+    {{ content.field_logo }}
+  {% endif %}
+</div>

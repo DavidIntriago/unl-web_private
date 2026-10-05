@@ -1,0 +1,23 @@
+uuid: 321973bf-4d89-45cc-9116-e7a5d3f38f0f
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_enlace_logo
+    - paragraphs.paragraphs_type.logo_footer
+  module:
+    - link
+id: paragraph.logo_footer.field_enlace_logo
+field_name: field_enlace_logo
+entity_type: paragraph
+bundle: logo_footer
+label: 'Enlace logo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

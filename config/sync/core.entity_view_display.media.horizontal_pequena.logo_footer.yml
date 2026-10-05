@@ -1,0 +1,42 @@
+uuid: 7c6e15b6-0003-455b-a0a4-841d8a0f0a87
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.logo_footer
+    - field.field.media.horizontal_pequena.field_media_image_7
+    - media.type.horizontal_pequena
+  module:
+    - layout_builder
+    - svg_image
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.horizontal_pequena.logo_footer
+targetEntityType: media
+bundle: horizontal_pequena
+mode: logo_footer
+content:
+  field_media_image_7:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

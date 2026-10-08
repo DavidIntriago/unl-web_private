@@ -56,3 +56,23 @@ admin-login-toggle:
     assets/js/admin-login-toggle.js: {}
   dependencies:
     - core/drupal
+
+loader_facultad:
+  css:
+    component:
+      components/loader_facultad/loader_facultad.css: {}
+  js:
+    components/loader_facultad/loader_facultad.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+header_facultad:
+  css:
+    component:
+      components/header_facultad/header_facultad.css: {}
+  js:
+    components/header_facultad/header_facultad.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

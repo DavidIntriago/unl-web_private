@@ -1,0 +1,116 @@
+/**
+ * LOADER FACULTAD
+ * Pantalla del color de la facultad con el logo; al cargar,
+ * se abre a la mitad hacia los lados.
+ */
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+.loader-facultad {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader, 9999);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Respaldo: si el JS fallara, el loader se quita solo a los 4 s
+     y nunca deja la página tapada */
+  animation: loader-facultad-respaldo 0s 4s forwards;
+}
+
+@keyframes loader-facultad-respaldo {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* =========================================================
+   PANELES (las dos mitades del telón)
+   ========================================================= */
+.loader-facultad__panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Un poco más de la mitad para que no se vea una rayita en el centro */
+  width: 50.5%;
+  background-color: var(--color-facultad, var(--color-primario));
+  transition: transform var(--duracion-lenta) var(--curva-suave);
+}
+
+.loader-facultad__panel--izquierda {
+  left: 0;
+}
+
+.loader-facultad__panel--derecha {
+  right: 0;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+.loader-facultad__logo {
+  position: relative;
+  z-index: 1;
+  width: clamp(8rem, 6rem + 8vw, 14rem);
+  height: auto;
+  animation: loader-facultad-pulso 1.6s ease-in-out infinite;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+@keyframes loader-facultad-pulso {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* =========================================================
+   APERTURA (la activa el JS)
+   ========================================================= */
+.loader-facultad.is-abriendo {
+  pointer-events: none;
+}
+
+.loader-facultad.is-abriendo .loader-facultad__logo {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: none;
+}
+
+/* Los paneles esperan a que el logo se vaya antes de abrirse */
+.loader-facultad.is-abriendo .loader-facultad__panel--izquierda {
+  transform: translateX(-100%);
+  transition-delay: 0.2s;
+}
+
+.loader-facultad.is-abriendo .loader-facultad__panel--derecha {
+  transform: translateX(100%);
+  transition-delay: 0.2s;
+}
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+   Quien tiene desactivadas las animaciones en su sistema
+   solo ve un desvanecido, sin el telón.
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .loader-facultad__logo {
+    animation: none;
+  }
+
+  .loader-facultad.is-abriendo {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .loader-facultad.is-abriendo .loader-facultad__panel--izquierda,
+  .loader-facultad.is-abriendo .loader-facultad__panel--derecha {
+    transform: none;
+  }
+}

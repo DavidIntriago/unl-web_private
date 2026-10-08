@@ -1,0 +1,37 @@
+{% if items %}
+  <ul class="menu-facultad">
+    {% for item in items %}
+      {% set id_panel = 'menu-facultad-panel-' ~ loop.index %}
+      <li class="menu-facultad__item{{ item.in_active_trail ? ' is-activo' }}">
+
+        {% if item.below %}
+          <button type="button" class="menu-facultad__enlace"
+                  aria-expanded="false" aria-controls="{{ id_panel }}">
+            {{ item.title }}
+          </button>
+
+          <div class="menu-facultad__panel" id="{{ id_panel }}">
+            <a class="menu-facultad__panel-titulo" href="{{ item.url }}">{{ item.title }}</a>
+            <ul class="menu-facultad__subitems">
+              {% for sub in item.below %}
+                <li>
+                  <a class="menu-facultad__subenlace" href="{{ sub.url }}"
+                     {%- if sub.in_active_trail %} aria-current="page"{% endif %}>
+                    {{ sub.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        {% else %}
+          <a class="menu-facultad__enlace" href="{{ item.url }}"
+             {%- if item.in_active_trail %} aria-current="page"{% endif %}>
+            {{ item.title }}
+          </a>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

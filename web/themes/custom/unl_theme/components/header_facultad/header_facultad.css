@@ -1,0 +1,253 @@
+/**
+ * HEADER FACULTAD
+ * Barra roja con nombre y logo; abajo, los enlaces y el mega menú.
+ * Los acentos usan --color-facultad (sale de data-facultad).
+ */
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+.header-facultad {
+  position: relative;
+  z-index: var(--z-header, 100);
+}
+
+/* Con hero, el header flota encima de la imagen */
+.header-facultad--sobre-hero {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+/* Drupal mete position: relative en los bloques para los enlaces
+   contextuales; eso encerraría el panel dentro del bloque */
+.header-facultad__nav .contextual-region {
+  position: static !important;
+}
+
+/* =========================================================
+   BARRA SUPERIOR
+   ========================================================= */
+.header-facultad__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-6);
+  min-height: var(--header-altura);
+  padding: 0 8%;
+  background-color: var(--color-primario);
+}
+
+.header-facultad__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-facultad__logo img {
+  display: block;
+  width: auto;
+  height: var(--logo-header-alto);
+  object-fit: contain;
+}
+
+.header-facultad__nombre {
+  font-size: var(--texto-lg);
+  font-weight: 600;
+  line-height: var(--interlineado-titulo);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--texto-sobre-primario);
+}
+
+
+/* =========================================================
+   FILA DE ENLACES
+   ========================================================= */
+.header-facultad__nav {
+  position: relative;
+  background-color: var(--color-superficie);
+}
+
+.header-facultad--sobre-hero .header-facultad__nav {
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.5), transparent);
+}
+
+.menu-facultad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 var(--espacio-8);
+  margin: 0;
+  padding: var(--espacio-4) 8%;
+  list-style: none;
+}
+
+.menu-facultad__enlace {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: var(--espacio-2) 0;
+  border: none;
+  border-bottom: 0.1875rem solid transparent;
+  background: none;
+  font: inherit;
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--color-oscuro);
+  cursor: pointer;
+  transition:
+    border-color var(--duracion-lenta) ease,
+    color var(--duracion-lenta) ease;
+}
+
+.header-facultad--sobre-hero .menu-facultad__enlace {
+  color: var(--color-superficie);
+}
+
+/* Raya del color de la facultad: página activa o panel abierto */
+.menu-facultad__item.is-activo > .menu-facultad__enlace,
+.menu-facultad__item.is-abierto > .menu-facultad__enlace {
+  border-bottom-color: var(--color-facultad, var(--color-primario));
+}
+
+/* =========================================================
+   MEGA MENÚ
+   El panel empieza arriba de la fila y la cubre: el blanco de la
+   fila y el del panel son la misma pieza. Los enlaces quedan encima.
+   ========================================================= */
+.header-facultad__nav {
+  --alto-fila: 4.5rem; /* valor inicial; el JS pone el real */
+  isolation: isolate;
+}
+
+/* Franja blanca del alto de la fila; se despliega como el panel */
+.header-facultad__nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  height: var(--alto-fila);
+  background-color: var(--color-superficie);
+  -webkit-clip-path: inset(0 0 100% 0);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--duracion-lenta) var(--curva-suave);
+}
+
+.header-facultad__nav.is-fila-blanca::before {
+  -webkit-clip-path: inset(0);
+  clip-path: inset(0);
+}
+
+/* Con la franja blanca, los enlaces pasan a oscuro */
+.header-facultad--sobre-hero .header-facultad__nav.is-fila-blanca .menu-facultad__enlace {
+  color: var(--color-oscuro);
+}
+
+.menu-facultad__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: var(--espacio-8);
+  min-height: calc(var(--alto-fila) + 10rem);
+  padding: calc(var(--alto-fila) + var(--espacio-8)) 8% var(--espacio-10);
+  background-color: var(--color-superficie);
+  border-bottom: 0.1875rem solid var(--color-facultad, var(--color-primario));
+  box-shadow: var(--sombra-media, 0 0.75rem 1.5rem rgb(0 0 0 / 0.12));
+  visibility: hidden;
+  /* Cerrado: recortado a altura cero desde arriba (persiana enrollada) */
+  -webkit-clip-path: inset(0 0 100% 0);
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path var(--duracion-lenta) var(--curva-suave),
+    visibility var(--duracion-lenta);
+}
+
+/* Línea fina que separa la fila de enlaces del contenido del panel */
+.menu-facultad__panel::before {
+  content: "";
+  position: absolute;
+  top: var(--alto-fila);
+  right: 0;
+  left: 0;
+  border-top: 0.0625rem solid rgb(0 0 0 / 0.08);
+}
+
+/* Abierto: se despliega completo (el -2rem deja ver la sombra de abajo) */
+.menu-facultad__item.is-abierto > .menu-facultad__panel {
+  visibility: visible;
+  -webkit-clip-path: inset(0 0 -2rem 0);
+  clip-path: inset(0 0 -2rem 0);
+}
+
+/* Al pasar de una sección a otra con el menú ya abierto: sin animación */
+.header-facultad__nav.is-cambiando .menu-facultad__panel {
+  transition: none;
+}
+
+/* Columna izquierda: nombre de la sección + línea divisoria */
+.menu-facultad__panel-titulo {
+  padding-right: var(--espacio-8);
+  border-right: 0.0625rem solid rgb(0 0 0 / 0.12);
+  font-size: var(--texto-base);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-oscuro);
+}
+
+/* Columna derecha: de dos en dos */
+.menu-facultad__subitems {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(14rem, max-content));
+  gap: var(--espacio-4) var(--espacio-12);
+  align-content: start;
+  justify-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-facultad__subenlace {
+  display: flex;
+  gap: var(--espacio-2);
+  font-size: var(--texto-base);
+  text-decoration: none;
+  color: var(--color-oscuro);
+}
+
+.menu-facultad__subenlace::before {
+  content: "▸";
+  color: var(--color-facultad, var(--color-primario));
+}
+
+.menu-facultad__subenlace:hover,
+.menu-facultad__subenlace[aria-current="page"] {
+  color: var(--color-facultad, var(--color-primario));
+}
+
+/* =========================================================
+   SOLO CON MOUSE: abrir al pasar por encima
+   ========================================================= */
+@media (hover: hover) and (pointer: fine) {
+  .menu-facultad__item:hover > .menu-facultad__enlace {
+    border-bottom-color: var(--color-facultad, var(--color-primario));
+  }
+
+  .menu-facultad__item:hover > .menu-facultad__panel {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+}

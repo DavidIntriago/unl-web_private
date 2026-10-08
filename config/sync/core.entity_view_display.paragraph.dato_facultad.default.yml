@@ -1,0 +1,44 @@
+uuid: 5884ed0d-3565-4033-8a53-4d3495cc8385
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dato_facultad.field_etiqueta
+    - field.field.paragraph.dato_facultad.field_icono
+    - field.field.paragraph.dato_facultad.field_valor
+    - paragraphs.paragraphs_type.dato_facultad
+  module:
+    - file
+id: paragraph.dato_facultad.default
+targetEntityType: paragraph
+bundle: dato_facultad
+mode: default
+content:
+  field_etiqueta:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_icono:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_valor:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,79 @@
+uuid: eaa5dd0e-06c5-4705-b39c-45139a8492a0
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secciones_facultad
+    - node.type.facultades
+    - paragraphs.paragraphs_type.grid_tarjetas
+  module:
+    - entity_reference_revisions
+id: node.facultades.field_secciones_facultad
+field_name: field_secciones_facultad
+entity_type: node
+bundle: facultades
+label: 'Secciones facultad'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      grid_tarjetas: grid_tarjetas
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 17
+        enabled: false
+      archivo:
+        weight: 18
+        enabled: false
+      convenios:
+        weight: 19
+        enabled: false
+      dato_facultad:
+        weight: 18
+        enabled: false
+      diapositiva_hero:
+        weight: 20
+        enabled: false
+      grid_tarjetas:
+        weight: 21
+        enabled: true
+      hero_carrusel:
+        weight: 22
+        enabled: false
+      importaciones:
+        weight: 23
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 24
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 25
+        enabled: false
+      logo_footer:
+        weight: 26
+        enabled: false
+      notificacion_flotante:
+        weight: 27
+        enabled: false
+      recursos_descargables:
+        weight: 28
+        enabled: false
+      repositorio_dinamico:
+        weight: 29
+        enabled: false
+      tarjeta:
+        weight: 30
+        enabled: false
+      texto_libre:
+        weight: 31
+        enabled: false
+      visor_pdf:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

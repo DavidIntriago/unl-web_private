@@ -1,0 +1,15 @@
+{{ attach_library('unl_theme/header_facultad') }}
+<header class="header-facultad{% if hero_diapositivas %} header-facultad--sobre-hero{% endif %}"
+  {%- if facultad_codigo %} data-facultad="{{ facultad_codigo }}"{% endif %}>
+
+  <div class="header-facultad__barra">
+    <a class="header-facultad__nombre" href="{{ base_path ~ facultad_codigo }}">{{ facultad_nombre }}</a>
+    <a class="header-facultad__logo" href="{{ path('<front>') }}">
+      <img src="{{ logo_url }}" alt="Universidad Nacional de Loja">
+    </a>
+  </div>
+
+  <nav class="header-facultad__nav" aria-label="Menú de la facultad">
+    {{ menu_facultad_renderizado }}
+  </nav>
+</header>

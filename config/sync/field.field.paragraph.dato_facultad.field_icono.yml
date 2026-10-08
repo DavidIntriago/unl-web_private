@@ -1,0 +1,27 @@
+uuid: 28476aab-1b7e-4b23-8f72-c3f0815b4146
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icono
+    - paragraphs.paragraphs_type.dato_facultad
+  module:
+    - file
+id: paragraph.dato_facultad.field_icono
+field_name: field_icono
+entity_type: paragraph
+bundle: dato_facultad
+label: Ícono
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: svg
+  max_filesize: '300 KB'
+  description_field: false
+field_type: file

@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Página Acceso PcD (/acceso-pcd).
+ * Versión lineal de la portada para personas con discapacidad visual.
+ *
+ * Ubicación: unl_theme/templates/content/node--acceso-pcd.html.twig
+ *
+ * Las secciones con drupal_view() están comentadas hasta que:
+ *  1. Esté instalado el módulo Twig Tweak.
+ *  2. Exista el display "pcd" en cada vista.
+ * Para activar una sección, borra los símbolos de comentario que rodean
+ * su línea drupal_view.
+ */
+#}
+<article class="pcd">
+
+  <h1 class="pcd__titulo">{{ label }}</h1>
+
+  {# ===== Menú de contenidos ===== #}
+  <nav class="pcd__menu" id="menu-contenidos" aria-labelledby="menu-titulo">
+    <h2 id="menu-titulo">Menú de contenidos</h2>
+    <ol>
+      <li><a href="#bienvenida">Saltar a la sección: Bienvenida</a></li>
+      <li><a href="#rector">Saltar a la sección: Mensaje del rector</a></li>
+      <li><a href="#eventos">Saltar a la sección: Eventos</a></li>
+      <li><a href="#noticias">Saltar a la sección: Noticias</a></li>
+      <li><a href="#oferta">Saltar a la sección: Oferta académica</a></li>
+      <li><a href="#preguntas">Saltar a la sección: Preguntas frecuentes</a></li>
+      <li><a href="#lotaip">Saltar a la sección: Transparencia (LOTAIP)</a></li>
+      <li><a href="#biblioteca">Saltar a la sección: Biblioteca virtual</a></li>
+    </ol>
+  </nav>
+
+  {# ===== Bienvenida (texto fijo por ahora) ===== #}
+  <section class="pcd__seccion" id="bienvenida" aria-labelledby="bienvenida-titulo">
+    <h2 id="bienvenida-titulo">Bienvenida</h2>
+    <p>Texto de bienvenida pendiente.</p>
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== Mensaje del rector (texto fijo por ahora) ===== #}
+  <section class="pcd__seccion" id="rector" aria-labelledby="rector-titulo">
+    <h2 id="rector-titulo">Mensaje del rector</h2>
+    <p>Mensaje del rector pendiente.</p>
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== Eventos (vista listado_eventos, display pcd) ===== #}
+  <section class="pcd__seccion" id="eventos" aria-labelledby="eventos-titulo">
+    <h2 id="eventos-titulo">Eventos</h2>
+     {{ drupal_view('listado_eventos', 'pcd') }} 
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== Noticias (vista listado_noticias, display pcd) ===== #}
+  <section class="pcd__seccion" id="noticias" aria-labelledby="noticias-titulo">
+    <h2 id="noticias-titulo">Noticias</h2>
+        {{ drupal_view('listado_noticias', 'pcd') }}
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== Oferta académica (facultades y carreras, pendiente) ===== #}
+  <section class="pcd__seccion" id="oferta" aria-labelledby="oferta-titulo">
+    <h2 id="oferta-titulo">Oferta académica</h2>
+    <p>Sección en preparación.</p>
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== Preguntas frecuentes ===== #}
+  <section class="pcd__seccion" id="preguntas" aria-labelledby="preguntas-titulo">
+    <h2 id="preguntas-titulo">Preguntas frecuentes</h2>
+        {{ drupal_view('preguntas_frecuentes', 'pcd') }}
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== LOTAIP (vista ley_de_transparencia, display pcd) ===== #}
+  <section class="pcd__seccion" id="lotaip" aria-labelledby="lotaip-titulo">
+    <h2 id="lotaip-titulo">Transparencia (LOTAIP){% if lotaip_anio %} {{ lotaip_anio }}{% endif %}</h2>
+    {% if lotaip_anio_id %}
+      {{ drupal_view('ley_de_transparencia', 'pcd', lotaip_anio_id) }}
+    {% else %}
+      <p>Por el momento no hay información de transparencia publicada.</p>
+    {% endif %}
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+  {# ===== Biblioteca virtual (texto fijo) ===== #}
+  <section class="pcd__seccion" id="biblioteca" aria-labelledby="biblioteca-titulo">
+    <h2 id="biblioteca-titulo">Biblioteca virtual</h2>
+    <p>Información de la biblioteca pendiente.</p>
+    <a class="pcd__regresar" href="#menu-contenidos">Regresar al menú de contenidos</a>
+  </section>
+
+</article>

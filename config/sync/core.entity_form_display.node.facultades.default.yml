@@ -1,0 +1,114 @@
+uuid: b852e999-c77e-488a-b728-7490f68ce6fb
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.facultades.field_codigo
+    - field.field.node.facultades.field_datos_facultad
+    - field.field.node.facultades.field_imagen_hero
+    - field.field.node.facultades.field_secciones_facultad
+    - node.type.facultades
+  module:
+    - media_library
+    - paragraphs
+    - path
+id: node.facultades.default
+targetEntityType: node
+bundle: facultades
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_codigo:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_datos_facultad:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Párrafo
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_imagen_hero:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_secciones_facultad:
+    type: entity_reference_paragraphs
+    weight: 6
+    region: content
+    settings:
+      title: Párrafo
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

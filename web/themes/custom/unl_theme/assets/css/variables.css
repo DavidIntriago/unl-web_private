@@ -26,29 +26,29 @@
      ========================================================= */
   --color-superficie: #ffffff;
   --color-fondo-pagina: #f6f4f1;
-  --color-fondo-suave: #f9fafb;   /* reemplaza #f8f9fa, #fafafa, #fcfcfc */
-  --color-fondo-gris: #f3f4f6;    /* reemplaza #f0f0f0 */
+  --color-fondo-suave: #f9fafb; /* reemplaza #f8f9fa, #fafafa, #fcfcfc */
+  --color-fondo-gris: #f3f4f6; /* reemplaza #f0f0f0 */
 
   /* =========================================================
      TEXTO
      ========================================================= */
-  --color-texto: #151c27;             /* títulos — reemplaza #111827 */
-  --color-texto-cuerpo: #374151;      /* párrafos — reemplaza #333, #444 */
-  --color-texto-secundario: #4b5563;  /* reemplaza #555, #5c5f60 */
-  --color-texto-tenue: #6b7280;       /* fechas, meta — reemplaza #666, #777, #5d6b84 */
+  --color-texto: #151c27; /* títulos — reemplaza #111827 */
+  --color-texto-cuerpo: #374151; /* párrafos — reemplaza #333, #444 */
+  --color-texto-secundario: #4b5563; /* reemplaza #555, #5c5f60 */
+  --color-texto-tenue: #6b7280; /* fechas, meta — reemplaza #666, #777, #5d6b84 */
 
   /* =========================================================
      BORDES
      ========================================================= */
-  --color-borde: #e5e7eb;         /* reemplaza #e0e0e0, #e2e6ea, #e9ecef, #d7dbe0 */
-  --color-borde-fuerte: #d1d5db;  /* inputs — reemplaza #cccccc */
+  --color-borde: #e5e7eb; /* reemplaza #e0e0e0, #e2e6ea, #e9ecef, #d7dbe0 */
+  --color-borde-fuerte: #d1d5db; /* inputs — reemplaza #cccccc */
 
   /* =========================================================
      SUPERFICIES OSCURAS (footer, hero, sidebar, menú lateral)
      ========================================================= */
-  --color-oscuro: #212121;          /* reemplaza #1a1a1a, #111, #2a2a2a, #2b2b2b */
-  --color-oscuro-elevado: #3a3a3a;  /* ítems del sidebar */
-  --texto-sobre-oscuro: #d7d7d7;    /* reemplaza #d5d5d5 */
+  --color-oscuro: #212121; /* reemplaza #1a1a1a, #111, #2a2a2a, #2b2b2b */
+  --color-oscuro-elevado: #3a3a3a; /* ítems del sidebar */
+  --texto-sobre-oscuro: #d7d7d7; /* reemplaza #d5d5d5 */
   --texto-sobre-oscuro-tenue: #a3a3a3; /* reemplaza #9a9a9a, #bdbdbd */
   --overlay-oscuro: rgb(0 0 0 / 0.55);
 
@@ -79,6 +79,24 @@
     var(--color-fjsa) 80%,
     var(--color-ued) 100%
   );
+  /* Color de la facultad según data-facultad.
+   Cualquier elemento con ese atributo (loader, hero, y luego el header)
+   recibe --color-facultad sin repetir reglas en cada componente. */
+  [data-facultad="fjsa"] {
+    --color-facultad: var(--color-fjsa);
+  }
+  [data-facultad="fsh"] {
+    --color-facultad: var(--color-fsh);
+  }
+  [data-facultad="feirnnr"] {
+    --color-facultad: var(--color-feirnnr);
+  }
+  [data-facultad="farnr"] {
+    --color-facultad: var(--color-farnr);
+  }
+  [data-facultad="feac"] {
+    --color-facultad: var(--color-feac);
+  }
 
   /* =========================================================
      TIPOGRAFÍA
@@ -87,16 +105,16 @@
      ========================================================= */
   --fuente-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --texto-xs: 0.75rem;    /* mes de fechas, etiquetas pequeñas */
-  --texto-sm: 0.875rem;   /* meta, etiquetas, submenús */
+  --texto-xs: 0.75rem; /* mes de fechas, etiquetas pequeñas */
+  --texto-sm: 0.875rem; /* meta, etiquetas, submenús */
   --texto-base: 1rem;
-  --texto-md: 1.125rem;   /* cuerpo de noticias/eventos, descripciones */
-  --texto-lg: 1.25rem;    /* títulos de tarjeta */
-  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);      /* h2 */
+  --texto-md: 1.125rem; /* cuerpo de noticias/eventos, descripciones */
+  --texto-lg: 1.25rem; /* títulos de tarjeta */
+  --texto-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); /* h2 */
   /* Títulos de sección con enlace "Ver más" (18px en móvil → 22px en escritorio) */
   --texto-titulo-seccion: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
   --texto-2xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem); /* títulos de página */
-  --texto-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);       /* título del hero */
+  --texto-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem); /* título del hero */
   --texto-numero: clamp(2rem, 1.6rem + 1.5vw, 2.75rem); /* contador */
 
   --peso-normal: 400;
@@ -109,9 +127,9 @@
   --peso-titulo: var(--peso-seminegrita);
 
   --interlineado-titulo: 1.2;
-  --interlineado-ajustado: 1.35;  /* títulos de tarjeta */
+  --interlineado-ajustado: 1.35; /* títulos de tarjeta */
   --interlineado-base: 1.6;
-  --interlineado-lectura: 1.8;    /* cuerpo de noticias/eventos */
+  --interlineado-lectura: 1.8; /* cuerpo de noticias/eventos */
 
   /* =========================================================
      ESPACIOS (múltiplos de 0.25rem = 4px)
@@ -140,32 +158,32 @@
   /* =========================================================
      CONTENEDORES
      ========================================================= */
-  --contenedor-lectura: 75rem;   /* 1200px — noticias, eventos, listas */
-  --contenedor-normal: 80rem;    /* 1280px — header y footer */
+  --contenedor-lectura: 75rem; /* 1200px — noticias, eventos, listas */
+  --contenedor-normal: 80rem; /* 1280px — header y footer */
   /* Vistas, micrositios, grids y secciones de la portada.
      Ocupa el 90% de la pantalla, hasta un máximo de 1680px
      (en una pantalla de 1920px quedan unos 120px a cada lado). */
   --contenedor-ancho: min(90vw, 105rem);
-  --sidebar-ancho: 16.25rem;     /* 260px */
+  --sidebar-ancho: 16.25rem; /* 260px */
   /* Ancho de las secciones de la portada y de sus títulos.
      Es el borde interior de los grids de tarjetas (1420px menos
      su margen de 1.5rem a cada lado = 1372px), así todo arranca
      en la misma línea. Para mover todas juntas, cambia solo esto. */
   --contenedor-secciones: calc(var(--contenedor-ancho) - 2 * var(--espacio-6));
 
-  --header-altura: 5rem;         /* 80px */
+  --header-altura: 5rem; /* 80px */
 
   /* =========================================================
      BORDES Y RADIOS
      ========================================================= */
-  --radio-sm: 0.375rem;   /* 6px */
-  --radio-md: 0.5rem;     /* 8px — botones, inputs, tablas */
-  --radio-lg: 0.75rem;    /* 12px — tarjetas, acordeón, pestañas */
-  --radio-xl: 1rem;       /* 16px — imágenes grandes */
+  --radio-sm: 0.375rem; /* 6px */
+  --radio-md: 0.5rem; /* 8px — botones, inputs, tablas */
+  --radio-lg: 0.75rem; /* 12px — tarjetas, acordeón, pestañas */
+  --radio-xl: 1rem; /* 16px — imágenes grandes */
   --radio-pastilla: 999px;
   --radio-circulo: 50%;
 
-  --borde-acento: 4px;          /* borde rojo lateral de tarjetas y cajas */
+  --borde-acento: 4px; /* borde rojo lateral de tarjetas y cajas */
   --barra-titulo-ancho: 6.25rem; /* 100px */
   --barra-titulo-alto: 4px;
 
@@ -194,8 +212,8 @@
   --curva-suave: cubic-bezier(0.4, 0, 0.2, 1);
   --curva-salida: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --elevar-boton: -0.125rem;    /* 2px hacia arriba al hover */
-  --elevar-tarjeta: -0.375rem;  /* 6px hacia arriba al hover */
+  --elevar-boton: -0.125rem; /* 2px hacia arriba al hover */
+  --elevar-tarjeta: -0.375rem; /* 6px hacia arriba al hover */
 
   /* =========================================================
      CAPAS (z-index) — siempre usar estas, nunca números sueltos
@@ -203,15 +221,15 @@
   --z-base: 1;
   --z-elevado: 5;
   --z-dropdown: 10;
-  --z-flotante: 900;   /* menú lateral */
+  --z-flotante: 900; /* menú lateral */
   --z-header: 1000;
-  --z-modal: 1100;     /* siempre por encima del header */
+  --z-modal: 1100; /* siempre por encima del header */
 
   /* =========================================================
      TAMAÑOS DE CONTROLES E ÍCONOS
      ========================================================= */
-  --boton-icono: 2.5rem;        /* 40px */
-  --boton-icono-grande: 3rem;   /* 48px */
+  --boton-icono: 2.5rem; /* 40px */
+  --boton-icono-grande: 3rem; /* 48px */
   --icono-sm: 1rem;
   --icono-md: 1.5rem;
   --icono-lg: 3rem;
@@ -239,11 +257,20 @@
   --text-color: var(--color-texto);
   --container-width: var(--contenedor-normal);
   --header-height: var(--header-altura);
+
+  --logo-header-alto: var(--header-altura);
 }
 
 /* El header baja a 70px en móvil: se cambia la variable, no la altura */
 @media (max-width: 600px) {
   :root {
     --header-altura: 4.375rem;
+    --logo-header-alto: 2.625rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --logo-header-alto: 3.125rem;
   }
 }

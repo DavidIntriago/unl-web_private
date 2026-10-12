@@ -1,27 +1,4 @@
 {{ attach_library('unl_theme/global') }}
-{% if hero_tipo == 'facultad' %}
-  {{ attach_library('unl_theme/loader_facultad') }}
-  <div class="loader-facultad" data-facultad="{{ hero_facultad }}" aria-hidden="true">
-    <div class="loader-facultad__panel loader-facultad__panel--izquierda"></div>
-    <div class="loader-facultad__panel loader-facultad__panel--derecha"></div>
-    {% if loader_logo %}
-      <img class="loader-facultad__logo" src="{{ loader_logo }}" alt="">
-    {% endif %}
-  </div>
-  <script>
-    /* Muestra el loader solo la primera vez por facultad mientras el navegador esté abierto */
-    (function () {
-      var nombre = 'unl_loader_{{ hero_facultad }}=1';
-      try {
-        if (document.cookie.indexOf(nombre) !== -1) {
-          document.currentScript.previousElementSibling.remove();
-        } else {
-          document.cookie = nombre + '; path=/; SameSite=Lax';
-        }
-      } catch (e) {}
-    })();
-  </script>
-{% endif %}
 {% include '@unl_theme/components/menu_lateral/menu-lateral.html.twig' %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,101 +11,83 @@
 <div id="page-wrapper">
   
   {% set menu_facultad_renderizado = page.menu_facultad|render %}
-
   {% if menu_facultad_renderizado|trim %}
     {% include '@unl_theme/components/header_facultad/header_facultad.html.twig' %}
   {% else %}
     {% include '@unl_theme/components/header/header.html.twig' %}
   {% endif %}
 
+  {# Hero de acuerdo a tipo de page        #}
   {% if hero_diapositivas %}
     {{ attach_library('unl_theme/hero_micrositio') }}
-    <section class="hero-micrositio{% if hero_tipo == 'facultad' %} hero-micrositio--facultad{% endif %}"
-      {%- if hero_facultad %} data-facultad="{{ hero_facultad }}"{% endif %}>
+    
+    {% if hero_tipo == 'facultad' %}
+      {{ attach_library('unl_theme/loader_facultad') }}
+      <div class="loader-facultad" data-facultad="{{ hero_facultad }}" aria-hidden="true">
+        <div class="loader-facultad__panel loader-facultad__panel--izquierda"></div>
+        <div class="loader-facultad__panel loader-facultad__panel--derecha"></div>
+        {% if loader_logo %}<img class="loader-facultad__logo" src="{{ loader_logo }}" alt="">{% endif %}
+      </div>
+      <script>
+        (function () { var n = 'unl_loader_{{ hero_facultad }}=1'; try { if (document.cookie.indexOf(n) !== -1) { document.currentScript.previousElementSibling.remove(); } else { document.cookie = n + '; path=/; SameSite=Lax'; } } catch (e) {} })();
+      </script>
+    {% endif %}
 
+    <section class="hero-micrositio{% if hero_tipo == 'facultad' %} hero-micrositio--facultad{% endif %}" {% if hero_facultad %}data-facultad="{{ hero_facultad }}"{% endif %}>
       <div class="hero-micrositio__fondo">
         {% for imagen in hero_diapositivas %}
-          <div class="slide-item{% if loop.first %} active{% endif %}">
-            <div class="slide-bg">
-              {{ imagen }}
-            </div>
-            <div class="slide-overlay"></div>
-          </div>
+          <div class="slide-item{% if loop.first %} active{% endif %}"><div class="slide-bg">{{ imagen }}</div><div class="slide-overlay"></div></div>
         {% endfor %}
       </div>
 
       {% if hero_tipo == 'facultad' %}
-
-        {# El diseño no muestra el título, pero el h1 debe existir para lectores de pantalla y buscadores #}
         <h1 class="visually-hidden">{{ hero_titulo_seguro }}</h1>
-
         {% if hero_datos %}
           <ul class="hero-micrositio__datos">
             {% for dato in hero_datos %}
               <li class="hero-micrositio__dato">
-                {% if dato.icono_url %}
-                  <span class="hero-micrositio__icono"
-                        style="--icono-url: url('{{ dato.icono_url }}')"
-                        aria-hidden="true"></span>
-                {% endif %}
+                {% if dato.icono_url %}<span class="hero-micrositio__icono" style="--icono-url: url('{{ dato.icono_url }}')" aria-hidden="true"></span>{% endif %}
                 <span class="hero-micrositio__valor">{{ dato.valor }}</span>
                 <span class="hero-micrositio__etiqueta">{{ dato.etiqueta }}</span>
               </li>
             {% endfor %}
           </ul>
         {% endif %}
-
       {% else %}
-
         <div class="hero-micrositio__contenido">
           <h1 class="hero-micrositio__titulo">{{ hero_titulo_seguro }}</h1>
         </div>
-
       {% endif %}
 
       {% if hero_diapositivas|length > 1 %}
         <div class="carrusel-controles" role="tablist" aria-label="Diapositivas del hero"></div>
       {% endif %}
-
     </section>
   {% endif %}
-
- <main class="site-content">
-    
+  
+  {# Contenido de pages #}
+  <main class="site-content">
     {% set menu_lateral_renderizado = page.sidebar_micrositio|render %}
     
     {% if menu_lateral_renderizado|trim %}
-      
-      {{ attach_library('unl_theme/hero_micrositio') }}
-      
       <div class="layout-micrositio" id="zona-informacion">
         <aside class="sidebar-micrositio">
-          
           {{ menu_lateral_renderizado }}
-          
         </aside>
-
         <section class="layout-micrositio__contenido">
           {{ page.content }}
         </section>
       </div>
-
     {% else %}
-      
       {{ page.content }}
-      
     {% endif %}
-    
   </main>
-  
+
   {% if menu_facultad_renderizado|trim %}
     {% include '@unl_theme/components/footer_facultad/footer_facultad.html.twig' %}
   {% else %}
     {% include '@unl_theme/components/footer/footer.html.twig' %}
   {% endif %}
 
-  
 </div>
-
 <script src="https://unl.edu.ec/sites/default/files/cdn/a11y-unl/a11yUnlTools.js?v=1.0"></script>
-</div>

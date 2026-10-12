@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_secciones_facultad
     - node.type.facultades
     - paragraphs.paragraphs_type.grid_tarjetas
+    - paragraphs.paragraphs_type.listado_noticias_destacadas
   module:
     - entity_reference_revisions
 id: node.facultades.field_secciones_facultad
@@ -23,6 +24,7 @@ settings:
   handler_settings:
     target_bundles:
       grid_tarjetas: grid_tarjetas
+      listado_noticias_destacadas: listado_noticias_destacadas
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -54,7 +56,7 @@ settings:
         enabled: false
       listado_noticias_destacadas:
         weight: 25
-        enabled: false
+        enabled: true
       logo_footer:
         weight: 26
         enabled: false

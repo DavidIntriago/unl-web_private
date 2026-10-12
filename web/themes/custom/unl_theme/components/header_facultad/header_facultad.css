@@ -251,3 +251,187 @@
     transform: none;
   }
 }
+
+/* =========================================================
+   BOTÓN DE MENÚ (solo móvil)
+   Tres rayitas que se convierten en X al abrir.
+   ========================================================= */
+.header-facultad__boton-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--boton-icono, 2.75rem);
+  height: var(--boton-icono, 2.75rem);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--texto-sobre-primario);
+  cursor: pointer;
+}
+
+.header-facultad__boton-icono,
+.header-facultad__boton-icono::before,
+.header-facultad__boton-icono::after {
+  display: block;
+  width: 1.5rem;
+  height: 0.125rem;
+  background-color: currentColor;
+  transition:
+    transform var(--duracion-lenta) var(--curva-suave),
+    opacity var(--duracion-lenta) ease;
+}
+
+.header-facultad__boton-icono {
+  position: relative;
+}
+
+.header-facultad__boton-icono::before,
+.header-facultad__boton-icono::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.header-facultad__boton-icono::before {
+  top: -0.4375rem;
+}
+
+.header-facultad__boton-icono::after {
+  top: 0.4375rem;
+}
+
+/* Abierto: la raya del medio desaparece y las otras dos forman una X */
+.header-facultad.is-menu-movil-abierto .header-facultad__boton-icono {
+  background-color: transparent;
+}
+
+.header-facultad.is-menu-movil-abierto .header-facultad__boton-icono::before {
+  transform: translateY(0.4375rem) rotate(45deg);
+}
+
+.header-facultad.is-menu-movil-abierto .header-facultad__boton-icono::after {
+  transform: translateY(-0.4375rem) rotate(-45deg);
+}
+
+/* =========================================================
+   MÓVIL Y TABLET
+   El menú pasa a un panel desplegable con acordeón.
+   ========================================================= */
+@media (max-width: 1024px) {
+
+  /* --- Barra --- */
+  .header-facultad__barra {
+    gap: var(--espacio-3);
+    padding: 0 5%;
+  }
+
+  .header-facultad__nombre {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--texto-sm);
+  }
+
+  .header-facultad__boton-menu {
+    display: flex;
+  }
+
+  /* --- Panel del menú: oculto hasta tocar el botón --- */
+  .header-facultad__nav,
+  .header-facultad--sobre-hero .header-facultad__nav {
+    display: none;
+    max-height: calc(100svh - var(--header-altura));
+    overflow-y: auto;
+    background: var(--color-superficie);
+    box-shadow: var(--sombra-media, 0 0.75rem 1.5rem rgb(0 0 0 / 0.12));
+  }
+
+  .header-facultad.is-menu-movil-abierto .header-facultad__nav {
+    display: block;
+  }
+
+  /* La franja de escritorio no se usa aquí */
+  .header-facultad__nav::before {
+    display: none;
+  }
+
+  /* --- Enlaces uno debajo del otro --- */
+  .menu-facultad {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .menu-facultad__item {
+    border-bottom: 0.0625rem solid rgb(0 0 0 / 0.08);
+  }
+
+  .menu-facultad__enlace,
+  .header-facultad--sobre-hero .menu-facultad__enlace {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--espacio-4) 5%;
+    border-bottom: none;
+    border-left: 0.1875rem solid transparent;
+    text-align: left;
+    white-space: normal;
+    color: var(--color-oscuro);
+  }
+
+  /* Sección activa o abierta: raya vertical del color de la facultad */
+  .menu-facultad__item.is-activo > .menu-facultad__enlace,
+  .menu-facultad__item.is-abierto > .menu-facultad__enlace {
+    border-left-color: var(--color-facultad, var(--color-primario));
+  }
+
+  /* Flechita en los padres, que gira al abrir */
+  button.menu-facultad__enlace::after {
+    content: "▾";
+    transition: transform var(--duracion-lenta) ease;
+  }
+
+  .menu-facultad__item.is-abierto > button.menu-facultad__enlace::after {
+    transform: rotate(180deg);
+  }
+
+  /* --- Hijos: acordeón dentro del flujo, no panel flotante --- */
+  .menu-facultad__panel {
+    position: static;
+    display: none;
+    min-height: 0;
+    padding: 0 5% var(--espacio-4) calc(5% + var(--espacio-4));
+    background-color: rgb(0 0 0 / 0.03);
+    border-bottom: none;
+    box-shadow: none;
+    visibility: visible;
+    -webkit-clip-path: none;
+    clip-path: none;
+    transition: none;
+  }
+
+  .menu-facultad__item.is-abierto > .menu-facultad__panel {
+    display: block;
+  }
+
+  .menu-facultad__panel::before {
+    display: none;
+  }
+
+  /* El título del panel queda como primer enlace ("Carreras" → su página) */
+  .menu-facultad__panel-titulo {
+    display: block;
+    padding: var(--espacio-3) 0;
+    border-right: none;
+  }
+
+  .menu-facultad__subitems {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .menu-facultad__subenlace {
+    padding: var(--espacio-3) 0;
+  }
+}

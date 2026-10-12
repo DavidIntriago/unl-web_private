@@ -1,0 +1,120 @@
+/**
+ * FOOTER FACULTAD
+ * Franja roja: marca y contacto a la izquierda, dos columnas de enlaces.
+ */
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+.footer-facultad {
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+}
+
+.footer-facultad__contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-10);
+  padding: var(--espacio-12) 8% var(--espacio-10);
+}
+
+/* La marca ocupa más espacio; las columnas se reparten el resto */
+.footer-facultad__marca {
+  flex: 2 1 16rem;
+}
+
+.footer-facultad__columna {
+  flex: 1 1 9rem;
+}
+
+/* =========================================================
+   MARCA Y CONTACTO
+   ========================================================= */
+.footer-facultad__logo img {
+  display: block;
+  width: auto;
+  height: 2.5rem;
+}
+
+.footer-facultad__nombre {
+  margin: var(--espacio-4) 0 var(--espacio-3);
+  font-size: var(--texto-base);
+  font-weight: 600;
+  line-height: var(--interlineado-titulo);
+}
+
+.footer-facultad__dato {
+  margin: 0 0 var(--espacio-2);
+  font-size: var(--texto-sm);
+  color: var(--texto-sobre-primario-suave);
+}
+
+.footer-facultad__dato a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   COLUMNAS DE ENLACES
+   ========================================================= */
+.footer-facultad__titulo {
+  margin: 0 0 var(--espacio-4);
+  font-size: var(--texto-base);
+  font-weight: 600;
+  color: var(--texto-sobre-primario);
+}
+
+.footer-facultad__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-facultad__lista a {
+  font-size: var(--texto-sm);
+  text-decoration: none;
+  color: var(--texto-sobre-primario-suave);
+  transition: color var(--duracion-lenta) ease;
+}
+
+.footer-facultad__lista a:hover,
+.footer-facultad__dato a:hover {
+  color: var(--texto-sobre-primario);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   FRANJA LEGAL
+   ========================================================= */
+.footer-facultad__legal {
+  margin: 0 8%;
+  padding: var(--espacio-5) 0;
+  border-top: 0.0625rem solid rgb(255 255 255 / 0.2);
+  font-size: var(--texto-sm);
+  color: var(--texto-sobre-primario-suave);
+}
+
+.footer-facultad__legal p {
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+  .footer-facultad__contenedor {
+    gap: var(--espacio-8);
+  }
+
+  /* La marca ocupa todo el ancho; las columnas van de dos en dos debajo */
+  .footer-facultad__marca {
+    flex-basis: 100%;
+  }
+
+  .footer-facultad__columna {
+    flex-basis: calc(50% - var(--espacio-8));
+  }
+}

@@ -4,7 +4,9 @@
       once('menu-facultad', '.menu-facultad', context).forEach((menu) => {
         const nav = menu.closest('.header-facultad__nav');
         const botones = [...menu.querySelectorAll('button.menu-facultad__enlace')];
-        const conMouse = window.matchMedia('(hover: hover) and (pointer: fine)');
+                // Efectos de escritorio (hover, franja, persiana): solo con pantalla
+        // ancha y mouse. Así una laptop con la ventana angosta usa el acordeón.
+        const conMouse = window.matchMedia('(min-width: 1025px) and (hover: hover) and (pointer: fine)');
         let temporizadorCierre;
 
         // Alto real de la fila (cambia si los enlaces ocupan dos líneas)
@@ -89,6 +91,42 @@
         });
         document.addEventListener('click', (e) => {
           if (!nav.contains(e.target)) cerrarTodo();
+        });
+      });
+    }
+  };
+    Drupal.behaviors.botonMenuFacultad = {
+    attach: function (context) {
+      once('boton-menu-facultad', '.header-facultad__boton-menu', context).forEach((boton) => {
+        const header = boton.closest('.header-facultad');
+        const escritorio = window.matchMedia('(min-width: 1025px)');
+
+        const cambiar = (abrir) => {
+          header.classList.toggle('is-menu-movil-abierto', abrir);
+          boton.setAttribute('aria-expanded', String(abrir));
+          boton.setAttribute('aria-label', abrir ? 'Cerrar menú de la facultad' : 'Abrir menú de la facultad');
+        };
+
+        boton.addEventListener('click', () => {
+          cambiar(!header.classList.contains('is-menu-movil-abierto'));
+        });
+
+        // Escape cierra y devuelve el foco al botón
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && header.classList.contains('is-menu-movil-abierto')) {
+            cambiar(false);
+            boton.focus();
+          }
+        });
+
+        // Tocar fuera del header lo cierra
+        document.addEventListener('click', (e) => {
+          if (!header.contains(e.target)) cambiar(false);
+        });
+
+        // Si se agranda la pantalla a escritorio, se cierra el modo móvil
+        escritorio.addEventListener('change', (e) => {
+          if (e.matches) cambiar(false);
         });
       });
     }

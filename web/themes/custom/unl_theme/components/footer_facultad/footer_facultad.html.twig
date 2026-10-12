@@ -1,0 +1,47 @@
+{{ attach_library('unl_theme/footer_facultad') }}
+<footer class="footer-facultad" data-facultad="{{ facultad_codigo }}">
+  <div class="footer-facultad__contenedor">
+
+    <div class="footer-facultad__marca">
+      <a class="footer-facultad__logo" href="{{ path('<front>') }}">
+        <img src="{{ logo_url }}" alt="Universidad Nacional de Loja">
+      </a>
+      <p class="footer-facultad__nombre">{{ facultad_nombre }}</p>
+
+      {% if footer_facultad.direccion %}
+        <p class="footer-facultad__dato">{{ footer_facultad.direccion }}</p>
+      {% endif %}
+
+      {% if footer_facultad.telefono or footer_facultad.correo %}
+        <p class="footer-facultad__dato">
+          {% if footer_facultad.telefono %}
+            <a href="tel:{{ footer_facultad.telefono|replace({' ': '', '(': '', ')': '', '-': ''}) }}">{{ footer_facultad.telefono }}</a>
+          {% endif %}
+          {% if footer_facultad.telefono and footer_facultad.correo %}
+            <span aria-hidden="true"> · </span>
+          {% endif %}
+          {% if footer_facultad.correo %}
+            <a href="mailto:{{ footer_facultad.correo }}">{{ footer_facultad.correo }}</a>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+
+    {# Columnas que arma cada facultad: título + enlaces #}
+    {% for columna in footer_facultad.columnas %}
+      <nav class="footer-facultad__columna" aria-label="{{ columna.titulo }}">
+        <h2 class="footer-facultad__titulo">{{ columna.titulo }}</h2>
+        <ul class="footer-facultad__lista">
+          {% for enlace in columna.enlaces %}
+            <li><a href="{{ enlace.url }}">{{ enlace.titulo }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endfor %}
+
+  </div>
+
+  <div class="footer-facultad__legal">
+    <p>© {{ 'now'|date('Y') }} Universidad Nacional de Loja</p>
+  </div>
+</footer>

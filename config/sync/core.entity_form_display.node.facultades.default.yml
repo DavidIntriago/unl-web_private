@@ -4,9 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.facultades.field_codigo
+    - field.field.node.facultades.field_columnas_footer
+    - field.field.node.facultades.field_correo
     - field.field.node.facultades.field_datos_facultad
+    - field.field.node.facultades.field_direccion
     - field.field.node.facultades.field_imagen_hero
     - field.field.node.facultades.field_secciones_facultad
+    - field.field.node.facultades.field_telefono
     - node.type.facultades
   module:
     - media_library
@@ -29,6 +33,32 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_columnas_footer:
+    type: paragraphs
+    weight: 29
+    region: content
+    settings:
+      title: Párrafo
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_correo:
+    type: email_default
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   field_datos_facultad:
     type: paragraphs
     weight: 5
@@ -46,6 +76,14 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_direccion:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_imagen_hero:
     type: media_library_widget
@@ -65,6 +103,14 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
+    third_party_settings: {  }
+  field_telefono:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select

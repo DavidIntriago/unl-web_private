@@ -7,9 +7,16 @@
     <a class="header-facultad__logo" href="{{ path('<front>') }}">
       <img src="{{ logo_url }}" alt="Universidad Nacional de Loja">
     </a>
+
+    {# Botón de menú: solo se ve en móvil y tablet #}
+    <button type="button" class="header-facultad__boton-menu"
+            aria-expanded="false" aria-controls="menu-facultad-nav"
+            aria-label="Abrir menú de la facultad">
+      <span class="header-facultad__boton-icono" aria-hidden="true"></span>
+    </button>
   </div>
 
-  <nav class="header-facultad__nav" aria-label="Menú de la facultad">
+  <nav class="header-facultad__nav" id="menu-facultad-nav" aria-label="Menú de la facultad">
     {{ menu_facultad_renderizado }}
   </nav>
 </header>

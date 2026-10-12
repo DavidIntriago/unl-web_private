@@ -4,9 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.facultades.field_codigo
+    - field.field.node.facultades.field_columnas_footer
+    - field.field.node.facultades.field_correo
     - field.field.node.facultades.field_datos_facultad
+    - field.field.node.facultades.field_direccion
     - field.field.node.facultades.field_imagen_hero
     - field.field.node.facultades.field_secciones_facultad
+    - field.field.node.facultades.field_telefono
     - node.type.facultades
   module:
     - entity_reference_revisions
@@ -24,6 +28,22 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_columnas_footer:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_correo:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
   field_datos_facultad:
     type: entity_reference_revisions_entity_view
     label: above
@@ -32,6 +52,15 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_direccion:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_imagen_hero:
     type: entity_reference_entity_view
@@ -50,6 +79,15 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_telefono:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     settings: {  }

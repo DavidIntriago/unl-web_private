@@ -76,3 +76,8 @@ header_facultad:
   dependencies:
     - core/drupal
     - core/once
+    
+footer_facultad:
+  css:
+    component:
+      components/footer_facultad/footer_facultad.css: {}

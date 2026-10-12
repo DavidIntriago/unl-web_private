@@ -1,0 +1,34 @@
+uuid: b7abc59b-9b89-4356-a9a0-8b775414766b
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.columna_footer.field_enlaces
+    - field.field.paragraph.columna_footer.field_titulo_columna
+    - paragraphs.paragraphs_type.columna_footer
+  module:
+    - link
+id: paragraph.columna_footer.default
+targetEntityType: paragraph
+bundle: columna_footer
+mode: default
+content:
+  field_enlaces:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_titulo_columna:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

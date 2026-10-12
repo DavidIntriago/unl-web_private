@@ -1,0 +1,38 @@
+uuid: 8182cf17-5c39-4be8-a93a-4436b9faa3d3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.columna_footer.field_enlaces
+    - field.field.paragraph.columna_footer.field_titulo_columna
+    - paragraphs.paragraphs_type.columna_footer
+  module:
+    - link
+id: paragraph.columna_footer.default
+targetEntityType: paragraph
+bundle: columna_footer
+mode: default
+content:
+  field_enlaces:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_titulo_columna:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

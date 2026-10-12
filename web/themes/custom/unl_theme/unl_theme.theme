@@ -24,22 +24,99 @@ function unl_theme_form_user_login_form_alter(&$form, \Drupal\Core\Form\FormStat
   $form['#attached']['library'][] = 'unl_theme/admin-login-toggle';
 }
 function unl_theme_preprocess_page(&$variables) {
-  if (isset($variables['node']) && $variables['node'] instanceof \Drupal\node\NodeInterface) {
-    $node = $variables['node'];
-      // Facultad actual según el primer tramo de la URL: /fsh, /fsh/carreras...
-    // Los códigos y nombres salen de los valores permitidos de field_codigo,
-    // así hay una sola lista de facultades en todo el sitio.
-    $alias = \Drupal::service('path_alias.manager')
-      ->getAliasByPath(\Drupal::service('path.current')->getPath());
-    $codigo = explode('/', trim($alias, '/'))[0];
-    $almacen = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_codigo');
-    $facultades = $almacen ? options_allowed_values($almacen) : [];
+
+  // =========================================================
+  // FACULTAD ACTUAL (header, footer y loader)
+  // Según el primer tramo de la URL: /fsh, /fsh/carreras...
+  // Los códigos y nombres salen de los valores permitidos de field_codigo,
+  // así hay una sola lista de facultades en todo el sitio.
+  // =========================================================
+  $alias = \Drupal::service('path_alias.manager')
+    ->getAliasByPath(\Drupal::service('path.current')->getPath());
+  $codigo = explode('/', trim($alias, '/'))[0];
+  $almacen = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_codigo');
+  $facultades = $almacen ? options_allowed_values($almacen) : [];
 
   if (isset($facultades[$codigo])) {
     $variables['facultad_codigo'] = $codigo;
     $variables['facultad_nombre'] = $facultades[$codigo];
     $variables['logo_url'] = theme_get_setting('logo.url');
+
+    // Footer: contacto y columnas salen del nodo de la facultad,
+    // también en sus subpáginas.
+    $ids = \Drupal::entityQuery('node')
+      ->accessCheck(TRUE)
+      ->condition('type', 'facultades')
+      ->condition('field_codigo', $codigo)
+      ->condition('status', 1)
+      ->range(0, 1)
+      ->execute();
+
+        if ($ids) {
+      $facultad = \Drupal\node\Entity\Node::load(reset($ids));
+
+      $variables['footer_facultad'] = [
+        'direccion' => $facultad->get('field_direccion')->value,
+        'telefono' => $facultad->get('field_telefono')->value,
+        'correo' => $facultad->get('field_correo')->value,
+        'columnas' => [],
+      ];
+
+      // Columnas que arma cada facultad: un título y sus enlaces
+      $columnas = $facultad->hasField('field_columnas_footer') ? $facultad->get('field_columnas_footer') : [];
+      foreach ($columnas as $item) {
+        $columna = $item->entity;
+        if (!$columna) {
+          continue;
+        }
+        $enlaces = [];
+        foreach ($columna->get('field_enlaces') as $enlace) {
+          $enlaces[] = [
+            'titulo' => $enlace->title,
+            'url' => $enlace->getUrl()->toString(),
+          ];
+        }
+        $variables['footer_facultad']['columnas'][] = [
+          'titulo' => $columna->get('field_titulo_columna')->value,
+          'enlaces' => $enlaces,
+        ];
+      }
+
+      // Si se edita la facultad, las páginas guardadas en caché se actualizan
+      $variables['#cache']['tags'][] = 'node:' . $facultad->id();
+    }
+
+    // Columna "UNL": enlaces del menú Footer UNL, iguales para todas las facultades
+    $arbol = \Drupal::menuTree();
+    $parametros = (new \Drupal\Core\Menu\MenuTreeParameters())
+      ->setMaxDepth(1)
+      ->onlyEnabledLinks();
+    $elementos = $arbol->transform($arbol->load('footer-unl', $parametros), [
+      ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+      ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+    ]);
+
+    $variables['footer_unl'] = [];
+    foreach ($elementos as $elemento) {
+      // Salta los enlaces a páginas que el visitante no puede ver
+      if ($elemento->access && !$elemento->access->isAllowed()) {
+        continue;
+      }
+      $variables['footer_unl'][] = [
+        'titulo' => $elemento->link->getTitle(),
+        'url' => $elemento->link->getUrlObject()->toString(),
+      ];
+    }
+
+    // Si se edita el menú, el footer se actualiza sin drush cr
+    $variables['#cache']['tags'][] = 'config:system.menu.footer-unl';
   }
+
+  // =========================================================
+  // HERO (micrositios y facultades)
+  // =========================================================
+  if (isset($variables['node']) && $variables['node'] instanceof \Drupal\node\NodeInterface) {
+    $node = $variables['node'];
 
     if ($node->hasField('field_imagen_hero') && !$node->get('field_imagen_hero')->isEmpty()) {
 

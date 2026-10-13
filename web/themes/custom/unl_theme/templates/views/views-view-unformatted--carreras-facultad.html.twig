@@ -1,0 +1,15 @@
+{#
+  Las carreras se agrupan en filas de 5. Cada fila es un acordeón horizontal.
+  Las filas después de la primera se muestran con "Ver toda la oferta".
+  --n es cuántas tarjetas tiene la fila, para calcular el ancho al abrir.
+#}
+<div class="listado-carreras__grid">
+  {% for fila in rows|batch(5) %}
+    <div class="listado-carreras__fila{% if not loop.first %} listado-carreras__fila--extra{% endif %}"
+         style="--n: {{ fila|length }}">
+      {% for row in fila %}
+        {{ row.content }}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>

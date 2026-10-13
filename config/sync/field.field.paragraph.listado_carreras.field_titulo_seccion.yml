@@ -1,0 +1,19 @@
+uuid: 3b1f5b59-6164-4ff0-b665-12903e50579b
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titulo_seccion
+    - paragraphs.paragraphs_type.listado_carreras
+id: paragraph.listado_carreras.field_titulo_seccion
+field_name: field_titulo_seccion
+entity_type: paragraph
+bundle: listado_carreras
+label: 'Titulo Sección'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

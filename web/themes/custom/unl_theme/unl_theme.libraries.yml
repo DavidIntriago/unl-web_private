@@ -76,8 +76,18 @@ header_facultad:
   dependencies:
     - core/drupal
     - core/once
-    
+
 footer_facultad:
   css:
     component:
       components/footer_facultad/footer_facultad.css: {}
+
+listado_carreras:
+  css:
+    component:
+      components/listado_carreras/listado_carreras.css: {}
+  js:
+    components/listado_carreras/listado_carreras.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

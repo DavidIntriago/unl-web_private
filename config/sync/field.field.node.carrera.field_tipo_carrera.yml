@@ -1,0 +1,21 @@
+uuid: 6209d658-d398-408f-b987-f80a4f2c6f07
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tipo_carrera
+    - node.type.carrera
+  module:
+    - options
+id: node.carrera.field_tipo_carrera
+field_name: field_tipo_carrera
+entity_type: node
+bundle: carrera
+label: 'Tipo de Carrera'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

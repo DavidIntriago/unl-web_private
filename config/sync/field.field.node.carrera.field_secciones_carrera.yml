@@ -1,0 +1,82 @@
+uuid: 77bd063f-3e86-4d26-ae21-7aa4add32c2e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secciones_carrera
+    - node.type.carrera
+    - paragraphs.paragraphs_type.recursos_descargables
+  module:
+    - entity_reference_revisions
+id: node.carrera.field_secciones_carrera
+field_name: field_secciones_carrera
+entity_type: node
+bundle: carrera
+label: 'Secciones Carrera'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      recursos_descargables: recursos_descargables
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 19
+        enabled: false
+      archivo:
+        weight: 20
+        enabled: false
+      columna_footer:
+        weight: 21
+        enabled: false
+      convenios:
+        weight: 22
+        enabled: false
+      dato_facultad:
+        weight: 23
+        enabled: false
+      diapositiva_hero:
+        weight: 24
+        enabled: false
+      grid_tarjetas:
+        weight: 25
+        enabled: false
+      hero_carrusel:
+        weight: 26
+        enabled: false
+      importaciones:
+        weight: 27
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 28
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 29
+        enabled: false
+      logo_footer:
+        weight: 30
+        enabled: false
+      notificacion_flotante:
+        weight: 31
+        enabled: false
+      recursos_descargables:
+        weight: 32
+        enabled: true
+      repositorio_dinamico:
+        weight: 33
+        enabled: false
+      tarjeta:
+        weight: 34
+        enabled: false
+      texto_libre:
+        weight: 35
+        enabled: false
+      visor_pdf:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

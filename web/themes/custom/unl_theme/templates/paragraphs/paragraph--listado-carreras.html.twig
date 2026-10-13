@@ -1,0 +1,15 @@
+{{ attach_library('unl_theme/listado_carreras') }}
+<section class="listado-carreras" data-carreras-visibles="5">
+
+  <div class="listado-carreras__encabezado">
+    <h2 class="titulo-vista-global">{{ paragraph.field_titulo_seccion.value }}</h2>
+    <button type="button" class="listado-carreras__ver-todas" aria-expanded="false">
+      Ver toda la oferta
+    </button>
+  </div>
+
+  <div class="listado-carreras__franja">
+    {{ carreras }}
+  </div>
+
+</section>

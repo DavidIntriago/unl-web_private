@@ -156,6 +156,39 @@ function unl_theme_preprocess_page(&$variables) {
  */
 function unl_theme_preprocess_node(&$variables) {
   $node = $variables['node'];
+    // Tarjeta de carrera (franja de carreras de la facultad)
+  if ($node->bundle() === 'carrera' && $variables['view_mode'] === 'tarjeta') {
+
+    // Devuelve la etiqueta de una lista ("Presencial"), no la clave ("presencial")
+    $etiqueta = function ($campo) use ($node) {
+      if (!$node->hasField($campo) || $node->get($campo)->isEmpty()) {
+        return '';
+      }
+      $definicion = $node->get($campo)->getFieldDefinition()->getFieldStorageDefinition();
+      $valores = options_allowed_values($definicion, $node);
+      return $valores[$node->get($campo)->value] ?? '';
+    };
+
+    // URL de la foto vertical
+    $foto_url = '';
+    $media = $node->get('field_foto_carrera')->entity;
+    if ($media) {
+      $archivo = \Drupal\file\Entity\File::load($media->getSource()->getSourceFieldValue($media));
+      if ($archivo) {
+        $foto_url = \Drupal::service('file_url_generator')->generateString($archivo->getFileUri());
+      }
+    }
+
+    $variables['carrera'] = [
+      'foto_url' => $foto_url,
+      'tipo' => $etiqueta('field_tipo_carrera'),
+      'modalidad' => $etiqueta('field_modalidad'),
+      'semestres' => $node->get('field_semestres')->value,
+      'puntaje' => $node->get('field_puntaje_minimo')->value,
+      'cupos' => $node->get('field_cupos')->value,
+      'url' => $node->toUrl()->toString(),
+    ];
+  }
   $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
   
   // Lógica exclusiva para la página de LOTAIP
@@ -219,4 +252,14 @@ function unl_theme_theme_suggestions_menu_alter(array &$suggestions, array $vari
   if (preg_match('/^menu-(fjsa|fsh|feirnnr|farnr|feac)$/', $menu)) {
     $suggestions[] = 'menu__facultad';
   }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__TYPE() para Listado de carreras.
+ *
+ * Inserta la vista Carreras por facultad; la vista filtra sola
+ * por el código de la facultad que está en la URL.
+ */
+function unl_theme_preprocess_paragraph__listado_carreras(&$variables) {
+  $variables['carreras'] = views_embed_view('carreras_facultad', 'block_1');
 }

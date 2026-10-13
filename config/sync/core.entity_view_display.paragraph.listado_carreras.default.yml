@@ -1,0 +1,23 @@
+uuid: 1d7c2c99-f6be-42d2-a867-e26b0930e4ff
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listado_carreras.field_titulo_seccion
+    - paragraphs.paragraphs_type.listado_carreras
+id: paragraph.listado_carreras.default
+targetEntityType: paragraph
+bundle: listado_carreras
+mode: default
+content:
+  field_titulo_seccion:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

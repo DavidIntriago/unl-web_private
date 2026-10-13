@@ -1,0 +1,29 @@
+uuid: 63ff5d48-5344-4302-943e-6a3907ad4a53
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_foto_carrera
+    - media.type.cuadrada
+    - node.type.carrera
+id: node.carrera.field_foto_carrera
+field_name: field_foto_carrera
+entity_type: node
+bundle: carrera
+label: 'Foto de Carrera'
+description: 'Foto para la tarjeta de la carrera.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      cuadrada: cuadrada
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

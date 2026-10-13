@@ -8,7 +8,7 @@
   <span class="fondo-decorativo__atomo-grande"></span>
 </div>
 
-<div id="page-wrapper">
+<div id="page-wrapper"{% if facultad_codigo %} data-facultad="{{ facultad_codigo }}"{% endif %}>
   
   {% set menu_facultad_renderizado = page.menu_facultad|render %}
   {% if menu_facultad_renderizado|trim %}

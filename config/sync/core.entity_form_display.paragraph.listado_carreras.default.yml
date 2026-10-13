@@ -1,0 +1,23 @@
+uuid: fc05df07-ea53-477b-a55f-cf5920001f93
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listado_carreras.field_titulo_seccion
+    - paragraphs.paragraphs_type.listado_carreras
+id: paragraph.listado_carreras.default
+targetEntityType: paragraph
+bundle: listado_carreras
+mode: default
+content:
+  field_titulo_seccion:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

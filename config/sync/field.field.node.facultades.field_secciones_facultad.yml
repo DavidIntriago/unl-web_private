@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_secciones_facultad
     - node.type.facultades
     - paragraphs.paragraphs_type.grid_tarjetas
+    - paragraphs.paragraphs_type.listado_carreras
     - paragraphs.paragraphs_type.listado_noticias_destacadas
   module:
     - entity_reference_revisions
@@ -23,6 +24,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      listado_carreras: listado_carreras
       grid_tarjetas: grid_tarjetas
       listado_noticias_destacadas: listado_noticias_destacadas
     negate: 0
@@ -32,6 +34,9 @@ settings:
         enabled: false
       archivo:
         weight: 18
+        enabled: false
+      columna_footer:
+        weight: 23
         enabled: false
       convenios:
         weight: 19
@@ -51,6 +56,9 @@ settings:
       importaciones:
         weight: 23
         enabled: false
+      listado_carreras:
+        weight: 20
+        enabled: true
       listado_eventos_dinamico:
         weight: 24
         enabled: false

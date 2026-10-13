@@ -1,0 +1,31 @@
+<article class="tarjeta-carrera">
+  {% if carrera.foto_url %}
+    <img class="tarjeta-carrera__foto" src="{{ carrera.foto_url }}" alt="" loading="lazy">
+  {% endif %}
+
+  <div class="tarjeta-carrera__contenido">
+    {% if carrera.tipo or carrera.modalidad %}
+      <p class="tarjeta-carrera__tipo">
+        {{ carrera.tipo }}{% if carrera.tipo and carrera.modalidad %} · {% endif %}{{ carrera.modalidad }}
+      </p>
+    {% endif %}
+
+    <h3 class="tarjeta-carrera__nombre">{{ label }}</h3>
+
+    <ul class="tarjeta-carrera__datos">
+      {% if carrera.semestres %}
+        <li><span class="tarjeta-carrera__valor">{{ carrera.semestres }}</span> <span class="tarjeta-carrera__etiqueta">Semestres</span></li>
+      {% endif %}
+      {% if carrera.puntaje %}
+        <li><span class="tarjeta-carrera__valor">{{ carrera.puntaje }}</span> <span class="tarjeta-carrera__etiqueta">Puntaje mín.</span></li>
+      {% endif %}
+      {% if carrera.cupos %}
+        <li><span class="tarjeta-carrera__valor">{{ carrera.cupos }}</span> <span class="tarjeta-carrera__etiqueta">Cupos</span></li>
+      {% endif %}
+    </ul>
+
+    <a class="tarjeta-carrera__enlace" href="{{ carrera.url }}">
+      Ver carrera<span class="visually-hidden"> {{ label }}</span> <span aria-hidden="true">›</span>
+    </a>
+  </div>
+</article>

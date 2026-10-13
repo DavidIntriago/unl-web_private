@@ -1,7 +1,21 @@
 <article class="nodo-facultad">
   <div class="nodo-facultad__contenido">
-    
-    {{ content|without('field_imagen_hero', 'field_codigo', 'field_datos_facultad') }}
-  
+
+    {#
+      Se excluyen los campos que ya se pintan en otro lugar:
+      - Hero: field_imagen_hero, field_datos_facultad, field_codigo (page.html.twig)
+      - Footer: field_direccion, field_telefono, field_correo, field_columnas_footer (footer_facultad)
+      Aquí solo queda el contenido propio de la página (Secciones facultad).
+    #}
+    {{ content|without(
+      'field_imagen_hero',
+      'field_codigo',
+      'field_datos_facultad',
+      'field_direccion',
+      'field_telefono',
+      'field_correo',
+      'field_columnas_footer'
+    ) }}
+
   </div>
 </article>

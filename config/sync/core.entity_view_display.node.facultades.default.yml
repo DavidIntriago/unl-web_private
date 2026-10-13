@@ -23,14 +23,14 @@ mode: default
 content:
   field_codigo:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 101
     region: content
   field_columnas_footer:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -39,14 +39,14 @@ content:
     region: content
   field_correo:
     type: basic_string
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 106
     region: content
   field_datos_facultad:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -55,7 +55,7 @@ content:
     region: content
   field_direccion:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
       link_rel: canonical
@@ -73,7 +73,7 @@ content:
     region: content
   field_secciones_facultad:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
@@ -82,7 +82,7 @@ content:
     region: content
   field_telefono:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
       link_rel: canonical

@@ -16,7 +16,7 @@ mode: default
 content:
   field_descripcion_corta:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
       link_rel: canonical
@@ -44,4 +44,5 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-hidden: {  }
+hidden:
+  search_api_excerpt: true

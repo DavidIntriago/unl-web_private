@@ -15,9 +15,6 @@ settings:
       value: facultad
       label: Facultad
     -
-      value: default
-      label: Default
-    -
       value: contador
       label: Contador
     -
@@ -32,9 +29,6 @@ settings:
     -
       value: autoridades
       label: Autoridades
-    -
-      value: marcas
-      label: marcas
   allowed_values_function: ''
 module: options
 locked: false

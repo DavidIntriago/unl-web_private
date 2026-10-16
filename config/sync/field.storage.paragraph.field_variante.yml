@@ -29,6 +29,12 @@ settings:
     -
       value: autoridades
       label: Autoridades
+    -
+      value: marca
+      label: Marcas
+    -
+      value: default
+      label: Default
   allowed_values_function: ''
 module: options
 locked: false

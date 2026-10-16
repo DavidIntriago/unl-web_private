@@ -34,6 +34,7 @@
         mapBlock.appendChild(wrapper);
       }
     }
+
     // VIDEO DE FONDO
     var videoSource = document.querySelector('.site-footer__bg-video-source');
 
@@ -67,94 +68,5 @@
         videoSource.appendChild(video);
       }
     }
-        // LOGOS DE DEPENDENCIAS
-    var logosBlock = document.querySelector('.site-footer__logos');
-
-    if (logosBlock) {
-      var imagenes = logosBlock.querySelectorAll('img');
-
-      if (imagenes.length) {
-        var ventana = document.createElement('div');
-        ventana.className = 'site-footer__logos-ventana';
-        var pista = document.createElement('ul');
-        pista.className = 'site-footer__logos-pista';
-
-        imagenes.forEach(function (img) {
-          var item = document.createElement('li');
-          item.className = 'site-footer__logos-item';
-          var enlaceOriginal = img.closest('a');
-
-          if (enlaceOriginal) {
-            var enlace = document.createElement('a');
-            enlace.href = enlaceOriginal.getAttribute('href');
-            enlace.target = '_blank';
-            enlace.rel = 'noopener';
-            enlace.appendChild(img.cloneNode(true));
-            item.appendChild(enlace);
-          } else {
-            item.appendChild(img.cloneNode(true));
-          }
-          pista.appendChild(item);
-        });
-
-        ventana.appendChild(pista);
-        logosBlock.innerHTML = '';
-        logosBlock.appendChild(ventana);
-
-        iniciarCarruselLogos(logosBlock, pista);
-      }
-    }
   });
-    function iniciarCarruselLogos(contenedor, pista) {
-    var temporizador = null;
-    var moviendo = false;
-    var reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function visibles() {
-      return parseInt(getComputedStyle(contenedor).getPropertyValue('--logos-visibles'), 10) || 4;
-    }
-
-    function hayExceso() {
-      return pista.children.length > visibles();
-    }
-
-    function avanzar() {
-      if (moviendo) return;
-      moviendo = true;
-      var gap = parseFloat(getComputedStyle(pista).columnGap) || 0;
-      var paso = pista.firstElementChild.getBoundingClientRect().width + gap;
-      pista.style.transform = 'translateX(-' + paso + 'px)';
-    }
-
-    // El primer logo pasa al final y la fila vuelve a 0 sin que se note
-    pista.addEventListener('transitionend', function (e) {
-      if (e.target !== pista) return;
-      pista.style.transition = 'none';
-      pista.appendChild(pista.firstElementChild);
-      pista.style.transform = 'translateX(0)';
-      void pista.offsetWidth;
-      pista.style.transition = '';
-      moviendo = false;
-    });
-
-    function detener() {
-      clearInterval(temporizador);
-    }
-
-    function arrancar() {
-      detener();
-      if (!reducido && hayExceso()) temporizador = setInterval(avanzar, 3000);
-    }
-
-    function actualizar() {
-      contenedor.classList.toggle('site-footer__logos--carrusel', hayExceso());
-      if (!hayExceso()) pista.style.transform = '';
-      arrancar();
-    }
-
-    contenedor.addEventListener('mouseenter', detener);
-    contenedor.addEventListener('mouseleave', arrancar);
-    window.addEventListener('resize', actualizar);
-    actualizar();
-  }
 })();

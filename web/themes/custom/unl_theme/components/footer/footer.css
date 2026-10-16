@@ -256,7 +256,6 @@
 }
 
 .site-footer__container,
-.site-footer__logos,
 .site-footer__bottom {
   position: relative;
   z-index: 2;
@@ -267,66 +266,6 @@
   .site-footer__bg-video-wrapper {
     display: none;
   }
-}
-/* =========================================================
-   LOGOS DE DEPENDENCIAS
-   ========================================================= */
-.site-footer__logos {
-  --logos-visibles: 4;
-  --logos-espacio: var(--espacio-8);
-  --logos-alto: 4rem;
-
-  max-width: var(--contenedor-normal);
-  margin: 0 auto;
-  padding: var(--espacio-5) var(--espacio-8);
-  border-top: 1px solid var(--blanco-borde);
-}
-
-.site-footer__logos-ventana {
-  overflow: hidden;
-}
-
-.site-footer__logos-pista {
-  display: flex;
-  justify-content: center;
-  gap: var(--logos-espacio);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-footer__logos-item {
-  flex: 0 0
-    calc(
-      (100% - (var(--logos-visibles) - 1) * var(--logos-espacio)) /
-        var(--logos-visibles)
-    );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: var(--logos-alto);
-}
-
-.site-footer__logos-item img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: var(--logos-alto);
-  object-fit: contain;
-  filter: brightness(0) invert(1); /* cualquier logo con fondo transparente queda blanco */
-  opacity: 0.85;
-  transition: opacity var(--duracion-normal) ease;
-}
-
-.site-footer__logos-item a:hover img {
-  opacity: 1;
-}
-
-/* Lo activa el JS solo cuando hay más logos de los que caben */
-.site-footer__logos--carrusel .site-footer__logos-pista {
-  justify-content: flex-start;
-  transition: transform 0.6s ease;
 }
 
 /* =========================================================
@@ -350,9 +289,6 @@
 
   .site-footer__map {
     grid-column: 1 / -1;
-  }
-  .site-footer__logos {
-    --logos-visibles: 3;
   }
 }
 
@@ -385,10 +321,5 @@
       "direccion"
       "telefono"
       "correo";
-  }
-  .site-footer__logos {
-    --logos-visibles: 2;
-    --logos-espacio: var(--espacio-6);
-    padding-inline: var(--espacio-6);
   }
 }

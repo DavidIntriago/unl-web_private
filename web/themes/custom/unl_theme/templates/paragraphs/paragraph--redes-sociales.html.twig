@@ -1,0 +1,15 @@
+{{ attach_library('unl_theme/redes_sociales') }}
+{% if redes %}
+  <section class="redes-sociales" aria-label="Redes sociales">
+    <ul class="redes-sociales__lista">
+      {% for red in redes %}
+        <li>
+          <a class="redes-sociales__enlace redes-sociales__enlace--{{ red.icono }}"
+             href="{{ red.url }}" target="_blank" rel="noopener">
+            <span class="visually-hidden">{{ red.nombre }} (se abre en otra pestaña)</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}

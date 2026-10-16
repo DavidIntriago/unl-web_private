@@ -1,0 +1,25 @@
+{{ attach_library('unl_theme/banner_botones') }}
+<section class="banner-botones animar-scroll">
+
+  {% if fondo_url %}
+    <div class="banner-botones__fondo" style="--fondo-url: url('{{ fondo_url }}')" aria-hidden="true"></div>
+  {% endif %}
+
+  <div class="banner-botones__contenedor">
+    <div class="banner-botones__texto">
+      <h2 class="banner-botones__titulo">{{ paragraph.field_titulo_seccion.value }}</h2>
+      {% if paragraph.field_descripcion_corta.value %}
+        <p class="banner-botones__subtitulo">{{ paragraph.field_descripcion_corta.value }}</p>
+      {% endif %}
+    </div>
+
+    {% if botones %}
+      <div class="banner-botones__botones">
+        {% for boton in botones %}
+          <a class="banner-botones__boton" href="{{ boton.url }}">{{ boton.titulo }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+</section>

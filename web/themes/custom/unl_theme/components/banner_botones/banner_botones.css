@@ -1,0 +1,130 @@
+/**
+ * BANNER BOTONES
+ * De borde a borde: imagen de fondo con capa negra, barra y botones
+ * del color de la facultad (--color-facultad).
+ */
+
+/* =========================================================
+   CONTENEDOR Y FONDO
+   ========================================================= */
+.banner-botones {
+  position: relative;
+  margin-top: var(--espacio-entre-secciones);
+  overflow: hidden;
+  background-color: var(--color-oscuro);
+  isolation: isolate;
+}
+
+.banner-botones__fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--fondo-url) center / cover no-repeat;
+  transition: transform 1.2s var(--curva-suave);
+}
+
+/* Capa negra: más oscura a la izquierda, donde va el texto */
+.banner-botones::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0.85) 0%,
+    rgb(0 0 0 / 0.65) 50%,
+    rgb(0 0 0 / 0.5) 100%
+  );
+}
+
+/* Al pasar el mouse, la foto se acerca lentamente */
+@media (hover: hover) and (pointer: fine) {
+  .banner-botones:hover .banner-botones__fondo {
+    transform: scale(1.06);
+  }
+}
+
+.banner-botones__contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-6) var(--espacio-10);
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: 0 auto;
+  padding: var(--espacio-12) 0;
+}
+
+/* =========================================================
+   TEXTO CON BARRA DE COLOR
+   ========================================================= */
+.banner-botones__texto {
+  padding-left: var(--espacio-5);
+  border-left: 0.1875rem solid var(--color-facultad, var(--color-primario));
+}
+
+.banner-botones__titulo {
+  margin: 0;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-titulo-seccion);
+  font-weight: var(--peso-normal);
+  line-height: var(--interlineado-titulo);
+}
+
+.banner-botones__subtitulo {
+  margin: var(--espacio-2) 0 0;
+  color: var(--texto-sobre-primario-suave);
+  font-size: var(--texto-sm);
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+.banner-botones__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+}
+
+.banner-botones__boton {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--espacio-3) var(--espacio-6);
+  border-radius: 62.5rem;
+  background-color: var(--color-facultad, var(--color-primario));
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+  transition: background-color var(--duracion-normal) ease;
+}
+
+.banner-botones__boton:hover,
+.banner-botones__boton:focus-visible {
+  background-color: color-mix(in srgb, var(--color-facultad, var(--color-primario)) 80%, black);
+}
+
+.banner-botones__boton:focus-visible {
+  outline: 2px solid var(--color-superficie);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+  .banner-botones__contenedor {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--espacio-10) 0;
+  }
+
+  .banner-botones__botones {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .banner-botones__boton {
+    justify-content: center;
+  }
+}

@@ -60,6 +60,24 @@
 }
 
 /* =========================================================
+   COLOR DE LA FACULTAD AL PASAR EL MOUSE
+   Igual que en evento-teaser.css: la línea de la fecha es roja
+   y al pasar el mouse toma el color de la facultad del evento.
+   ========================================================= */
+.card-ev-parrafo__fecha-cuadro {
+  transition: border-bottom-color var(--duracion-normal) ease;
+}
+
+.card-ev-parrafo:is(:hover, :focus-within) .card-ev-parrafo__fecha-cuadro {
+  border-bottom-color: var(--color-facultad, var(--color-primario));
+}
+
+/* Eventos sin facultad: siempre rojo, aunque estén dentro de una facultad */
+.card-ev-parrafo:not([data-facultad]) {
+  --color-facultad: var(--color-primario);
+}
+
+/* =========================================================
    TÍTULO Y ÁREA
    ========================================================= */
 .card-ev-parrafo__titulo {

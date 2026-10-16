@@ -2,6 +2,8 @@
   titulo: content.field_titulo_seccion|render|striptags|trim,
   variante: paragraph.field_variante.value,
   enlace: paragraph.field_enlace.0.url,
+  atencion: paragraph.field_atencion.value,
+  horarios: paragraph.field_horarios.value,
 }  %}
   {% block items %}
     {% for item in content.field_tarjetas %}

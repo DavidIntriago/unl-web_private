@@ -48,5 +48,20 @@
       <button class="carrusel-sitios-flecha next" aria-label="Siguiente">&#10095;</button>
     {% endif %}
   </section>
+    {# Horario de atención: solo en autoridades y solo si el editor lo llenó #}
+  {% if variante == 'autoridades' and (atencion or horarios) %}
+    <div class="grid-tarjetas__horario">
+      {% if atencion %}
+        <p class="grid-tarjetas__horario-item grid-tarjetas__horario-item--atencion">
+          <strong>Atención:</strong> {{ atencion }}
+        </p>
+      {% endif %}
+      {% if horarios %}
+        <p class="grid-tarjetas__horario-item grid-tarjetas__horario-item--horarios">
+          <strong>Horarios:</strong> {{ horarios }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
 
 </div>

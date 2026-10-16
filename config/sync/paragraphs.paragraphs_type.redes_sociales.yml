@@ -1,0 +1,10 @@
+uuid: 97badb5d-9897-4cbd-a136-904de1db40ed
+langcode: es
+status: true
+dependencies: {  }
+id: redes_sociales
+label: 'Redes Sociales'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

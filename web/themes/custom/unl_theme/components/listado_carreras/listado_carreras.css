@@ -200,7 +200,7 @@
 /* =========================================================
    SOLO CON MOUSE: acordeón horizontal
    ========================================================= */
-@media (hover: hover) and (pointer: fine) {
+@media (min-width: 1350px) and (hover: hover) and (pointer: fine) {
   /* La tarjeta bajo el mouse se abre hasta quedar cuadrada.
      Nunca más angosta que su ancho normal (por eso el max con 100% / n),
      así en una fila de 2 tarjetas no se achica al pasar el mouse.
@@ -221,34 +221,133 @@
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-@media (max-width: 1024px) {
+@media (max-width: 1350px) {
+  .listado-carreras__encabezado {
+    padding: var(--espacio-10) var(--espacio-5) var(--espacio-5);
+  }
+
+  /* Tablet: de dos en dos */
   .listado-carreras__grid {
-    --alto-franja: 28rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-5);
+    width: min(100% - 2 * var(--espacio-5), 54rem);
+    margin: 0 auto;
+  }
+
+/* Celular: como las autoridades. Tarjeta horizontal con la foto a
+   la izquierda y los datos a la derecha sobre fondo blanco,
+   una columna centrada. Las 5 primeras y "Ver toda la oferta". */
+@media (max-width: 768px) {
+  .listado-carreras__encabezado {
+    padding: var(--espacio-10) var(--espacio-5) var(--espacio-5);
+  }
+
+  .listado-carreras__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 26.25rem);
+    justify-content: center;
+    gap: var(--espacio-5);
+    padding: 0 var(--espacio-5);
   }
 }
 
-/* Celular: carrusel horizontal con todas las carreras, sin acordeón;
-   el botón "Ver toda la oferta" no hace falta */
-@media (max-width: 600px) {
-  .listado-carreras__grid {
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-
-  /* Las filas desaparecen como cajas: todas las tarjetas quedan en una sola tira */
-  .listado-carreras__fila,
-  .listado-carreras__fila--extra {
+  /* Las filas dejan de ser cajas: todas las tarjetas van en la misma columna */
+  .listado-carreras__fila {
     display: contents;
   }
 
-  .tarjeta-carrera {
-    flex: 0 0 75%;
-    height: 26rem;
-    scroll-snap-align: start;
+  .listado-carreras__fila--extra {
+    display: none;
   }
 
-  .listado-carreras__ver-todas {
+  .listado-carreras.is-expandido .listado-carreras__fila--extra {
+    display: contents;
+  }
+
+  /* --- Tarjeta horizontal --- */
+  .tarjeta-carrera {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border: 1px solid var(--color-facultad, var(--color-primario));
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie);
+    color: var(--color-texto);
+  }
+
+  /* Sin ahumado: el texto ya no va sobre la foto */
+  .tarjeta-carrera::after {
     display: none;
+  }
+
+  .tarjeta-carrera__foto {
+    position: relative;
+    inset: unset;
+    flex: 0 0 6.875rem;
+    width: 6.875rem;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .tarjeta-carrera__contenido {
+    position: relative;
+    inset: unset;
+    flex: 1;
+    min-width: 0;
+    padding: var(--espacio-4);
+  }
+
+  .tarjeta-carrera__tipo {
+    margin-bottom: var(--espacio-1);
+    font-size: var(--texto-xs);
+    color: var(--color-texto-secundario);
+  }
+
+  .tarjeta-carrera__nombre {
+    font-size: var(--texto-base);
+    color: var(--color-texto);
+  }
+
+  .tarjeta-carrera__nombre::after {
+    width: 3rem;
+    margin-top: var(--espacio-2);
+  }
+
+  .tarjeta-carrera__datos {
+    margin: var(--espacio-3) 0;
+  }
+
+  .tarjeta-carrera__datos li {
+    padding: 0 var(--espacio-2);
+    border-left-color: var(--color-borde);
+  }
+
+  .tarjeta-carrera__datos li:first-child {
+    padding-left: 0;
+  }
+
+  .tarjeta-carrera__valor {
+    font-size: var(--texto-base);
+    color: var(--color-texto);
+  }
+
+  .tarjeta-carrera__etiqueta {
+    font-size: var(--texto-xs);
+    color: var(--color-texto-secundario);
+  }
+
+  .tarjeta-carrera__enlace {
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-medio);
+    color: var(--color-facultad, var(--color-primario));
+  }
+}
+
+/* Celular: una debajo de otra, centradas, como las autoridades */
+@media (max-width: 600px) {
+  .listado-carreras__grid {
+    grid-template-columns: minmax(0, 26.25rem);
+    justify-content: center;
   }
 }

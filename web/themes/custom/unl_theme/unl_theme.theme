@@ -156,7 +156,10 @@ function unl_theme_preprocess_page(&$variables) {
  */
 function unl_theme_preprocess_node(&$variables) {
   $node = $variables['node'];
-    // Tarjeta de carrera (franja de carreras de la facultad)
+
+  // =========================================================
+  // TARJETA DE CARRERA (franja de carreras de la facultad)
+  // =========================================================
   if ($node->bundle() === 'carrera' && $variables['view_mode'] === 'tarjeta') {
 
     // Devuelve la etiqueta de una lista ("Presencial"), no la clave ("presencial")
@@ -189,9 +192,30 @@ function unl_theme_preprocess_node(&$variables) {
       'url' => $node->toUrl()->toString(),
     ];
   }
+
+  // =========================================================
+  // EVENTOS: código de la facultad de su área (color de la línea)
+  // Departamento → Facultad (nodo) → field_codigo.
+  // Sin facultad queda vacío y la línea se queda roja.
+  // =========================================================
+  if ($node->bundle() === 'evento' && $node->hasField('field_area')) {
+    $variables['evento_facultad'] = '';
+    $termino = $node->get('field_area')->entity;
+    if ($termino && $termino->hasField('field_facultad')) {
+      $facultad = $termino->get('field_facultad')->entity;
+      if ($facultad && $facultad->hasField('field_codigo')) {
+        $variables['evento_facultad'] = $facultad->get('field_codigo')->value;
+      }
+      // Si se cambia la facultad del departamento, la tarjeta se actualiza
+      $variables['#cache']['tags'][] = 'taxonomy_term:' . $termino->id();
+    }
+  }
+
+  // =========================================================
+  // PÁGINA /acceso-pcd: año del LOTAIP más reciente
+  // =========================================================
   $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
-  
-  // Lógica exclusiva para la página de LOTAIP
+
   if ($alias === '/acceso-pcd') {
     $variables['lotaip_anio_id'] = NULL;
     $variables['lotaip_anio'] = '';
@@ -262,4 +286,81 @@ function unl_theme_theme_suggestions_menu_alter(array &$suggestions, array $vari
  */
 function unl_theme_preprocess_paragraph__listado_carreras(&$variables) {
   $variables['carreras'] = views_embed_view('carreras_facultad', 'block_1');
+}
+
+/**
+ * Implements hook_preprocess_paragraph__TYPE() para Banner botones.
+ *
+ * Prepara la URL de la imagen de fondo y la lista de botones.
+ */
+function unl_theme_preprocess_paragraph__banner_botones(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Imagen de fondo: funciona si field_imagen es Multimedia o Imagen
+  $variables['fondo_url'] = '';
+  if ($paragraph->hasField('field_imagen') && !$paragraph->get('field_imagen')->isEmpty()) {
+    $entidad = $paragraph->get('field_imagen')->entity;
+    $archivo = $entidad instanceof \Drupal\media\MediaInterface
+      ? \Drupal\file\Entity\File::load($entidad->getSource()->getSourceFieldValue($entidad))
+      : $entidad;
+    if ($archivo instanceof \Drupal\file\FileInterface) {
+      $variables['fondo_url'] = \Drupal::service('file_url_generator')->generateString($archivo->getFileUri());
+    }
+  }
+
+  // Botones
+  $variables['botones'] = [];
+  if ($paragraph->hasField('field_enlaces')) {
+    foreach ($paragraph->get('field_enlaces') as $enlace) {
+      $variables['botones'][] = [
+        'titulo' => $enlace->title,
+        'url' => $enlace->getUrl()->toString(),
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__TYPE() para Redes sociales.
+ *
+ * Reconoce la red por el dominio del enlace y le asigna su ícono y nombre.
+ */
+function unl_theme_preprocess_paragraph__redes_sociales(&$variables) {
+  // dominio => [clave del ícono, nombre que leen los lectores de pantalla]
+  $redes = [
+    'facebook.com' => ['facebook', 'Facebook'],
+    'fb.com' => ['facebook', 'Facebook'],
+    'x.com' => ['x', 'X'],
+    'twitter.com' => ['x', 'X'],
+    'linkedin.com' => ['linkedin', 'LinkedIn'],
+    'instagram.com' => ['instagram', 'Instagram'],
+    'youtube.com' => ['youtube', 'YouTube'],
+    'youtu.be' => ['youtube', 'YouTube'],
+    'tiktok.com' => ['tiktok', 'TikTok'],
+    'wa.me' => ['whatsapp', 'WhatsApp'],
+  ];
+
+    $variables['redes'] = [];
+  foreach ($variables['paragraph']->get('field_redes') as $enlace) {
+    $url = $enlace->getUrl()->toString();
+    $host = strtolower(parse_url($url, PHP_URL_HOST) ?? '');
+
+    // Busca la red por el final del dominio, así reconoce también
+    // es-la.facebook.com, m.youtube.com, ec.linkedin.com, etc.
+    $icono = 'enlace';
+    $nombre = $host;
+    foreach ($redes as $dominio => [$clave, $etiqueta]) {
+      if ($host === $dominio || str_ends_with($host, '.' . $dominio)) {
+        $icono = $clave;
+        $nombre = $etiqueta;
+        break;
+      }
+    }
+
+    $variables['redes'][] = [
+      'url' => $url,
+      'icono' => $icono,
+      'nombre' => $nombre,
+    ];
+  }
 }

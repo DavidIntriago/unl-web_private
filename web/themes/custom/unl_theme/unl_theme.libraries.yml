@@ -91,3 +91,13 @@ listado_carreras:
   dependencies:
     - core/drupal
     - core/once
+
+banner_botones:
+  css:
+    component:
+      components/banner_botones/banner_botones.css: {}
+
+redes_sociales:
+  css:
+    component:
+      components/redes_sociales/redes_sociales.css: {}

@@ -1,6 +1,6 @@
 uuid: 42035ab4-c067-409a-9b25-56c5f7001213
 langcode: es
-status: true
+status: false
 dependencies:
   content:
     - 'block_content:logos_footer:d870dd09-a4ba-4177-8928-d9e473851a38'
@@ -10,7 +10,7 @@ dependencies:
     - unl_theme
 id: unl_theme_logosfooter
 theme: unl_theme
-region: footer_logos
+region: branding
 weight: 0
 provider: null
 plugin: 'block_content:d870dd09-a4ba-4177-8928-d9e473851a38'

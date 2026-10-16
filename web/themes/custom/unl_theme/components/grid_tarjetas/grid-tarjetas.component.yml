@@ -16,6 +16,13 @@ props:
         - 'imagenes'
         - 'sustantiva'
         - 'autoridades'
+        - null
+    atencion:
+      type: [string, 'null']
+      title: 'Días de atención'
+    horarios:
+      type: [string, 'null']
+      title: 'Horarios de atención'
 slots:
   items:
     title: 'Elementos del Grid'

@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.storage.node.field_secciones_facultad
     - node.type.facultades
+    - paragraphs.paragraphs_type.banner_botones
     - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.listado_carreras
     - paragraphs.paragraphs_type.listado_noticias_destacadas
+    - paragraphs.paragraphs_type.redes_sociales
   module:
     - entity_reference_revisions
 id: node.facultades.field_secciones_facultad
@@ -25,7 +27,9 @@ settings:
   handler_settings:
     target_bundles:
       listado_carreras: listado_carreras
+      banner_botones: banner_botones
       grid_tarjetas: grid_tarjetas
+      redes_sociales: redes_sociales
       listado_noticias_destacadas: listado_noticias_destacadas
     negate: 0
     target_bundles_drag_drop:
@@ -35,6 +39,9 @@ settings:
       archivo:
         weight: 18
         enabled: false
+      banner_botones:
+        weight: 21
+        enabled: true
       columna_footer:
         weight: 23
         enabled: false
@@ -74,6 +81,9 @@ settings:
       recursos_descargables:
         weight: 28
         enabled: false
+      redes_sociales:
+        weight: 22
+        enabled: true
       repositorio_dinamico:
         weight: 29
         enabled: false

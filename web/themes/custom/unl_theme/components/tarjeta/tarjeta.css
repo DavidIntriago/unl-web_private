@@ -195,7 +195,7 @@
    VARIANTE INSTITUCIONAL (FACULTADES)
    Solo la imagen (ya trae el color, la sigla y el nombre) y el enlace.
    Cuadrada; el grid la pone de lado a lado de la pantalla.
-   ========================================================= */
+   ========================================================= */ 
 .tarjeta-institucional {
   position: relative;
   display: block;
@@ -754,5 +754,20 @@
   .tarjeta-autoridad-modal__cuerpo,
   .tarjeta-autoridad-modal:has(.tarjeta-autoridad-modal__foto) .tarjeta-autoridad-modal__cuerpo {
     padding: var(--espacio-6);
+  }
+}
+
+/* Dentro de una facultad: cuadrada, con texto un poco más compacto */
+@media (min-width: 769px) {
+  [data-facultad] .tarjeta-autoridad {
+    aspect-ratio: 1 / 1;
+  }
+
+  [data-facultad] .tarjeta-autoridad__overlay {
+    padding: var(--espacio-4);
+  }
+
+  [data-facultad] .tarjeta-autoridad__nombre {
+    font-size: var(--texto-base);
   }
 }

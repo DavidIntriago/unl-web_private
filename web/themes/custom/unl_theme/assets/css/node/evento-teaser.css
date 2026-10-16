@@ -64,6 +64,25 @@
 }
 
 /* =========================================================
+   COLOR DE LA FACULTAD AL PASAR EL MOUSE
+   La línea de la fecha es roja; al pasar el mouse toma el color
+   de la facultad del evento (data-facultad → --color-facultad).
+   ========================================================= */
+.evento-teaser__fecha {
+  transition: border-bottom-color var(--duracion-normal) ease;
+}
+
+.evento-teaser:is(:hover, :focus-within) .evento-teaser__fecha {
+  border-bottom-color: var(--color-facultad, var(--color-primario));
+}
+
+/* Eventos sin facultad (CAS, institucionales): siempre rojo,
+   aunque estén dentro de la página de una facultad */
+.evento-teaser:not([data-facultad]) {
+  --color-facultad: var(--color-primario);
+}
+
+/* =========================================================
    CONTENIDO
    ========================================================= */
 .evento-teaser__contenido {

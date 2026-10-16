@@ -1,0 +1,25 @@
+uuid: 155e99fc-dac1-47cb-88e8-8ef47ee628a5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.redes_sociales.field_redes
+    - paragraphs.paragraphs_type.redes_sociales
+  module:
+    - link
+id: paragraph.redes_sociales.default
+targetEntityType: paragraph
+bundle: redes_sociales
+mode: default
+content:
+  field_redes:
+    type: link_default
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -81,27 +81,21 @@
 
 /* =========================================================
    VARIANTE FACULTAD
-   Cuadros iguales en una sola fila, de lado a lado de la pantalla.
+   Cuadros iguales en una sola fila, de lado a lado de la pantalla,
+   pegados entre sí (sin espacio).
    En todas las pantallas son 6 en fila: en celular la franja
    simplemente se hace más pequeña.
    ========================================================= */
 .grid-tarjetas-container--facultad {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: var(--espacio-1);
+  gap: 0;
   width: 100%;
   margin: 0;
 }
 
 .grid-tarjetas-container--facultad > * {
   min-width: 0;
-}
-
-/* En celular la franja solo se achica: siguen las 6 en una fila */
-@media (max-width: 600px) {
-  .grid-tarjetas-container--facultad {
-    gap: 2px;
-  }
 }
 
 /* =========================================================
@@ -253,10 +247,12 @@
 
 /* =========================================================
    VARIANTE IMÁGENES — 5 por fila
+   Igual que facultades: siempre en una sola fila; en pantallas
+   pequeñas las tarjetas solo se achican, no bajan a otra fila.
    ========================================================= */
 .grid-tarjetas-container--imagenes {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   gap: var(--espacio-6);
   max-width: var(--contenedor-ancho);
@@ -264,27 +260,21 @@
   padding: 0 var(--espacio-6);
 }
 
-.grid-tarjetas-container--imagenes > * {
+.grid-tarjetas-container--imagenes > *:not(.grid-tarjetas__btn-ver-mas-wrapper) {
   flex: 0 1 calc((100% - 4 * var(--espacio-6)) / 5);
-  min-width: 11.25rem;
+  min-width: 0;
   max-width: 18.75rem;
 }
 
 .grid-tarjetas__acciones-top {
   display: flex;
-  justify-content: flex-end; 
-  max-width: var(--contenedor-ancho); 
-  margin: 0 auto; 
-  padding: 0 var(--espacio-6); 
+  justify-content: flex-end;
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: 0 var(--espacio-6);
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: var(--espacio-4); 
-}
-
-@media (max-width: 768px) {
-  .grid-tarjetas__acciones-top {
-    padding: 0 var(--espacio-4);
-  }
+  margin-bottom: var(--espacio-4);
 }
 
 .grid-tarjetas__btn-ver-mas {
@@ -320,21 +310,24 @@
   transform: none;
 }
 
-/* Responsivo */
+/* Responsivo: siguen en una fila, con menos espacio entre ellas */
 @media (max-width: 768px) {
   .grid-tarjetas-container--imagenes {
-    gap: var(--espacio-4);
+    gap: var(--espacio-2);
     padding: 0 var(--espacio-4);
   }
 
   .grid-tarjetas-container--imagenes > *:not(.grid-tarjetas__btn-ver-mas-wrapper) {
-    flex: 1 1 45%;
-    min-width: 0;
+    flex: 1 1 0;
     max-width: none;
   }
-  
+
+  .grid-tarjetas__acciones-top {
+    padding: 0 var(--espacio-4);
+  }
+
   .grid-tarjetas__btn-ver-mas-wrapper {
-    justify-content: center; 
+    justify-content: center;
   }
 }
 
@@ -358,4 +351,62 @@
     justify-content: center;
     gap: var(--espacio-5);
   }
+}
+
+/* Dentro de una facultad: tarjetas cuadradas de 230 × 230,
+   alineadas a la izquierda con el título de la sección */
+@media (min-width: 769px) {
+  [data-facultad] .grid-tarjetas-container--autoridades {
+    grid-template-columns: repeat(auto-fill, 14.375rem);
+    justify-content: start;
+    gap: var(--espacio-4);
+  }
+}
+
+/* =========================================================
+   HORARIO DE ATENCIÓN (autoridades, opcional)
+   Fila debajo de las tarjetas con ícono de calendario y de reloj.
+   Los íconos son máscaras: la forma sale del SVG y el color del CSS.
+   ========================================================= */
+.grid-tarjetas__horario {
+  --icono-calendario: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
+  --icono-reloj: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2) var(--espacio-8);
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: var(--espacio-6) auto 0;
+  font-size: var(--texto-sm);
+  color: var(--color-texto-cuerpo);
+}
+
+.grid-tarjetas__horario-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  margin: 0;
+}
+
+.grid-tarjetas__horario-item strong {
+  font-weight: var(--peso-seminegrita);
+  color: var(--color-texto);
+}
+
+.grid-tarjetas__horario-item::before {
+  content: "";
+  flex-shrink: 0;
+  width: var(--icono-sm);
+  height: var(--icono-sm);
+  background-color: var(--color-primario);
+  -webkit-mask: var(--icono) center / contain no-repeat;
+  mask: var(--icono) center / contain no-repeat;
+}
+
+.grid-tarjetas__horario-item--atencion {
+  --icono: var(--icono-calendario);
+}
+
+.grid-tarjetas__horario-item--horarios {
+  --icono: var(--icono-reloj);
 }

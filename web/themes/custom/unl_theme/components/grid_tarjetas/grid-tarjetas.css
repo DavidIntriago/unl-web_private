@@ -58,6 +58,13 @@
 .grid-tarjetas-container--autoridades .field__item {
   display: contents;
 }
+.grid-tarjetas-container--marcas .field,
+.grid-tarjetas-container--marcas .field__items,
+.grid-tarjetas-container--default .field,
+.grid-tarjetas-container--default .field__items,
+.grid-tarjetas-container--default .field__item {
+  display: contents;
+}
 
 /* =========================================================
    VARIANTE SUSTANTIVA
@@ -409,4 +416,68 @@
 
 .grid-tarjetas__horario-item--horarios {
   --icono: var(--icono-reloj);
+}
+
+/* =========================================================
+   VARIANTE MARCAS (CARRUSEL) 
+   ========================================================= */
+.grid-tarjetas-container--marcas {
+  position: relative;
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+.grid-tarjetas-container--marcas .carrusel-sitios-track {
+  align-items: center; 
+  justify-content: center; 
+  justify-content: safe center;   
+  gap: var(--espacio-10);
+  min-width: 100%;
+}
+
+.grid-tarjetas-container--marcas .carrusel-sitios-track > * {
+  flex: 0 0 calc((100% - 5 * var(--espacio-10)) / 6);
+  min-width: 0;
+}
+
+@media (min-width: 769px) and (max-width: 1300px) {
+  .grid-tarjetas-container--marcas .carrusel-sitios-track > * {
+    flex: 0 0 calc((100% - 3 * var(--espacio-10)) / 4);
+  }
+}
+@media (max-width: 768px) {
+  .grid-tarjetas-container--marcas {
+    padding: 0 var(--espacio-4);
+  }
+  .grid-tarjetas-container--marcas .carrusel-sitios-track {
+    gap: var(--espacio-6);
+  }
+  .grid-tarjetas-container--marcas .carrusel-sitios-track > * {
+    flex: 0 0 calc((100% - 2 * var(--espacio-6)) / 3);
+  }
+}
+
+/* =========================================================
+   VARIANTE DEFAULT (Recursos) — 4 por fila
+   ========================================================= */
+.grid-tarjetas-container--default {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-6);
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: 0 var(--espacio-6);
+}
+
+@media (min-width: 600px) {
+  .grid-tarjetas-container--default {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-tarjetas-container--default {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }

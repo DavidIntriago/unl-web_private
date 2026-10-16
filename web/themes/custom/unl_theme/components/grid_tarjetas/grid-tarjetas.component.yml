@@ -16,7 +16,8 @@ props:
         - 'imagenes'
         - 'sustantiva'
         - 'autoridades'
-        - null
+        - 'marca'
+        - 'default'
     atencion:
       type: [string, 'null']
       title: 'Días de atención'

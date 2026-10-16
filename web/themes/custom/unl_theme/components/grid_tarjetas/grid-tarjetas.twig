@@ -31,10 +31,14 @@
             ? 'grid-tarjetas-container--imagenes'
             : (variante == 'autoridades'
               ? 'grid-tarjetas-container--autoridades'
-              : ''))))) %}
+              : (variante == 'marca'
+                ? 'grid-tarjetas-container--marcas'
+                  : (variante == 'default'
+                    ? 'grid-tarjetas-container--default'
+                    : ''))))))) %}
 
   <section class="grid-tarjetas-container {{ modificador_grid }}">
-    {% if variante == 'sitios_interes' %}
+    {% if variante == 'sitios_interes' or variante == 'marcas' or variante == 'marca' %}
       <button class="carrusel-sitios-flecha prev" aria-label="Anterior">&#10094;</button>
       <div class="carrusel-sitios-viewport">
         <div class="carrusel-sitios-track">
@@ -42,8 +46,7 @@
 
     {% block items %}
     {% endblock %}
-    {% if variante == 'sitios_interes' %}
-        </div>
+    {% if variante == 'sitios_interes' or variante == 'marcas' or variante == 'marca' %}        </div>
       </div>
       <button class="carrusel-sitios-flecha next" aria-label="Siguiente">&#10095;</button>
     {% endif %}

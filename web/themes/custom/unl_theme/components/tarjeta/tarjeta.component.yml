@@ -31,3 +31,5 @@ props:
         - 'imagenes'
         - 'sustantiva'
         - 'autoridades'
+        - 'marca'
+        - 'default'

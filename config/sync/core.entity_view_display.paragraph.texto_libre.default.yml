@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.texto_libre.field_contenido
+    - field.field.paragraph.texto_libre.field_titulo
     - paragraphs.paragraphs_type.texto_libre
   module:
     - text
@@ -19,4 +20,14 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+  field_titulo:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

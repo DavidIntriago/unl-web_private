@@ -1,5 +1,20 @@
-<div class="unl-texto-libre">
+<section class="unl-texto-libre">
   <div class="unl-texto-libre__container">
-    {{ texto_html }}
+    
+    {% if titulo %}
+      <div class="unl-texto-libre__header">
+        <h2 class="unl-texto-libre__title">
+          {{ titulo }}
+        </h2>
+        <div class="unl-texto-libre__divider"></div>
+      </div>
+    {% endif %}
+
+    {% set clase_contenedor = (formato == 'full_html') ? 'unl-texto-libre__crudo' : 'unl-texto-libre__cuerpo' %}
+
+    <div class="{{ clase_contenedor }}">
+      {{ texto_html }}
+    </div>
+
   </div>
-</div>
+</section>

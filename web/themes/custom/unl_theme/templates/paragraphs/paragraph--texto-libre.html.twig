@@ -1,5 +1,10 @@
+{% set titulo_limpio = content.field_titulo %}
 {% set contenido_limpio = content.field_contenido %}
 
+{% set formato_texto = paragraph.field_contenido.0.format %}
+
 {{ include('unl_theme:texto_libre', {
-  texto_html: contenido_limpio
+  titulo: titulo_limpio,
+  texto_html: contenido_limpio,
+  formato: formato_texto
 }) }}

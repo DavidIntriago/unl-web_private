@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.recursos_descargables.field_archivos
+    - field.field.paragraph.recursos_descargables.field_titulo
     - paragraphs.paragraphs_type.recursos_descargables
 id: paragraph.recursos_descargables.default
 targetEntityType: paragraph
@@ -12,11 +13,21 @@ mode: default
 content:
   field_archivos:
     type: entity_reference_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+  field_titulo:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,3 +1,14 @@
 name: 'Texto Libre'
-description: 'Componente para parrafo libre en micrositios'
-status: stable
+description: 'Bloque de contenido o codigo HTML.'
+props:
+  type: object
+  properties:
+    titulo:
+      type: string
+      title: 'Título del Bloque'
+    texto_html:
+      type: string
+      title: 'Contenido'
+    formato:
+      type: string
+      title: 'Formato de Texto'

@@ -18,24 +18,12 @@
       </div>
     </div>
   {% endif %}
-    
-  {% set modificador_grid = variante == 'sustantiva'
-    ? 'grid-tarjetas-container--sustantiva'
-    : (variante == 'facultad'
-      ? 'grid-tarjetas-container--facultad'
-      : (variante == 'contador'
-        ? 'grid-tarjetas-container--contador'
-        : (variante == 'sitios_interes'
-          ? 'grid-tarjetas-container--sitios_interes'
-          : (variante == 'imagenes'
-            ? 'grid-tarjetas-container--imagenes'
-            : (variante == 'autoridades'
-              ? 'grid-tarjetas-container--autoridades'
-              : (variante == 'marca'
-                ? 'grid-tarjetas-container--marcas'
-                  : (variante == 'default'
-                    ? 'grid-tarjetas-container--default'
-                    : ''))))))) %}
+
+  {# Clase del contenedor: grid-tarjetas-container--<variante>.
+     La única excepción es "marca", cuya clase es "marcas". #}
+  {% set modificador_grid = variante
+    ? 'grid-tarjetas-container--' ~ (variante == 'marca' ? 'marcas' : variante)
+    : '' %}
 
   <section class="grid-tarjetas-container {{ modificador_grid }}">
     {% if variante == 'sitios_interes' or variante == 'marcas' or variante == 'marca' %}
@@ -46,25 +34,12 @@
 
     {% block items %}
     {% endblock %}
-    {% if variante == 'sitios_interes' or variante == 'marcas' or variante == 'marca' %}        </div>
+
+    {% if variante == 'sitios_interes' or variante == 'marcas' or variante == 'marca' %}
+        </div>
       </div>
       <button class="carrusel-sitios-flecha next" aria-label="Siguiente">&#10095;</button>
     {% endif %}
   </section>
-    {# Horario de atención: solo en autoridades y solo si el editor lo llenó #}
-  {% if variante == 'autoridades' and (atencion or horarios) %}
-    <div class="grid-tarjetas__horario">
-      {% if atencion %}
-        <p class="grid-tarjetas__horario-item grid-tarjetas__horario-item--atencion">
-          <strong>Atención:</strong> {{ atencion }}
-        </p>
-      {% endif %}
-      {% if horarios %}
-        <p class="grid-tarjetas__horario-item grid-tarjetas__horario-item--horarios">
-          <strong>Horarios:</strong> {{ horarios }}
-        </p>
-      {% endif %}
-    </div>
-  {% endif %}
 
 </div>

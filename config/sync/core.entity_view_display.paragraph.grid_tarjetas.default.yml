@@ -3,9 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.grid_tarjetas.field_atencion
     - field.field.paragraph.grid_tarjetas.field_enlace
-    - field.field.paragraph.grid_tarjetas.field_horarios
     - field.field.paragraph.grid_tarjetas.field_tarjetas
     - field.field.paragraph.grid_tarjetas.field_titulo_seccion
     - field.field.paragraph.grid_tarjetas.field_variante
@@ -19,15 +17,6 @@ targetEntityType: paragraph
 bundle: grid_tarjetas
 mode: default
 content:
-  field_atencion:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-      link_rel: canonical
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_enlace:
     type: link
     label: hidden
@@ -39,15 +28,6 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 2
-    region: content
-  field_horarios:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-      link_rel: canonical
-    third_party_settings: {  }
-    weight: 4
     region: content
   field_tarjetas:
     type: entity_reference_revisions_entity_view

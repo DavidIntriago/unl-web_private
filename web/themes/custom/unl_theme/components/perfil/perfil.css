@@ -1,0 +1,514 @@
+/**
+ * PERFIL — tarjeta de una persona.
+ * Estilos: autoridades (igual que la antigua variante de grid tarjetas)
+ * e info abajo (foto arriba, datos debajo, sin Ver perfil).
+ * El tamaño dentro del grid lo decide grid-perfiles.css.
+ */
+
+/* =========================================================
+   PIEZAS COMPARTIDAS
+   ========================================================= */
+
+/* Drupal mete position: relative en .contextual-region y rompe la foto */
+.perfil__imagen .contextual-region {
+  position: static !important;
+}
+
+/* =========================================================
+   ESTILO AUTORIDADES
+   Foto con un degradado oscuro abajo; nombre, cargo y "Ver perfil"
+   siempre visibles encima.
+   ========================================================= */
+.perfil--completo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 10 / 11;
+  overflow: hidden;
+  border-radius: var(--radio-md);
+  background-color: var(--color-oscuro);
+  isolation: isolate;
+}
+
+.perfil--completo .perfil__imagen {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.perfil--completo .perfil__imagen,
+.perfil--completo .perfil__imagen div {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.perfil--completo .perfil__imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Encuadre un poco hacia arriba para no cortar las caras */
+  object-position: center 20%;
+  transition: transform var(--duracion-lenta) ease;
+}
+
+.perfil--completo:is(:hover, :focus-within) .perfil__imagen img {
+  transform: scale(1.04);
+}
+
+/* Degradado oscuro abajo para que el texto blanco se lea sobre cualquier foto */
+.perfil--completo .perfil__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: var(--espacio-5);
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 0.75) 0%,
+    rgb(0 0 0 / 0.35) 35%,
+    transparent 60%
+  );
+}
+
+.perfil--completo .perfil__nombre {
+  margin: 0;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-negrita);
+  line-height: var(--interlineado-ajustado);
+  text-align: left;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
+}
+
+.perfil--completo .perfil__cargo {
+  margin: var(--espacio-1) 0 0;
+  color: var(--texto-sobre-primario-suave);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-normal);
+  text-align: left;
+}
+
+.perfil__cargo * {
+  margin: 0;
+  color: inherit;
+}
+
+/* "Ver perfil": enlace pequeño con triángulo, como "Ver todas".
+   Va por encima del enlace estirado para que se pueda hacer clic */
+.perfil__ver-mas {
+  position: relative;
+  z-index: calc(var(--z-dropdown) + 1);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  margin: var(--espacio-3) 0 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--texto-sobre-primario);
+  font: inherit;
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-medio);
+  cursor: pointer;
+}
+
+.perfil__ver-mas::before {
+  content: "";
+  border-left: 0.3125rem solid color-mix(in srgb, var(--color-primario) 55%, white);
+  border-block: 0.21875rem solid transparent;
+}
+
+.perfil__ver-mas:hover {
+  text-decoration: underline;
+}
+
+/* Enlace estirado: toda la tarjeta es clickeable */
+.perfil__enlace {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+.perfil__enlace a {
+  color: transparent;
+  font-size: 0;
+}
+
+.perfil__enlace a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-dropdown);
+  border-radius: inherit;
+}
+
+.perfil__enlace a:focus-visible {
+  outline: none;
+}
+
+.perfil__enlace a:focus-visible::after {
+  outline: 3px solid var(--color-superficie);
+  outline-offset: -3px;
+}
+
+/* ---------- Celular: como era originalmente ----------
+   Foto a la izquierda, datos a la derecha sobre fondo blanco,
+   con borde rojo. Sin degradado sobre la foto. */
+@media (max-width: 768px) {
+  .perfil--completo {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: auto;
+    aspect-ratio: unset;
+    border: 1px solid var(--color-primario);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie);
+  }
+
+  .perfil--completo .perfil__imagen {
+    position: relative;
+    inset: unset;
+    flex: 0 0 6.875rem;
+    width: 6.875rem;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .perfil--completo .perfil__overlay {
+    position: relative;
+    inset: unset;
+    flex: 1;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--espacio-4);
+    background: transparent;
+  }
+
+  .perfil--completo .perfil__nombre,
+  .perfil--completo .perfil__cargo {
+    color: var(--color-texto);
+    text-align: left;
+    text-shadow: none;
+  }
+
+  .perfil--completo .perfil__nombre {
+    font-size: var(--texto-sm);
+  }
+
+  .perfil--completo .perfil__cargo {
+    font-size: var(--texto-xs);
+  }
+
+  .perfil__ver-mas {
+    margin: var(--espacio-1) 0 0;
+    color: var(--color-primario);
+  }
+
+  .perfil__ver-mas::before {
+    border-left-color: var(--color-primario);
+  }
+
+  .perfil__enlace a:focus-visible::after {
+    outline-color: var(--color-primario);
+  }
+}
+
+/* Dentro de una facultad: cuadrada, con texto un poco más compacto */
+@media (min-width: 769px) {
+  [data-facultad] .perfil--completo {
+    aspect-ratio: 1 / 1;
+  }
+
+  [data-facultad] .perfil--completo .perfil__overlay {
+    padding: var(--espacio-4);
+  }
+
+  [data-facultad] .perfil--completo .perfil__nombre {
+    font-size: var(--texto-base);
+  }
+}
+
+/* =========================================================
+   ESTILO INFO ABAJO
+   Tarjeta blanca redondeada: foto arriba, nombre pequeño,
+   cargo en rojo y resumen en gris. Sin hover ni enlace.
+   Igual en celular (no se pone horizontal).
+   ========================================================= */
+.perfil--corto {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radio-xl);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-md);
+}
+
+.perfil--corto .perfil__imagen {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.perfil--corto .perfil__imagen :is(.field, .field__items, .field__item, article, picture) {
+  display: contents;
+}
+
+.perfil--corto .perfil__imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.perfil--corto .perfil__cuerpo {
+  flex: 1;
+  padding: var(--espacio-5);
+  text-align: left;
+}
+
+.perfil--corto .perfil__nombre {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-normal);
+  line-height: var(--interlineado-ajustado);
+}
+
+.perfil--corto .perfil__cargo {
+  margin: var(--espacio-2) 0 0;
+  color: var(--color-primario);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-seminegrita);
+  line-height: var(--interlineado-ajustado);
+}
+
+.perfil--corto .perfil__resumen {
+  margin: var(--espacio-4) 0 0;
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-sm);
+  line-height: var(--interlineado-lectura);
+}
+
+/* Es texto con formato: los párrafos del editor no suman margen extra */
+.perfil--corto .perfil__resumen > * {
+  margin: 0;
+}
+
+.perfil--corto .perfil__resumen > * + * {
+  margin-top: var(--espacio-2);
+}
+
+.perfil--corto .perfil__resumen a {
+  color: var(--color-primario);
+}
+
+@media (max-width: 768px) {
+  .perfil--corto .perfil__cuerpo {
+    padding: var(--espacio-5);
+  }
+}
+
+/* =========================================================
+   PANEL LATERAL "VER PERFIL" (estilo autoridades)
+   Lo arma perfil.js. Entra desde la derecha; cabecera con
+   degradado rojo, foto que "baja" sobre el contenido,
+   nombre y cargo en blanco, y la información debajo.
+   ========================================================= */
+.perfil-modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--overlay-oscuro);
+  opacity: 0;
+  transition: opacity var(--duracion-normal) ease;
+}
+
+.perfil-modal-fondo.is-open {
+  opacity: 1;
+}
+
+.perfil-modal {
+  position: relative;
+  width: min(100%, 45rem);
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: var(--color-superficie);
+  color: var(--color-texto-cuerpo);
+  box-shadow: var(--sombra-lg);
+  transform: translateX(100%);
+  transition: transform 0.4s var(--curva-salida);
+}
+
+.perfil-modal-fondo.is-open .perfil-modal {
+  transform: translateX(0);
+}
+
+/* ---------- Botón cerrar ---------- */
+.perfil-modal__cerrar {
+  position: absolute;
+  top: var(--espacio-4);
+  right: var(--espacio-4);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--boton-icono);
+  height: var(--boton-icono);
+  border: none;
+  border-radius: var(--radio-circulo);
+  background: transparent;
+  color: var(--texto-sobre-primario);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color var(--duracion-rapida) ease,
+    transform var(--duracion-rapida) ease;
+}
+
+.perfil-modal__cerrar:hover,
+.perfil-modal__cerrar:focus-visible {
+  background-color: var(--blanco-hover);
+  transform: rotate(90deg);
+}
+
+.perfil-modal__cerrar:focus-visible {
+  outline: 2px solid var(--color-superficie);
+  outline-offset: 2px;
+}
+
+/* ---------- Cabecera con degradado rojo ---------- */
+.perfil-modal__cabecera {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--espacio-6);
+  min-height: 15rem;
+  padding: var(--espacio-12) var(--espacio-10) 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primario) 0%,
+    var(--color-primario-oscuro) 55%,
+    color-mix(in srgb, var(--color-primario) 35%, black) 100%
+  );
+  color: var(--texto-sobre-primario);
+}
+
+/* La foto sobresale hacia abajo, sobre el contenido blanco */
+.perfil-modal__foto {
+  flex-shrink: 0;
+  width: 11rem;
+  aspect-ratio: 9 / 10;
+  margin-bottom: -4rem;
+  object-fit: cover;
+  object-position: center 20%;
+  box-shadow: var(--sombra-md);
+}
+
+.perfil-modal__datos {
+  padding-bottom: var(--espacio-8);
+}
+
+.perfil-modal__nombre {
+  margin: 0;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-medio);
+  line-height: var(--interlineado-ajustado);
+}
+
+.perfil-modal__cargo {
+  margin: var(--espacio-1) 0 0;
+  color: var(--texto-sobre-primario-suave);
+  font-size: var(--texto-sm);
+}
+
+/* ---------- Información ---------- */
+.perfil-modal__cuerpo {
+  padding: var(--espacio-8) var(--espacio-10) var(--espacio-10);
+  line-height: var(--interlineado-lectura);
+}
+
+/* Si hay foto, se deja espacio para la parte que sobresale */
+.perfil-modal:has(.perfil-modal__foto) .perfil-modal__cuerpo {
+  padding-top: calc(4rem + var(--espacio-8));
+}
+
+.perfil-modal__cuerpo :is(h2, h3, h4, h5) {
+  margin: var(--espacio-6) 0 var(--espacio-3);
+  color: var(--color-texto);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-medio);
+  text-transform: uppercase;
+}
+
+.perfil-modal__cuerpo > :first-child {
+  margin-top: 0;
+}
+
+.perfil-modal__cuerpo ul {
+  padding-left: var(--espacio-5);
+}
+
+.perfil-modal__cuerpo li {
+  margin-bottom: var(--espacio-2);
+}
+
+/* ---------- Redes sociales ---------- */
+.perfil-modal__redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-6);
+}
+
+.perfil-modal__red-icono {
+  display: inline-flex;
+  width: var(--icono-md);
+  height: var(--icono-md);
+  color: var(--color-primario);
+  transition: opacity var(--duracion-rapida) ease;
+}
+
+.perfil-modal__red-icono:hover {
+  opacity: 0.7;
+}
+
+.perfil-modal__red-icono svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Celular: foto arriba, datos debajo ---------- */
+@media (max-width: 600px) {
+  .perfil-modal__cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espacio-4);
+    padding: var(--espacio-12) var(--espacio-6) 0;
+  }
+
+  .perfil-modal__foto {
+    width: 8rem;
+    margin-bottom: 0;
+    order: -1;
+  }
+
+  .perfil-modal__datos {
+    padding-bottom: var(--espacio-6);
+  }
+
+  .perfil-modal__cuerpo,
+  .perfil-modal:has(.perfil-modal__foto) .perfil-modal__cuerpo {
+    padding: var(--espacio-6);
+  }
+}

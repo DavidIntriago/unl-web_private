@@ -1,0 +1,19 @@
+uuid: bf59d9cd-23cb-4c02-88ee-ea545fe23de8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_descripcion
+    - paragraphs.paragraphs_type.perfil
+id: paragraph.perfil.field_descripcion
+field_name: field_descripcion
+entity_type: paragraph
+bundle: perfil
+label: Cargo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

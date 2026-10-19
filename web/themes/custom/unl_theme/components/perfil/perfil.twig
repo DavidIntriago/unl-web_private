@@ -1,0 +1,75 @@
+{#
+  estilo: perfil_extendido (Perfil Completo) | perfil_corto (Perfil Corto)
+#}
+{% if estilo == 'perfil_corto' %}
+
+  {# ------Perfil Corto: foto arriba, nombre, cargo e información adicional
+     debajo (a la vista, no en el panel). Sin Ver perfil y sin enlace. #}
+
+  <article class="perfil perfil--corto">
+
+    {% if imagen %}
+      <div class="perfil__imagen">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    <div class="perfil__cuerpo">
+      {% if nombre %}
+        <h3 class="perfil__nombre">{{ nombre }}</h3>
+      {% endif %}
+
+      {% if cargo %}
+        <div class="perfil__cargo">{{ cargo }}</div>
+      {% endif %}
+
+      {% if informacion_adicional %}
+        <div class="perfil__resumen">{{ informacion_adicional|raw }}</div>
+      {% endif %}
+    </div>
+
+  </article>
+
+{% else %}
+
+  {# ------Perfil Completo (antes autoridades): foto + degradado con nombre,
+     cargo y botón "Ver perfil completo" (abre el panel lateral) #}
+
+  <article class="perfil perfil--completo">
+
+    {% if imagen %}
+      <div class="perfil__imagen">
+        {{ imagen }}
+      </div>
+    {% endif %}
+
+    <div class="perfil__overlay">
+      <div class="perfil__marco">
+        {% if nombre %}
+          <h3 class="perfil__nombre">{{ nombre }}</h3>
+        {% endif %}
+
+        {% if cargo %}
+          <div class="perfil__cargo">{{ cargo }}</div>
+        {% endif %}
+
+        {% if informacion_adicional %}
+          <div class="perfil__info" data-perfil-info hidden>
+            {{ informacion_adicional|raw }}
+          </div>
+          <button type="button" class="perfil__ver-mas" data-perfil-toggle>
+            Ver perfil completo
+          </button>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if enlace %}
+      <div class="perfil__enlace">
+        {{ enlace }}
+      </div>
+    {% endif %}
+
+  </article>
+
+{% endif %}

@@ -1,0 +1,30 @@
+name: 'Perfil'
+description: 'Tarjeta de una persona. Perfil Completo (con panel Ver perfil) o Perfil Corto (info abajo).'
+props:
+  type: object
+  properties:
+    nombre:
+      type: [string, 'null']
+      title: 'Nombre'
+    cargo:
+      type: [string, 'null']
+      title: 'Cargo'
+    imagen:
+      type: [string, 'null', 'object']
+      title: 'Foto'
+    enlace:
+      type: [string, 'null', 'object']
+      title: 'Enlace'
+    informacion_adicional:
+      type: [string, 'null']
+      title: 'Información adicional: en Perfil Completo va en el panel Ver perfil; en Perfil Corto se muestra debajo del cargo'
+    estilo:
+      type: [string, 'null']
+      title: 'Estilo (lo hereda del Grid Perfiles)'
+      enum:
+        - 'perfil_extendido'
+        - 'perfil_corto'
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once

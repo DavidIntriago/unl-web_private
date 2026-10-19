@@ -27,9 +27,6 @@ settings:
       value: sustantiva
       label: Sustantiva
     -
-      value: autoridades
-      label: Autoridades
-    -
       value: marca
       label: Marcas
     -

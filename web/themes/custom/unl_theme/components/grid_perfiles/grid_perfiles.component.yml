@@ -1,0 +1,23 @@
+name: 'Grid Perfiles'
+description: 'Cuadrícula de personas (autoridades, miembros de comité, etc.) con selector de estilo.'
+props:
+  type: object
+  properties:
+    titulo:
+      type: [string, 'null']
+      title: 'Título de la Sección'
+    estilo:
+      type: [string, 'null']
+      title: 'Estilo de las tarjetas'
+      enum:
+        - 'perfil_extendido'
+        - 'perfil_corto'
+    atencion:
+      type: [string, 'null']
+      title: 'Días de atención'
+    horarios:
+      type: [string, 'null']
+      title: 'Horarios de atención'
+slots:
+  items:
+    title: 'Perfiles'

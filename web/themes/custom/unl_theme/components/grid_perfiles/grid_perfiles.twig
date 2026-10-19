@@ -1,0 +1,38 @@
+{#
+  Grid Perfiles
+  estilo (valores del campo field_estilo):
+    perfil_extendido → Perfil Completo: foto con degradado y "Ver perfil"
+    perfil_corto     → Perfil Corto: foto arriba, datos abajo, sin "Ver perfil"
+#}
+{% set modo = estilo == 'perfil_corto' ? 'corto' : 'completo' %}
+
+<div class="grid-perfiles grid-perfiles--{{ modo }}">
+
+  {% if titulo %}
+    <div class="grid-perfiles__header">
+      <h2 class="grid-perfiles__titulo">{{ titulo }}</h2>
+    </div>
+  {% endif %}
+
+  <section class="grid-perfiles__grid">
+    {% block items %}
+    {% endblock %}
+  </section>
+
+  {# Horario de atención: en cualquier estilo, solo si el editor lo llenó #}
+  {% if atencion or horarios %}
+    <div class="grid-perfiles__horario">
+      {% if atencion %}
+        <p class="grid-perfiles__horario-item grid-perfiles__horario-item--atencion">
+          <strong>Atención:</strong> {{ atencion }}
+        </p>
+      {% endif %}
+      {% if horarios %}
+        <p class="grid-perfiles__horario-item grid-perfiles__horario-item--horarios">
+          <strong>Horarios:</strong> {{ horarios }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+</div>

@@ -1,15 +1,15 @@
-uuid: 84b31bd5-91cd-41a4-8d56-2bbc92f4f75f
+uuid: 868d314e-a06e-452c-ad9e-e2f886ff99df
 langcode: es
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_atencion
-    - paragraphs.paragraphs_type.grid_tarjetas
-id: paragraph.grid_tarjetas.field_atencion
+    - paragraphs.paragraphs_type.grid_perfiles
+id: paragraph.grid_perfiles.field_atencion
 field_name: field_atencion
 entity_type: paragraph
-bundle: grid_tarjetas
-label: Atención
+bundle: grid_perfiles
+label: 'Días de atención'
 description: ''
 required: false
 translatable: false

@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_secciones_facultad
     - node.type.facultades
     - paragraphs.paragraphs_type.banner_botones
+    - paragraphs.paragraphs_type.grid_perfiles
     - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.listado_carreras
     - paragraphs.paragraphs_type.listado_noticias_destacadas
@@ -30,6 +31,7 @@ settings:
       banner_botones: banner_botones
       grid_tarjetas: grid_tarjetas
       redes_sociales: redes_sociales
+      grid_perfiles: grid_perfiles
       listado_noticias_destacadas: listado_noticias_destacadas
     negate: 0
     target_bundles_drag_drop:
@@ -54,6 +56,9 @@ settings:
       diapositiva_hero:
         weight: 20
         enabled: false
+      grid_perfiles:
+        weight: 24
+        enabled: true
       grid_tarjetas:
         weight: 21
         enabled: true
@@ -77,6 +82,9 @@ settings:
         enabled: false
       notificacion_flotante:
         weight: 27
+        enabled: false
+      perfil:
+        weight: 40
         enabled: false
       recursos_descargables:
         weight: 28

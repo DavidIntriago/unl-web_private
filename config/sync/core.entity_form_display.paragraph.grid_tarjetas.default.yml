@@ -3,9 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.grid_tarjetas.field_atencion
     - field.field.paragraph.grid_tarjetas.field_enlace
-    - field.field.paragraph.grid_tarjetas.field_horarios
     - field.field.paragraph.grid_tarjetas.field_tarjetas
     - field.field.paragraph.grid_tarjetas.field_titulo_seccion
     - field.field.paragraph.grid_tarjetas.field_variante
@@ -18,14 +16,6 @@ targetEntityType: paragraph
 bundle: grid_tarjetas
 mode: default
 content:
-  field_atencion:
-    type: string_textfield
-    weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_enlace:
     type: link_default
     weight: 2
@@ -33,14 +23,6 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  field_horarios:
-    type: string_textfield
-    weight: 4
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_tarjetas:
     type: paragraphs

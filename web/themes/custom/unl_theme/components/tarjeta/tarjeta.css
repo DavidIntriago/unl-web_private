@@ -1,7 +1,8 @@
 /**
  * TARJETA — todas las variantes:
  * sustantiva, institucional (facultades), contador, sitios de interés,
- * imágenes y autoridades (con modal).
+ * imágenes, marcas y default.
+ * (Las autoridades ahora están en el componente perfil.)
  *
  * El tamaño de cada tarjeta dentro de un grid lo decide grid-tarjetas.css.
  * Aquí solo va cómo se ve la tarjeta.
@@ -38,8 +39,7 @@
 .tarjeta-sustantiva__enlace,
 .tarjeta-institucional__enlace,
 .tarjeta-sitio-interes__enlace,
-.tarjeta-imagen__enlace,
-.tarjeta-autoridad__enlace {
+.tarjeta-imagen__enlace {
   margin: 0;
   padding: 0;
   height: 0;
@@ -48,8 +48,7 @@
 .tarjeta-sustantiva__enlace a,
 .tarjeta-institucional__enlace a,
 .tarjeta-sitio-interes__enlace a,
-.tarjeta-imagen__enlace a,
-.tarjeta-autoridad__enlace a {
+.tarjeta-imagen__enlace a {
   color: transparent;
   font-size: 0;
 }
@@ -57,8 +56,7 @@
 .tarjeta-sustantiva__enlace a::after,
 .tarjeta-institucional__enlace a::after,
 .tarjeta-sitio-interes__enlace a::after,
-.tarjeta-imagen__enlace a::after,
-.tarjeta-autoridad__enlace a::after {
+.tarjeta-imagen__enlace a::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -70,16 +68,14 @@
 .tarjeta-sustantiva__enlace a:focus-visible,
 .tarjeta-institucional__enlace a:focus-visible,
 .tarjeta-sitio-interes__enlace a:focus-visible,
-.tarjeta-imagen__enlace a:focus-visible,
-.tarjeta-autoridad__enlace a:focus-visible {
+.tarjeta-imagen__enlace a:focus-visible {
   outline: none;
 }
 
 .tarjeta-sustantiva__enlace a:focus-visible::after,
 .tarjeta-institucional__enlace a:focus-visible::after,
 .tarjeta-sitio-interes__enlace a:focus-visible::after,
-.tarjeta-imagen__enlace a:focus-visible::after,
-.tarjeta-autoridad__enlace a:focus-visible::after {
+.tarjeta-imagen__enlace a:focus-visible::after {
   outline: 3px solid var(--color-superficie);
   outline-offset: -3px;
 }
@@ -390,394 +386,6 @@
   display: block;
   width: 100%;
   height: auto;
-}
-
-/* =========================================================
-   VARIANTE AUTORIDADES
-   Foto con un degradado oscuro abajo; nombre, cargo y "Ver perfil"
-   siempre visibles encima. Sin capa roja al pasar el mouse.
-   ========================================================= */
-.tarjeta-autoridad {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 10 / 11;
-  overflow: hidden;
-  border-radius: var(--radio-md);
-  background-color: var(--color-oscuro);
-  isolation: isolate;
-}
-
-.tarjeta-autoridad__imagen {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.tarjeta-autoridad__imagen,
-.tarjeta-autoridad__imagen div {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.tarjeta-autoridad__imagen img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Encuadre un poco hacia arriba para no cortar las caras */
-  object-position: center 20%;
-  transition: transform var(--duracion-lenta) ease;
-}
-
-.tarjeta-autoridad:is(:hover, :focus-within) .tarjeta-autoridad__imagen img {
-  transform: scale(1.04);
-}
-
-/* Degradado oscuro abajo para que el texto blanco se lea sobre cualquier foto */
-.tarjeta-autoridad__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: var(--espacio-5);
-  background: linear-gradient(
-    to top,
-    rgb(0 0 0 / 0.75) 0%,
-    rgb(0 0 0 / 0.35) 35%,
-    transparent 60%
-  );
-}
-
-.tarjeta-autoridad__nombre {
-  margin: 0;
-  color: var(--texto-sobre-primario);
-  font-size: var(--texto-lg);
-  font-weight: var(--peso-negrita);
-  line-height: var(--interlineado-ajustado);
-  text-align: left;
-  text-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
-}
-
-.tarjeta-autoridad__cargo {
-  margin: var(--espacio-1) 0 0;
-  color: var(--texto-sobre-primario-suave);
-  font-size: var(--texto-sm);
-  font-weight: var(--peso-normal);
-  text-align: left;
-}
-
-.tarjeta-autoridad__cargo * {
-  margin: 0;
-  color: inherit;
-}
-
-/* "Ver perfil": enlace pequeño con triángulo, como "Ver todas".
-   Va por encima del enlace estirado para que se pueda hacer clic */
-.tarjeta-autoridad__ver-mas {
-  position: relative;
-  z-index: calc(var(--z-dropdown) + 1);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--espacio-2);
-  margin: var(--espacio-3) 0 0;
-  padding: 0;
-  border: none;
-  background: none;
-  color: var(--texto-sobre-primario);
-  font: inherit;
-  font-size: var(--texto-xs);
-  font-weight: var(--peso-medio);
-  cursor: pointer;
-}
-
-.tarjeta-autoridad__ver-mas::before {
-  content: "";
-  border-left: 0.3125rem solid color-mix(in srgb, var(--color-primario) 55%, white);
-  border-block: 0.21875rem solid transparent;
-}
-
-.tarjeta-autoridad__ver-mas:hover {
-  text-decoration: underline;
-}
-
-/* ---------- Celular: como era originalmente ----------
-   Foto a la izquierda, datos a la derecha sobre fondo blanco,
-   con borde rojo. Sin degradado sobre la foto. */
-@media (max-width: 768px) {
-  .tarjeta-autoridad {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    height: auto;
-    aspect-ratio: unset;
-    border: 1px solid var(--color-primario);
-    border-radius: var(--radio-lg);
-    background-color: var(--color-superficie);
-  }
-
-  .tarjeta-autoridad__imagen {
-    position: relative;
-    inset: unset;
-    flex: 0 0 6.875rem;
-    width: 6.875rem;
-    height: auto;
-    aspect-ratio: 3 / 4;
-  }
-
-  .tarjeta-autoridad__overlay {
-    position: relative;
-    inset: unset;
-    flex: 1;
-    justify-content: center;
-    align-items: flex-start;
-    padding: var(--espacio-4);
-    background: transparent;
-  }
-
-  .tarjeta-autoridad__nombre,
-  .tarjeta-autoridad__cargo {
-    color: var(--color-texto);
-    text-align: left;
-    text-shadow: none;
-  }
-
-  .tarjeta-autoridad__nombre {
-    font-size: var(--texto-sm);
-  }
-
-  .tarjeta-autoridad__cargo {
-    font-size: var(--texto-xs);
-  }
-
-  .tarjeta-autoridad__ver-mas {
-    margin: var(--espacio-1) 0 0;
-    color: var(--color-primario);
-  }
-
-  .tarjeta-autoridad__ver-mas::before {
-    border-left-color: var(--color-primario);
-  }
-
-  .tarjeta-autoridad__enlace a:focus-visible::after {
-    outline-color: var(--color-primario);
-  }
-}
-
-/* =========================================================
-   PANEL LATERAL "VER PERFIL" (autoridades)
-   Lo arma tarjeta.js. Entra desde la derecha; cabecera con
-   degradado rojo, foto que "baja" sobre el contenido,
-   nombre y cargo en blanco, y la información debajo.
-   ========================================================= */
-.tarjeta-autoridad-modal-fondo {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-modal);
-  display: flex;
-  justify-content: flex-end;
-  background-color: var(--overlay-oscuro);
-  opacity: 0;
-  transition: opacity var(--duracion-normal) ease;
-}
-
-.tarjeta-autoridad-modal-fondo.is-open {
-  opacity: 1;
-}
-
-.tarjeta-autoridad-modal {
-  position: relative;
-  width: min(100%, 45rem);
-  height: 100%;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  background-color: var(--color-superficie);
-  color: var(--color-texto-cuerpo);
-  box-shadow: var(--sombra-lg);
-  transform: translateX(100%);
-  transition: transform 0.4s var(--curva-salida);
-}
-
-.tarjeta-autoridad-modal-fondo.is-open .tarjeta-autoridad-modal {
-  transform: translateX(0);
-}
-
-/* ---------- Botón cerrar ---------- */
-.tarjeta-autoridad-modal__cerrar {
-  position: absolute;
-  top: var(--espacio-4);
-  right: var(--espacio-4);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--boton-icono);
-  height: var(--boton-icono);
-  border: none;
-  border-radius: var(--radio-circulo);
-  background: transparent;
-  color: var(--texto-sobre-primario);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    background-color var(--duracion-rapida) ease,
-    transform var(--duracion-rapida) ease;
-}
-
-.tarjeta-autoridad-modal__cerrar:hover,
-.tarjeta-autoridad-modal__cerrar:focus-visible {
-  background-color: var(--blanco-hover);
-  transform: rotate(90deg);
-}
-
-.tarjeta-autoridad-modal__cerrar:focus-visible {
-  outline: 2px solid var(--color-superficie);
-  outline-offset: 2px;
-}
-
-/* ---------- Cabecera con degradado rojo ---------- */
-.tarjeta-autoridad-modal__cabecera {
-  display: flex;
-  align-items: flex-end;
-  gap: var(--espacio-6);
-  min-height: 15rem;
-  padding: var(--espacio-12) var(--espacio-10) 0;
-  background: linear-gradient(
-    135deg,
-    var(--color-primario) 0%,
-    var(--color-primario-oscuro) 55%,
-    color-mix(in srgb, var(--color-primario) 35%, black) 100%
-  );
-  color: var(--texto-sobre-primario);
-}
-
-/* La foto sobresale hacia abajo, sobre el contenido blanco */
-.tarjeta-autoridad-modal__foto {
-  flex-shrink: 0;
-  width: 11rem;
-  aspect-ratio: 9 / 10;
-  margin-bottom: -4rem;
-  object-fit: cover;
-  object-position: center 20%;
-  box-shadow: var(--sombra-md);
-}
-
-.tarjeta-autoridad-modal__datos {
-  padding-bottom: var(--espacio-8);
-}
-
-.tarjeta-autoridad-modal__nombre {
-  margin: 0;
-  color: var(--texto-sobre-primario);
-  font-size: var(--texto-lg);
-  font-weight: var(--peso-medio);
-  line-height: var(--interlineado-ajustado);
-}
-
-.tarjeta-autoridad-modal__cargo {
-  margin: var(--espacio-1) 0 0;
-  color: var(--texto-sobre-primario-suave);
-  font-size: var(--texto-sm);
-}
-
-/* ---------- Información ---------- */
-.tarjeta-autoridad-modal__cuerpo {
-  padding: var(--espacio-8) var(--espacio-10) var(--espacio-10);
-  line-height: var(--interlineado-lectura);
-}
-
-/* Si hay foto, se deja espacio para la parte que sobresale */
-.tarjeta-autoridad-modal:has(.tarjeta-autoridad-modal__foto) .tarjeta-autoridad-modal__cuerpo {
-  padding-top: calc(4rem + var(--espacio-8));
-}
-
-.tarjeta-autoridad-modal__cuerpo :is(h2, h3, h4, h5) {
-  margin: var(--espacio-6) 0 var(--espacio-3);
-  color: var(--color-texto);
-  font-size: var(--texto-lg);
-  font-weight: var(--peso-medio);
-  text-transform: uppercase;
-}
-
-.tarjeta-autoridad-modal__cuerpo > :first-child {
-  margin-top: 0;
-}
-
-.tarjeta-autoridad-modal__cuerpo ul {
-  padding-left: var(--espacio-5);
-}
-
-.tarjeta-autoridad-modal__cuerpo li {
-  margin-bottom: var(--espacio-2);
-}
-
-/* ---------- Redes sociales ---------- */
-.tarjeta-autoridad__redes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espacio-3);
-  margin-top: var(--espacio-6);
-}
-
-.tarjeta-autoridad__red-icono {
-  display: inline-flex;
-  width: var(--icono-md);
-  height: var(--icono-md);
-  color: var(--color-primario);
-  transition: opacity var(--duracion-rapida) ease;
-}
-
-.tarjeta-autoridad__red-icono:hover {
-  opacity: 0.7;
-}
-
-.tarjeta-autoridad__red-icono svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* ---------- Celular: foto arriba, datos debajo ---------- */
-@media (max-width: 600px) {
-  .tarjeta-autoridad-modal__cabecera {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--espacio-4);
-    padding: var(--espacio-12) var(--espacio-6) 0;
-  }
-
-  .tarjeta-autoridad-modal__foto {
-    width: 8rem;
-    margin-bottom: 0;
-    order: -1;
-  }
-
-  .tarjeta-autoridad-modal__datos {
-    padding-bottom: var(--espacio-6);
-  }
-
-  .tarjeta-autoridad-modal__cuerpo,
-  .tarjeta-autoridad-modal:has(.tarjeta-autoridad-modal__foto) .tarjeta-autoridad-modal__cuerpo {
-    padding: var(--espacio-6);
-  }
-}
-
-/* Dentro de una facultad: cuadrada, con texto un poco más compacto */
-@media (min-width: 769px) {
-  [data-facultad] .tarjeta-autoridad {
-    aspect-ratio: 1 / 1;
-  }
-
-  [data-facultad] .tarjeta-autoridad__overlay {
-    padding: var(--espacio-4);
-  }
-
-  [data-facultad] .tarjeta-autoridad__nombre {
-    font-size: var(--texto-base);
-  }
 }
 
 /* =========================================================

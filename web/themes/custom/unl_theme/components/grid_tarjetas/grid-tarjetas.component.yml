@@ -15,15 +15,8 @@ props:
         - 'sitios_interes'
         - 'imagenes'
         - 'sustantiva'
-        - 'autoridades'
         - 'marca'
         - 'default'
-    atencion:
-      type: [string, 'null']
-      title: 'Días de atención'
-    horarios:
-      type: [string, 'null']
-      title: 'Horarios de atención'
 slots:
   items:
     title: 'Elementos del Grid'

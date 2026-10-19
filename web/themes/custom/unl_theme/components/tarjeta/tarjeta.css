@@ -488,9 +488,11 @@
   transition: transform var(--duracion-lenta) ease;
 }
 
-.tarjeta-default:is(:hover, :focus-within) .tarjeta-default__imagen img {
-  transform: scale(1.05);
+.tarjeta-default:not(.tarjeta-default--sin-enlace):is(:hover, :focus-within) {
+  transform: translateY(-4px); 
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
 }
+
 
 .tarjeta-default__contenido {
   display: flex;

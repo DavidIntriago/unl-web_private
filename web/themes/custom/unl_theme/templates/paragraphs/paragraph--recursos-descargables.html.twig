@@ -1,4 +1,5 @@
 {% set cantidad_archivos = paragraph.field_archivos|length %}
+{% set titulo_limpio = content.field_titulo %}
 
 {% if cantidad_archivos == 1 %}
   {% set media_unica = paragraph.field_archivos[0].entity %}
@@ -7,6 +8,7 @@
   {% set url_real = file_url(media_unica.field_media_document.entity.uri.value) %}
 
   {{ include('unl_theme:archivo_destacado', {
+    titulo: titulo_limpio,
     url: url_real,
     nombre: nombre_mostrar
   }) }}
@@ -29,6 +31,7 @@
   {% endfor %}
 
   {{ include('unl_theme:lista_archivos', {
+    titulo: titulo_limpio,
     archivos: lista_limpia
   }) }}
 

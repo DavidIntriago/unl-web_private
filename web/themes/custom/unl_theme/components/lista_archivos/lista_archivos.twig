@@ -1,6 +1,14 @@
 <div class="unl-lista-docs">
   <div class="unl-lista-docs__container">
-    <h3 class="unl-lista-titulo">Documentos de interés</h3>
+    
+    {% if titulo|render|trim is not empty %}
+      <div class="unl-lista-docs__header">
+        <h2 class="unl-lista-docs__titulo">
+          {{ titulo|render|striptags|trim }}
+        </h2>
+        <div class="unl-lista-docs__divider"></div>
+      </div>
+    {% endif %}
     
     <ul class="unl-lista">
       {% for archivo in archivos %}

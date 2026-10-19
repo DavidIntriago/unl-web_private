@@ -1,0 +1,15 @@
+.divisor-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 var(--espacio-3);
+}
+
+.divisor-linea {
+  border: none;
+  height: 2px;
+  background-color: var(--color-borde, #cbd5e1);
+  width: 100%;
+  max-width: 75rem;
+  margin: 0;
+}

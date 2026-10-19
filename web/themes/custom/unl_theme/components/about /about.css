@@ -26,6 +26,11 @@
     grid-template-columns: 3fr 2fr;
     gap: var(--espacio-16);
   }
+
+  /* Si no hay media el texto ocupa todo el ancho */
+  .unl-about__container--no-media {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Texto ---------- */
@@ -94,4 +99,11 @@
 
 .unl-about__divider--multicolor {
   background: var(--degradado-facultades);
+}
+
+.nodo-micrositio .unl-about__container {
+  max-width: var(--contenedor-lectura);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--espacio-4);
 }

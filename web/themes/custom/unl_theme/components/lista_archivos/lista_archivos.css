@@ -4,7 +4,27 @@
  * de documentos y viven en views-global.css.
  * Aquí solo van el nombre y los íconos SVG propios del SDC.
  */
-.unl-lista-nombre {
+.unl-lista-docs__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4) var(--espacio-6);
+  margin-bottom: var(--espacio-titulo-seccion);
+}
+
+.unl-lista-docs__titulo {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: var(--texto-titulo-seccion);
+  text-align: left;
+}
+
+.unl-lista-docs__divider {
+  display: none;
+}
+
+ .unl-lista-nombre {
   flex-grow: 1;
   margin-left: var(--espacio-4);
   font-weight: var(--peso-medio);

@@ -1,5 +1,7 @@
 <section class="unl-about">
-  <div class="unl-about__container">
+  {% set has_media = media|render|trim is not empty %}
+
+  <div class="unl-about__container {{ not has_media ? 'unl-about__container--no-media' : '' }}">
     
     <div class="unl-about__content">
       
@@ -29,7 +31,7 @@
       {% endif %}
     </div>
 
-    {% if media %}
+    {% if has_media %}
       <div class="unl-about__media">
         {{ media }}
       </div>

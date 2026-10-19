@@ -4,5 +4,9 @@ status: stable
 props:
   type: object
   properties:
+    titulo:
+      type: string
+      title: 'Título de la seccion'
     archivos:
       type: array
+      

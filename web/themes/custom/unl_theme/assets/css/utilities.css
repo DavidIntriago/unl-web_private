@@ -114,7 +114,9 @@
 .seccion-eventos__titulo,
 .grid-tarjetas__titulo,
 .titulo-vista-global,
-.titulo-vista-paragraph {
+.titulo-vista-paragraph,
+.unl-texto-libre__title,
+.unl-lista-docs__titulo {
   padding-left: var(--espacio-3);
   border-left: 3px solid var(--color-primario);
   font-weight: var(--peso-medio);

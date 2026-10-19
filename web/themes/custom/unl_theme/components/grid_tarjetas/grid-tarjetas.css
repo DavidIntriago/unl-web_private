@@ -399,3 +399,21 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* Modificador para micrositios */
+
+.nodo-micrositio .grid-tarjetas__header,
+.nodo-micrositio .grid-tarjetas-container {
+  max-width: var(--contenedor-lectura);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nodo-micrositio .grid-tarjetas__header {
+  padding: 0 var(--espacio-4);
+  width: 100%;
+}
+
+.nodo-micrositio .grid-tarjetas-container:not(.grid-tarjetas-container--sitios_interes):not(.grid-tarjetas-container--marcas) {
+  padding: 0 var(--espacio-4);
+}

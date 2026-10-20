@@ -12,7 +12,7 @@ dependencies:
 id: unl_theme_views_block__listado_noticias_block_2
 theme: unl_theme
 region: branding
-weight: -7
+weight: 0
 provider: null
 plugin: 'views_block:listado_noticias-block_2'
 settings:

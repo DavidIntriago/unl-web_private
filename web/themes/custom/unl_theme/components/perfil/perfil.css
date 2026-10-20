@@ -234,10 +234,11 @@
 }
 
 /* =========================================================
-   ESTILO INFO ABAJO
-   Tarjeta blanca redondeada: foto arriba, nombre pequeño,
+   ESTILO INFO ABAJO (Perfil Corto)
+   Escritorio: tarjeta blanca redondeada, foto arriba, nombre pequeño,
    cargo en rojo y resumen en gris. Sin hover ni enlace.
-   Igual en celular (no se pone horizontal).
+   Celular: igual que el Perfil Completo (foto a la izquierda,
+   datos a la derecha, borde rojo).
    ========================================================= */
 .perfil--corto {
   display: flex;
@@ -254,7 +255,15 @@
   overflow: hidden;
 }
 
-.perfil--corto .perfil__imagen :is(.field, .field__items, .field__item, article, picture) {
+/* Los envoltorios de Drupal llegan como <div> sin clases:
+   se estiran para que la foto llene su caja (igual que en el completo) */
+.perfil--corto .perfil__imagen div {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.perfil--corto .perfil__imagen picture {
   display: contents;
 }
 
@@ -309,9 +318,46 @@
   color: var(--color-primario);
 }
 
+/* ---------- Celular: igual que el Perfil Completo ----------
+   Foto a la izquierda, datos a la derecha sobre fondo blanco,
+   con borde rojo y sin sombra. */
 @media (max-width: 768px) {
+  .perfil--corto {
+    flex-direction: row;
+    align-items: stretch;
+    height: auto;
+    border: 1px solid var(--color-primario);
+    border-radius: var(--radio-lg);
+    box-shadow: none;
+  }
+
+  .perfil--corto .perfil__imagen {
+    flex: 0 0 6.875rem;
+    width: 6.875rem;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
   .perfil--corto .perfil__cuerpo {
-    padding: var(--espacio-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--espacio-4);
+  }
+
+  /* Mismos tamaños que el completo en celular */
+  .perfil--corto .perfil__nombre {
+    font-size: var(--texto-sm);
+  }
+
+  .perfil--corto .perfil__cargo {
+    margin-top: var(--espacio-1);
+    font-size: var(--texto-xs);
+  }
+
+  .perfil--corto .perfil__resumen {
+    margin-top: var(--espacio-2);
+    font-size: var(--texto-xs);
   }
 }
 

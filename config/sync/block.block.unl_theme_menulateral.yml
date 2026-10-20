@@ -11,7 +11,7 @@ dependencies:
 id: unl_theme_menulateral
 theme: unl_theme
 region: lateral_menu
-weight: -8
+weight: 0
 provider: null
 plugin: 'system_menu_block:menu-lateral'
 settings:

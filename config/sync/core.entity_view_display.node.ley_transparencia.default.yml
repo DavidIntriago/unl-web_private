@@ -23,7 +23,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 1
+    weight: 103
     region: content
   field_documentos_principales:
     type: file_default
@@ -31,14 +31,14 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 4
+    weight: 103
     region: content
   field_literales:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 104
     region: content
   field_mes:
     type: entity_reference_label
@@ -46,13 +46,12 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 105
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 100
     region: content
 hidden:
   langcode: true
-  search_api_excerpt: true

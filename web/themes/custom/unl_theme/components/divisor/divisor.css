@@ -1,15 +1,20 @@
+/**
+ * DIVISOR — línea gris entre secciones.
+ * Mismo ancho que los títulos y contenidos de sección.
+ * Reparte el espacio entre secciones: mitad arriba, mitad abajo
+ * (el margen negativo descuenta la mitad del margen de la sección siguiente).
+ */
 .divisor-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0 var(--espacio-3);
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: calc(var(--espacio-entre-secciones) / 2) auto
+          calc(var(--espacio-entre-secciones) / -2);
 }
 
 .divisor-linea {
-  border: none;
-  height: 2px;
-  background-color: var(--color-borde, #cbd5e1);
+  display: block;
   width: 100%;
-  max-width: 75rem;
+  height: 1px;
   margin: 0;
+  border: none;
+  background-color: var(--color-borde);
 }

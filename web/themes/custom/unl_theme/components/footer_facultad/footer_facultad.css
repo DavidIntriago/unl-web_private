@@ -118,3 +118,7 @@
     flex-basis: calc(50% - var(--espacio-8));
   }
 }
+/* Separación entre el último componente de la página y el footer de facultad */
+.footer-facultad {
+  margin-top: var(--espacio-entre-secciones);
+}

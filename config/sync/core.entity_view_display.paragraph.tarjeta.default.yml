@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.tarjeta.field_descripcion
     - field.field.paragraph.tarjeta.field_enlace
     - field.field.paragraph.tarjeta.field_imagen
+    - field.field.paragraph.tarjeta.field_informacion_adicional
     - field.field.paragraph.tarjeta.field_titulo
     - field.field.paragraph.tarjeta.field_titulo_2
     - paragraphs.paragraphs_type.tarjeta
@@ -53,6 +54,13 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_informacion_adicional:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_titulo:
     type: string
     label: visually_hidden
@@ -71,5 +79,4 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-hidden:
-  search_api_excerpt: true
+hidden: {  }

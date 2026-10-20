@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.texto_libre.field_contenido
-    - field.field.paragraph.texto_libre.field_titulo
     - paragraphs.paragraphs_type.texto_libre
   module:
     - text
@@ -15,18 +14,10 @@ mode: default
 content:
   field_contenido:
     type: text_textarea
-    weight: 1
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_titulo:
-    type: string_textfield
     weight: 0
     region: content
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
 hidden:

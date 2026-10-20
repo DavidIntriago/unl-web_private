@@ -1,14 +1,14 @@
-uuid: 967493ab-ffea-4144-be61-6ad77b382459
+uuid: df375116-7e6a-4375-b480-4760e98dc0c5
 langcode: es
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_informacion_adicional
-    - paragraphs.paragraphs_type.perfil
-id: paragraph.perfil.field_informacion_adicional
+    - paragraphs.paragraphs_type.tarjeta
+id: paragraph.tarjeta.field_informacion_adicional
 field_name: field_informacion_adicional
 entity_type: paragraph
-bundle: perfil
+bundle: tarjeta
 label: 'Información Adicional'
 description: 'Información adicional variante autoridades (títulos, ORCID, reseña)'
 required: false

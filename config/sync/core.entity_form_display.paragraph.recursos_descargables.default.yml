@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.recursos_descargables.field_archivos
-    - field.field.paragraph.recursos_descargables.field_titulo
     - paragraphs.paragraphs_type.recursos_descargables
   module:
     - media_library
@@ -15,18 +14,10 @@ mode: default
 content:
   field_archivos:
     type: media_library_widget
-    weight: 1
-    region: content
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-  field_titulo:
-    type: string_textfield
     weight: 0
     region: content
     settings:
-      size: 60
-      placeholder: ''
+      media_types: {  }
     third_party_settings: {  }
 hidden:
   created: true

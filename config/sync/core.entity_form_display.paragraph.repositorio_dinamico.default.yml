@@ -13,10 +13,14 @@ bundle: repositorio_dinamico
 mode: default
 content:
   field_repositorio_dinamico:
-    type: viewsreference_select
+    type: viewsreference_autocomplete
     weight: 0
     region: content
-    settings: {  }
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true

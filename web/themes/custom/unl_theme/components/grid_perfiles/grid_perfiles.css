@@ -36,12 +36,11 @@
 
 /* =========================================================
    QUITAR ENVOLTORIOS DE DRUPAL
-   Los perfiles pasan a ser hijos directos del grid.
+   El campo llega como <div> sin clases: section > div > div > article.
+   Se vuelve "transparente" el envoltorio del campo para que cada
+   div de perfil sea hijo directo del grid.
    ========================================================= */
-.grid-perfiles__grid .field,
-.grid-perfiles__grid .field__items,
-.grid-perfiles__grid > .field__item,
-.grid-perfiles__grid .field__items > .field__item {
+.grid-perfiles__grid > div:not(:has(> .perfil)) {
   display: contents;
 }
 /* =========================================================

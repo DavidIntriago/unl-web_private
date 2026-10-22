@@ -1,0 +1,27 @@
+uuid: b20c7884-40e4-479f-859d-bd8dd5db8b22
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_malla_curricular
+    - paragraphs.paragraphs_type.malla_curricular
+  module:
+    - file
+id: paragraph.malla_curricular.field_malla_curricular
+field_name: field_malla_curricular
+entity_type: paragraph
+bundle: malla_curricular
+label: 'Malla Curricular'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

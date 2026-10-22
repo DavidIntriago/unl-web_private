@@ -1,0 +1,34 @@
+uuid: ad6426a4-af62-4092-9b74-beba03c860f8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.visor_pdf.field_documento
+    - field.field.paragraph.visor_pdf.field_titulo
+    - paragraphs.paragraphs_type.visor_pdf
+  module:
+    - file
+id: paragraph.visor_pdf.default
+targetEntityType: paragraph
+bundle: visor_pdf
+mode: default
+content:
+  field_documento:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_titulo:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

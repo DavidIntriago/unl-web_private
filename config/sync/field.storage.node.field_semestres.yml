@@ -1,0 +1,20 @@
+uuid: 17907cb2-5ce4-4e31-b85b-5e82b28c4e09
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_semestres
+field_name: field_semestres
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

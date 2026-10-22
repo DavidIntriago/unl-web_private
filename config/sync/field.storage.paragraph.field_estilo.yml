@@ -1,0 +1,27 @@
+uuid: 4f6a040f-8d70-4c3c-95e2-2af5ac371595
+langcode: es
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_estilo
+field_name: field_estilo
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: perfil_extendido
+      label: 'Perfil Completo'
+    -
+      value: perfil_corto
+      label: 'Perfil Corto'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

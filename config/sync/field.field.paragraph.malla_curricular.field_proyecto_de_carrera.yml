@@ -1,0 +1,27 @@
+uuid: f6737c4b-90eb-4a08-af2c-bbe3d53d8c22
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_proyecto_de_carrera
+    - paragraphs.paragraphs_type.malla_curricular
+  module:
+    - file
+id: paragraph.malla_curricular.field_proyecto_de_carrera
+field_name: field_proyecto_de_carrera
+entity_type: paragraph
+bundle: malla_curricular
+label: 'Proyecto de Carrera'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

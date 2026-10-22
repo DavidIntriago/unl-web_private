@@ -1,0 +1,19 @@
+uuid: 75e3ca70-a22a-47c1-95bc-f6a629b3137d
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opciones_titulacion
+    - node.type.carrera
+id: node.carrera.field_opciones_titulacion
+field_name: field_opciones_titulacion
+entity_type: node
+bundle: carrera
+label: 'Opciones Titulación'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

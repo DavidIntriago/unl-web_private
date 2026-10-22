@@ -1,0 +1,19 @@
+uuid: 44c56b28-cd45-4711-8043-769dbe089337
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titulo
+    - paragraphs.paragraphs_type.recursos_descargables
+id: paragraph.recursos_descargables.field_titulo
+field_name: field_titulo
+entity_type: paragraph
+bundle: recursos_descargables
+label: Titulo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

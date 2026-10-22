@@ -1,0 +1,19 @@
+uuid: e75f2577-f9c3-4440-a002-f2cce14f69d3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_materias
+    - paragraphs.paragraphs_type.periodo_academico
+id: paragraph.periodo_academico.field_materias
+field_name: field_materias
+entity_type: paragraph
+bundle: periodo_academico
+label: Materias
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

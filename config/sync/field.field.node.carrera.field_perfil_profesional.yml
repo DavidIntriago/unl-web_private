@@ -1,0 +1,19 @@
+uuid: 6d930b90-3725-4958-830d-4101282a5ee8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_perfil_profesional
+    - node.type.carrera
+id: node.carrera.field_perfil_profesional
+field_name: field_perfil_profesional
+entity_type: node
+bundle: carrera
+label: 'Perfil Profesional'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

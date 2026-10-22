@@ -1,0 +1,19 @@
+uuid: b2aa925e-7df9-4a31-9c48-43853a5ebc59
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_aprobacion_ces
+    - paragraphs.paragraphs_type.malla_curricular
+id: paragraph.malla_curricular.field_aprobacion_ces
+field_name: field_aprobacion_ces
+entity_type: paragraph
+bundle: malla_curricular
+label: 'Aprobación CES'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

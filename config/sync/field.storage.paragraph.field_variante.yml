@@ -15,9 +15,6 @@ settings:
       value: facultad
       label: Facultad
     -
-      value: default
-      label: Default
-    -
       value: contador
       label: Contador
     -
@@ -30,11 +27,11 @@ settings:
       value: sustantiva
       label: Sustantiva
     -
-      value: autoridades
-      label: Autoridades
+      value: marca
+      label: Marcas
     -
-      value: marcas
-      label: marcas
+      value: default
+      label: Default
   allowed_values_function: ''
 module: options
 locked: false

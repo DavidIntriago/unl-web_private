@@ -7,7 +7,7 @@ dependencies:
     - node.type.preguntas_frecuentes
     - taxonomy.vocabulary.preguntas_frecuentes_seccion
   content:
-    - 'taxonomy_term:preguntas_frecuentes_seccion:fcc450ae-512b-4149-9175-d18c727b3403'
+    - 'taxonomy_term:preguntas_frecuentes_seccion:bfa133c3-0432-4cda-8de6-6e45ea7ef601'
   module:
     - better_exposed_filters
     - node
@@ -430,6 +430,60 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_descripcion'
+  pcd:
+    id: pcd
+    display_title: PCD
+    display_plugin: block
+    position: 1
+    display_options:
+      pager:
+        type: none
+        options:
+          offset: 0
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            preguntas_frecuentes: preguntas_frecuentes
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        use_ajax: false
+        pager: false
+        filters: false
+        filter_groups: false
+        header: false
+      use_ajax: false
+      display_description: 'Acceso a Personas con Discapacidad'
+      header: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       tags:

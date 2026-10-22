@@ -1,0 +1,10 @@
+uuid: a6268db4-a2d2-44a4-803c-5ae95062ba0e
+langcode: es
+status: true
+dependencies: {  }
+id: perfil
+label: Perfil
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: 8f3951f6-281e-4ae7-9e63-90f1d3e6c0fc
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_aprobacion_ces
+field_name: field_aprobacion_ces
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

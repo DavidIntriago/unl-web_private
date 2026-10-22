@@ -1,0 +1,10 @@
+uuid: 90944fdf-9c39-46d6-88b6-d44dfa876ecf
+langcode: es
+status: true
+dependencies: {  }
+id: logo_footer
+label: 'Logo Footer'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

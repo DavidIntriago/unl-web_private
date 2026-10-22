@@ -1,0 +1,19 @@
+uuid: d244065f-d02e-48e8-9b1f-c5b7b35bf3c8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_descripcion_corta
+    - node.type.carrera
+id: node.carrera.field_descripcion_corta
+field_name: field_descripcion_corta
+entity_type: node
+bundle: carrera
+label: 'Descripción Corta'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

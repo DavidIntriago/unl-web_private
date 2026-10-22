@@ -1,0 +1,23 @@
+uuid: 9a12ffac-9b0c-4ec5-bbf7-caad8f9706b4
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.periodo_academico.field_materias
+    - paragraphs.paragraphs_type.periodo_academico
+id: paragraph.periodo_academico.default
+targetEntityType: paragraph
+bundle: periodo_academico
+mode: default
+content:
+  field_materias:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

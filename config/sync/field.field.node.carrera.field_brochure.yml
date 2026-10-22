@@ -1,0 +1,27 @@
+uuid: 71f0aa86-5e1e-4dd6-824a-dbdcc0b5766f
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_brochure
+    - node.type.carrera
+  module:
+    - file
+id: node.carrera.field_brochure
+field_name: field_brochure
+entity_type: node
+bundle: carrera
+label: Brochure
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

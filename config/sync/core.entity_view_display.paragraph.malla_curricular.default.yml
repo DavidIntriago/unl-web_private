@@ -1,0 +1,62 @@
+uuid: 8960ad3e-2092-4a99-928d-c25130a96281
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.malla_curricular.field_aprobacion_ces
+    - field.field.paragraph.malla_curricular.field_descripcion
+    - field.field.paragraph.malla_curricular.field_malla_curricular
+    - field.field.paragraph.malla_curricular.field_periodos_academicos
+    - field.field.paragraph.malla_curricular.field_proyecto_de_carrera
+    - paragraphs.paragraphs_type.malla_curricular
+  module:
+    - entity_reference_revisions
+    - file
+id: paragraph.malla_curricular.default
+targetEntityType: paragraph
+bundle: malla_curricular
+mode: default
+content:
+  field_aprobacion_ces:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_descripcion:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_malla_curricular:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_periodos_academicos:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_proyecto_de_carrera:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,21 @@
+uuid: 682771f7-2f27-4be0-9d68-3abbd10543ea
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_atencion
+field_name: field_atencion
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

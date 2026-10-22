@@ -1,0 +1,19 @@
+uuid: 827fc383-afd5-4562-b878-652b86e3bb12
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_valor
+    - paragraphs.paragraphs_type.dato_facultad
+id: paragraph.dato_facultad.field_valor
+field_name: field_valor
+entity_type: paragraph
+bundle: dato_facultad
+label: Valor
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 4df3b84b-e9e4-4d7b-b96f-8ccb2f060d01
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_descripcion
+    - paragraphs.paragraphs_type.malla_curricular
+id: paragraph.malla_curricular.field_descripcion
+field_name: field_descripcion
+entity_type: paragraph
+bundle: malla_curricular
+label: Descripción
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

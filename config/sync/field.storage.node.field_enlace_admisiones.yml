@@ -1,0 +1,19 @@
+uuid: 718d55d9-32d9-4171-8a26-7a7d5c8eff35
+langcode: es
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_enlace_admisiones
+field_name: field_enlace_admisiones
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+uuid: 4cb7f5bc-dbda-45e1-bbf8-69cb17c1ee6b
+langcode: es
+status: true
+dependencies: {  }
+id: periodo_academico
+label: 'Periodo Académico'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,17 @@
+uuid: 13467950-274c-46d6-8023-61a088ab43bd
+langcode: es
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Carrera
+type: carrera
+description: 'Carreras de grado de cada facultad.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

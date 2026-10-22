@@ -1,0 +1,23 @@
+uuid: 55a92263-99b7-4092-b100-68ea71039e7e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_puntaje_minimo
+    - node.type.carrera
+id: node.carrera.field_puntaje_minimo
+field_name: field_puntaje_minimo
+entity_type: node
+bundle: carrera
+label: 'Puntaje Mínimo'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 1000
+  prefix: ''
+  suffix: ''
+field_type: integer

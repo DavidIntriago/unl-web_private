@@ -17,6 +17,9 @@ settings:
     -
       value: virtual
       label: Virtual
+    -
+      value: hibrida
+      label: Híbrida
   allowed_values_function: ''
 module: options
 locked: false

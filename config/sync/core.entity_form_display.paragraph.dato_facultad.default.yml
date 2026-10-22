@@ -1,0 +1,42 @@
+uuid: eb7d3461-6643-4eb6-9af2-048ff7c3e6f3
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dato_facultad.field_etiqueta
+    - field.field.paragraph.dato_facultad.field_icono
+    - field.field.paragraph.dato_facultad.field_valor
+    - paragraphs.paragraphs_type.dato_facultad
+  module:
+    - file
+id: paragraph.dato_facultad.default
+targetEntityType: paragraph
+bundle: dato_facultad
+mode: default
+content:
+  field_etiqueta:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_icono:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_valor:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

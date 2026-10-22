@@ -1,0 +1,181 @@
+uuid: f64c0497-1eab-4db6-9442-9d8e1464ab58
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.carrera.field_brochure
+    - field.field.node.carrera.field_codigo
+    - field.field.node.carrera.field_cupos
+    - field.field.node.carrera.field_descripcion_corta
+    - field.field.node.carrera.field_enlace_admisiones
+    - field.field.node.carrera.field_foto_carrera
+    - field.field.node.carrera.field_imagen_hero
+    - field.field.node.carrera.field_jornada
+    - field.field.node.carrera.field_modalidad
+    - field.field.node.carrera.field_opciones_titulacion
+    - field.field.node.carrera.field_perfil_profesional
+    - field.field.node.carrera.field_puntaje_minimo
+    - field.field.node.carrera.field_secciones_carrera
+    - field.field.node.carrera.field_semestres
+    - field.field.node.carrera.field_titulo_obtener
+    - field.field.node.carrera.field_video
+    - node.type.carrera
+  module:
+    - entity_reference_revisions
+    - file
+    - link
+    - options
+    - user
+id: node.carrera.default
+targetEntityType: node
+bundle: carrera
+mode: default
+content:
+  field_brochure:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 116
+    region: content
+  field_codigo:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_cupos:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_descripcion_corta:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_enlace_admisiones:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_foto_carrera:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_imagen_hero:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_jornada:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_modalidad:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_opciones_titulacion:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_perfil_profesional:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 117
+    region: content
+  field_puntaje_minimo:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_secciones_carrera:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_semestres:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_titulo_obtener:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

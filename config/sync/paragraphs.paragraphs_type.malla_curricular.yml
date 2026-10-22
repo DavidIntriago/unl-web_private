@@ -1,0 +1,10 @@
+uuid: 235e4638-47ed-4e67-b475-3301eae4c7e2
+langcode: es
+status: true
+dependencies: {  }
+id: malla_curricular
+label: 'Malla Curricular'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

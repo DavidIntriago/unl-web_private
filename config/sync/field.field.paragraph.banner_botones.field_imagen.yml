@@ -1,0 +1,29 @@
+uuid: 6c4e8f2a-8712-4eec-8682-82e3efbb1fb1
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_imagen
+    - media.type.footer_minimo_2000x300_px
+    - paragraphs.paragraphs_type.banner_botones
+id: paragraph.banner_botones.field_imagen
+field_name: field_imagen
+entity_type: paragraph
+bundle: banner_botones
+label: Imagen
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      footer_minimo_2000x300_px: footer_minimo_2000x300_px
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: remote_video
+field_type: entity_reference

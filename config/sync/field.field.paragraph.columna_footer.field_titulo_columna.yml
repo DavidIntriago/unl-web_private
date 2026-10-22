@@ -1,0 +1,19 @@
+uuid: a452e3af-a546-420f-9097-59bc8610b288
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titulo_columna
+    - paragraphs.paragraphs_type.columna_footer
+id: paragraph.columna_footer.field_titulo_columna
+field_name: field_titulo_columna
+entity_type: paragraph
+bundle: columna_footer
+label: Título
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: f105c53e-486e-431b-ad7d-9bbb0190c0fe
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jornada
+    - node.type.carrera
+  module:
+    - options
+id: node.carrera.field_jornada
+field_name: field_jornada
+entity_type: node
+bundle: carrera
+label: Jornada
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

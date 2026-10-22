@@ -1,0 +1,10 @@
+uuid: b157e7bf-25c2-4ccf-bd2b-bc840be52185
+langcode: es
+status: true
+dependencies: {  }
+id: divisor
+label: Divisor
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

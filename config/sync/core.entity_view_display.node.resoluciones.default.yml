@@ -24,7 +24,7 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 104
+    weight: 5
     region: content
   field_categoria:
     type: entity_reference_label
@@ -32,14 +32,14 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_descripcion:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 3
     region: content
   field_documentos_principales:
     type: file_default
@@ -47,7 +47,7 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 103
+    weight: 4
     region: content
   field_fecha:
     type: datetime_default
@@ -56,12 +56,13 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 102
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   langcode: true
+  search_api_excerpt: true

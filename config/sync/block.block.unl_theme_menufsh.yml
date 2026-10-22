@@ -1,0 +1,29 @@
+uuid: 2e23eead-9a62-43a1-a03e-2ec56f2c6feb
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.menu-fsh
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_menufsh
+theme: unl_theme
+region: menu_facultad
+weight: 0
+provider: null
+plugin: 'system_menu_block:menu-fsh'
+settings:
+  id: 'system_menu_block:menu-fsh'
+  label: 'Menú FSH'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: true
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/fsh\r\n/fsh/*"

@@ -1,0 +1,29 @@
+uuid: c15c62e3-c5d0-4c12-a3ae-6b6bafd08484
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.menu-feirnnr
+  module:
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_menufeirnnr
+theme: unl_theme
+region: menu_facultad
+weight: 0
+provider: null
+plugin: 'system_menu_block:menu-feirnnr'
+settings:
+  id: 'system_menu_block:menu-feirnnr'
+  label: 'Menú FEIRNNR'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: true
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/feirnnr\r\n/feirnnr/*"

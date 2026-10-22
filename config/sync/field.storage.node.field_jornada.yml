@@ -1,0 +1,33 @@
+uuid: 577033ae-10f3-418a-9975-79073923b6ba
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_jornada
+field_name: field_jornada
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: matutina
+      label: Matutina
+    -
+      value: vespertina
+      label: Vespertina
+    -
+      value: nocturna
+      label: Nocturna
+    -
+      value: intensiva
+      label: Intensiva
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

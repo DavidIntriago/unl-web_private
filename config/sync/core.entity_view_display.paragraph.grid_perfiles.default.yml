@@ -1,0 +1,64 @@
+uuid: 257e60eb-a3ac-4819-8e01-2175cd3282f4
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_perfiles.field_atencion
+    - field.field.paragraph.grid_perfiles.field_estilo
+    - field.field.paragraph.grid_perfiles.field_horarios
+    - field.field.paragraph.grid_perfiles.field_perfiles
+    - field.field.paragraph.grid_perfiles.field_titulo_seccion
+    - paragraphs.paragraphs_type.grid_perfiles
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.grid_perfiles.default
+targetEntityType: paragraph
+bundle: grid_perfiles
+mode: default
+content:
+  field_atencion:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_estilo:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_horarios:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_perfiles:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_titulo_seccion:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

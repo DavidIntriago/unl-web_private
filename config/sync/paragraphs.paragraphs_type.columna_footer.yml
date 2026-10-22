@@ -1,0 +1,10 @@
+uuid: a05985a5-8253-4a6f-811c-e251e604c034
+langcode: es
+status: true
+dependencies: {  }
+id: columna_footer
+label: 'Columna Footer'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

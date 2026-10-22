@@ -1,0 +1,23 @@
+uuid: 60943ba9-151b-4481-ba27-edc510b3a25a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.periodo_academico.field_materias
+    - paragraphs.paragraphs_type.periodo_academico
+id: paragraph.periodo_academico.default
+targetEntityType: paragraph
+bundle: periodo_academico
+mode: default
+content:
+  field_materias:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

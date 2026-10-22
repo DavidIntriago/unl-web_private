@@ -1,0 +1,10 @@
+uuid: 8f7c98de-b0df-47c9-8574-9ac04abec1e7
+langcode: es
+status: true
+dependencies: {  }
+id: listado_carreras
+label: 'Listado de Carreras'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

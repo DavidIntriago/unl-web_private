@@ -1,0 +1,10 @@
+{% set url_video = paragraph.field_enlace.0.uri|default('') %}
+{% set media_entity = paragraph.field_imagen_banner.entity %}
+{% set url_imagen = media_entity ? file_url(media_entity.field_media_image_5.entity.uri.value) : '' %}
+
+{{ include('unl_theme:video_banner', {
+  imagen: url_imagen,
+  enlace: url_video,
+  titulo: content.field_titulo|default(''),
+  titulo_2: content.field_titulo_2|default('')
+}) }}

@@ -1,0 +1,106 @@
+.unl-video-banner {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  height: 50vh;
+  max-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  margin-top: var(--espacio-entre-secciones);
+  color: #ffffff;
+}
+
+.unl-video-banner__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.unl-video-banner__bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.unl-video-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 2;
+}
+
+.unl-video-banner__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  color: var(--color-primario, #8b572a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duracion-normal) ease;
+}
+
+.unl-video-banner__play:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.unl-video-banner__footer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: var(--espacio-8) var(--espacio-6);
+}
+
+.unl-video-banner__textos {
+  max-width: 800px;
+}
+
+.unl-video-banner__sobretitulo {
+  display: block;
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-medio);
+  margin-bottom: var(--espacio-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.unl-video-banner__titulo {
+  font-size: var(--texto-2xl);
+  font-weight: var(--peso-medio);
+  margin: 0;
+  line-height: var(--interlineado-ajustado);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .unl-video-banner__titulo {
+    font-size: var(--texto-xl);
+  }
+}
+
+.unl-video-banner__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #000;
+}
+
+.unl-video-banner__bg,
+.unl-video-banner__footer {
+  transition: opacity 0.4s ease;
+}

@@ -1,0 +1,28 @@
+<section class="unl-video-banner">
+  <div class="unl-video-banner__bg">
+    {% if imagen|trim is not empty %}
+      <img src="{{ imagen }}" alt="{{ titulo|render|striptags|trim }}" />
+    {% endif %}
+    <div class="unl-video-banner__overlay"></div>
+  </div>
+
+  {% if enlace|trim is not empty %}
+    <a href="{{ enlace|trim }}" class="unl-video-banner__play" target="_blank" rel="noopener" aria-label="Reproducir video">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </a>
+  {% endif %}
+
+  <div class="unl-video-banner__footer">
+    <div class="unl-video-banner__textos">
+      {% if titulo_2|render|trim is not empty %}
+        <span class="unl-video-banner__sobretitulo">{{ titulo_2|render|striptags|trim }}</span>
+      {% endif %}
+      
+      {% if titulo|render|trim is not empty %}
+        <h2 class="unl-video-banner__titulo">“{{ titulo|render|striptags|trim }}”</h2>
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+name: 'Banner Video'
+description: 'Imagen de portada con botón de reproducción y texto superpuesto.'
+props:
+  type: object
+  properties:
+    imagen:
+      type: string
+      title: 'Imagen de fondo'
+    enlace:
+      type: string
+      title: 'URL del video'
+    titulo:
+      type: string
+      title: 'Título o cita principal'
+    titulo_2:
+      type: string
+      title: 'Sobretítulo'

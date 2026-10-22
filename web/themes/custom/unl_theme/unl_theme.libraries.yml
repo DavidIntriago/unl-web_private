@@ -37,6 +37,7 @@ global:
     components/sidebar_micrositio/sidebar_micrositio.js: {}
     components/listado_noticias_destacadas/listado_noticias_destacadas.js: {}
     components/hero_micrositio/hero_micrositio.js: {}
+    components/video_banner/video_banner.js: {}
   dependencies:
     - core/drupal
     - core/once

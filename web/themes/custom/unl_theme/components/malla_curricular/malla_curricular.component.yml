@@ -1,0 +1,27 @@
+name: 'Malla curricular'
+description: 'Plan de estudios: descripción, aprobación CES, PDFs y tarjetas por periodo académico.'
+props:
+  type: object
+  properties:
+    descripcion:
+      type: [string, 'null']
+      title: 'Descripción'
+    aprobacion_ces:
+      type: [string, 'null']
+      title: 'Aprobación CES'
+    pdf_malla:
+      type: [string, 'null']
+      title: 'URL del PDF de la malla'
+    pdf_malla_peso:
+      type: [string, 'null']
+      title: 'Peso del PDF de la malla (ej. 2,4 MB)'
+    pdf_proyecto:
+      type: [string, 'null']
+      title: 'URL del PDF del proyecto de carrera'
+    periodos:
+      type: [array, 'null']
+      title: 'Periodos académicos: cada uno es una lista de materias'
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once

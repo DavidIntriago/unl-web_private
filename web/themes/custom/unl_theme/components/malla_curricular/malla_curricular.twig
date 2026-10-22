@@ -1,0 +1,78 @@
+{#
+  Malla curricular.
+  Todo lo numérico sale solo: número 01, 02…, "Periodo académico N",
+  conteo de materias y el último periodo con el color fuerte.
+#}
+{% set id = 'malla-' ~ random() %}
+{% set total = periodos|length %}
+
+<section class="malla" aria-labelledby="{{ id }}-titulo">
+
+  <div class="malla__cabecera">
+    <div class="malla__texto">
+      <p class="malla__antetitulo">Plan de estudios</p>
+      <h2 class="malla__titulo" id="{{ id }}-titulo">Malla curricular</h2>
+
+      {% if descripcion %}
+        <p class="malla__descripcion">{{ descripcion }}</p>
+      {% endif %}
+
+      {% if aprobacion_ces %}
+        <p class="malla__ces">
+          <span class="malla__ces-etiqueta">Aprobación CES</span>
+          {{ aprobacion_ces }}
+        </p>
+      {% endif %}
+    </div>
+
+    {% if pdf_malla or pdf_proyecto %}
+      <div class="malla__acciones">
+        <div class="malla__botones">
+          {% if pdf_malla %}
+            <a class="malla__boton malla__boton--principal" href="{{ pdf_malla }}" download>Descargar malla en PDF</a>
+          {% endif %}
+          {% if pdf_proyecto %}
+            <a class="malla__boton malla__boton--secundario" href="{{ pdf_proyecto }}" download>Proyecto de carrera</a>
+          {% endif %}
+        </div>
+        {% if pdf_malla_peso %}
+          <p class="malla__peso">PDF · {{ pdf_malla_peso }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if total %}
+    <div class="malla__pista" tabindex="0" role="region" aria-label="Periodos académicos de la malla curricular">
+      <ol class="malla__periodos">
+        {% for materias in periodos %}
+          {% set cantidad = materias|length %}
+          <li class="malla__periodo{% if loop.last and total > 1 %} malla__periodo--final{% endif %}" style="--orden: {{ loop.index0 }}">
+            <div class="malla__periodo-cabecera">
+              <span class="malla__numero" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span>
+              <span class="malla__conteo">{{ cantidad }} {{ cantidad == 1 ? 'materia' : 'materias' }}</span>
+            </div>
+            <h3 class="malla__periodo-nombre">Periodo académico {{ loop.index }}</h3>
+            {% if cantidad %}
+              <ul class="malla__materias">
+                {% for materia in materias %}
+                  <li class="malla__materia">{{ materia }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+
+       {# Barra de desplazamiento propia + aviso. El JS la muestra solo si hay
+       tarjetas que no caben; sin JS queda oculta y se usa la barra del navegador. #}
+    <div class="malla__desplazamiento" hidden>
+      <div class="malla__barra" aria-hidden="true">
+        <div class="malla__barra-pulgar"></div>
+      </div>
+      <p class="malla__ayuda">Desliza para recorrer los {{ total }} periodos académicos</p>
+    </div>
+  {% endif %}
+
+</section>

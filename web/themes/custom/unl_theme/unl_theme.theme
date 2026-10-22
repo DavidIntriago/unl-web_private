@@ -24,6 +24,23 @@ function unl_theme_form_user_login_form_alter(&$form, \Drupal\Core\Form\FormStat
 }
 
 /**
+ * Devuelve la etiqueta de un campo de lista ("Presencial"), no la clave ("presencial").
+ * Si el campo es de texto normal, devuelve el texto tal cual.
+ */
+function _unl_theme_valor_legible($node, $campo) {
+  if (!$node->hasField($campo) || $node->get($campo)->isEmpty()) {
+    return '';
+  }
+  $valor = $node->get($campo)->value;
+  $definicion = $node->get($campo)->getFieldDefinition()->getFieldStorageDefinition();
+  if (str_starts_with($definicion->getType(), 'list_')) {
+    $valores = options_allowed_values($definicion, $node);
+    return $valores[$valor] ?? $valor;
+  }
+  return $valor;
+}
+
+/**
  * Variables generales para la página (Layout, Menús, Cabeceras, HERO, Footer).
  */
 function unl_theme_preprocess_page(&$variables) {
@@ -36,6 +53,12 @@ function unl_theme_preprocess_page(&$variables) {
     $alias = \Drupal::service('path_alias.manager')
       ->getAliasByPath(\Drupal::service('path.current')->getPath());
     $codigo = explode('/', trim($alias, '/'))[0];
+        // Si el nodo tiene su propio Código de Facultad (carrera, facultad),
+    // ese manda sobre la URL: así toda la página (hero, malla, footer)
+    // toma el mismo color y se actualiza al cambiar el campo.
+    if ($node->hasField('field_codigo') && !$node->get('field_codigo')->isEmpty()) {
+      $codigo = $node->get('field_codigo')->value;
+    }
     
     $almacen = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_codigo');
     $facultades = $almacen ? options_allowed_values($almacen) : [];
@@ -112,32 +135,35 @@ function unl_theme_preprocess_page(&$variables) {
       $variables['#cache']['tags'][] = 'config:system.menu.footer-unl';
     }
 
-    // HEROO
+        // =========================================================
+    // 2. HERO (micrositio, facultad o carrera)
+    // =========================================================
     if ($node->hasField('field_imagen_hero') && !$node->get('field_imagen_hero')->isEmpty()) {
       $build = $node->get('field_imagen_hero')->view('default');
       $hero_diapositivas = [];
-      
+
       foreach (\Drupal\Core\Render\Element::children($build) as $delta) {
         $hero_diapositivas[] = $build[$delta];
       }
-      
+
       $variables['hero_diapositivas'] = $hero_diapositivas;
       $variables['hero_titulo_seguro'] = $node->getTitle();
       $variables['hero_tipo'] = 'micrositio';
 
+      $generador_url = \Drupal::service('file_url_generator');
+
+      // ---------- FACULTAD: franja de datos con íconos subidos (Dato Facultad) ----------
       if ($node->bundle() === 'facultades') {
         $variables['hero_tipo'] = 'facultad';
         $variables['hero_facultad'] = $node->hasField('field_codigo') ? $node->get('field_codigo')->value : $codigo;
         $variables['loader_logo'] = theme_get_setting('logo.url');
         $variables['hero_datos'] = [];
-        
-        $generador_url = \Drupal::service('file_url_generator');
-        
+
         if ($node->hasField('field_datos_facultad')) {
           foreach ($node->get('field_datos_facultad') as $item) {
             $dato = $item->entity;
             if (!$dato) continue;
-            
+
             $archivo = $dato->hasField('field_icono') ? $dato->get('field_icono')->entity : null;
             $variables['hero_datos'][] = [
               'icono_url' => $archivo ? $generador_url->generateString($archivo->getFileUri()) : '',
@@ -145,6 +171,49 @@ function unl_theme_preprocess_page(&$variables) {
               'etiqueta' => $dato->hasField('field_etiqueta') ? $dato->get('field_etiqueta')->value : '',
             ];
           }
+        }
+      }
+
+      // ---------- CARRERA: nombre, descripción, botones y datos ----------
+      // Todo sale de los campos de la carrera: se edita una vez y cambia en todos lados.
+      elseif ($node->bundle() === 'carrera') {
+        $variables['hero_tipo'] = 'carrera';
+        // Mismo código de facultad que usa el hero de facultad → mismo color
+        $variables['hero_facultad'] = $node->hasField('field_codigo') ? $node->get('field_codigo')->value : $codigo;
+
+        $variables['hero_descripcion'] = _unl_theme_valor_legible($node, 'field_descripcion_corta');
+
+        // Botón Admisiones
+        $variables['hero_admisiones'] = '';
+        if ($node->hasField('field_enlace_admisiones') && !$node->get('field_enlace_admisiones')->isEmpty()) {
+          $variables['hero_admisiones'] = $node->get('field_enlace_admisiones')->first()->getUrl()->toString();
+        }
+
+        // Botón Brochure (PDF)
+        $variables['hero_brochure'] = '';
+        if ($node->hasField('field_brochure') && !$node->get('field_brochure')->isEmpty()) {
+          $pdf = $node->get('field_brochure')->entity;
+          if ($pdf) {
+            $variables['hero_brochure'] = $generador_url->generateString($pdf->getFileUri());
+          }
+        }
+
+        // Franja de datos: valores de los campos de la carrera.
+        // El ícono lo pone el CSS según la clave (hero-micrositio__dato--titulo, etc.)
+        $semestres = _unl_theme_valor_legible($node, 'field_semestres');
+        $datos = [
+          ['clave' => 'titulo',     'etiqueta' => 'Título a obtener',       'valor' => _unl_theme_valor_legible($node, 'field_titulo_obtener')],
+          ['clave' => 'perfil',     'etiqueta' => 'Perfil profesional',     'valor' => _unl_theme_valor_legible($node, 'field_perfil_profesional')],
+          ['clave' => 'duracion',   'etiqueta' => 'Duración',               'valor' => $semestres ? $semestres . ($semestres == 1 ? ' periodo académico' : ' periodos académicos') : ''],
+          ['clave' => 'modalidad',  'etiqueta' => 'Modalidad',              'valor' => _unl_theme_valor_legible($node, 'field_modalidad')],
+          ['clave' => 'titulacion', 'etiqueta' => 'Opciones de titulación', 'valor' => _unl_theme_valor_legible($node, 'field_opciones_titulacion')],
+        ];
+
+        $variables['hero_datos'] = [];
+        foreach ($datos as $dato) {
+          // Dato vacío: no se muestra (ni su línea separadora)
+          if ($dato['valor'] === '' || $dato['valor'] === NULL) continue;
+          $variables['hero_datos'][] = $dato;
         }
       }
     }

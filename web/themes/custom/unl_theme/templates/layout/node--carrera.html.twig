@@ -2,22 +2,27 @@
   <div class="nodo-carrera__contenido">
 
     {#
-      Se excluyen los campos que se pintan en otro lugar o que son solo datos:
-      - Hero: field_imagen_hero (page.html.twig)
-      - Tarjeta y vistas: field_codigo, field_foto_carrera, field_tipo_carrera,
-        field_modalidad, field_jornada, field_semestres, field_puntaje_minimo, field_cupos
-      Aquí quedan la descripción, el video y las secciones.
+      Se excluyen los campos que ya se pintan en otro lugar:
+      - Hero (page.html.twig): imagen, código, descripción, botones y datos
+      - Tarjeta del listado: foto, cupos, puntaje, jornada, tipo
+      Aquí solo queda el contenido propio de la página (Secciones carrera).
     #}
     {{ content|without(
       'field_imagen_hero',
       'field_codigo',
-      'field_foto_carrera',
-      'field_tipo_carrera',
-      'field_modalidad',
-      'field_jornada',
+      'field_descripcion_corta',
+      'field_enlace_admisiones',
+      'field_brochure',
+      'field_titulo_obtener',
+      'field_perfil_profesional',
       'field_semestres',
+      'field_modalidad',
+      'field_opciones_titulacion',
+      'field_foto_carrera',
+      'field_cupos',
       'field_puntaje_minimo',
-      'field_cupos'
+      'field_jornada',
+      'field_tipo_carrera'
     ) }}
 
   </div>

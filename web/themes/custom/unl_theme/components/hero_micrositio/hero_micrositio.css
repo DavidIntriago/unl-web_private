@@ -234,3 +234,292 @@
     height: 2rem;
   }
 }
+
+/* =========================================================
+   VARIANTE CARRERA — ÍCONOS DE LA FRANJA DE DATOS
+   Mismo sistema de máscara que facultad: el SVG da la forma
+   y el color sale de la facultad. Para cambiar un ícono,
+   se cambia aquí y se actualiza en todas las carreras.
+   ========================================================= */
+.hero-micrositio--carrera {
+  --icono-titulo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9l10-5 10 5-10 5z'/%3E%3Cpath d='M6 11v5c3 2 9 2 12 0v-5'/%3E%3Cpath d='M22 9v6'/%3E%3C/svg%3E");
+  --icono-perfil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c0-4 4-6 8-6s8 2 8 6'/%3E%3C/svg%3E");
+  --icono-duracion: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
+  --icono-modalidad: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18M5 21V10l7-5 7 5v11'/%3E%3Cpath d='M9 21v-6h6v6'/%3E%3C/svg%3E");
+  --icono-titulacion: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z'/%3E%3Cpath d='M14 3v6h6'/%3E%3Cpath d='M9 15l2 2 4-4'/%3E%3C/svg%3E");
+}
+
+/* Cada dato toma su ícono por la clave */
+.hero-micrositio__dato--titulo     { --icono-url: var(--icono-titulo); }
+.hero-micrositio__dato--perfil     { --icono-url: var(--icono-perfil); }
+.hero-micrositio__dato--duracion   { --icono-url: var(--icono-duracion); }
+.hero-micrositio__dato--modalidad  { --icono-url: var(--icono-modalidad); }
+.hero-micrositio__dato--titulacion { --icono-url: var(--icono-titulacion); }
+
+/* Color de la facultad (el hero ya trae data-facultad) */
+.hero-micrositio--carrera .hero-micrositio__icono {
+  background-color: var(--color-facultad);
+}
+
+/* =========================================================
+   VARIANTE CARRERA — DISPOSICIÓN
+   Nombre, descripción y botones abajo a la izquierda,
+   y debajo la franja de datos. Los dos se apilan solos
+   (columna flex anclada abajo), así nunca se pisan
+   aunque un dato tenga texto largo.
+   ========================================================= */
+.hero-micrositio--carrera {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--espacio-10);
+  height: auto;
+  min-height: calc(100svh - var(--header-altura));
+  padding: var(--espacio-20) 8% var(--espacio-10);
+}
+
+/* Oscurece abajo y a la izquierda para que se lea el texto */
+.hero-micrositio--carrera .slide-overlay {
+  background:
+    linear-gradient(to top, rgb(0 0 0 / 0.8) 0%, rgb(0 0 0 / 0.35) 45%, rgb(0 0 0 / 0.1) 100%),
+    linear-gradient(to right, rgb(0 0 0 / 0.35) 0%, transparent 60%);
+}
+
+/* ---------- Nombre, descripción y botones ---------- */
+.hero-micrositio__carrera {
+  position: relative;
+  z-index: 3;
+  max-width: 45rem;
+  color: var(--texto-sobre-primario);
+}
+
+/* Nombre de la carrera, sin línea debajo */
+.hero-micrositio__nombre {
+  margin: 0;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-3xl);
+  font-weight: var(--peso-titulo);
+  line-height: var(--interlineado-titulo);
+  text-align: left;
+}
+
+.hero-micrositio__descripcion {
+  margin: var(--espacio-3) 0 0;
+  color: var(--texto-sobre-primario-suave);
+  font-size: var(--texto-md);
+  line-height: var(--interlineado-base);
+}
+
+.hero-micrositio__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-6);
+}
+
+.hero-micrositio__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-6);
+  border: 1px solid transparent;
+  border-radius: var(--radio-pastilla);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+  transition:
+    background-color var(--duracion-rapida) ease,
+    transform var(--duracion-rapida) ease;
+}
+
+.hero-micrositio__boton:hover {
+  transform: translateY(var(--elevar-boton));
+}
+
+.hero-micrositio__boton--principal {
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+}
+
+.hero-micrositio__boton--principal:hover {
+  background-color: var(--color-primario-oscuro);
+}
+
+/* Brochure: borde blanco con ícono de descarga */
+.hero-micrositio__boton--brochure {
+  border-color: var(--blanco-borde-fuerte);
+  background-color: rgb(0 0 0 / 0.2);
+  color: var(--texto-sobre-primario);
+}
+
+.hero-micrositio__boton--brochure:hover {
+  background-color: var(--blanco-hover);
+}
+
+.hero-micrositio__boton--brochure::before {
+  content: "";
+  width: var(--icono-sm);
+  height: var(--icono-sm);
+  background-color: currentColor;
+  -webkit-mask: var(--icono-descarga) center / contain no-repeat;
+  mask: var(--icono-descarga) center / contain no-repeat;
+}
+
+.hero-micrositio__boton:focus-visible {
+  outline: 2px solid var(--color-superficie);
+  outline-offset: 2px;
+}
+
+/* ---------- Franja de datos en carrera ----------
+   Deja de ir flotando (absolute) y entra en la columna,
+   debajo de los botones. Valores en texto, no números grandes.
+   Cada dato tiene relleno por los 4 lados para que el color
+   del hover tenga espacio; el margen negativo de la lista
+   compensa ese relleno y el texto sigue alineado con el nombre. */
+.hero-micrositio--carrera .hero-micrositio__datos {
+  position: relative;
+  inset: auto;
+  margin-inline: calc(-1 * var(--espacio-6));
+}
+
+.hero-micrositio--carrera .hero-micrositio__dato {
+  position: relative;
+  isolation: isolate;
+  flex: 1 1 0;
+  min-width: 9rem;
+  padding: var(--espacio-5) var(--espacio-6);
+  border-left-color: var(--blanco-borde-fuerte);
+  /* Sin border-radius aquí: así la línea separadora queda recta */
+  transition: border-color var(--duracion-normal) ease;
+}
+
+/* El primero también lleva relleno (antes era 0) para que su caja de color se vea igual */
+.hero-micrositio--carrera .hero-micrositio__dato:first-child {
+  padding-left: var(--espacio-6);
+}
+
+/* Relleno de color: escondido abajo, sube al pasar el ratón.
+   Solo esta capa es redondeada, no el dato. */
+.hero-micrositio--carrera .hero-micrositio__dato::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--radio-lg);
+  background-color: var(--color-facultad);
+  -webkit-clip-path: inset(100% 0 0 0 round var(--radio-lg));
+  clip-path: inset(100% 0 0 0 round var(--radio-lg));
+  transition: clip-path var(--duracion-lenta) var(--curva-salida);
+}
+
+.hero-micrositio--carrera .hero-micrositio__icono {
+  width: var(--icono-md);
+  height: var(--icono-md);
+  margin-bottom: var(--espacio-2);
+  transition: background-color var(--duracion-normal) ease;
+}
+
+.hero-micrositio--carrera .hero-micrositio__valor {
+  font-size: var(--texto-base);
+  font-weight: var(--peso-seminegrita);
+  line-height: var(--interlineado-ajustado);
+}
+
+.hero-micrositio--carrera .hero-micrositio__etiqueta {
+  margin-top: var(--espacio-1);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-normal);
+  color: var(--texto-sobre-primario-suave);
+}
+
+/* Hover solo con ratón (en celular no hay "pasar por encima") */
+@media (hover: hover) and (pointer: fine) {
+  .hero-micrositio--carrera .hero-micrositio__dato:hover::before {
+    -webkit-clip-path: inset(0 0 0 0 round var(--radio-lg));
+    clip-path: inset(0 0 0 0 round var(--radio-lg));
+  }
+
+  /* Sobre el color de la facultad, el ícono pasa a blanco */
+  .hero-micrositio--carrera .hero-micrositio__dato:hover .hero-micrositio__icono {
+    background-color: var(--texto-sobre-primario);
+  }
+
+  /* Se esconden las líneas que tocan la caja de color */
+  .hero-micrositio--carrera .hero-micrositio__dato:hover,
+  .hero-micrositio--carrera .hero-micrositio__dato:hover + .hero-micrositio__dato {
+    border-left-color: transparent;
+  }
+}
+
+/* Si la persona pidió menos movimiento, el color aparece sin animación */
+@media (prefers-reduced-motion: reduce) {
+  .hero-micrositio--carrera .hero-micrositio__dato::before {
+    transition: none;
+  }
+}
+
+/* ---------- Celular ----------
+   Cada dato es una tarjetita translúcida en 2 columnas, sin líneas.
+   Si queda un dato solo al final, ocupa la fila completa. */
+@media (max-width: 768px) {
+  .hero-micrositio--carrera {
+    gap: var(--espacio-6);
+    padding: var(--espacio-16) 5% var(--espacio-6);
+  }
+
+  .hero-micrositio--carrera .hero-micrositio__nombre {
+    font-size: var(--texto-2xl);
+  }
+
+  .hero-micrositio--carrera .hero-micrositio__descripcion {
+    font-size: var(--texto-base);
+  }
+
+  /* Los dos botones del mismo ancho, uno al lado del otro */
+  .hero-micrositio--carrera .hero-micrositio__botones {
+    gap: var(--espacio-2);
+    margin-top: var(--espacio-5);
+  }
+
+  .hero-micrositio--carrera .hero-micrositio__boton {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+
+  .hero-micrositio--carrera .hero-micrositio__datos {
+    right: auto;
+    left: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-2);
+    margin-inline: 0;
+  }
+
+  /* :first-child y :nth-child(odd) van incluidos para ganarle
+     a las reglas de escritorio y de facultad que les quitan el relleno */
+  .hero-micrositio--carrera .hero-micrositio__dato,
+  .hero-micrositio--carrera .hero-micrositio__dato:first-child,
+  .hero-micrositio--carrera .hero-micrositio__dato:nth-child(odd) {
+    min-width: 0;
+    padding: var(--espacio-4);
+    border-left: none;
+    border-radius: var(--radio-lg);
+    background-color: rgb(0 0 0 / 0.35);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Dato que queda solo en la última fila: ocupa las dos columnas */
+  .hero-micrositio--carrera .hero-micrositio__dato:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .hero-micrositio--carrera .hero-micrositio__icono {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .hero-micrositio--carrera .hero-micrositio__valor {
+    font-size: var(--texto-sm);
+  }
+}

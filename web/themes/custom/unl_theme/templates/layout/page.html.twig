@@ -33,30 +33,60 @@
       </script>
     {% endif %}
 
-    <section class="hero-micrositio{% if hero_tipo == 'facultad' %} hero-micrositio--facultad{% endif %}" {% if hero_facultad %}data-facultad="{{ hero_facultad }}"{% endif %}>
+    {# Variante según el tipo: --facultad o --carrera (micrositio no lleva variante) #}
+    <section class="hero-micrositio{% if hero_tipo in ['facultad', 'carrera'] %} hero-micrositio--{{ hero_tipo }}{% endif %}"{% if hero_facultad %} data-facultad="{{ hero_facultad }}"{% endif %}>
       <div class="hero-micrositio__fondo">
         {% for imagen in hero_diapositivas %}
           <div class="slide-item{% if loop.first %} active{% endif %}"><div class="slide-bg">{{ imagen }}</div><div class="slide-overlay"></div></div>
         {% endfor %}
       </div>
 
+      {# ---------- Título según el tipo ---------- #}
       {% if hero_tipo == 'facultad' %}
         <h1 class="visually-hidden">{{ hero_titulo_seguro }}</h1>
-        {% if hero_datos %}
-          <ul class="hero-micrositio__datos">
-            {% for dato in hero_datos %}
-              <li class="hero-micrositio__dato">
-                {% if dato.icono_url %}<span class="hero-micrositio__icono" style="--icono-url: url('{{ dato.icono_url }}')" aria-hidden="true"></span>{% endif %}
-                <span class="hero-micrositio__valor">{{ dato.valor }}</span>
-                <span class="hero-micrositio__etiqueta">{{ dato.etiqueta }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+
+      {% elseif hero_tipo == 'carrera' %}
+        <div class="hero-micrositio__carrera">
+          <h1 class="hero-micrositio__nombre">{{ hero_titulo_seguro }}</h1>
+
+          {% if hero_descripcion %}
+            <p class="hero-micrositio__descripcion">{{ hero_descripcion }}</p>
+          {% endif %}
+
+          {% if hero_admisiones or hero_brochure %}
+            <div class="hero-micrositio__botones">
+              {% if hero_admisiones %}
+                <a class="hero-micrositio__boton hero-micrositio__boton--principal" href="{{ hero_admisiones }}">Admisiones</a>
+              {% endif %}
+              {% if hero_brochure %}
+                <a class="hero-micrositio__boton hero-micrositio__boton--brochure" href="{{ hero_brochure }}" download>Brochure</a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
       {% else %}
         <div class="hero-micrositio__contenido">
           <h1 class="hero-micrositio__titulo">{{ hero_titulo_seguro }}</h1>
         </div>
+      {% endif %}
+
+      {# ---------- Franja de datos: la misma para facultad y carrera ----------
+         Facultad: ícono subido (inline). Carrera: ícono del CSS según la clave. #}
+      {% if hero_tipo in ['facultad', 'carrera'] and hero_datos %}
+        <ul class="hero-micrositio__datos">
+          {% for dato in hero_datos %}
+            <li class="hero-micrositio__dato{% if dato.clave %} hero-micrositio__dato--{{ dato.clave }}{% endif %}">
+              {% if dato.icono_url %}
+                <span class="hero-micrositio__icono" style="--icono-url: url('{{ dato.icono_url }}')" aria-hidden="true"></span>
+              {% elseif dato.clave %}
+                <span class="hero-micrositio__icono" aria-hidden="true"></span>
+              {% endif %}
+              <span class="hero-micrositio__valor">{{ dato.valor }}</span>
+              <span class="hero-micrositio__etiqueta">{{ dato.etiqueta }}</span>
+            </li>
+          {% endfor %}
+        </ul>
       {% endif %}
 
       {% if hero_diapositivas|length > 1 %}

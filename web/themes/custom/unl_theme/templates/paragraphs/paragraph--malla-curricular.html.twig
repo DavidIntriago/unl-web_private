@@ -1,0 +1,33 @@
+{#
+  Párrafo Malla curricular: arma los datos y los pasa al componente.
+  periodos = lista de periodos; cada periodo = lista de materias (texto).
+#}
+{% set periodos = [] %}
+{% for item in paragraph.field_periodos_academicos %}
+  {% set periodo = item.entity %}
+  {% if periodo %}
+    {% set materias = [] %}
+    {% for materia in periodo.field_materias %}
+      {% if materia.value|trim %}
+        {% set materias = materias|merge([materia.value]) %}
+      {% endif %}
+    {% endfor %}
+    {% set periodos = periodos|merge([materias]) %}
+  {% endif %}
+{% endfor %}
+
+{# PDFs: URL y peso en MB #}
+{% set pdf_malla = paragraph.field_malla_curricular.entity %}
+{% set pdf_proyecto = paragraph.field_proyecto_de_carrera.entity %}
+
+{% include 'unl_theme:malla_curricular' with {
+  descripcion: paragraph.field_descripcion.value,
+  aprobacion_ces: paragraph.field_aprobacion_ces.value,
+  pdf_malla: pdf_malla ? file_url(pdf_malla.uri.value) : null,
+  pdf_malla_peso: pdf_malla ? (pdf_malla.filesize.value / 1048576)|number_format(1, ',') ~ ' MB' : null,
+  pdf_proyecto: pdf_proyecto ? file_url(pdf_proyecto.uri.value) : null,
+  periodos: periodos,
+} only %}
+
+{# Diagnóstico temporal: bórralo cuando funcione #}
+<!-- malla: {{ paragraph.field_periodos_academicos|length }} periodos recibidos, {{ periodos|length }} armados, pdf malla: {{ pdf_malla ? 'sí' : 'no' }}, pdf proyecto: {{ pdf_proyecto ? 'sí' : 'no' }} -->

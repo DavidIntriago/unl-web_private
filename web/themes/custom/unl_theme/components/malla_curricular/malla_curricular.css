@@ -1,0 +1,391 @@
+/**
+ * MALLA CURRICULAR
+ * Cabecera (texto + botones PDF) y una pista horizontal de tarjetas,
+ * una por periodo académico. Colores: blanco y color de la facultad
+ * muy bajito alternados; el último periodo con el color completo.
+ */
+.malla {
+  /* Versión oscura del color de la facultad: para texto y botones sobre blanco.
+     Hace falta porque el amarillo o el celeste puros no se leen sobre blanco. */
+  --malla-acento: var(--color-facultad, var(--color-primario));
+  --malla-acento-oscuro: color-mix(in srgb, var(--malla-acento) 60%, black);
+  --malla-acento-suave: color-mix(in srgb, var(--malla-acento) 8%, white);
+  --malla-acento-etiqueta: color-mix(in srgb, var(--malla-acento) 14%, white);
+
+  margin-top: var(--espacio-entre-secciones);
+}
+
+/* =========================================================
+   CABECERA — mismo borde que los demás títulos de sección
+   ========================================================= */
+.malla__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-6) var(--espacio-10);
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: 0 auto var(--espacio-8);
+}
+
+.malla__texto {
+  flex: 1 1 28rem;
+  max-width: 40rem;
+}
+
+.malla__antetitulo {
+  margin: 0 0 var(--espacio-2);
+  color: var(--malla-acento-oscuro);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+}
+
+.malla__titulo {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: var(--texto-xl);
+  font-weight: var(--peso-titulo);
+  line-height: var(--interlineado-titulo);
+  text-align: left;
+}
+
+.malla__descripcion {
+  margin: var(--espacio-3) 0 0;
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-base);
+  line-height: var(--interlineado-base);
+}
+
+.malla__ces {
+  margin: var(--espacio-5) 0 0;
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-sm);
+}
+
+.malla__ces-etiqueta {
+  display: block;
+  margin-bottom: var(--espacio-1);
+  color: var(--malla-acento-oscuro);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-seminegrita);
+}
+
+/* ---------- Botones PDF ---------- */
+.malla__acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-2);
+}
+
+.malla__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+}
+
+.malla__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-5);
+  border: 1px solid var(--malla-acento-oscuro);
+  border-radius: var(--radio-pastilla);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+  transition:
+    background-color var(--duracion-rapida) ease,
+    transform var(--duracion-rapida) ease;
+}
+
+.malla__boton::before {
+  content: "";
+  flex-shrink: 0;
+  width: var(--icono-sm);
+  height: var(--icono-sm);
+  background-color: currentColor;
+  -webkit-mask: var(--icono-archivo) center / contain no-repeat;
+  mask: var(--icono-archivo) center / contain no-repeat;
+}
+
+.malla__boton--principal::before {
+  -webkit-mask-image: var(--icono-descarga);
+  mask-image: var(--icono-descarga);
+}
+
+.malla__boton:hover {
+  transform: translateY(var(--elevar-boton));
+}
+
+.malla__boton--principal {
+  background-color: var(--malla-acento-oscuro);
+  color: var(--texto-sobre-primario);
+}
+
+.malla__boton--secundario {
+  background-color: var(--color-superficie);
+  color: var(--malla-acento-oscuro);
+}
+
+.malla__boton--secundario:hover {
+  background-color: var(--malla-acento-suave);
+}
+
+.malla__boton:focus-visible {
+  outline: 2px solid var(--malla-acento-oscuro);
+  outline-offset: 2px;
+}
+
+.malla__peso {
+  margin: 0;
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-xs);
+}
+
+/* =========================================================
+   PISTA HORIZONTAL
+   Arranca en el mismo borde que el título y deja correr las
+   tarjetas hasta el borde de la pantalla.
+   ========================================================= */
+.malla__pista {
+  --malla-borde: max(var(--espacio-5), (100% - var(--contenedor-secciones)) / 2);
+
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--malla-borde);
+  padding: var(--espacio-4) var(--malla-borde) var(--espacio-5);
+  scrollbar-width: thin;
+  scrollbar-color: var(--malla-acento-etiqueta) transparent;
+}
+
+.malla__pista:focus-visible {
+  outline: 2px solid var(--malla-acento-oscuro);
+  outline-offset: -2px;
+}
+
+.malla__periodos {
+  display: flex;
+  gap: var(--espacio-4);
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* =========================================================
+   TARJETA DE PERIODO
+   ========================================================= */
+.malla__periodo {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  padding: var(--espacio-5);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-sm);
+  scroll-snap-align: start;
+  /* Gira desde la esquina inferior izquierda, como una carta que se levanta por una punta */
+  transform-origin: bottom left;
+  transition:
+    transform var(--duracion-normal) var(--curva-suave),
+    box-shadow var(--duracion-normal) ease;
+}
+
+/* Alternadas: blanco / color de la facultad muy bajito */
+.malla__periodo:nth-child(odd) {
+  background-color: var(--malla-acento-suave);
+}
+
+.malla__periodo-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--espacio-2);
+}
+
+.malla__numero {
+  color: var(--malla-acento-oscuro);
+  font-size: var(--texto-2xl);
+  font-weight: var(--peso-normal);
+  line-height: 1;
+}
+
+.malla__conteo {
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-xs);
+  white-space: nowrap;
+}
+
+.malla__periodo-nombre {
+  margin: var(--espacio-4) 0 var(--espacio-3);
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-seminegrita);
+  text-transform: uppercase;
+}
+
+.malla__materias {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.malla__materia {
+  padding: var(--espacio-1) var(--espacio-2);
+  border-radius: var(--radio-sm);
+  background-color: var(--malla-acento-etiqueta);
+  color: var(--color-texto);
+  font-size: var(--texto-xs);
+  line-height: var(--interlineado-ajustado);
+}
+
+/* Sobre blanco, la etiqueta se ve mejor con el tono suave */
+.malla__periodo:nth-child(even) .malla__materia {
+  background-color: var(--malla-acento-suave);
+}
+
+/* ---------- Último periodo: color fuerte ---------- */
+.malla__periodo--final,
+.malla__periodo--final:nth-child(odd) {
+  background-color: var(--malla-acento);
+}
+
+.malla__periodo--final .malla__numero,
+.malla__periodo--final .malla__conteo,
+.malla__periodo--final .malla__periodo-nombre {
+  color: var(--texto-sobre-primario);
+}
+
+.malla__periodo--final .malla__materia,
+.malla__periodo--final:nth-child(even) .malla__materia {
+  background-color: rgb(255 255 255 / 0.22);
+  color: var(--texto-sobre-primario);
+}
+
+/* =========================================================
+   BARRA DE DESPLAZAMIENTO PROPIA
+   Siempre visible (la del navegador se esconde sola en Linux/Mac).
+   Arranca en el mismo borde que las tarjetas y el título.
+   ========================================================= */
+.malla--barra .malla__pista {
+  scrollbar-width: none;
+}
+
+.malla--barra .malla__pista::-webkit-scrollbar {
+  display: none;
+}
+
+.malla__desplazamiento {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-2) var(--espacio-4);
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: var(--espacio-1) auto 0;
+}
+
+.malla__desplazamiento[hidden] {
+  display: none;
+}
+
+.malla__barra {
+  position: relative;
+  flex: 0 1 18rem;
+  height: 0.375rem;
+  border-radius: var(--radio-pastilla);
+  background-color: var(--malla-acento-etiqueta);
+  cursor: pointer;
+  touch-action: none;
+}
+
+.malla__barra-pulgar {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: inherit;
+  background-color: var(--malla-acento-oscuro);
+  cursor: grab;
+}
+
+.malla__barra-pulgar:active {
+  cursor: grabbing;
+}
+
+.malla__ayuda {
+  margin: 0;
+  color: var(--color-texto-tenue);
+  font-size: var(--texto-xs);
+}
+
+/* =========================================================
+   HOVER: la tarjeta se levanta inclinada
+   ========================================================= */
+@media (hover: hover) and (pointer: fine) {
+  /* Dos selectores: uno para cuando no hay animación de entrada
+     y otro con más peso para ganarle a la regla de la entrada */
+  .malla__periodo:hover,
+  .malla--animar.is-visible .malla__periodo:hover {
+    transform: rotate(-2deg) translateY(var(--elevar-boton));
+    box-shadow: var(--sombra-lg);
+  }
+}
+
+/* =========================================================
+   ANIMACIÓN DE ENTRADA
+   Solo si el JS está activo (.malla--animar): las tarjetas
+   esperan escondidas a la izquierda y corren hacia la derecha
+   una tras otra cuando la sección aparece en pantalla.
+   Sin JS, se ven normal.
+   ========================================================= */
+.malla--animar .malla__periodo {
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition:
+    opacity var(--duracion-lenta) ease,
+    transform var(--duracion-lenta) var(--curva-salida);
+  transition-delay: calc(var(--orden) * 80ms);
+}
+
+.malla--animar.is-visible .malla__periodo {
+  opacity: 1;
+  transform: none;
+}
+
+/* Terminada la entrada: sin retraso, para que el hover responda al instante */
+.malla--lista .malla__periodo {
+  transition:
+    transform var(--duracion-normal) var(--curva-suave),
+    box-shadow var(--duracion-normal) ease;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .malla--animar .malla__periodo {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+@media (max-width: 768px) {
+  .malla__cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .malla__texto {
+    flex-basis: auto;
+  }
+
+  .malla__periodo {
+    width: min(78vw, 16rem);
+  }
+}

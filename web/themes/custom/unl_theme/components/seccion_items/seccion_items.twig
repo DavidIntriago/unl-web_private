@@ -1,0 +1,25 @@
+{{ attach_library('unl_theme/seccion_items') }}
+<section class="unl-bloque-items">
+  <div class="unl-bloque-items__container">
+    
+    <div class="unl-bloque-items__header">
+      {% if titulo_2|render|trim is not empty %}
+        <span class="unl-bloque-items__sobretitulo">{{ titulo_2|render|striptags|trim }}</span>
+      {% endif %}
+      
+      {% if titulo|render|trim is not empty %}
+        <h2 class="unl-bloque-items__titulo">{{ titulo|render|striptags|trim }}</h2>
+      {% endif %}
+      
+      {% if descripcion|render|trim is not empty %}
+        <div class="unl-bloque-items__descripcion">{{ descripcion }}</div>
+      {% endif %}
+    </div>
+
+    {# El campo referenciado renderizará automáticamente cada paragraph--item.html.twig #}
+    <div class="unl-bloque-items__grid">
+      {{ items }}
+    </div>
+
+  </div>
+</section>

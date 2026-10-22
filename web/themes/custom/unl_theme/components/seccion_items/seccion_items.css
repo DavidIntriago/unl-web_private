@@ -1,0 +1,94 @@
+.unl-bloque-items {
+  width: 100%;
+  background-color: var(--color-fondo-gris, #f4f4f4);
+  padding: var(--espacio-10) 0;
+  margin-top: var(--espacio-entre-secciones);
+}
+
+.unl-bloque-items__container {
+  max-width: var(--contenedor-ancho);
+  margin: 0 auto;
+  padding: 0 var(--espacio-4);
+}
+
+.unl-bloque-items__header {
+  max-width: 800px;
+  margin-bottom: var(--espacio-8);
+}
+
+.unl-bloque-items__sobretitulo {
+  display: block;
+  color: var(--color-primario);
+  font-weight: var(--peso-medio);
+  font-size: var(--texto-sm);
+  margin-bottom: var(--espacio-2);
+}
+
+.unl-bloque-items__titulo {
+  font-size: var(--texto-3xl);
+  color: var(--color-texto);
+  margin: 0 0 var(--espacio-4) 0;
+  line-height: var(--interlineado-ajustado);
+}
+
+.unl-bloque-items__descripcion {
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-base);
+  line-height: var(--interlineado-relajado);
+}
+
+.unl-bloque-items__grid > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-4);
+}
+
+@media (min-width: 768px) {
+  .unl-bloque-items__grid > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .unl-bloque-items__grid > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.unl-bloque-item {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radio-md, 8px);
+  padding: var(--espacio-4) var(--espacio-6);
+  transition: border-color var(--duracion-normal) ease;
+  height: 100%;
+}
+
+.unl-bloque-item:hover {
+  border-color: var(--color-primario);
+}
+
+.unl-bloque-item__icono {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: var(--espacio-4);
+  color: var(--color-primario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unl-bloque-item__icono img,
+.unl-bloque-item__icono svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.unl-bloque-item__texto {
+  font-size: var(--texto-sm);
+  color: var(--color-texto);
+  font-weight: var(--peso-regular);
+}

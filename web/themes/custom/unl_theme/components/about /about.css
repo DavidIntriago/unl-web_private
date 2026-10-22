@@ -107,3 +107,98 @@
   margin-right: auto;
   padding: 0 var(--espacio-4);
 }
+
+/* =========================================================
+   VARIANTE: FADE (Imagen difuminada a la izquierda)
+   ========================================================= */
+.unl-about--fade {
+  position: relative;
+  overflow: hidden; 
+  padding: var(--espacio-8) 0; 
+}
+
+/* =========================================================
+   VARIANTE: FADE EN ESCRITORIO
+   ========================================================= */
+@media (min-width: 769px) {
+  .unl-about--fade {
+    display: flex;
+    align-items: center; 
+    min-height: max(350px, 38vw); 
+  }
+
+  .unl-about--fade .unl-about__container {
+    display: flex;
+    justify-content: flex-end;  
+    width: 100%;
+    max-width: var(--contenedor-ancho);
+    margin: 0 auto;
+    padding: 0 var(--espacio-4); 
+  }
+
+.unl-about--fade .unl-about__content {
+    width: 32%; 
+    min-width: 380px; 
+    margin-right: 18%; 
+    padding-left: var(--espacio-6);
+    position: relative;
+    z-index: 2;
+  }
+
+  .unl-about--fade .unl-about__media {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 60%; 
+    height: 100%;
+    z-index: 1; 
+    box-shadow: none;
+    border-radius: 0; 
+    -webkit-mask-image: 
+      linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), 
+      linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+    mask-image: 
+      linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), 
+      linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .unl-about--fade .unl-about__media img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%; 
+  }
+}
+
+/* =========================================================
+   VARIANTE: FADE EN MÓVILES
+   ========================================================= */
+@media (max-width: 768px) {
+  .unl-about--fade {
+    padding: 0; 
+    }
+  
+  .unl-about--fade .unl-about__container {
+    display: flex;
+    flex-direction: column; 
+    padding: 0;
+  }
+  
+  .unl-about--fade .unl-about__media {
+    order: -1;
+    width: 100%;
+    height: 280px; 
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+  }
+
+  .unl-about--fade .unl-about__content {
+    margin-top: -3rem; 
+    padding: 0 var(--espacio-4);
+    position: relative;
+    z-index: 2; 
+    }
+}

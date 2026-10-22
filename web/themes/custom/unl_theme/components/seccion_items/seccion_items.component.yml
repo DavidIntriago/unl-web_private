@@ -1,0 +1,17 @@
+name: 'Sección Ítems'
+description: 'Bloque con cabecera y cuadrícula de ítems.'
+props:
+  type: object
+  properties:
+    titulo_2:
+      type: string
+      title: 'Sobretítulo'
+    titulo:
+      type: string
+      title: 'Título Principal'
+    descripcion:
+      type: string
+      title: 'Descripción'
+    items:
+      type: array
+      title: 'Lista de ítems'

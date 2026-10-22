@@ -1,20 +1,33 @@
-<section class="unl-about">
-  {% set has_media = media|render|trim is not empty %}
+{# Si no hay variante, por defecto es un string vacío. Si es 'fade', se añade la clase #}
+{% set modificador_variante = variante == 'fade' ? 'unl-about--fade' : '' %}
 
+<section class="unl-about {{ modificador_variante }}">
+  {% set has_media = media|render|trim is not empty %}
   <div class="unl-about__container {{ not has_media ? 'unl-about__container--no-media' : '' }}">
     
     <div class="unl-about__content">
       
       {% if titulo or titulo_2 %}
+        
+        {# NUEVO: Si es variante fade, titulo_2 es un sobretítulo con el color de la facultad #}
+        {% if variante == 'fade' and titulo_2 %}
+          <span class="unl-about__overline {{ color }}">{{ titulo_2 }}</span>
+        {% endif %}
+
         <h2 class="unl-about__title">
           {{ titulo }}
-          {% if titulo_2 %}
+          
+          {# Si NO es fade, titulo_2 es el texto resaltado inclinado clásico #}
+          {% if variante != 'fade' and titulo_2 %}
             <span class="unl-about__highlight">{{ titulo_2 }}</span>
           {% endif %}
         </h2>
         
-        {% set is_default = (not color or color == 'bg-gray-100') %}
-        <div class="unl-about__divider {{ is_default ? 'unl-about__divider--multicolor' : color }}"></div>
+        {# La raya divisoria solo se muestra en el diseño clásico #}
+        {% if variante != 'fade' %}
+          {% set is_default = (not color or color == 'bg-gray-100') %}
+          <div class="unl-about__divider {{ is_default ? 'unl-about__divider--multicolor' : color }}"></div>
+        {% endif %}
         
       {% endif %}
       

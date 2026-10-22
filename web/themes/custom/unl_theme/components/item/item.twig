@@ -1,0 +1,10 @@
+<article class="unl-bloque-item">
+  {% if logo|render|trim is not empty %}
+    <div class="unl-bloque-item__icono">
+      {{ logo }}
+    </div>
+  {% endif %}
+  <div class="unl-bloque-item__texto">
+    {{ titulo_corto }}
+  </div>
+</article>

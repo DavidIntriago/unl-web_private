@@ -1,0 +1,11 @@
+name: 'Ítem'
+description: 'Tarjeta individual con logo y título.'
+props:
+  type: object
+  properties:
+    logo:
+      type: string
+      title: 'Logo'
+    titulo_corto:
+      type: string
+      title: 'Título Corto'

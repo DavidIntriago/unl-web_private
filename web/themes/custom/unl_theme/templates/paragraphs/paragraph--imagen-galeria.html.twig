@@ -1,0 +1,23 @@
+{#
+  Una foto de la galería. Mismo HTML en las dos variantes:
+  el CSS decide cómo se ve según .galeria--default / .galeria--carrera.
+#}
+<article class="galeria__item{% if enlace_url %} galeria__item--enlace{% endif %}">
+
+  {% if imagen_url %}
+    <img class="galeria__foto" src="{{ imagen_url }}" alt="" loading="lazy">
+  {% endif %}
+
+  <div class="galeria__etiqueta">
+    <h3 class="galeria__nombre">
+      {% if enlace_url %}
+        {# Enlace estirado: toda la foto es clickeable #}
+        <a class="galeria__enlace" href="{{ enlace_url }}">{{ paragraph.field_titulo.value }}</a>
+      {% else %}
+        {{ paragraph.field_titulo.value }}
+      {% endif %}
+    </h3>
+    <span class="galeria__mas" aria-hidden="true">+</span>
+  </div>
+
+</article>

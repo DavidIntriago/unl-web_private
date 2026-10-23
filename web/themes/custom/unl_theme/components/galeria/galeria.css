@@ -1,0 +1,268 @@
+/**
+ * GALERÍA — fila de fotos con título.
+ * Dos variantes:
+ *   default → la antigua "sustantiva": la foto se ensancha al hover,
+ *             etiqueta roja translúcida con "+".
+ *   carrera → fotos de lado a lado de la pantalla, título abajo a la
+ *             izquierda con una línea corta del color de la facultad.
+ */
+.galeria {
+  --galeria-acento: var(--color-facultad, var(--color-primario));
+  --galeria-acento-oscuro: color-mix(in srgb, var(--galeria-acento) 75%, black);
+
+  margin-top: var(--espacio-entre-secciones);
+}
+
+/* =========================================================
+   CABECERA — mismo borde que los demás títulos de sección
+   ========================================================= */
+.galeria__cabecera {
+  width: min(100% - 2 * var(--espacio-5), var(--contenedor-secciones));
+  margin: 0 auto var(--espacio-titulo-seccion);
+  text-align: left;
+}
+
+.galeria__antetitulo {
+  margin: 0 0 var(--espacio-2);
+  color: var(--galeria-acento-oscuro);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+}
+
+/* Título de la variante carrera: mismo tamaño que Malla curricular.
+   (La variante default usa la clase global .titulo-vista-global) */
+.galeria__titulo {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: var(--texto-xl);
+  font-weight: var(--peso-titulo);
+  line-height: var(--interlineado-titulo);
+  text-align: left;
+}
+
+/* Variante default: el título global no trae margen abajo
+   (en las otras secciones se lo da su contenedor); aquí se lo damos
+   con el mismo espacio que usan todos los títulos de sección. */
+.galeria--default .titulo-vista-global {
+  margin-bottom: var(--espacio-titulo-seccion);
+}
+
+/* =========================================================
+   PIEZAS COMPARTIDAS
+   ========================================================= */
+.galeria__fila {
+  display: flex;
+  width: 100%;
+}
+
+.galeria__item {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.galeria__foto {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--duracion-lenta) ease;
+}
+
+.galeria__etiqueta {
+  position: relative;
+  z-index: 2;
+}
+
+.galeria__nombre {
+  margin: 0;
+  color: var(--texto-sobre-primario);
+  line-height: var(--interlineado-ajustado);
+  text-align: left;
+}
+
+.galeria__enlace {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Enlace estirado: toda la foto es clickeable */
+.galeria__enlace::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-dropdown);
+}
+
+.galeria__enlace:focus-visible {
+  outline: none;
+}
+
+.galeria__enlace:focus-visible::after {
+  outline: 3px solid var(--color-superficie);
+  outline-offset: -3px;
+}
+
+/* =========================================================
+   VARIANTE DEFAULT (antes "sustantiva" de grid tarjetas)
+   Tarjetas pegadas, del mismo ancho. Al pasar el mouse la foto
+   no se mueve: solo gira el "+" y la etiqueta roja crece un poco.
+   ========================================================= */
+.galeria--default .galeria__fila {
+  gap: 0;
+}
+
+.galeria--default .galeria__item {
+  flex: 1 1 0;
+  min-height: 20rem;
+}
+
+.galeria--default .galeria__etiqueta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  width: 12.5rem;
+  max-width: 100%;
+  /* Todas las franjas miden lo mismo: el alto de un título de dos líneas */
+  min-height: calc(2 * var(--interlineado-ajustado) * var(--texto-sm) + 2 * var(--espacio-2));
+  padding: var(--espacio-2) var(--espacio-4);
+  /* Rojo con opacidad: deja ver un poco la foto de atrás */
+  background-color: color-mix(in srgb, var(--color-primario) 80%, transparent);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  /* Crece desde la esquina inferior izquierda, sin despegarse del borde */
+  transform-origin: bottom left;
+  transition: transform var(--duracion-normal) var(--curva-suave);
+}
+
+.galeria--default .galeria__item:is(:hover, :focus-within) .galeria__etiqueta {
+  transform: scale(1.05);
+}
+
+.galeria--default .galeria__nombre {
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-negrita);
+  text-transform: uppercase;
+}
+
+.galeria--default .galeria__mas {
+  flex-shrink: 0;
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-negrita);
+  line-height: 1;
+  transition: transform var(--duracion-normal) ease;
+}
+
+.galeria--default .galeria__item:is(:hover, :focus-within) .galeria__mas {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .galeria--default .galeria__fila {
+    flex-direction: column;
+  }
+
+  .galeria--default .galeria__item {
+    flex: none;
+    align-items: stretch;
+    min-height: 5.625rem;
+  }
+
+  /* En celular no hay foto detrás: el rojo va sólido y sin crecer */
+  .galeria--default .galeria__foto {
+    display: none;
+  }
+
+  .galeria--default .galeria__etiqueta {
+    width: 100%;
+    padding: var(--espacio-4) var(--espacio-5);
+    background-color: var(--color-primario);
+  }
+
+  .galeria--default .galeria__item:is(:hover, :focus-within) .galeria__etiqueta {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   VARIANTE CARRERA
+   Fotos iguales de lado a lado, pegadas entre sí.
+   Título abajo a la izquierda con línea del color de la facultad.
+   ========================================================= */
+.galeria--carrera .galeria__item {
+  flex: 1 1 0;
+  height: clamp(18rem, 26vw, 31rem);
+}
+
+/* Oscurece abajo para que el título se lea */
+.galeria--carrera .galeria__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.65) 0%, transparent 45%);
+}
+
+.galeria--carrera .galeria__etiqueta {
+  padding: 0 var(--espacio-8) var(--espacio-8);
+}
+
+.galeria--carrera .galeria__nombre {
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-medio);
+}
+
+/* Línea corta del color de la facultad */
+.galeria--carrera .galeria__nombre::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 0.1875rem;
+  margin-top: var(--espacio-3);
+  background-color: var(--galeria-acento);
+  transition: width var(--duracion-normal) var(--curva-suave);
+}
+
+.galeria--carrera .galeria__mas {
+  display: none;
+}
+
+/* Hover: la foto crece un poco y la línea se alarga */
+.galeria--carrera .galeria__item:is(:hover, :focus-within) .galeria__foto {
+  transform: scale(1.05);
+}
+
+.galeria--carrera .galeria__item:is(:hover, :focus-within) .galeria__nombre::after {
+  width: 6rem;
+}
+
+@media (max-width: 768px) {
+  .galeria--carrera .galeria__fila {
+    flex-direction: column;
+  }
+
+  .galeria--carrera .galeria__item {
+    flex: none;
+    height: 15rem;
+  }
+
+  .galeria--carrera .galeria__etiqueta {
+    padding: 0 var(--espacio-5) var(--espacio-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galeria__foto,
+  .galeria--default .galeria__item,
+  .galeria--carrera .galeria__nombre::after {
+    transition: none;
+  }
+}

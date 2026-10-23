@@ -1,0 +1,20 @@
+name: 'Galería'
+description: 'Fila de fotos con título. Variante default (se ensancha al hover) o carrera (fotos de lado a lado con línea del color de la facultad).'
+props:
+  type: object
+  properties:
+    antetitulo:
+      type: [string, 'null']
+      title: 'Antetítulo (título 1)'
+    titulo:
+      type: [string, 'null']
+      title: 'Título (título 2)'
+    variante:
+      type: [string, 'null']
+      title: 'Variante'
+      enum:
+        - 'default'
+        - 'carrera'
+slots:
+  items:
+    title: 'Imágenes'

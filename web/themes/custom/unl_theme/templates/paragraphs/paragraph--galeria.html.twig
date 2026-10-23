@@ -1,0 +1,22 @@
+{#
+  Párrafo Galería: pasa los datos al componente y cada imagen
+  sin los envoltorios de Drupal.
+  field_titulo   → título (grande)
+  field_titulo_2 → antetítulo (pequeño, arriba)
+#}
+{% embed 'unl_theme:galeria' with {
+  antetitulo: paragraph.field_titulo_2.value,
+  titulo: paragraph.field_titulo.value,
+  variante: paragraph.field_variante_galeria.value,
+  imagenes: content.field_imagenes,
+} only %}
+  {% block items %}
+    {# Solo los elementos numerados (0, 1, 2…) son imágenes;
+       las claves que empiezan con # son configuración de Drupal #}
+    {% for clave, imagen in imagenes %}
+      {% if clave matches '/^\\d+$/' %}
+        {{ imagen }}
+      {% endif %}
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

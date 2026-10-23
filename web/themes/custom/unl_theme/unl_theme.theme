@@ -433,3 +433,30 @@ function unl_theme_preprocess_paragraph__redes_sociales(&$variables) {
     ];
   }
 }
+
+/**
+ * Implements hook_preprocess_paragraph__TYPE() para Imagen galería.
+ *
+ * Prepara la URL de la foto y la URL del enlace (opcional).
+ */
+function unl_theme_preprocess_paragraph__imagen_galeria(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Foto: funciona si field_imagen es Multimedia o Imagen
+  $variables['imagen_url'] = '';
+  if ($paragraph->hasField('field_imagen') && !$paragraph->get('field_imagen')->isEmpty()) {
+    $entidad = $paragraph->get('field_imagen')->entity;
+    $archivo = $entidad instanceof \Drupal\media\MediaInterface
+      ? \Drupal\file\Entity\File::load($entidad->getSource()->getSourceFieldValue($entidad))
+      : $entidad;
+    if ($archivo instanceof \Drupal\file\FileInterface) {
+      $variables['imagen_url'] = \Drupal::service('file_url_generator')->generateString($archivo->getFileUri());
+    }
+  }
+
+  // Enlace opcional
+  $variables['enlace_url'] = '';
+  if ($paragraph->hasField('field_enlace') && !$paragraph->get('field_enlace')->isEmpty()) {
+    $variables['enlace_url'] = $paragraph->get('field_enlace')->first()->getUrl()->toString();
+  }
+}

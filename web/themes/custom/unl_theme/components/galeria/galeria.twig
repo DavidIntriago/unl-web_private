@@ -1,0 +1,37 @@
+{#
+  Galería
+  variante: default (antes "sustantiva" de grid tarjetas) | carrera
+  - default: título con la clase global .titulo-vista-global, igual que
+    los títulos de sección del inicio y de las facultades. Sin antetítulo.
+  - carrera: antetítulo + título grande (como Malla curricular).
+#}
+{% set modo = variante == 'carrera' ? 'carrera' : 'default' %}
+
+<section class="galeria galeria--{{ modo }}"{% if titulo %} aria-label="{{ titulo }}"{% endif %}>
+
+  {% if modo == 'carrera' %}
+
+    {% if antetitulo or titulo %}
+      <div class="galeria__cabecera">
+        {% if antetitulo %}
+          <p class="galeria__antetitulo">{{ antetitulo }}</p>
+        {% endif %}
+        {% if titulo %}
+          <h2 class="galeria__titulo">{{ titulo }}</h2>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  {% elseif titulo %}
+
+    {# Mismo título que el resto del sitio: el estilo vive en el CSS global #}
+    <h2 class="titulo-vista-global">{{ titulo }}</h2>
+
+  {% endif %}
+
+  <div class="galeria__fila">
+    {% block items %}
+    {% endblock %}
+  </div>
+
+</section>

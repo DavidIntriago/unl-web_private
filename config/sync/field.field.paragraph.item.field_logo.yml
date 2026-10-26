@@ -1,0 +1,31 @@
+uuid: 13d01ab0-50e2-4219-81e5-33c50cb5d3d5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_logo
+    - media.type.horizontal_pequena
+    - media.type.icono_svg
+    - paragraphs.paragraphs_type.item
+id: paragraph.item.field_logo
+field_name: field_logo
+entity_type: paragraph
+bundle: item
+label: Logo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      horizontal_pequena: horizontal_pequena
+      icono_svg: icono_svg
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: horizontal_pequena
+field_type: entity_reference

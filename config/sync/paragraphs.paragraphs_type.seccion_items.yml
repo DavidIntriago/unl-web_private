@@ -1,0 +1,10 @@
+uuid: 70e42a18-b585-42a1-9d6f-1c20b4a3321f
+langcode: es
+status: true
+dependencies: {  }
+id: seccion_items
+label: 'Seccion Items'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

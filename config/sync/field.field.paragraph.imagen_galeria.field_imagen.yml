@@ -1,0 +1,33 @@
+uuid: 9ba5f878-5223-4329-ab7a-3cc8acb2f775
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_imagen
+    - media.type.cuadrada
+    - media.type.footer_minimo_2000x300_px
+    - media.type.horizontal_pantalla_completa
+    - paragraphs.paragraphs_type.imagen_galeria
+id: paragraph.imagen_galeria.field_imagen
+field_name: field_imagen
+entity_type: paragraph
+bundle: imagen_galeria
+label: Imagen
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      cuadrada: cuadrada
+      footer_minimo_2000x300_px: footer_minimo_2000x300_px
+      horizontal_pantalla_completa: horizontal_pantalla_completa
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: cuadrada
+field_type: entity_reference

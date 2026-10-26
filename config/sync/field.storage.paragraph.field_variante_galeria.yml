@@ -1,0 +1,27 @@
+uuid: 20ebf164-34a4-4c7e-8f7a-971e792fda63
+langcode: es
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_variante_galeria
+field_name: field_variante_galeria
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Default
+    -
+      value: carrera
+      label: Carrera
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

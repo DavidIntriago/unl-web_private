@@ -1,0 +1,23 @@
+uuid: b0e97fed-e47d-4333-9201-5eb0dfa36dd1
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_variante_galeria
+    - paragraphs.paragraphs_type.galeria
+  module:
+    - options
+id: paragraph.galeria.field_variante_galeria
+field_name: field_variante_galeria
+entity_type: paragraph
+bundle: galeria
+label: Variante
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

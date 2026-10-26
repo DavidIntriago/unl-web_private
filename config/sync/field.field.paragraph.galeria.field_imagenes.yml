@@ -1,0 +1,112 @@
+uuid: 208fa963-5a74-44ac-977c-454dcb943e5d
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_imagenes
+    - paragraphs.paragraphs_type.galeria
+    - paragraphs.paragraphs_type.imagen_galeria
+  module:
+    - entity_reference_revisions
+id: paragraph.galeria.field_imagenes
+field_name: field_imagenes
+entity_type: paragraph
+bundle: galeria
+label: Imágenes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      imagen_galeria: imagen_galeria
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 30
+        enabled: false
+      archivo:
+        weight: 31
+        enabled: false
+      banner_botones:
+        weight: 32
+        enabled: false
+      columna_footer:
+        weight: 33
+        enabled: false
+      convenios:
+        weight: 34
+        enabled: false
+      dato_facultad:
+        weight: 35
+        enabled: false
+      diapositiva_hero:
+        weight: 36
+        enabled: false
+      divisor:
+        weight: 37
+        enabled: false
+      galeria:
+        weight: 29
+        enabled: false
+      grid_perfiles:
+        weight: 38
+        enabled: false
+      grid_tarjetas:
+        weight: 39
+        enabled: false
+      hero_carrusel:
+        weight: 40
+        enabled: false
+      imagen_galeria:
+        weight: 41
+        enabled: true
+      importaciones:
+        weight: 42
+        enabled: false
+      listado_carreras:
+        weight: 43
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 44
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 45
+        enabled: false
+      logo_footer:
+        weight: 46
+        enabled: false
+      malla_curricular:
+        weight: 47
+        enabled: false
+      notificacion_flotante:
+        weight: 48
+        enabled: false
+      perfil:
+        weight: 49
+        enabled: false
+      periodo_academico:
+        weight: 50
+        enabled: false
+      recursos_descargables:
+        weight: 51
+        enabled: false
+      redes_sociales:
+        weight: 52
+        enabled: false
+      repositorio_dinamico:
+        weight: 53
+        enabled: false
+      tarjeta:
+        weight: 54
+        enabled: false
+      texto_libre:
+        weight: 55
+        enabled: false
+      visor_pdf:
+        weight: 56
+        enabled: false
+field_type: entity_reference_revisions

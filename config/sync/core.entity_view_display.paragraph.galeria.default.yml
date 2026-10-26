@@ -1,0 +1,54 @@
+uuid: ab1899c6-f97a-4a9a-8a08-67b3636b9bae
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.galeria.field_imagenes
+    - field.field.paragraph.galeria.field_titulo
+    - field.field.paragraph.galeria.field_titulo_2
+    - field.field.paragraph.galeria.field_variante_galeria
+    - paragraphs.paragraphs_type.galeria
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.galeria.default
+targetEntityType: paragraph
+bundle: galeria
+mode: default
+content:
+  field_imagenes:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_titulo:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_titulo_2:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_variante_galeria:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  search_api_excerpt: true

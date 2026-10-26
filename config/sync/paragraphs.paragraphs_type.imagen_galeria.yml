@@ -1,0 +1,10 @@
+uuid: b8fd5083-52fe-4695-a9a9-efd185706283
+langcode: es
+status: true
+dependencies: {  }
+id: imagen_galeria
+label: 'Imagen Galería'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

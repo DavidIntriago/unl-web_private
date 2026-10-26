@@ -1,31 +1,31 @@
 .unl-bloque-items {
   width: 100%;
-  background-color: var(--color-fondo-gris, #f4f4f4);
-  padding: var(--espacio-10) 0;
+  padding: var(--espacio-12) 0;
   margin-top: var(--espacio-entre-secciones);
 }
 
 .unl-bloque-items__container {
-  max-width: var(--contenedor-ancho);
+  max-width: var(--contenedor-lectura, 1000px);
   margin: 0 auto;
   padding: 0 var(--espacio-4);
 }
 
 .unl-bloque-items__header {
   max-width: 800px;
-  margin-bottom: var(--espacio-8);
+  margin-bottom: var(--espacio-10);
 }
 
 .unl-bloque-items__sobretitulo {
   display: block;
-  color: var(--color-primario);
-  font-weight: var(--peso-medio);
+  color: var(--color-tema, var(--color-primario));
+  font-weight: var(--peso-medio, 500);
   font-size: var(--texto-sm);
   margin-bottom: var(--espacio-2);
 }
 
 .unl-bloque-items__titulo {
-  font-size: var(--texto-3xl);
+  font-size: var(--texto-3xl, 2rem);
+  font-weight: var(--peso-bold, 700);
   color: var(--color-texto);
   margin: 0 0 var(--espacio-4) 0;
   line-height: var(--interlineado-ajustado);
@@ -33,8 +33,8 @@
 
 .unl-bloque-items__descripcion {
   color: var(--color-texto-cuerpo);
-  font-size: var(--texto-base);
-  line-height: var(--interlineado-relajado);
+  font-size: var(--texto-md, 1.125rem);
+  line-height: var(--interlineado-lectura);
 }
 
 .unl-bloque-items__grid > div {
@@ -57,17 +57,17 @@
 
 .unl-bloque-item {
   display: flex;
-  align-items: center;
+  align-items: center; 
   background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.12); /* Borde sutil como en la referencia */
   border-radius: var(--radio-md, 8px);
-  padding: var(--espacio-4) var(--espacio-6);
+  padding: var(--espacio-5) var(--espacio-6); /* Espaciado interno generoso */
   transition: border-color var(--duracion-normal) ease;
   height: 100%;
 }
 
 .unl-bloque-item:hover {
-  border-color: var(--color-primario);
+  border-color: var(--color-tema, var(--color-primario));
 }
 
 .unl-bloque-item__icono {
@@ -75,7 +75,7 @@
   width: 24px;
   height: 24px;
   margin-right: var(--espacio-4);
-  color: var(--color-primario);
+  color: var(--color-tema, var(--color-primario));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,10 +85,12 @@
 .unl-bloque-item__icono svg {
   max-width: 100%;
   height: auto;
+  fill: currentColor;
 }
 
 .unl-bloque-item__texto {
-  font-size: var(--texto-sm);
+  font-size: var(--texto-sm, 0.875rem);
   color: var(--color-texto);
-  font-weight: var(--peso-regular);
+  font-weight: var(--peso-regular, 400);
+  line-height: var(--interlineado-relajado);
 }

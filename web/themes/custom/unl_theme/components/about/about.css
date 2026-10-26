@@ -1,6 +1,5 @@
 /**
  * ABOUT — texto + imagen/video en dos columnas.
- * El botón toma su estilo de botones.css.
  */
 .unl-about {
   width: 100%;
@@ -8,9 +7,6 @@
   padding: 0 var(--espacio-4);
 }
 
-/* Más estrecho que las demás secciones (1200px, como al inicio):
-   no tiene título de sección, así que no necesita alinearse con ellas.
-   En teléfono todo va en 1 columna. */
 .unl-about__container {
   display: grid;
   grid-template-columns: 1fr;
@@ -20,29 +16,30 @@
   margin: 0 auto;
 }
 
-/* Escritorio: el texto ocupa más que la imagen (60% / 40%) */
 @media (min-width: 769px) {
   .unl-about__container {
     grid-template-columns: 3fr 2fr;
     gap: var(--espacio-16);
   }
 
-  /* Si no hay media el texto ocupa todo el ancho */
   .unl-about__container--no-media {
     grid-template-columns: 1fr;
   }
 }
 
-/* ---------- Texto ---------- */
+/* ---------- Textos y Títulos ---------- */
+
+/* Título principal grande para ambas variantes */
 .unl-about__title {
   margin-top: 0;
-  margin-bottom: var(--espacio-2);
-  font-size: var(--texto-xl);
-  font-weight: var(--peso-medio);
+  margin-bottom: var(--espacio-4);
+  font-size: var(--texto-2xl, 2.5rem);
+  font-weight: var(--peso-bold, 700);
   line-height: var(--interlineado-ajustado);
   color: var(--color-texto);
 }
 
+/* Resaltado inclinado unificado */
 .unl-about__highlight {
   display: inline-block;
   margin-left: var(--espacio-2);
@@ -52,6 +49,7 @@
   color: var(--texto-sobre-primario);
   font-weight: var(--peso-negrita);
   transform: skew(-5deg);
+  font-size: inherit; 
 }
 
 .unl-about__description {
@@ -62,7 +60,20 @@
   text-align: justify;
 }
 
-/* ---------- Imagen, video local o YouTube ---------- */
+/* ---------- Divisor de color ---------- */
+.unl-about__divider {
+  width: 100%;
+  height: 4px;
+  margin-bottom: var(--espacio-6);
+  border-radius: 2px;
+  background: var(--color-tema, var(--color-primario));
+}
+
+.unl-about__divider--multicolor {
+  background: var(--degradado-facultades);
+}
+
+/* ---------- Media (Imágenes / Video) ---------- */
 .unl-about__media {
   width: 100%;
   border-radius: var(--radio-xl);
@@ -86,21 +97,6 @@
   border: none;
 }
 
-/* ---------- Divisor de color ----------
-   El color sale de la clase .theme-* (ver utilities.css).
-   Sin clase de facultad, queda en rojo institucional. */
-.unl-about__divider {
-  width: 100%;
-  height: 4px;
-  margin-bottom: var(--espacio-6);
-  border-radius: 2px;
-  background: var(--color-tema, var(--color-primario));
-}
-
-.unl-about__divider--multicolor {
-  background: var(--degradado-facultades);
-}
-
 .nodo-micrositio .unl-about__container {
   max-width: var(--contenedor-lectura);
   margin-left: auto;
@@ -114,17 +110,14 @@
 .unl-about--fade {
   position: relative;
   overflow: hidden; 
-  padding: var(--espacio-8) 0; 
+  padding: var(--espacio-12) 0; 
 }
 
-/* =========================================================
-   VARIANTE: FADE EN ESCRITORIO
-   ========================================================= */
 @media (min-width: 769px) {
   .unl-about--fade {
     display: flex;
     align-items: center; 
-    min-height: max(350px, 38vw); 
+    min-height: max(450px, 45vw);
   }
 
   .unl-about--fade .unl-about__container {
@@ -136,10 +129,10 @@
     padding: 0 var(--espacio-4); 
   }
 
-.unl-about--fade .unl-about__content {
-    width: 32%; 
+  .unl-about--fade .unl-about__content {
+    width: 40%; 
     min-width: 380px; 
-    margin-right: 18%; 
+    margin-right: 5%; 
     padding-left: var(--espacio-6);
     position: relative;
     z-index: 2;
@@ -149,56 +142,55 @@
     position: absolute; 
     top: 0;
     left: 0;
-    width: 60%; 
+    width: 65%;
     height: 100%;
     z-index: 1; 
     box-shadow: none;
     border-radius: 0; 
+    
     -webkit-mask-image: 
-      linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), 
-      linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+      linear-gradient(to right, black 30%, transparent 95%), 
+      linear-gradient(to bottom, transparent 5%, black 20%, black 80%, transparent 95%);
     mask-image: 
-      linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), 
-      linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+      linear-gradient(to right, black 30%, transparent 95%), 
+      linear-gradient(to bottom, transparent 5%, black 20%, black 80%, transparent 95%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }
 
   .unl-about--fade .unl-about__media img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%; 
+    object-position: center; 
   }
 }
 
-/* =========================================================
-   VARIANTE: FADE EN MÓVILES
-   ========================================================= */
 @media (max-width: 768px) {
-  .unl-about--fade {
+  .unl-about--fade,
+  .unl-about--fade .unl-about__container {
     padding: 0; 
-    }
+  }
   
   .unl-about--fade .unl-about__container {
     display: flex;
     flex-direction: column; 
-    padding: 0;
   }
   
   .unl-about--fade .unl-about__media {
     order: -1;
     width: 100%;
-    height: 280px; 
+    height: 350px;
     box-shadow: none;
     border-radius: 0;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   }
 
   .unl-about--fade .unl-about__content {
-    margin-top: -3rem; 
-    padding: 0 var(--espacio-4);
+    margin-top: -4rem; 
+    padding: 0 var(--espacio-6);
     position: relative;
     z-index: 2; 
-    }
+  }
 }

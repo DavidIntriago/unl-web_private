@@ -1,25 +1,13 @@
-{{ attach_library('unl_theme/banner_botones') }}
-<section class="banner-botones animar-scroll">
+{% set background_url = '' %}
+{% if paragraph.field_imagen_fondo.entity %}
+  {% set background_url = file_url(paragraph.field_imagen_fondo.entity.fileuri) %}
+{% endif %}
 
-  {% if fondo_url %}
-    <div class="banner-botones__fondo" style="--fondo-url: url('{{ fondo_url }}')" aria-hidden="true"></div>
-  {% endif %}
-
-  <div class="banner-botones__contenedor">
-    <div class="banner-botones__texto">
-      <h2 class="banner-botones__titulo">{{ paragraph.field_titulo_seccion.value }}</h2>
-      {% if paragraph.field_descripcion_corta.value %}
-        <p class="banner-botones__subtitulo">{{ paragraph.field_descripcion_corta.value }}</p>
-      {% endif %}
-    </div>
-
-    {% if botones %}
-      <div class="banner-botones__botones">
-        {% for boton in botones %}
-          <a class="banner-botones__boton" href="{{ boton.url }}">{{ boton.titulo }}</a>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
-
-</section>
+{% include 'unl_theme:banner_botones' with {
+  variante: paragraph.field_variante_banner.value|default('default'),
+  fondo_url: background_url,
+  titulo: paragraph.field_titulo_seccion.value,
+  descripcion: paragraph.field_descripcion_corta.value,
+  enlaces: content.field_enlaces,
+  color_tema: 'theme-' ~ paragraph.field_facultad.entity.name|clean_class
+} only %}

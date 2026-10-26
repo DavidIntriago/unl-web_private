@@ -1,31 +1,30 @@
-/**
- * BANNER BOTONES
- * De borde a borde: imagen de fondo con capa negra, barra y botones
- * del color de la facultad (--color-facultad).
- */
-
-/* =========================================================
-   CONTENEDOR Y FONDO
-   ========================================================= */
-.banner-botones {
+.banner {
   position: relative;
   margin-top: var(--espacio-entre-secciones);
   overflow: hidden;
-  background-color: var(--color-oscuro);
+  background-color: var(--color-oscuro, #111);
   isolation: isolate;
 }
 
-.banner-botones__fondo {
+.banner__fondo {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: var(--fondo-url) center / cover no-repeat;
-  transition: transform 1.2s var(--curva-suave);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 1.2s var(--curva-suave, cubic-bezier(0.25, 0.46, 0.45, 0.94));
 }
 
-/* Capa negra: más oscura a la izquierda, donde va el texto */
-.banner-botones::after {
-  content: "";
+@media (hover: hover) and (pointer: fine) {
+  .banner:hover .banner__fondo {
+    transform: scale(1.06);
+  }
+}
+
+
+
+.banner--default .banner__overlay {
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -37,14 +36,7 @@
   );
 }
 
-/* Al pasar el mouse, la foto se acerca lentamente */
-@media (hover: hover) and (pointer: fine) {
-  .banner-botones:hover .banner-botones__fondo {
-    transform: scale(1.06);
-  }
-}
-
-.banner-botones__contenedor {
+.banner--default .banner__contenedor {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -55,76 +47,191 @@
   padding: var(--espacio-12) 0;
 }
 
-/* =========================================================
-   TEXTO CON BARRA DE COLOR
-   ========================================================= */
-.banner-botones__texto {
+.banner--default .banner__texto {
   padding-left: var(--espacio-5);
-  border-left: 0.1875rem solid var(--color-facultad, var(--color-primario));
+  border-left: 0.1875rem solid var(--color-tema, var(--color-primario));
 }
 
-.banner-botones__titulo {
+.banner--default .banner__titulo {
   margin: 0;
-  color: var(--texto-sobre-primario);
-  font-size: var(--texto-titulo-seccion);
+  color: var(--texto-sobre-primario, #fff);
+  font-size: var(--texto-titulo-seccion, 2rem);
   font-weight: var(--peso-normal);
   line-height: var(--interlineado-titulo);
 }
 
-.banner-botones__subtitulo {
+.banner--default .banner__descripcion {
   margin: var(--espacio-2) 0 0;
-  color: var(--texto-sobre-primario-suave);
+  color: var(--texto-sobre-primario-suave, rgba(255, 255, 255, 0.8));
   font-size: var(--texto-sm);
 }
 
-/* =========================================================
-   BOTONES
-   ========================================================= */
-.banner-botones__botones {
+.banner--default .banner__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+  align-items: center;
+}
+
+.banner--default .banner__acciones ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   gap: var(--espacio-3);
 }
 
-.banner-botones__boton {
+.banner--default .banner__acciones a {
   display: inline-flex;
   align-items: center;
   padding: var(--espacio-3) var(--espacio-6);
   border-radius: 62.5rem;
-  background-color: var(--color-facultad, var(--color-primario));
-  color: var(--texto-sobre-primario);
+  background-color: var(--color-tema, var(--color-primario));
+  color: var(--texto-sobre-primario, #fff);
   font-size: var(--texto-sm);
-  font-weight: var(--peso-seminegrita);
+  font-weight: var(--peso-seminegrita, 600);
   text-decoration: none;
   transition: background-color var(--duracion-normal) ease;
 }
 
-.banner-botones__boton:hover,
-.banner-botones__boton:focus-visible {
-  background-color: color-mix(in srgb, var(--color-facultad, var(--color-primario)) 80%, black);
+.banner--default .banner__acciones a:hover,
+.banner--default .banner__acciones a:focus-visible {
+  background-color: color-mix(in srgb, var(--color-tema, var(--color-primario)) 80%, black);
 }
 
-.banner-botones__boton:focus-visible {
-  outline: 2px solid var(--color-superficie);
+.banner--default .banner__acciones a:focus-visible {
+  outline: 2px solid var(--color-superficie, #fff);
   outline-offset: 2px;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 @media (max-width: 768px) {
-  .banner-botones__contenedor {
+  .banner--default .banner__contenedor {
     flex-direction: column;
     align-items: flex-start;
     padding: var(--espacio-10) 0;
   }
-
-  .banner-botones__botones {
+  .banner--default .banner__acciones,
+  .banner--default .banner__acciones ul {
     flex-direction: column;
     width: 100%;
   }
-
-  .banner-botones__boton {
+  .banner--default .banner__acciones a {
     justify-content: center;
+  }
+}
+
+
+.banner--minimal .banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.60) 40%,
+    rgba(0, 0, 0, 0.20) 100%
+  );
+}
+
+.banner--minimal {
+  min-height: min(600px, 60vh);
+  display: flex;
+  align-items: center;
+}
+
+.banner--minimal .banner__contenedor {
+  width: 100%;
+  max-width: var(--contenedor-secciones, 1200px);
+  margin: 0 auto;
+  padding: var(--espacio-10) var(--espacio-4);
+  position: relative;
+  z-index: 1;
+}
+
+.banner--minimal .banner__texto {
+  max-width: 600px;
+}
+
+.banner--minimal .banner__divider {
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-tema, var(--color-primario));
+  margin-bottom: var(--espacio-4);
+}
+
+.banner--minimal .banner__titulo {
+  margin: 0 0 var(--espacio-4) 0;
+  color: #ffffff;
+  font-size: var(--texto-4xl, 3rem);
+  font-weight: var(--peso-bold, 700);
+  line-height: 1.1;
+}
+
+.banner--minimal .banner__descripcion {
+  margin: 0 0 var(--espacio-8) 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--texto-base, 1rem);
+  line-height: var(--interlineado-lectura);
+}
+
+.banner--minimal .banner__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-6);
+}
+
+.banner--minimal .banner__acciones ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-6);
+}
+
+/* Enlace minimalista con flecha */
+.banner--minimal .banner__acciones a {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: var(--texto-sm, 0.875rem);
+  font-weight: var(--peso-bold, 700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity var(--duracion-normal) ease;
+}
+
+.banner--minimal .banner__acciones a:hover {
+  opacity: 0.8;
+}
+
+.banner--minimal .banner__acciones a::before {
+  content: "⟶";
+  margin-right: var(--espacio-3);
+  font-size: 1.2rem;
+  font-weight: normal;
+  display: block;
+  transition: transform var(--duracion-normal) ease;
+}
+
+.banner--minimal .banner__acciones a:hover::before {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .banner--minimal {
+    min-height: 400px;
+  }
+  .banner--minimal .banner__titulo {
+    font-size: var(--texto-2xl, 2rem);
+  }
+  .banner--minimal .banner__overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
   }
 }

@@ -1,0 +1,24 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/assets/schemas/v1/metadata.schema.json
+name: Banner
+description: 'Banner de ancho completo con imagen de fondo, texto y enlaces minimalistas.'
+props:
+  type: object
+  properties:
+    variante:
+      type: string
+      title: 'Variante de diseño'
+    fondo_url:
+      type: string
+      title: 'URL de la imagen de fondo'
+    titulo:
+      type: string
+      title: 'Título principal'
+    descripcion:
+      type: string
+      title: 'Descripción corta'
+    color_tema:
+      type: string
+      title: 'Clase de color para la facultad (ej. theme-energia)'
+slots:
+  enlaces:
+    title: 'Enlaces o botones'

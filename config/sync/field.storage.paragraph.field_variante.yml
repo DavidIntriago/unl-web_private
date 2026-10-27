@@ -24,9 +24,6 @@ settings:
       value: imagenes
       label: Imagenes
     -
-      value: sustantiva
-      label: Sustantiva
-    -
       value: marca
       label: Marcas
     -

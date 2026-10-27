@@ -7,6 +7,7 @@ dependencies:
     - node.type.pagina
     - paragraphs.paragraphs_type.about
     - paragraphs.paragraphs_type.convenios
+    - paragraphs.paragraphs_type.galeria
     - paragraphs.paragraphs_type.grid_perfiles
     - paragraphs.paragraphs_type.grid_tarjetas
     - paragraphs.paragraphs_type.hero_carrusel
@@ -35,6 +36,7 @@ settings:
       convenios: convenios
       listado_noticias_destacadas: listado_noticias_destacadas
       grid_perfiles: grid_perfiles
+      galeria: galeria
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -45,6 +47,9 @@ settings:
         enabled: false
       banner_botones:
         weight: 27
+        enabled: false
+      banner_video:
+        weight: 35
         enabled: false
       columna_footer:
         weight: 28
@@ -58,6 +63,12 @@ settings:
       diapositiva_hero:
         weight: 3
         enabled: false
+      divisor:
+        weight: 40
+        enabled: false
+      galeria:
+        weight: 41
+        enabled: true
       grid_perfiles:
         weight: 24
         enabled: true
@@ -67,8 +78,14 @@ settings:
       hero_carrusel:
         weight: 4
         enabled: true
+      imagen_galeria:
+        weight: 45
+        enabled: false
       importaciones:
         weight: 34
+        enabled: false
+      item:
+        weight: 47
         enabled: false
       listado_carreras:
         weight: 35
@@ -82,11 +99,17 @@ settings:
       logo_footer:
         weight: 38
         enabled: false
+      malla_curricular:
+        weight: 52
+        enabled: false
       notificacion_flotante:
         weight: 39
         enabled: false
       perfil:
         weight: 40
+        enabled: false
+      periodo_academico:
+        weight: 55
         enabled: false
       recursos_descargables:
         weight: 19
@@ -96,6 +119,9 @@ settings:
         enabled: false
       repositorio_dinamico:
         weight: 20
+        enabled: false
+      seccion_items:
+        weight: 59
         enabled: false
       tarjeta:
         weight: 8

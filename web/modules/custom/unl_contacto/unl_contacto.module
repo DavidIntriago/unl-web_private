@@ -34,19 +34,6 @@ function unl_contacto_field_widget_single_element_form_alter(array &$element, Fo
 
     $element['#element_validate'][] = 'unl_contacto_validar_perfil';
   }
-
-  // ---------- GRID PERFILES ----------
-  if ($tipo === 'grid_perfiles' && isset($element['subform']['field_estilo'])) {
-    $nombre = $nombre_input(array_merge($element['subform']['#parents'], ['field_estilo']));
-
-    foreach (['field_subtitulo', 'field_boton_admisiones'] as $campo) {
-      if (isset($element['subform'][$campo])) {
-        $element['subform'][$campo]['#states'] = [
-          'visible' => [':input[name="' . $nombre . '"]' => ['value' => 'perfil_banner']],
-        ];
-      }
-    }
-  }
 }
 
 /**

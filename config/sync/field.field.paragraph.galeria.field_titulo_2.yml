@@ -9,7 +9,7 @@ id: paragraph.galeria.field_titulo_2
 field_name: field_titulo_2
 entity_type: paragraph
 bundle: galeria
-label: 'Titulo 2'
+label: Subtítulo
 description: ''
 required: false
 translatable: false

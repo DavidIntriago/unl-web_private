@@ -1,0 +1,8 @@
+refrescar-estados:
+  js:
+    js/refrescar-estados.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/jquery
+    - core/drupal.states

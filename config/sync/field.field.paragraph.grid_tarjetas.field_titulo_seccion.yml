@@ -9,7 +9,7 @@ id: paragraph.grid_tarjetas.field_titulo_seccion
 field_name: field_titulo_seccion
 entity_type: paragraph
 bundle: grid_tarjetas
-label: 'titulo seccion'
+label: 'Título Sección'
 description: ''
 required: false
 translatable: false

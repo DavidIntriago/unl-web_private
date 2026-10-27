@@ -1,0 +1,239 @@
+<?php
+
+/**
+ * @file
+ * Campos condicionales en los formularios de nodos y párrafos.
+ *
+ * Todas las reglas están en unl_formularios_reglas() y
+ * unl_formularios_obligatorios(): para agregar una, solo se añade
+ * una línea ahí. El resto del archivo no se toca.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Qué campos se MUESTRAN según una variante.
+ *
+ * Formato: [tipo de entidad][bundle][campo selector][valor] => [campos].
+ *
+ * - Un campo que aparece aquí SOLO se ve con los valores donde está listado.
+ *   Los que no aparecen se ven siempre.
+ * - '@padre:field_x' = el selector es un campo del párrafo que contiene a
+ *   este (por ejemplo, la tarjeta mira la variante de su grid).
+ * - Para un campo de casilla (booleano) usa el valor '1' (marcado) o '0'.
+ */
+function unl_formularios_reglas(): array {
+  return [
+    'paragraph' => [
+
+      // Grid perfiles: subtítulo y botón solo en el estilo banner.
+      'grid_perfiles' => [
+        'field_estilo' => [
+          'perfil_banner' => ['field_subtitulo', 'field_boton_admisiones'],
+        ],
+      ],
+
+      // Grid tarjetas: el título de sección solo en Sitios de interés y Default.
+      'grid_tarjetas' => [
+        'field_variante' => [
+          'sitios_interes' => ['field_titulo_seccion'],
+          'default' => ['field_titulo_seccion'],
+        ],
+      ],
+
+      // Tarjeta: depende de la variante del grid que la contiene.
+      // Imagen y enlace no aparecen aquí: se ven siempre.
+      'tarjeta' => [
+        '@padre:field_variante' => [
+          'sitios_interes' => ['field_titulo'],
+          'contador' => ['field_titulo'],
+          'default' => ['field_titulo', 'field_descripcion'],
+        ],
+      ],
+
+      // Galería: el título 2 solo en la variante carrera.
+      'galeria' => [
+        'field_variante_galeria' => [
+          'carrera' => ['field_titulo_2'],
+        ],
+      ],
+
+    ],
+    'node' => [
+      // Aquí irán los tipos de contenido (facultades, carrera...).
+    ],
+  ];
+}
+
+/**
+ * Qué campos son OBLIGATORIOS solo en ciertas variantes.
+ *
+ * Mismo formato que las reglas de arriba. El campo NO debe estar marcado
+ * como "Obligatorio" en su configuración; lo exige este código.
+ */
+function unl_formularios_obligatorios(): array {
+  return [
+    'paragraph' => [
+
+      // Tarjeta: el título es obligatorio donde se muestra.
+      'tarjeta' => [
+        '@padre:field_variante' => [
+          'sitios_interes' => ['field_titulo'],
+          'contador' => ['field_titulo'],
+          'default' => ['field_titulo'],
+        ],
+      ],
+
+    ],
+  ];
+}
+
+/**
+ * Convierte una ruta de #parents en el atributo name del input.
+ *
+ * Ejemplo: ['field_secciones', 0, 'subform', 'field_variante']
+ * → 'field_secciones[0][subform][field_variante]'
+ */
+function _unl_formularios_nombre(array $parents): string {
+  $primero = array_shift($parents);
+  return $parents ? $primero . '[' . implode('][', $parents) . ']' : $primero;
+}
+
+/**
+ * Resuelve dónde vive el selector.
+ *
+ * Con '@padre:' sube un nivel: de [..., field_tarjetas, delta, subform]
+ * al subform del grid que contiene la tarjeta.
+ *
+ * @return array
+ *   [parents base del selector, nombre del campo selector, es del padre].
+ */
+function _unl_formularios_selector(array $base, string $selector): array {
+  if (str_starts_with($selector, '@padre:')) {
+    return [array_slice($base, 0, -3), substr($selector, 7), TRUE];
+  }
+  return [$base, $selector, FALSE];
+}
+
+/**
+ * Aplica las reglas de visibilidad a un formulario o subformulario.
+ */
+function _unl_formularios_aplicar(array &$form, array $reglas, array $base) {
+  // Para que las reglas funcionen también en lo que llega por AJAX.
+  $form['#attached']['library'][] = 'unl_formularios/refrescar-estados';
+
+  foreach ($reglas as $selector => $por_valor) {
+    [$base_sel, $campo_sel, $es_padre] = _unl_formularios_selector($base, $selector);
+
+    // Si el selector es de este mismo formulario y no está, no hay nada que hacer.
+    if (!$es_padre && !isset($form[$campo_sel])) {
+      continue;
+    }
+
+    // Casilla (booleano) → [value]; desplegable o radios → el campo tal cual.
+    $widget = $es_padre ? [] : ($form[$campo_sel]['widget'] ?? []);
+    $es_casilla = isset($widget['value']) && ($widget['value']['#type'] ?? '') === 'checkbox';
+    $nombre = _unl_formularios_nombre(array_merge($base_sel, $es_casilla ? [$campo_sel, 'value'] : [$campo_sel]));
+    $input = ':input[name="' . $nombre . '"]';
+
+    // Junta, por cada campo, los valores con los que debe verse.
+    // Ej.: field_titulo => ['sitios_interes', 'contador', 'default']
+    $mostrar = [];
+    foreach ($por_valor as $valor => $campos) {
+      foreach ($campos as $campo) {
+        $mostrar[$campo][] = (string) $valor;
+      }
+    }
+
+    foreach ($mostrar as $campo => $valores) {
+      if (!isset($form[$campo])) {
+        continue;
+      }
+
+      // Arma la condición: "valor = A" o "valor = B" o ...
+      $condiciones = [];
+      foreach ($valores as $valor) {
+        if ($condiciones) {
+          $condiciones[] = 'or';
+        }
+        $condiciones[] = $es_casilla
+          ? [$input => ['checked' => $valor === '1']]
+          : [$input => ['value' => $valor]];
+      }
+
+      $form[$campo]['#states']['visible'] = count($valores) === 1
+        ? $condiciones[0]
+        : $condiciones;
+    }
+  }
+}
+
+/**
+ * Lee el valor de un selector desde lo enviado en el formulario.
+ */
+function _unl_formularios_valor(FormStateInterface $form_state, array $parents) {
+  $valor = $form_state->getValue($parents);
+  if (is_array($valor)) {
+    $valor = $valor[0]['value'] ?? $valor['value'] ?? '';
+  }
+  return (string) $valor;
+}
+
+/**
+ * Valida los obligatorios por variante de un párrafo.
+ */
+function unl_formularios_validar_obligatorios(array $element, FormStateInterface $form_state) {
+  $reglas = $element['#unl_obligatorios'] ?? [];
+  $base = $element['subform']['#parents'];
+
+  foreach ($reglas as $selector => $por_valor) {
+    [$base_sel, $campo_sel] = _unl_formularios_selector($base, $selector);
+    $valor = _unl_formularios_valor($form_state, array_merge($base_sel, [$campo_sel]));
+
+    foreach ($por_valor[$valor] ?? [] as $campo) {
+      if (!isset($element['subform'][$campo])) {
+        continue;
+      }
+      $dato = $form_state->getValue(array_merge($base, [$campo, 0, 'value']));
+      if (trim((string) $dato) === '') {
+        $form_state->setError($element['subform'][$campo], t('Este campo es obligatorio en esta variante.'));
+      }
+    }
+  }
+}
+
+/**
+ * Párrafos: aplica visibilidad y obligatorios dentro de cada subformulario.
+ */
+function unl_formularios_field_widget_single_element_form_alter(array &$element, FormStateInterface $form_state, array $context) {
+  $tipo = $element['#paragraph_type'] ?? NULL;
+
+  // Párrafo colapsado (modo resumen): el subformulario viene vacío,
+  // sin campos ni #parents. No hay nada que ocultar.
+  if (!$tipo || empty($element['subform']['#parents'])) {
+    return;
+  }
+
+  $reglas = unl_formularios_reglas()['paragraph'][$tipo] ?? NULL;
+  if ($reglas) {
+    _unl_formularios_aplicar($element['subform'], $reglas, $element['subform']['#parents']);
+  }
+
+  $obligatorios = unl_formularios_obligatorios()['paragraph'][$tipo] ?? NULL;
+  if ($obligatorios) {
+    $element['#unl_obligatorios'] = $obligatorios;
+    $element['#element_validate'][] = 'unl_formularios_validar_obligatorios';
+  }
+}
+
+/**
+ * Nodos: aplica las reglas en el formulario de crear/editar.
+ */
+function unl_formularios_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+  $reglas = unl_formularios_reglas()['node'][$node->bundle()] ?? NULL;
+
+  if ($reglas) {
+    _unl_formularios_aplicar($form, $reglas, []);
+  }
+}

@@ -1,0 +1,7 @@
+name: 'UNL Formularios'
+type: module
+description: 'Muestra u oculta campos del formulario según la variante elegida.'
+core_version_requirement: ^10 || ^11
+package: UNL
+dependencies:
+  - paragraphs:paragraphs

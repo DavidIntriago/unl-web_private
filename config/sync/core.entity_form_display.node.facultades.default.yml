@@ -23,7 +23,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -35,25 +35,27 @@ content:
     third_party_settings: {  }
   field_columnas_footer:
     type: paragraphs
-    weight: 29
+    weight: 8
     region: content
     settings:
       title: Párrafo
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       closed_mode: summary
-      autocollapse: none
+      autocollapse: all
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: columna_footer
       features:
+        add_above: '0'
         collapse_edit_all: collapse_edit_all
+        convert: '0'
         duplicate: duplicate
     third_party_settings: {  }
   field_correo:
     type: email_default
-    weight: 28
+    weight: 6
     region: content
     settings:
       placeholder: ''
@@ -61,25 +63,27 @@ content:
     third_party_settings: {  }
   field_datos_facultad:
     type: paragraphs
-    weight: 5
+    weight: 3
     region: content
     settings:
       title: Párrafo
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       closed_mode: summary
-      autocollapse: none
+      autocollapse: all
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: dato_facultad
       features:
+        add_above: '0'
         collapse_edit_all: collapse_edit_all
+        convert: '0'
         duplicate: duplicate
     third_party_settings: {  }
   field_direccion:
     type: string_textfield
-    weight: 26
+    weight: 5
     region: content
     settings:
       size: 60
@@ -87,26 +91,34 @@ content:
     third_party_settings: {  }
   field_imagen_hero:
     type: media_library_widget
-    weight: 3
+    weight: 2
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_secciones_facultad:
-    type: entity_reference_paragraphs
-    weight: 6
+    type: paragraphs
+    weight: 4
     region: content
     settings:
       title: Párrafo
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings: {  }
   field_telefono:
     type: string_textfield
-    weight: 27
+    weight: 7
     region: content
     settings:
       size: 60
@@ -114,25 +126,25 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 10
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 8
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 10
+    weight: 14
     region: content
     settings:
       display_label: true
@@ -147,7 +159,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 9
     region: content
     settings:
       match_operator: CONTAINS

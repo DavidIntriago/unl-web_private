@@ -56,6 +56,7 @@ module:
   token: 0
   twig_tweak: 0
   unl_contacto: 0
+  unl_formularios: 0
   unl_media_validation: 0
   update: 0
   user: 0

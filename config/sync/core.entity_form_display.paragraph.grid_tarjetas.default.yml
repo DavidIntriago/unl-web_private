@@ -3,30 +3,20 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.grid_tarjetas.field_enlace
     - field.field.paragraph.grid_tarjetas.field_tarjetas
     - field.field.paragraph.grid_tarjetas.field_titulo_seccion
     - field.field.paragraph.grid_tarjetas.field_variante
     - paragraphs.paragraphs_type.grid_tarjetas
   module:
-    - link
     - paragraphs
 id: paragraph.grid_tarjetas.default
 targetEntityType: paragraph
 bundle: grid_tarjetas
 mode: default
 content:
-  field_enlace:
-    type: link_default
-    weight: 2
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_tarjetas:
     type: paragraphs
-    weight: 0
+    weight: 2
     region: content
     settings:
       title: Paragraph
@@ -46,7 +36,7 @@ content:
     third_party_settings: {  }
   field_titulo_seccion:
     type: string_textfield
-    weight: 1
+    weight: 0
     region: content
     settings:
       size: 60
@@ -54,7 +44,7 @@ content:
     third_party_settings: {  }
   field_variante:
     type: options_select
-    weight: 2
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }

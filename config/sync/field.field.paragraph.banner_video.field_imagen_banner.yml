@@ -1,0 +1,29 @@
+uuid: 80816955-e88a-44e0-8da4-129b4bb5f634
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_imagen_banner
+    - media.type.horizontal_pantalla_completa
+    - paragraphs.paragraphs_type.banner_video
+id: paragraph.banner_video.field_imagen_banner
+field_name: field_imagen_banner
+entity_type: paragraph
+bundle: banner_video
+label: 'Imagen Banner'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      horizontal_pantalla_completa: horizontal_pantalla_completa
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

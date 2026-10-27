@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.banner_botones.field_enlaces
     - field.field.paragraph.banner_botones.field_imagen
     - field.field.paragraph.banner_botones.field_titulo_seccion
+    - field.field.paragraph.banner_botones.field_variante_banner
     - paragraphs.paragraphs_type.banner_botones
   module:
     - link
@@ -46,6 +47,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_variante_banner:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

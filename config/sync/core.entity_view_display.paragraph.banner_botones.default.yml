@@ -7,9 +7,11 @@ dependencies:
     - field.field.paragraph.banner_botones.field_enlaces
     - field.field.paragraph.banner_botones.field_imagen
     - field.field.paragraph.banner_botones.field_titulo_seccion
+    - field.field.paragraph.banner_botones.field_variante_banner
     - paragraphs.paragraphs_type.banner_botones
   module:
     - link
+    - options
 id: paragraph.banner_botones.default
 targetEntityType: paragraph
 bundle: banner_botones
@@ -53,6 +55,13 @@ content:
       link_rel: canonical
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_variante_banner:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
 hidden:
   search_api_excerpt: true

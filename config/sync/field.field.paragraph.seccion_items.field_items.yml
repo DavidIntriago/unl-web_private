@@ -1,0 +1,106 @@
+uuid: 6d150888-bf2f-47a9-b29e-345d1080d529
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.item
+    - paragraphs.paragraphs_type.seccion_items
+  module:
+    - entity_reference_revisions
+id: paragraph.seccion_items.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: seccion_items
+label: Items
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      item: item
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 28
+        enabled: false
+      archivo:
+        weight: 29
+        enabled: false
+      banner_botones:
+        weight: 30
+        enabled: false
+      columna_footer:
+        weight: 31
+        enabled: false
+      convenios:
+        weight: 32
+        enabled: false
+      dato_facultad:
+        weight: 33
+        enabled: false
+      diapositiva_hero:
+        weight: 34
+        enabled: false
+      divisor:
+        weight: 35
+        enabled: false
+      grid_perfiles:
+        weight: 36
+        enabled: false
+      grid_tarjetas:
+        weight: 37
+        enabled: false
+      hero_carrusel:
+        weight: 38
+        enabled: false
+      importaciones:
+        weight: 39
+        enabled: false
+      item:
+        weight: 40
+        enabled: true
+      listado_carreras:
+        weight: 41
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 42
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 43
+        enabled: false
+      logo_footer:
+        weight: 44
+        enabled: false
+      notificacion_flotante:
+        weight: 45
+        enabled: false
+      perfil:
+        weight: 46
+        enabled: false
+      recursos_descargables:
+        weight: 47
+        enabled: false
+      redes_sociales:
+        weight: 48
+        enabled: false
+      repositorio_dinamico:
+        weight: 49
+        enabled: false
+      seccion_items:
+        weight: 27
+        enabled: false
+      tarjeta:
+        weight: 50
+        enabled: false
+      texto_libre:
+        weight: 51
+        enabled: false
+      visor_pdf:
+        weight: 52
+        enabled: false
+field_type: entity_reference_revisions

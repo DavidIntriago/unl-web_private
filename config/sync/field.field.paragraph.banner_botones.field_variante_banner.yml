@@ -1,0 +1,21 @@
+uuid: 128527f8-c4d5-40ad-8e51-01cb92eaa138
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_variante_banner
+    - paragraphs.paragraphs_type.banner_botones
+  module:
+    - options
+id: paragraph.banner_botones.field_variante_banner
+field_name: field_variante_banner
+entity_type: paragraph
+bundle: banner_botones
+label: 'Variante Banner'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,10 @@
+uuid: fc501265-7901-4a7b-a734-b4555ebe29d5
+langcode: es
+status: true
+dependencies: {  }
+id: banner_video
+label: 'Banner Video'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

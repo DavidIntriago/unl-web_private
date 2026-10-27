@@ -1,0 +1,19 @@
+uuid: d25ad8e5-5683-44f0-8165-2b7c6d29c945
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_correo_funcionario
+    - node.type.contacto
+id: node.contacto.field_correo_funcionario
+field_name: field_correo_funcionario
+entity_type: node
+bundle: contacto
+label: 'Correo Funcionario Encargado'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

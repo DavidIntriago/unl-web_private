@@ -1,0 +1,29 @@
+uuid: abd48055-93e8-4ee8-8114-1a2b550bc730
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contacto
+    - node.type.contacto
+    - paragraphs.paragraphs_type.perfil
+id: paragraph.perfil.field_contacto
+field_name: field_contacto
+entity_type: paragraph
+bundle: perfil
+label: Contacto
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      contacto: contacto
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

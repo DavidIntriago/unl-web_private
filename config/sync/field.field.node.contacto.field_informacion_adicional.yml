@@ -1,0 +1,19 @@
+uuid: 9c4baf5b-0f7d-4150-9422-ef89cf795157
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_informacion_adicional
+    - node.type.contacto
+id: node.contacto.field_informacion_adicional
+field_name: field_informacion_adicional
+entity_type: node
+bundle: contacto
+label: 'Información Adicional'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

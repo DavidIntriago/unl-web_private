@@ -3,6 +3,8 @@ langcode: es
 status: true
 dependencies:
   config:
+    - field.field.paragraph.perfil.field_contacto
+    - field.field.paragraph.perfil.field_correo
     - field.field.paragraph.perfil.field_descripcion
     - field.field.paragraph.perfil.field_enlace
     - field.field.paragraph.perfil.field_imagen
@@ -16,6 +18,21 @@ targetEntityType: paragraph
 bundle: perfil
 mode: default
 content:
+  field_contacto:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_correo:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_descripcion:
     type: basic_string
     label: hidden

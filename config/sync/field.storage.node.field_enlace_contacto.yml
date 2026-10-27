@@ -1,0 +1,19 @@
+uuid: 6340c70a-da38-45a2-966a-fdc67b024745
+langcode: es
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_enlace_contacto
+field_name: field_enlace_contacto
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

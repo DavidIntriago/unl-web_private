@@ -4,13 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.grid_perfiles.field_atencion
+    - field.field.paragraph.grid_perfiles.field_boton_admisiones
     - field.field.paragraph.grid_perfiles.field_estilo
     - field.field.paragraph.grid_perfiles.field_horarios
     - field.field.paragraph.grid_perfiles.field_perfiles
+    - field.field.paragraph.grid_perfiles.field_subtitulo
     - field.field.paragraph.grid_perfiles.field_titulo_seccion
     - paragraphs.paragraphs_type.grid_perfiles
   module:
     - entity_reference_revisions
+    - link
     - options
 id: paragraph.grid_perfiles.default
 targetEntityType: paragraph
@@ -25,6 +28,18 @@ content:
       link_rel: canonical
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_boton_admisiones:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_estilo:
     type: list_default
@@ -50,6 +65,13 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_subtitulo:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_titulo_seccion:
     type: string

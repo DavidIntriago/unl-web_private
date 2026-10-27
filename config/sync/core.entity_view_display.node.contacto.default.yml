@@ -1,0 +1,96 @@
+uuid: 67ffc8db-310d-4366-ba0b-5f486c992668
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.contacto.field_cargo
+    - field.field.node.contacto.field_correo_departamental
+    - field.field.node.contacto.field_correo_funcionario
+    - field.field.node.contacto.field_enlace_contacto
+    - field.field.node.contacto.field_foto_contacto
+    - field.field.node.contacto.field_informacion_adicional
+    - field.field.node.contacto.field_telefono_departamento
+    - field.field.node.contacto.field_unidad_administrativa
+    - node.type.contacto
+  module:
+    - link
+    - user
+id: node.contacto.default
+targetEntityType: node
+bundle: contacto
+mode: default
+content:
+  field_cargo:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_correo_departamental:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_correo_funcionario:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_enlace_contacto:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_foto_contacto:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_informacion_adicional:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_telefono_departamento:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_unidad_administrativa:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

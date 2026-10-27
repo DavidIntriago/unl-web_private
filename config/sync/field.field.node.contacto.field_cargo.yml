@@ -1,0 +1,19 @@
+uuid: a2775fe7-475a-4cf4-9d12-2bcd4a4b94e0
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cargo
+    - node.type.contacto
+id: node.contacto.field_cargo
+field_name: field_cargo
+entity_type: node
+bundle: contacto
+label: Cargo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

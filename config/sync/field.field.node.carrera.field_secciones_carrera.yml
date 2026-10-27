@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_secciones_carrera
     - node.type.carrera
     - paragraphs.paragraphs_type.galeria
+    - paragraphs.paragraphs_type.grid_perfiles
     - paragraphs.paragraphs_type.malla_curricular
   module:
     - entity_reference_revisions
@@ -25,6 +26,7 @@ settings:
     target_bundles:
       malla_curricular: malla_curricular
       galeria: galeria
+      grid_perfiles: grid_perfiles
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -56,7 +58,7 @@ settings:
         enabled: true
       grid_perfiles:
         weight: 36
-        enabled: false
+        enabled: true
       grid_tarjetas:
         weight: 25
         enabled: false

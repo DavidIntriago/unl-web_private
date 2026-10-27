@@ -1,0 +1,19 @@
+uuid: 64cf0a79-149e-4dd5-a69a-8921e2acc0c2
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitulo
+    - paragraphs.paragraphs_type.grid_perfiles
+id: paragraph.grid_perfiles.field_subtitulo
+field_name: field_subtitulo
+entity_type: paragraph
+bundle: grid_perfiles
+label: Subtítulo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,17 +1,16 @@
-uuid: 47c983a5-d658-4e06-acbf-65b262e7bdf1
+uuid: 8956d0a4-1c4c-45f7-ace1-63767ac4d80a
 langcode: es
 status: true
 dependencies:
   module:
-    - media
+    - link
     - paragraphs
-id: paragraph.field_imagen_banner
-field_name: field_imagen_banner
+id: paragraph.field_boton_admisiones
+field_name: field_boton_admisiones
 entity_type: paragraph
-type: entity_reference
-settings:
-  target_type: media
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 1
 translatable: true

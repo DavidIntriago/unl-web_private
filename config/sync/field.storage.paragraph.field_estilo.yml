@@ -17,6 +17,9 @@ settings:
     -
       value: perfil_corto
       label: 'Perfil Corto'
+    -
+      value: perfil_banner
+      label: perfil_banner
   allowed_values_function: ''
 module: options
 locked: false

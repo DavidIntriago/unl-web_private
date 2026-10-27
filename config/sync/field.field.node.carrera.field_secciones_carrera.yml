@@ -5,9 +5,13 @@ dependencies:
   config:
     - field.storage.node.field_secciones_carrera
     - node.type.carrera
+    - paragraphs.paragraphs_type.about
+    - paragraphs.paragraphs_type.banner_botones
+    - paragraphs.paragraphs_type.banner_video
     - paragraphs.paragraphs_type.galeria
     - paragraphs.paragraphs_type.grid_perfiles
     - paragraphs.paragraphs_type.malla_curricular
+    - paragraphs.paragraphs_type.seccion_items
   module:
     - entity_reference_revisions
 id: node.carrera.field_secciones_carrera
@@ -24,20 +28,27 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      about: about
       malla_curricular: malla_curricular
       galeria: galeria
+      banner_botones: banner_botones
+      banner_video: banner_video
       grid_perfiles: grid_perfiles
+      seccion_items: seccion_items
     negate: 0
     target_bundles_drag_drop:
       about:
         weight: 19
-        enabled: false
+        enabled: true
       archivo:
         weight: 20
         enabled: false
       banner_botones:
         weight: 30
-        enabled: false
+        enabled: true
+      banner_video:
+        weight: 35
+        enabled: true
       columna_footer:
         weight: 21
         enabled: false
@@ -70,6 +81,9 @@ settings:
         enabled: false
       importaciones:
         weight: 27
+        enabled: false
+      item:
+        weight: 47
         enabled: false
       listado_carreras:
         weight: 40
@@ -104,6 +118,9 @@ settings:
       repositorio_dinamico:
         weight: 33
         enabled: false
+      seccion_items:
+        weight: 59
+        enabled: true
       tarjeta:
         weight: 34
         enabled: false

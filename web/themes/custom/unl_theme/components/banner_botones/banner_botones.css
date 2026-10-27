@@ -1,4 +1,5 @@
 .banner {
+  --banner-acento: var(--color-facultad, var(--color-primario));
   position: relative;
   margin-top: var(--espacio-entre-secciones);
   overflow: hidden;
@@ -22,7 +23,9 @@
   }
 }
 
-
+/* =========================================================
+   VARIANTE 1: DEFAULT
+   ========================================================= */
 
 .banner--default .banner__overlay {
   position: absolute;
@@ -49,7 +52,7 @@
 
 .banner--default .banner__texto {
   padding-left: var(--espacio-5);
-  border-left: 0.1875rem solid var(--color-tema, var(--color-primario));
+  border-left: 0.1875rem solid var(--banner-acento);
 }
 
 .banner--default .banner__titulo {
@@ -87,7 +90,7 @@
   align-items: center;
   padding: var(--espacio-3) var(--espacio-6);
   border-radius: 62.5rem;
-  background-color: var(--color-tema, var(--color-primario));
+  background-color: var(--banner-acento);
   color: var(--texto-sobre-primario, #fff);
   font-size: var(--texto-sm);
   font-weight: var(--peso-seminegrita, 600);
@@ -97,7 +100,7 @@
 
 .banner--default .banner__acciones a:hover,
 .banner--default .banner__acciones a:focus-visible {
-  background-color: color-mix(in srgb, var(--color-tema, var(--color-primario)) 80%, black);
+  background-color: color-mix(in srgb, var(--banner-acento) 80%, black);
 }
 
 .banner--default .banner__acciones a:focus-visible {
@@ -121,6 +124,9 @@
   }
 }
 
+/* =========================================================
+   VARIANTE 2: INFORMATIVA
+   ========================================================= */
 
 .banner--minimal .banner__overlay {
   position: absolute;
@@ -156,7 +162,7 @@
 .banner--minimal .banner__divider {
   width: 48px;
   height: 3px;
-  background-color: var(--color-tema, var(--color-primario));
+  background-color: var(--banner-acento);
   margin-bottom: var(--espacio-4);
 }
 
@@ -200,11 +206,11 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: opacity var(--duracion-normal) ease;
+  transition: color var(--duracion-normal) ease, opacity var(--duracion-normal) ease;
 }
 
 .banner--minimal .banner__acciones a:hover {
-  opacity: 0.8;
+  color: var(--banner-acento);
 }
 
 .banner--minimal .banner__acciones a::before {
@@ -213,6 +219,7 @@
   font-size: 1.2rem;
   font-weight: normal;
   display: block;
+  color: var(--banner-acento);
   transition: transform var(--duracion-normal) ease;
 }
 

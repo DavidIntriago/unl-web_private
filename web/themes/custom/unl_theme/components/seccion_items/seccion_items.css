@@ -1,4 +1,6 @@
 .unl-bloque-items {
+  --items-acento: var(--color-facultad, var(--color-primario));
+  --items-acento-oscuro: color-mix(in srgb, var(--items-acento) 70%, black);
   width: 100%;
   padding: var(--espacio-12) 0;
   margin-top: var(--espacio-entre-secciones);
@@ -17,7 +19,7 @@
 
 .unl-bloque-items__sobretitulo {
   display: block;
-  color: var(--color-tema, var(--color-primario));
+  color: var(--items-acento-oscuro);
   font-weight: var(--peso-medio, 500);
   font-size: var(--texto-sm);
   margin-bottom: var(--espacio-2);
@@ -59,15 +61,15 @@
   display: flex;
   align-items: center; 
   background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.12); /* Borde sutil como en la referencia */
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: var(--radio-md, 8px);
-  padding: var(--espacio-5) var(--espacio-6); /* Espaciado interno generoso */
-  transition: border-color var(--duracion-normal) ease;
+  padding: var(--espacio-5) var(--espacio-6);
+  transition: border-color var(--duracion-normal) ease, background-color var(--duracion-normal) ease;
   height: 100%;
 }
 
 .unl-bloque-item:hover {
-  border-color: var(--color-tema, var(--color-primario));
+  border-color: var(--items-acento);
 }
 
 .unl-bloque-item__icono {
@@ -75,7 +77,7 @@
   width: 24px;
   height: 24px;
   margin-right: var(--espacio-4);
-  color: var(--color-tema, var(--color-primario));
+  color: var(--items-acento);
   display: flex;
   align-items: center;
   justify-content: center;

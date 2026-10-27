@@ -1,13 +1,8 @@
-{% set background_url = '' %}
-{% if paragraph.field_imagen_fondo.entity %}
-  {% set background_url = file_url(paragraph.field_imagen_fondo.entity.fileuri) %}
-{% endif %}
-
 {% include 'unl_theme:banner_botones' with {
   variante: paragraph.field_variante_banner.value|default('default'),
-  fondo_url: background_url,
+  fondo_url: fondo_url,
   titulo: paragraph.field_titulo_seccion.value,
   descripcion: paragraph.field_descripcion_corta.value,
   enlaces: content.field_enlaces,
-  color_tema: 'theme-' ~ paragraph.field_facultad.entity.name|clean_class
+  color_tema: paragraph.field_facultad.entity ? 'theme-' ~ paragraph.field_facultad.entity.name.value|clean_class : ''
 } only %}

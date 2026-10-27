@@ -2,6 +2,7 @@
  * ABOUT — texto + imagen/video en dos columnas.
  */
 .unl-about {
+  --about-acento: var(--color-facultad, var(--color-primario));
   width: 100%;
   margin-top: var(--espacio-entre-secciones);
   padding: 0 var(--espacio-4);
@@ -45,7 +46,7 @@
   margin-left: var(--espacio-2);
   padding: 0.1rem var(--espacio-3);
   border-radius: var(--radio-sm);
-  background-color: var(--color-primario);
+  background-color: var(--about-acento);
   color: var(--texto-sobre-primario);
   font-weight: var(--peso-negrita);
   transform: skew(-5deg);

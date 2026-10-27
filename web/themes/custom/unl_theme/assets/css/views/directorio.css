@@ -1,0 +1,149 @@
+/**
+ * DIRECTORIO — vista /directorio.
+ * Una sola tabla: unidad (celda combinada), nombre y cargo, correos, teléfono.
+ * Celular: cada persona es un bloque; la unidad queda como título de su grupo.
+ */
+
+.directorio {
+  width: min(90%, 75rem);
+  margin-inline: auto;
+  padding-block: var(--espacio-8);
+}
+
+/* ---------- Filtros en una fila ---------- */
+.directorio .views-exposed-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--espacio-4);
+  margin-bottom: var(--espacio-8);
+}
+
+.directorio .views-exposed-form > * {
+  flex: 1 1 15rem;
+  margin: 0;
+}
+
+.directorio .views-exposed-form .form-actions {
+  flex: 0 0 auto;
+}
+
+/* ---------- Tabla ---------- */
+.directorio-tabla__contenedor {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-texto) 12%, transparent);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie);
+}
+
+.directorio-tabla {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: var(--texto-sm);
+}
+
+/* Anula los estilos globales de tablas del tema */
+.directorio-tabla :is(th, td) {
+  padding: var(--espacio-3) var(--espacio-4);
+  border: none;
+  background: none;
+  text-align: left;
+  text-transform: none;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.directorio-tabla :is(ul, ol) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.directorio-tabla li::before {
+  content: none;
+}
+
+/* Cabecera roja */
+.directorio-tabla thead th {
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+  font-weight: var(--peso-medio);
+}
+
+.directorio-tabla__col-unidad { width: 22%; }
+.directorio-tabla__col-nombre { width: 26%; }
+.directorio-tabla__col-correos { width: 34%; }
+.directorio-tabla__col-telefono { width: 18%; }
+
+/* Líneas finas entre filas */
+.directorio-tabla tbody :is(th, td) {
+  border-top: 1px solid color-mix(in srgb, var(--color-texto) 10%, transparent);
+  color: var(--color-texto-cuerpo);
+}
+
+.directorio-tabla__unidad {
+  color: var(--color-texto);
+  font-weight: var(--peso-medio);
+}
+
+.directorio-tabla__nombre strong {
+  color: var(--color-texto);
+  font-weight: var(--peso-medio);
+}
+
+.directorio-tabla .directorio__cargo {
+  color: var(--color-texto-cuerpo);
+}
+
+.directorio-tabla__correos a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+.directorio-tabla__correos a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Celular: cada persona es un bloque ---------- */
+@media (max-width: 768px) {
+  .directorio-tabla thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+  }
+
+  .directorio-tabla,
+  .directorio-tabla tbody,
+  .directorio-tabla tr,
+  .directorio-tabla :is(th, td) {
+    display: block;
+    width: 100%;
+  }
+
+  .directorio-tabla tbody :is(th, td) {
+    padding: var(--espacio-1) var(--espacio-4);
+    border-top: none;
+  }
+
+  .directorio-tabla__fila {
+    padding-block: var(--espacio-3);
+    border-top: 1px solid color-mix(in srgb, var(--color-texto) 10%, transparent);
+  }
+
+  /* La unidad pasa a ser el título del grupo */
+  .directorio-tabla tbody .directorio-tabla__unidad {
+    margin: calc(var(--espacio-3) * -1) 0 var(--espacio-3);
+    padding: var(--espacio-3) var(--espacio-4);
+    background-color: color-mix(in srgb, var(--color-primario) 8%, white);
+    color: var(--color-primario);
+  }
+
+  .directorio-tabla__telefono:not(:empty)::before {
+    content: "Tel. ";
+  }
+}

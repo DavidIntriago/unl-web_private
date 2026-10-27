@@ -1,18 +1,14 @@
 {#
   Párrafo "Perfil".
-  El estilo no lo elige el editor aquí: se lee del Grid perfiles que lo contiene.
-  Cambia los nombres de máquina si los tuyos son distintos.
+  Los datos vienen de unl_theme_preprocess_paragraph__perfil():
+  del Contacto si se eligió uno, o del propio párrafo si se llenó a mano.
+  El estilo se lee del Grid perfiles que lo contiene.
 #}
-{% set padre = paragraph.getParentEntity() %}
-{% set estilo = padre and padre.hasField('field_estilo') and padre.field_estilo.value
-  ? padre.field_estilo.value
-  : 'perfil_extendido' %}
+{% if not ocultar_perfil %}
+  {% set padre = paragraph.getParentEntity() %}
+  {% set estilo = padre and padre.hasField('field_estilo') and padre.field_estilo.value
+    ? padre.field_estilo.value
+    : 'perfil_extendido' %}
 
-{% include 'unl_theme:perfil' with {
-  nombre: paragraph.field_titulo.value,
-  cargo: paragraph.field_descripcion.value,
-  imagen: paragraph.field_imagen.isEmpty() ? null : content.field_imagen,
-  enlace: paragraph.field_enlace.isEmpty() ? null : content.field_enlace,
-  informacion_adicional: paragraph.field_informacion_adicional.processed ?: paragraph.field_informacion_adicional.value,
-  estilo: estilo,
-} only %}
+  {% include 'unl_theme:perfil' with perfil|merge({ estilo: estilo }) only %}
+{% endif %}

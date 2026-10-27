@@ -18,12 +18,18 @@ props:
     informacion_adicional:
       type: [string, 'null']
       title: 'Información adicional: en Perfil Completo va en el panel Ver perfil; en Perfil Corto se muestra debajo del cargo'
+    correos:
+      type: [array, 'null']
+      items:
+        type: string
+      title: 'Correos (solo estilo banner)'
     estilo:
       type: [string, 'null']
       title: 'Estilo (lo hereda del Grid Perfiles)'
       enum:
         - 'perfil_extendido'
         - 'perfil_corto'
+        - 'perfil_banner'
 libraryOverrides:
   dependencies:
     - core/drupal

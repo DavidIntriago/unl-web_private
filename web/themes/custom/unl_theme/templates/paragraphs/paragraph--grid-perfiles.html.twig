@@ -1,17 +1,21 @@
 {#
   Párrafo "Grid perfiles".
-  Cambia los nombres de máquina si los tuyos son distintos.
-  field_dias_atencion y field_horarios: reutiliza los mismos campos
-  que ya tiene el párrafo de grid tarjetas ("Reutilizar un campo existente").
+  Si todos sus perfiles quedan ocultos (contactos eliminados o despublicados),
+  no se muestra la sección completa.
 #}
-{% embed 'unl_theme:grid_perfiles' with {
-  titulo: paragraph.field_titulo_seccion.value,
-  estilo: paragraph.field_estilo.value,
-  atencion: paragraph.field_atencion.value,
-  horarios: paragraph.field_horarios.value,
-  perfiles: content.field_perfiles,
-} only %}
-  {% block items %}
-    {{ perfiles }}
-  {% endblock %}
-{% endembed %}
+{% if not ocultar_grid %}
+  {% embed 'unl_theme:grid_perfiles' with {
+    titulo: paragraph.field_titulo_seccion.value,
+    subtitulo: paragraph.field_subtitulo.value,
+    boton_url: boton.url ?? null,
+    boton_texto: boton.texto ?? null,
+    estilo: paragraph.field_estilo.value,
+    atencion: paragraph.field_atencion.value,
+    horarios: paragraph.field_horarios.value,
+    perfiles: content.field_perfiles,
+  } only %}
+    {% block items %}
+      {{ perfiles }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

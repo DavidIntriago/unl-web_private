@@ -102,3 +102,8 @@ redes_sociales:
   css:
     component:
       components/redes_sociales/redes_sociales.css: {}
+
+directorio:
+  css:
+    theme:
+      assets/css/views/directorio.css: {}

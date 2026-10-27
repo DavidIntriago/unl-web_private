@@ -8,16 +8,26 @@ props:
       title: 'Título de la Sección'
     estilo:
       type: [string, 'null']
-      title: 'Estilo de las tarjetas'
+      title: 'Estilo'
       enum:
         - 'perfil_extendido'
         - 'perfil_corto'
+        - 'perfil_banner'
     atencion:
       type: [string, 'null']
       title: 'Días de atención'
     horarios:
       type: [string, 'null']
       title: 'Horarios de atención'
+    subtitulo:
+      type: [string, 'null']
+      title: 'Subtítulo (solo estilo banner)'
+    boton_url:
+      type: [string, 'null']
+      title: 'URL del botón Admisiones (solo banner)'
+    boton_texto:
+      type: [string, 'null']
+      title: 'Texto del botón (solo banner)'
 slots:
   items:
     title: 'Perfiles'

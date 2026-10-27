@@ -1,7 +1,8 @@
 /**
  * PERFIL — tarjeta de una persona.
- * Estilos: autoridades (igual que la antigua variante de grid tarjetas)
- * e info abajo (foto arriba, datos debajo, sin Ver perfil).
+ * Estilos: autoridades (igual que la antigua variante de grid tarjetas),
+ * info abajo (foto arriba, datos debajo, sin Ver perfil)
+ * y banner (foto redonda, cargo, nombre y correos).
  * El tamaño dentro del grid lo decide grid-perfiles.css.
  */
 
@@ -359,6 +360,119 @@
     margin-top: var(--espacio-2);
     font-size: var(--texto-xs);
   }
+}
+
+/* =========================================================
+   SIN FOTO
+   Completo: el mismo degradado rojo del panel "Ver perfil".
+   Corto: tarjeta solo de texto.
+   (Banner: ícono de persona, ver más abajo.)
+   ========================================================= */
+.perfil--completo.perfil--sin-foto {
+  background: linear-gradient(
+    135deg,
+    var(--color-primario) 0%,
+    var(--color-primario-oscuro) 55%,
+    color-mix(in srgb, var(--color-primario) 35%, black) 100%
+  );
+}
+
+/* Celular: sin columna de foto, los datos ocupan toda la tarjeta */
+@media (max-width: 768px) {
+  .perfil--completo.perfil--sin-foto {
+    background: var(--color-superficie);
+  }
+}
+
+/* =========================================================
+   ESTILO BANNER
+   Foto redonda con borde blanco; sin foto, un ícono de persona
+   con el color de la facultad. Cargo, nombre y correos al lado.
+   ========================================================= */
+.perfil--banner {
+  --banner-acento: var(--color-facultad, var(--color-primario));
+  --banner-acento-oscuro: color-mix(in srgb, var(--banner-acento) 60%, black);
+  --icono-persona: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='8' r='4.5'/%3E%3Cpath d='M3 22c0-5 4-8.5 9-8.5s9 3.5 9 8.5z'/%3E%3C/svg%3E");
+
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  min-width: 0;
+  text-align: left;
+}
+
+.perfil--banner .perfil__avatar {
+  flex: 0 0 6rem;
+  width: 6rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 0.25rem solid var(--color-superficie);
+  border-radius: var(--radio-circulo);
+  background-color: color-mix(in srgb, var(--banner-acento) 14%, white);
+  box-shadow: var(--sombra-sm);
+}
+
+.perfil--banner .perfil__avatar div {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.perfil--banner .perfil__avatar picture {
+  display: contents;
+}
+
+.perfil--banner .perfil__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Sin foto: ícono de persona */
+.perfil--banner.perfil--sin-foto .perfil__avatar::before {
+  content: "";
+  display: block;
+  width: 55%;
+  height: 55%;
+  margin: 22.5% auto 0;
+  background-color: var(--banner-acento-oscuro);
+  -webkit-mask: var(--icono-persona) center / contain no-repeat;
+  mask: var(--icono-persona) center / contain no-repeat;
+}
+
+/* min-width: 0 deja que un correo largo baje de línea
+   en vez de estirar la tarjeta */
+.perfil--banner .perfil__cuerpo {
+  min-width: 0;
+}
+
+.perfil--banner .perfil__cargo {
+  margin: 0;
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-xs);
+}
+
+.perfil--banner .perfil__nombre {
+  margin: var(--espacio-1) 0;
+  color: var(--color-texto);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-seminegrita);
+  line-height: var(--interlineado-ajustado);
+}
+
+.perfil__correo {
+  display: block;
+  color: var(--banner-acento-oscuro);
+  font-size: var(--texto-sm);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.perfil__correo:hover {
+  text-decoration: underline;
 }
 
 /* =========================================================

@@ -1,0 +1,45 @@
+{#
+  Tabla del directorio (/directorio).
+  La unidad sale una sola vez por grupo (rowspan), como una celda que abarca
+  a todas sus personas. Requiere que la vista ordene por unidad.
+#}
+{% import _self as d %}
+
+{% macro celda(columna) %}
+  {%- for item in columna.content -%}
+    {{ item.separator }}{{ item.field_output }}
+  {%- endfor -%}
+{% endmacro %}
+
+{# Texto de la unidad de cada fila, para saber dónde empieza cada grupo #}
+{% set unidades = rows|map(r => (r.columns.field_unidad_administrativa.content|first).field_output|render|striptags|trim) %}
+
+<div class="directorio-tabla__contenedor">
+  <table class="directorio-tabla">
+    <thead>
+      <tr>
+        <th class="directorio-tabla__col-unidad" scope="col">Unidad</th>
+        <th class="directorio-tabla__col-nombre" scope="col">Nombre y cargo</th>
+        <th class="directorio-tabla__col-correos" scope="col">Correos</th>
+        <th class="directorio-tabla__col-telefono" scope="col">Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i, row in rows %}
+        {% set unidad = unidades[i] %}
+        {% set primera = loop.first or unidades[i - 1] != unidad %}
+        <tr class="directorio-tabla__fila{{ primera ? ' directorio-tabla__fila--inicio' }}">
+          {% if primera %}
+            <th class="directorio-tabla__unidad" scope="rowgroup"
+                rowspan="{{ unidades|filter(u => u == unidad)|length }}">
+              {{ unidad }}
+            </th>
+          {% endif %}
+          <td class="directorio-tabla__nombre">{{ d.celda(row.columns.title) }}</td>
+          <td class="directorio-tabla__correos">{{ d.celda(row.columns.field_correo_departamental) }}</td>
+          <td class="directorio-tabla__telefono">{{ d.celda(row.columns.field_telefono_departamento) }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

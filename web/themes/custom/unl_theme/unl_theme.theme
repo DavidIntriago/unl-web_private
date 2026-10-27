@@ -1,5 +1,9 @@
 <?php
 
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Render\Element;
+
 /**
  * Implements hook_form_FORM_ID_alter() for user_login_form.
  */
@@ -459,4 +463,137 @@ function unl_theme_preprocess_paragraph__imagen_galeria(&$variables) {
   if ($paragraph->hasField('field_enlace') && !$paragraph->get('field_enlace')->isEmpty()) {
     $variables['enlace_url'] = $paragraph->get('field_enlace')->first()->getUrl()->toString();
   }
+}
+
+
+function unl_theme_preprocess_paragraph__perfil(array &$variables) {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['ocultar_perfil'] = FALSE;
+
+  // Texto largo: usa la versión procesada si el campo tiene formato.
+  $texto = function (FieldableEntityInterface $entidad, string $campo) {
+    if (!$entidad->hasField($campo) || $entidad->get($campo)->isEmpty()) {
+      return NULL;
+    }
+    $item = $entidad->get($campo)->first();
+    return isset($item->getProperties()['processed']) ? $item->processed : $item->value;
+  };
+
+  // Campo renderizado con la configuración de "Gestionar presentación" del párrafo.
+  $display = \Drupal::service('entity_display.repository')
+    ->getViewDisplay('paragraph', 'perfil', $variables['view_mode'] ?? 'default');
+  $render = function (FieldableEntityInterface $entidad, string $campo, string $campo_parrafo) use ($display) {
+    if (!$entidad->hasField($campo) || $entidad->get($campo)->isEmpty()) {
+      return NULL;
+    }
+    return $entidad->get($campo)->view($display->getComponent($campo_parrafo) ?: []);
+  };
+
+  $contacto = NULL;
+  if ($paragraph->hasField('field_contacto') && !$paragraph->get('field_contacto')->isEmpty()) {
+    $contacto = $paragraph->get('field_contacto')->entity;
+
+    // Eliminado o despublicado: desaparece de todos lados.
+    if (!$contacto || !$contacto->isPublished()) {
+      $variables['ocultar_perfil'] = TRUE;
+      return;
+    }
+  }
+
+  if ($contacto) {
+    // El contacto manda.
+    $variables['perfil'] = [
+      'nombre' => $contacto->label(),
+      'cargo' => $contacto->get('field_cargo')->value,
+      'imagen' => $render($contacto, 'field_foto_contacto', 'field_imagen'),
+      'enlace' => $render($contacto, 'field_enlace_contacto', 'field_enlace'),
+      'informacion_adicional' => $texto($contacto, 'field_informacion_adicional'),      
+      'correos' => array_values(array_filter([
+        $contacto->get('field_correo_departamental')->value,
+        $contacto->get('field_correo_funcionario')->value,
+      ])),    ];
+
+    // Al editar o eliminar el contacto, se refrescan las páginas que lo usan.
+    CacheableMetadata::createFromRenderArray($variables)
+      ->addCacheableDependency($contacto)
+      ->applyTo($variables);
+  }
+  else {
+    // Perfil llenado a mano (como hasta ahora).
+    $variables['perfil'] = [
+      'nombre' => $paragraph->get('field_titulo')->value,
+      'cargo' => $paragraph->get('field_descripcion')->value,
+      'imagen' => $paragraph->get('field_imagen')->isEmpty() ? NULL : $variables['content']['field_imagen'],
+      'enlace' => $paragraph->get('field_enlace')->isEmpty() ? NULL : $variables['content']['field_enlace'],
+      'informacion_adicional' => $texto($paragraph, 'field_informacion_adicional'),
+      'correos' => $paragraph->hasField('field_correo')
+        ? array_values(array_filter([$paragraph->get('field_correo')->value]))
+        : [],
+    ];
+  }
+}
+
+function unl_theme_preprocess_views_view(array &$variables) {
+  if ($variables['view']->id() === 'directorio') {
+    $variables['#attached']['library'][] = 'unl_theme/directorio';
+  }
+}
+
+/**
+ * Indica si un párrafo Perfil se debe mostrar.
+ * Los perfiles manuales siempre se muestran; los que usan un contacto,
+ * solo si el contacto existe y está publicado.
+ */
+function _unl_theme_perfil_visible($perfil, CacheableMetadata $cache): bool {
+  if (!$perfil->hasField('field_contacto') || $perfil->get('field_contacto')->isEmpty()) {
+    return TRUE;
+  }
+  $contacto = $perfil->get('field_contacto')->entity;
+  if ($contacto) {
+    // Si después lo vuelven a publicar, el grid se refresca solo.
+    $cache->addCacheableDependency($contacto);
+  }
+  return $contacto && $contacto->isPublished();
+}
+
+function unl_theme_preprocess_paragraph__grid_perfiles(array &$variables) {
+  $cache = CacheableMetadata::createFromRenderArray($variables);
+  $visibles = [];
+
+  // Botón del estilo banner
+  $grid = $variables['paragraph'];
+  $variables['boton'] = NULL;
+  if ($grid->hasField('field_boton_admisiones') && !$grid->get('field_boton_admisiones')->isEmpty()) {
+    $enlace = $grid->get('field_boton_admisiones')->first();
+    $variables['boton'] = [
+      'url' => $enlace->getUrl()->toString(),
+      'texto' => $enlace->title ?: 'Admisiones',
+    ];
+  }
+
+  if (isset($variables['content']['field_perfiles'])) {
+    $campo = $variables['content']['field_perfiles'];
+
+    foreach (Element::children($campo) as $delta) {
+      $perfil = $campo[$delta]['#paragraph'] ?? NULL;
+
+      if (!$perfil || _unl_theme_perfil_visible($perfil, $cache)) {
+        $visibles[] = $campo[$delta];
+      }
+      // Se quitan todos; abajo se vuelven a poner solo los visibles.
+      unset($campo[$delta]);
+    }
+
+    // Drupal recorre los elementos desde 0 y se detiene en el primer
+    // número que falta: se renumeran seguidos (0, 1, 2...) sin huecos.
+    foreach ($visibles as $nuevo_delta => $elemento) {
+      $campo[$nuevo_delta] = $elemento;
+    }
+
+    $variables['content']['field_perfiles'] = $campo;
+  }
+
+  $variables['ocultar_grid'] = empty($visibles);
+  $cache->applyTo($variables);
 }

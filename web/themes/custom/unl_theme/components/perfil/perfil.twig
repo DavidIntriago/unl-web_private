@@ -1,16 +1,58 @@
 {#
   estilo: perfil_extendido (Perfil Completo) | perfil_corto (Perfil Corto)
+  Sin foto: se muestran las iniciales del nombre en el lugar de la foto
+  (se saltan los títulos como "Ing." o "Dr." porque terminan en punto).
 #}
-{% if estilo == 'perfil_corto' %}
+{% set sin_foto = not imagen %}
+{% set iniciales = (nombre ?? '')|split(' ')
+  |filter(p => p is not empty and p|last != '.')
+  |slice(0, 2)
+  |map(p => p|first|upper)
+  |join('') %}
+
+{% if estilo == 'perfil_banner' %}
+
+  {# ------Perfil Banner: foto redonda (o ícono), cargo, nombre y correos.
+     Sin Ver perfil. Los correos abren el correo directo. #}
+
+  <article class="perfil perfil--banner{{ sin_foto ? ' perfil--sin-foto' }}">
+
+    <div class="perfil__avatar">
+      {% if imagen %}
+        {{ imagen }}
+      {% endif %}
+    </div>
+
+    <div class="perfil__cuerpo">
+      {% if cargo %}
+        <div class="perfil__cargo">{{ cargo }}</div>
+      {% endif %}
+
+      {% if nombre %}
+        <h3 class="perfil__nombre">{{ nombre }}</h3>
+      {% endif %}
+
+      {% for correo in correos ?? [] %}
+        <a class="perfil__correo" href="mailto:{{ correo }}">{{ correo }}</a>
+      {% endfor %}
+    </div>
+
+  </article>
+
+{% elseif estilo == 'perfil_corto' %}
 
   {# ------Perfil Corto: foto arriba, nombre, cargo e información adicional
      debajo (a la vista, no en el panel). Sin Ver perfil y sin enlace. #}
 
-  <article class="perfil perfil--corto">
+  <article class="perfil perfil--corto{{ sin_foto ? ' perfil--sin-foto' }}">
 
     {% if imagen %}
       <div class="perfil__imagen">
         {{ imagen }}
+      </div>
+    {% else %}
+      <div class="perfil__imagen perfil__imagen--iniciales" aria-hidden="true">
+        <span class="perfil__iniciales">{{ iniciales }}</span>
       </div>
     {% endif %}
 
@@ -35,7 +77,7 @@
   {# ------Perfil Completo (antes autoridades): foto + degradado con nombre,
      cargo y botón "Ver perfil completo" (abre el panel lateral) #}
 
-  <article class="perfil perfil--completo">
+  <article class="perfil perfil--completo{{ sin_foto ? ' perfil--sin-foto' }}">
 
     {% if imagen %}
       <div class="perfil__imagen">

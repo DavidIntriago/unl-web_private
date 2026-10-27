@@ -3,21 +3,38 @@
   estilo (valores del campo field_estilo):
     perfil_extendido → Perfil Completo: foto con degradado y "Ver perfil"
     perfil_corto     → Perfil Corto: foto arriba, datos abajo, sin "Ver perfil"
+    perfil_banner    → Banner: título, subtítulo y botón a la izquierda;
+                       personas (foto redonda, cargo, nombre, correos) a la derecha
 #}
-{% set modo = estilo == 'perfil_corto' ? 'corto' : 'completo' %}
+{% set modo = estilo == 'perfil_corto' ? 'corto' : (estilo == 'perfil_banner' ? 'banner' : 'completo') %}
 
 <div class="grid-perfiles grid-perfiles--{{ modo }}">
+  <div class="grid-perfiles__contenido">
 
-  {% if titulo %}
-    <div class="grid-perfiles__header">
-      <h2 class="grid-perfiles__titulo">{{ titulo }}</h2>
-    </div>
-  {% endif %}
+    {% if modo == 'banner' %}
+      <div class="grid-perfiles__texto">
+        {% if titulo %}
+          <h2 class="grid-perfiles__titulo">{{ titulo }}</h2>
+        {% endif %}
+        {% if subtitulo %}
+          <p class="grid-perfiles__subtitulo">{{ subtitulo|nl2br }}</p>
+        {% endif %}
+        {% if boton_url %}
+          <a class="grid-perfiles__boton" href="{{ boton_url }}">{{ boton_texto }}</a>
+        {% endif %}
+      </div>
+    {% elseif titulo %}
+      <div class="grid-perfiles__header">
+        <h2 class="grid-perfiles__titulo">{{ titulo }}</h2>
+      </div>
+    {% endif %}
 
-  <section class="grid-perfiles__grid">
-    {% block items %}
-    {% endblock %}
-  </section>
+    <section class="grid-perfiles__grid">
+      {% block items %}
+      {% endblock %}
+    </section>
+
+  </div>
 
   {# Horario de atención: en cualquier estilo, solo si el editor lo llenó #}
   {% if atencion or horarios %}
@@ -34,5 +51,4 @@
       {% endif %}
     </div>
   {% endif %}
-
 </div>

@@ -43,6 +43,7 @@
 .grid-perfiles__grid > div:not(:has(> .perfil)) {
   display: contents;
 }
+
 /* =========================================================
    GRID — mismas columnas para los dos estilos (como autoridades):
    tantas como quepan, cada tarjeta mínimo 16rem,
@@ -121,4 +122,110 @@
 
 .grid-perfiles__horario-item--horarios {
   --icono: var(--icono-reloj);
+}
+
+/* =========================================================
+   ESTILO BANNER
+   Franja de borde a borde: degradado vertical desde el fondo
+   de la página hasta el tono suave de la facultad (mismos tonos
+   que la malla). El contenido va centrado en un ancho angosto:
+   texto y botón a la izquierda, personas a la derecha.
+   ========================================================= */
+.grid-perfiles--banner {
+  --banner-acento: var(--color-facultad, var(--color-primario));
+  --banner-acento-oscuro: color-mix(in srgb, var(--banner-acento) 60%, black);
+  --banner-acento-suave: color-mix(in srgb, var(--banner-acento) 14%, white);
+
+  /* Sin el margen entre secciones: el padding ya separa,
+     así arriba y abajo quedan iguales */
+  margin-top: 0;
+  padding-block: var(--espacio-16, 4rem);
+  background: linear-gradient(to bottom, transparent 0%, var(--banner-acento-suave) 100%);
+}
+
+/* Bloque centrado de 70rem: el texto toma lo que sobra,
+   las personas una columna fija al borde derecho */
+.grid-perfiles--banner .grid-perfiles__contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  align-items: center;
+  gap: var(--espacio-8) var(--espacio-12);
+  width: min(100% - 2 * var(--espacio-5), 70rem);
+  margin: 0 auto;
+}
+
+.grid-perfiles__texto {
+  max-width: 40rem;
+}
+
+.grid-perfiles--banner .grid-perfiles__titulo {
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  line-height: var(--interlineado-titulo);
+}
+
+.grid-perfiles__subtitulo {
+  max-width: 32rem;
+  margin: var(--espacio-4) 0 0;
+  color: var(--color-texto-cuerpo);
+  font-size: var(--texto-lg);
+  line-height: var(--interlineado-base);
+}
+
+.grid-perfiles__boton {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--espacio-6);
+  padding: var(--espacio-4) var(--espacio-8);
+  border-radius: var(--radio-pastilla);
+  background-color: var(--banner-acento-oscuro);
+  color: var(--texto-sobre-primario);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+  transition: transform var(--duracion-rapida) ease;
+}
+
+.grid-perfiles__boton:hover {
+  transform: translateY(var(--elevar-boton));
+}
+
+.grid-perfiles__boton:focus-visible {
+  outline: 2px solid var(--banner-acento-oscuro);
+  outline-offset: 2px;
+}
+
+/* Las personas van en columna dentro de su columna fija
+   (gana a la regla de facultad porque va después y tiene el mismo peso) */
+.grid-perfiles--banner .grid-perfiles__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-6);
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Celular: texto arriba, personas debajo */
+@media (max-width: 768px) {
+  .grid-perfiles--banner {
+    padding-block: var(--espacio-10);
+  }
+
+  .grid-perfiles--banner .grid-perfiles__contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-perfiles--banner .grid-perfiles__grid {
+    width: 100%;
+  }
+}
+/* =========================================================
+   BANNER AL FINAL DE LA PÁGINA
+   El footer trae un margen arriba que necesitan las demás
+   secciones. Si la página tiene un banner (que va como cierre,
+   justo antes del footer), se quita para que la franja
+   llegue pegada al footer, como en el diseño.
+   ========================================================= */
+body:has(.grid-perfiles--banner) .footer-facultad {
+  margin-top: 0;
 }

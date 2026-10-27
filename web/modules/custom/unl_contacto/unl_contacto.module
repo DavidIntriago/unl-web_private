@@ -1,0 +1,63 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Formulario de párrafos:
+ * - Perfil: oculta los campos manuales cuando se elige un contacto.
+ * - Grid perfiles: subtítulo y botón solo con el estilo "Perfil banner".
+ */
+function unl_contacto_field_widget_single_element_form_alter(array &$element, FormStateInterface $form_state, array $context) {
+  $tipo = $element['#paragraph_type'] ?? NULL;
+
+  // Convierte una ruta de #parents en el atributo name del input.
+  $nombre_input = function (array $parents) {
+    $primero = array_shift($parents);
+    return $primero . '[' . implode('][', $parents) . ']';
+  };
+
+  // ---------- PERFIL ----------
+  if ($tipo === 'perfil' && isset($element['subform']['field_contacto'])) {
+    $nombre = $nombre_input(array_merge($element['subform']['#parents'], ['field_contacto', 0, 'target_id']));
+
+    $manuales = ['field_titulo', 'field_descripcion', 'field_imagen', 'field_enlace', 'field_informacion_adicional', 'field_correo'];
+    foreach ($manuales as $campo) {
+      if (isset($element['subform'][$campo])) {
+        $element['subform'][$campo]['#states'] = [
+          'visible' => [':input[name="' . $nombre . '"]' => ['value' => '']],
+        ];
+      }
+    }
+
+    $element['subform']['field_contacto']['widget'][0]['target_id']['#description'] =
+      t('Si la persona ya está en el directorio, búsquela aquí. Si no, deje vacío y llene el perfil abajo.');
+
+    $element['#element_validate'][] = 'unl_contacto_validar_perfil';
+  }
+
+  // ---------- GRID PERFILES ----------
+  if ($tipo === 'grid_perfiles' && isset($element['subform']['field_estilo'])) {
+    $nombre = $nombre_input(array_merge($element['subform']['#parents'], ['field_estilo']));
+
+    foreach (['field_subtitulo', 'field_boton_admisiones'] as $campo) {
+      if (isset($element['subform'][$campo])) {
+        $element['subform'][$campo]['#states'] = [
+          'visible' => [':input[name="' . $nombre . '"]' => ['value' => 'perfil_banner']],
+        ];
+      }
+    }
+  }
+}
+
+/**
+ * O se elige un contacto, o se llena el nombre.
+ */
+function unl_contacto_validar_perfil(array $element, FormStateInterface $form_state) {
+  $base = $element['subform']['#parents'];
+  $contacto = $form_state->getValue(array_merge($base, ['field_contacto', 0, 'target_id']));
+  $nombre = $form_state->getValue(array_merge($base, ['field_titulo', 0, 'value']));
+
+  if (empty($contacto) && trim((string) $nombre) === '') {
+    $form_state->setError($element['subform']['field_titulo'], t('Busque un contacto o escriba el nombre del perfil.'));
+  }
+}

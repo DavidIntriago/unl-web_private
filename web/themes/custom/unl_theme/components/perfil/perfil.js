@@ -117,8 +117,10 @@
     </div>`
               : "";
 
-            // Foto de la misma tarjeta (la versión que el navegador ya cargó)
-            const fotoHtml = foto
+            // Foto de la misma tarjeta, solo si de verdad cargó
+            // (si no hay foto o está rota, el panel se arma sin ella)
+            const fotoValida = foto && foto.complete && foto.naturalWidth > 0;
+            const fotoHtml = fotoValida
               ? `<img class="perfil-modal__foto" src="${foto.currentSrc || foto.src}" alt="${escaparHtml(foto.alt || "")}">`
               : "";
 

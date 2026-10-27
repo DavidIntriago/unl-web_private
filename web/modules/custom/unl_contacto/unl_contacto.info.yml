@@ -1,0 +1,7 @@
+name: 'UNL Contacto'
+type: module
+description: 'Buscador de contactos en el párrafo Perfil.'
+core_version_requirement: ^10 || ^11
+package: UNL
+dependencies:
+  - paragraphs:paragraphs

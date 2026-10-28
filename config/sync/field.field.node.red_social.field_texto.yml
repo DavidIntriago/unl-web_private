@@ -1,0 +1,19 @@
+uuid: 78d46f0d-0cac-45a0-8991-68248a166a75
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_texto
+    - node.type.red_social
+id: node.red_social.field_texto
+field_name: field_texto
+entity_type: node
+bundle: red_social
+label: Texto
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,11 +1,11 @@
 name: 'Ítem'
-description: 'Tarjeta individual con logo y título.'
+description: 'Tarjeta individual con ícono y título.'
 props:
   type: object
   properties:
-    logo:
-      type: string
-      title: 'Logo'
+    icono_url:
+      type: [string, 'null']
+      title: 'URL del ícono SVG (se dibuja como máscara con el color de la página)'
     titulo_corto:
-      type: string
+      type: [string, 'null', 'object']
       title: 'Título Corto'

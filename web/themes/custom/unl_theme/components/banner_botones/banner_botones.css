@@ -1,5 +1,7 @@
 .banner {
   --banner-acento: var(--color-facultad, var(--color-primario));
+  /* Para fondos con texto blanco (botones): el tono oscuro, que sí tiene contraste */
+  --banner-acento-oscuro: var(--color-facultad-oscuro, var(--color-primario));
   position: relative;
   margin-top: var(--espacio-entre-secciones);
   overflow: hidden;
@@ -90,7 +92,7 @@
   align-items: center;
   padding: var(--espacio-3) var(--espacio-6);
   border-radius: 62.5rem;
-  background-color: var(--banner-acento);
+  background-color: var(--banner-acento-oscuro);
   color: var(--texto-sobre-primario, #fff);
   font-size: var(--texto-sm);
   font-weight: var(--peso-seminegrita, 600);
@@ -100,7 +102,7 @@
 
 .banner--default .banner__acciones a:hover,
 .banner--default .banner__acciones a:focus-visible {
-  background-color: color-mix(in srgb, var(--banner-acento) 80%, black);
+  background-color: color-mix(in srgb, var(--banner-acento-oscuro) 80%, black);
 }
 
 .banner--default .banner__acciones a:focus-visible {
@@ -203,7 +205,6 @@
   color: #ffffff;
   font-size: var(--texto-sm, 0.875rem);
   font-weight: var(--peso-bold, 700);
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   transition: color var(--duracion-normal) ease, opacity var(--duracion-normal) ease;

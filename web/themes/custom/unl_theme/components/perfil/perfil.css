@@ -633,8 +633,8 @@
 
 .perfil-modal__red-icono {
   display: inline-flex;
-  width: var(--icono-md);
-  height: var(--icono-md);
+  width: var(--icono-red);
+  height: var(--icono-red);
   color: var(--color-primario);
   transition: opacity var(--duracion-rapida) ease;
 }
@@ -643,7 +643,7 @@
   opacity: 0.7;
 }
 
-.perfil-modal__red-icono svg {
+.perfil-modal__red-icono .icono-red {
   width: 100%;
   height: 100%;
 }

@@ -1,0 +1,18 @@
+uuid: 872b555d-fd8f-4a4e-bb62-e501f989799f
+langcode: es
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Red Social'
+type: red_social
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

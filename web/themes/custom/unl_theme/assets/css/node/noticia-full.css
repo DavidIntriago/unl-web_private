@@ -97,25 +97,34 @@
   gap: var(--espacio-3);
 }
 
-/* Botón redondo gris que al hover toma el color de cada red */
 .btn-compartir {
   --boton-fondo: var(--color-fondo-gris);
   --boton-texto: var(--color-texto-secundario);
   --boton-borde: transparent;
   --boton-fondo-hover: var(--color-primario);
   --boton-borde-hover: transparent;
+  transition:
+    background-color var(--duracion-normal) ease,
+    color var(--duracion-normal) ease,
+    transform var(--duracion-normal) ease;
 }
 
-.btn-compartir svg {
-  width: 1.25rem;
-  height: 1.25rem;
+.btn-compartir:hover,
+.btn-compartir:focus-visible {
+  transform: translateY(var(--elevar-boton));
 }
 
-.btn-compartir--facebook:hover { background-color: #1877f2; }
-.btn-compartir--x:hover        { background-color: #000000; }
-.btn-compartir--whatsapp:hover { background-color: #25d366; }
-.btn-compartir--linkedin:hover { background-color: #0a66c2; }
-.btn-compartir--telegram:hover { background-color: #26a5e4; }
+.btn-compartir .icono-red {
+  width: var(--icono-md);
+  height: var(--icono-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-compartir:hover,
+  .btn-compartir:focus-visible {
+    transform: none;
+  }
+}
 
 /* =========================================================
    REPRODUCTOR DE AUDIO

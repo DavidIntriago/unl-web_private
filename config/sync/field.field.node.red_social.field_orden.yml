@@ -1,0 +1,23 @@
+uuid: 7ae99047-84b4-40ff-9ea7-8435de648be1
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_orden
+    - node.type.red_social
+id: node.red_social.field_orden
+field_name: field_orden
+entity_type: node
+bundle: red_social
+label: Orden
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

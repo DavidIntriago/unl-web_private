@@ -394,48 +394,97 @@ function unl_theme_preprocess_paragraph__banner_botones(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_paragraph__TYPE() para Redes sociales.
- *
- * Reconoce la red por el dominio del enlace y le asigna su ícono y nombre.
+ * Detecta la red social a partir del link.
+ * Devuelve el nombre del ícono (igual que en .icono-red--xxx) y el nombre visible.
  */
-function unl_theme_preprocess_paragraph__redes_sociales(&$variables) {
-  // dominio => [clave del ícono, nombre que leen los lectores de pantalla]
+function _unl_theme_red_desde_url(string $url): array {
+  $host = strtolower((string) parse_url($url, PHP_URL_HOST));
+  $host = preg_replace('/^(www\.|m\.)/', '', $host);
+
   $redes = [
+    'instagram.com' => ['instagram', 'Instagram'],
+    'tiktok.com' => ['tiktok', 'TikTok'],
+    'youtube.com' => ['youtube', 'YouTube'],
+    'youtu.be' => ['youtube', 'YouTube'],
     'facebook.com' => ['facebook', 'Facebook'],
     'fb.com' => ['facebook', 'Facebook'],
     'x.com' => ['x', 'X'],
     'twitter.com' => ['x', 'X'],
     'linkedin.com' => ['linkedin', 'LinkedIn'],
-    'instagram.com' => ['instagram', 'Instagram'],
-    'youtube.com' => ['youtube', 'YouTube'],
-    'youtu.be' => ['youtube', 'YouTube'],
-    'tiktok.com' => ['tiktok', 'TikTok'],
     'wa.me' => ['whatsapp', 'WhatsApp'],
+    'whatsapp.com' => ['whatsapp', 'WhatsApp'],
+    'spotify.com' => ['spotify', 'Spotify'],
   ];
 
-    $variables['redes'] = [];
-  foreach ($variables['paragraph']->get('field_redes') as $enlace) {
-    $url = $enlace->getUrl()->toString();
-    $host = strtolower(parse_url($url, PHP_URL_HOST) ?? '');
-
-    // Busca la red por el final del dominio, así reconoce también
-    // es-la.facebook.com, m.youtube.com, ec.linkedin.com, etc.
-    $icono = 'enlace';
-    $nombre = $host;
-    foreach ($redes as $dominio => [$clave, $etiqueta]) {
-      if ($host === $dominio || str_ends_with($host, '.' . $dominio)) {
-        $icono = $clave;
-        $nombre = $etiqueta;
-        break;
-      }
+  foreach ($redes as $dominio => [$icono, $nombre]) {
+    // Sirve también para subdominios: open.spotify.com, chat.whatsapp.com…
+    if ($host === $dominio || str_ends_with($host, '.' . $dominio)) {
+      return ['icono' => $icono, 'nombre' => $nombre];
     }
+  }
+  return ['icono' => 'enlace', 'nombre' => 'Sitio web'];
+}
 
+/**
+ * Párrafo "Redes sociales": muestra las redes (contenido "Red social")
+ * que pertenecen a la carrera o facultad donde está colocado el párrafo.
+ * - Carrera: estilo "lista" (con título y subtítulo).
+ * - Facultad u otra página: estilo "iconos" (círculos, sin título).
+ */
+function unl_theme_preprocess_paragraph__redes_sociales(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $cache = CacheableMetadata::createFromRenderArray($variables);
+  // Si crean, editan o borran cualquier Red social, el párrafo se actualiza.
+  $cache->addCacheTags(['node_list:red_social']);
+
+  $variables['titulo'] = $paragraph->hasField('field_titulo') ? $paragraph->get('field_titulo')->value : NULL;
+  $variables['subtitulo'] = $paragraph->hasField('field_subtitulo') ? $paragraph->get('field_subtitulo')->value : NULL;
+  // Imagen decorativa: la predeterminada de field_imagen_fondo (igual para
+  // todas las carreras). Se cambia en Tipos de párrafo → Redes sociales →
+  // field_imagen_fondo → Imagen predeterminada.
+  $variables['imagen_url'] = _unl_theme_imagen_redes($cache);
+  $variables['estilo'] = 'iconos';
+  $variables['redes'] = [];
+
+  // Subir hasta la página (nodo) que contiene el párrafo.
+  $pagina = $paragraph->getParentEntity();
+  while ($pagina instanceof \Drupal\paragraphs\ParagraphInterface) {
+    $pagina = $pagina->getParentEntity();
+  }
+  if (!$pagina instanceof \Drupal\node\NodeInterface || !$pagina->id()) {
+    $cache->applyTo($variables);
+    return;
+  }
+  if ($pagina->bundle() === 'carrera') {
+    $variables['estilo'] = 'lista';
+  }
+
+  $ids = \Drupal::entityQuery('node')
+    ->accessCheck(TRUE)
+    ->condition('type', 'red_social')
+    ->condition('status', 1)
+    ->condition('field_pertenece_a', $pagina->id())
+    ->sort('field_orden', 'ASC')
+    ->sort('title', 'ASC')
+    ->execute();
+
+  foreach (\Drupal\node\Entity\Node::loadMultiple($ids) as $red_social) {
+    $enlace = $red_social->get('field_enlace_red')->first();
+    if (!$enlace) {
+      continue;
+    }
+    $url = $enlace->getUrl()->toString();
+    $red = _unl_theme_red_desde_url($url);
     $variables['redes'][] = [
       'url' => $url,
-      'icono' => $icono,
-      'nombre' => $nombre,
+      'icono' => $red['icono'],
+      'nombre' => $red['nombre'],
+      'texto' => $red_social->get('field_texto')->value,
     ];
+    $cache->addCacheableDependency($red_social);
   }
+
+  $cache->applyTo($variables);
 }
 
 /**
@@ -596,4 +645,152 @@ function unl_theme_preprocess_paragraph__grid_perfiles(array &$variables) {
 
   $variables['ocultar_grid'] = empty($visibles);
   $cache->applyTo($variables);
+}
+
+/**
+ * Pone data-facultad en el <body> de las páginas de facultad y carrera,
+ * así TODA la página (header, botones, eventos, footer) toma el color.
+ */
+function unl_theme_preprocess_html(array &$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!$node instanceof \Drupal\node\NodeInterface) {
+    return;
+  }
+
+  // El campo del nodo manda; si no lo tiene, el primer tramo de la URL.
+  $codigo = '';
+  if ($node->hasField('field_codigo') && !$node->get('field_codigo')->isEmpty()) {
+    $codigo = $node->get('field_codigo')->value;
+  }
+  else {
+    $alias = \Drupal::service('path_alias.manager')
+      ->getAliasByPath('/node/' . $node->id());
+    $codigo = explode('/', trim($alias, '/'))[0];
+  }
+
+  $almacen = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_codigo');
+  $facultades = $almacen ? options_allowed_values($almacen) : [];
+
+  if (isset($facultades[$codigo])) {
+    $variables['attributes']['data-facultad'] = $codigo;
+  }
+
+  // Si se cambia el código de la facultad o carrera, la página se refresca.
+  $variables['#cache']['tags'][] = 'node:' . $node->id();
+}
+
+/**
+ * Implements hook_preprocess_paragraph__TYPE() para Ítem.
+ *
+ * Prepara la URL del ícono SVG para dibujarlo como máscara:
+ * así toma el color de la página (rojo o el de la facultad),
+ * sin importar de qué color se haya subido el archivo.
+ */
+function unl_theme_preprocess_paragraph__item(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Funciona si field_logo es Multimedia, Imagen o Archivo
+  $variables['icono_url'] = '';
+  if ($paragraph->hasField('field_logo') && !$paragraph->get('field_logo')->isEmpty()) {
+    $entidad = $paragraph->get('field_logo')->entity;
+    $archivo = $entidad instanceof \Drupal\media\MediaInterface
+      ? \Drupal\file\Entity\File::load($entidad->getSource()->getSourceFieldValue($entidad))
+      : $entidad;
+    if ($archivo instanceof \Drupal\file\FileInterface) {
+      $variables['icono_url'] = \Drupal::service('file_url_generator')->generateString($archivo->getFileUri());
+    }
+  }
+}
+
+/**
+ * Directorio de redes: cada fila (una red) con su ícono detectado del link
+ * y el título del contenido (para distinguir, por ejemplo, dos Instagram).
+ */
+function unl_theme_preprocess_views_view_fields__redes_sociales(&$variables) {
+  $variables['red'] = NULL;
+  $entidad = $variables['row']->_entity;
+  $enlace = $entidad->get('field_enlace_red')->first();
+  if ($enlace) {
+    $url = $enlace->getUrl()->toString();
+    $variables['red'] = _unl_theme_red_desde_url($url) + [
+      'url' => $url,
+      'texto' => $entidad->get('field_texto')->value,
+      'titulo' => $entidad->label(),
+    ];
+  }
+}
+
+/**
+ * Directorio de redes:
+ * - Adjunto (institucionales): pasa la imagen del patrón para la franja roja.
+ * - Página: dice si el grupo es la propia facultad o una carrera.
+ */
+function unl_theme_preprocess_views_view_unformatted__redes_sociales(&$variables) {
+  $variables['es_facultad'] = FALSE;
+  $variables['imagen_url'] = NULL;
+
+  if (str_starts_with($variables['view']->current_display, 'attachment')) {
+    $cache = new CacheableMetadata();
+    $variables['imagen_url'] = _unl_theme_imagen_redes($cache);
+    $cache->applyTo($variables);
+    return;
+  }
+
+  $id = array_key_first($variables['rows']);
+  $fila = $variables['view']->result[$id] ?? NULL;
+  $pagina = $fila ? $fila->_entity->get('field_pertenece_a')->entity : NULL;
+  $variables['es_facultad'] = $pagina && $pagina->bundle() === 'facultades';
+}
+
+/**
+ * Directorio de redes: cada facultad recibe su código (para su color)
+ * y se separan las redes propias de la facultad de las de sus carreras,
+ * para mostrarlas en dos columnas del panel.
+ */
+function unl_theme_preprocess_views_view_grouping__redes_sociales(&$variables) {
+  $nombres = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_codigo')
+    ->getSetting('allowed_values');
+  $codigos = array_flip($nombres);
+  $titulo = trim(html_entity_decode(strip_tags((string) $variables['title'])));
+  $variables['codigo'] = $codigos[$titulo] ?? NULL;
+
+  // Separar el grupo de la facultad de los grupos de carreras.
+  $facultad = [];
+  $carreras = [];
+  foreach ($variables['rows'] as $clave => $grupo) {
+    $fila = is_array($grupo['rows'] ?? NULL) ? reset($grupo['rows']) : NULL;
+    $pagina = ($fila && isset($fila->_entity)) ? $fila->_entity->get('field_pertenece_a')->entity : NULL;
+    if ($pagina && $pagina->bundle() === 'facultades') {
+      $facultad[$clave] = $grupo;
+    }
+    else {
+      $carreras[$clave] = $grupo;
+    }
+  }
+
+  $estilo = $variables['view']->style_plugin;
+  $variables['facultad_contenido'] = $facultad ? $estilo->renderGroupingSets($facultad) : [];
+  $variables['carreras_contenido'] = $carreras ? $estilo->renderGroupingSets($carreras) : [];
+}
+
+/**
+ * URL de la imagen decorativa de redes (la predeterminada de field_imagen_fondo
+ * del párrafo Redes sociales). La usan las carreras y el directorio de redes.
+ */
+function _unl_theme_imagen_redes(CacheableMetadata $cache): ?string {
+  $campo = \Drupal\field\Entity\FieldConfig::loadByName('paragraph', 'redes_sociales', 'field_imagen_fondo');
+  if (!$campo) {
+    return NULL;
+  }
+  $almacen = $campo->getFieldStorageDefinition();
+  $cache->addCacheableDependency($campo);
+  $cache->addCacheableDependency($almacen);
+
+  // Primero la de la configuración del campo; si está vacía, la de "Field Storage".
+  $uuid = $campo->getSetting('default_image')['uuid'] ?? NULL;
+  if (!$uuid) {
+    $uuid = $almacen->getSetting('default_image')['uuid'] ?? NULL;
+  }
+  $archivo = $uuid ? \Drupal::service('entity.repository')->loadEntityByUuid('file', $uuid) : NULL;
+  return $archivo ? \Drupal::service('file_url_generator')->generateString($archivo->getFileUri()) : NULL;
 }

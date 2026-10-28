@@ -1,0 +1,30 @@
+uuid: 5f1b1acc-f239-4c58-9a94-811a116d71a8
+langcode: es
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - paragraphs
+id: paragraph.field_imagen_fondo
+field_name: field_imagen_fondo
+entity_type: paragraph
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: true
+  uri_scheme: public
+  default_image:
+    uuid: 935d76ea-34d6-4775-a2ff-af8b9a960d6f
+    alt: ''
+    title: ''
+    width: 1600
+    height: 800
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

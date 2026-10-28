@@ -53,15 +53,15 @@
   }
 
   input:is(
-      [type="text"],
-      [type="email"],
-      [type="password"],
-      [type="search"],
-      [type="tel"],
-      [type="url"],
-      [type="number"],
-      [type="date"]
-    ),
+    [type="text"],
+    [type="email"],
+    [type="password"],
+    [type="search"],
+    [type="tel"],
+    [type="url"],
+    [type="number"],
+    [type="date"]
+  ),
   select,
   textarea {
     width: 100%;
@@ -86,6 +86,62 @@
 
   ::placeholder {
     color: var(--color-texto-tenue);
+  }
+
+  /* =========================================================
+   ÍCONO DE RED SOCIAL
+   <span class="icono-red icono-red--facebook"></span>
+   La forma sale de variables.css y el color es el del texto
+   (currentColor): cada lugar decide su color con "color".
+   Si la red no se reconoce, sale el ícono genérico de enlace.
+   ========================================================= */
+  .icono-red {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask: var(--icono, var(--icono-enlace)) center / contain no-repeat;
+    mask: var(--icono, var(--icono-enlace)) center / contain no-repeat;
+  }
+
+  .icono-red--facebook {
+    --icono: var(--icono-facebook);
+  }
+  .icono-red--x,
+  .icono-red--twitter {
+    --icono: var(--icono-x);
+  }
+  .icono-red--instagram {
+    --icono: var(--icono-instagram);
+  }
+  .icono-red--linkedin {
+    --icono: var(--icono-linkedin);
+  }
+  .icono-red--youtube {
+    --icono: var(--icono-youtube);
+  }
+  .icono-red--orcid {
+    --icono: var(--icono-orcid);
+  }
+  .icono-red--researchgate {
+    --icono: var(--icono-researchgate);
+  }
+  .icono-red--google_scholar {
+    --icono: var(--icono-google-scholar);
+  }
+  .icono-red--link,
+  .icono-red--enlace {
+    --icono: var(--icono-enlace);
+  }
+  .icono-red--tiktok {
+    --icono: var(--icono-tiktok);
+  }
+  .icono-red--whatsapp {
+    --icono: var(--icono-whatsapp);
+  }
+  .icono-red--spotify {
+    --icono: var(--icono-spotify);
   }
 }
 

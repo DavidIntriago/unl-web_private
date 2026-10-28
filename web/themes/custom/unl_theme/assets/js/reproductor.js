@@ -17,11 +17,16 @@
           const iconoPausa = btn.querySelector(".icono-pausa");
 
           const tiempoEl = contenedor.querySelector(".audio-ondas-tiempo");
+          // Color de la barra de progreso: el de la página (rojo, o el de la facultad)
+          const colorPrimario =
+            getComputedStyle(contenedor)
+              .getPropertyValue("--color-primario")
+              .trim() || "#93000b";
 
           const wavesurfer = WaveSurfer.create({
             container: lienzo,
             waveColor: "#d1d5db",
-            progressColor: "#93000b",
+            progressColor: colorPrimario,
             barWidth: 3,
             barGap: 2,
             barRadius: 2,

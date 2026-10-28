@@ -1,0 +1,11 @@
+uuid: 545281e6-7ff3-4a5a-a9c2-2fd6b3d0c0d1
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.red_social
+id: node.red_social
+target_entity_type_id: node
+target_bundle: red_social
+default_langcode: site_default
+language_alterable: false

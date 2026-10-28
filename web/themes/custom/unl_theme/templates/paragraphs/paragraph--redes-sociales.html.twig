@@ -1,15 +1,52 @@
 {{ attach_library('unl_theme/redes_sociales') }}
 {% if redes %}
-  <section class="redes-sociales" aria-label="Redes sociales">
-    <ul class="redes-sociales__lista">
-      {% for red in redes %}
-        <li>
-          <a class="redes-sociales__enlace redes-sociales__enlace--{{ red.icono }}"
-             href="{{ red.url }}" target="_blank" rel="noopener">
-            <span class="visually-hidden">{{ red.nombre }} (se abre en otra pestaña)</span>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
+  {% set id_titulo = 'redes-sociales-' ~ paragraph.id() %}
+
+  {% if estilo == 'lista' %}
+    {# CARRERA: lista grande con título y subtítulo #}
+    <section class="redes-sociales redes-sociales--lista{{ imagen_url ? ' redes-sociales--con-imagen' }}"
+      {% if imagen_url %}style="--redes-imagen: url('{{ imagen_url }}')"{% endif %}
+      {% if titulo %}aria-labelledby="{{ id_titulo }}"{% else %}aria-label="Redes sociales"{% endif %}>
+      {% if subtitulo %}
+        <p class="redes-sociales__subtitulo">{{ subtitulo }}</p>
+      {% endif %}
+      {% if titulo %}
+        <h2 class="redes-sociales__titulo" id="{{ id_titulo }}">{{ titulo }}</h2>
+      {% endif %}
+      <ul class="redes-sociales__filas">
+        {% for red in redes %}
+          <li>
+            <a class="redes-sociales__fila" href="{{ red.url }}" target="_blank" rel="noopener">
+              <span class="icono-red icono-red--{{ red.icono }} redes-sociales__fila-icono" aria-hidden="true"></span>
+              <span class="redes-sociales__fila-texto">
+                <span class="redes-sociales__fila-nombre">{{ red.nombre }}</span>
+                {% if red.texto %}
+                  <span class="redes-sociales__fila-detalle">{{ red.texto }}</span>
+                {% endif %}
+              </span>
+              <svg class="redes-sociales__fila-flecha" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="visually-hidden">(se abre en otra pestaña)</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+  {% else %}
+    {# FACULTAD: círculos, como siempre (sin título) #}
+    <section class="redes-sociales" aria-label="Redes sociales">
+      <ul class="redes-sociales__lista">
+        {% for red in redes %}
+          <li>
+            <a class="redes-sociales__enlace redes-sociales__enlace--{{ red.icono }}"
+               href="{{ red.url }}" target="_blank" rel="noopener">
+              <span class="visually-hidden">{{ red.nombre }} (se abre en otra pestaña)</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
 {% endif %}

@@ -519,7 +519,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 0.45rem var(--espacio-4);
+  padding: var(--espacio-4) var(--espacio-5);
   border-radius: var(--radio-md);
   color: var(--color-texto-cuerpo);
   font-size: var(--texto-sm);

@@ -107,3 +107,8 @@ directorio:
   css:
     theme:
       assets/css/views/directorio.css: {}
+
+directorio_redes:
+  css:
+    component:
+      assets/css/views/directorio-redes.css: {}

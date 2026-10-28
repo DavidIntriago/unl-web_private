@@ -1,0 +1,19 @@
+uuid: e27e1254-410a-4e23-a7dd-f09e2d30ed19
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitulo
+    - paragraphs.paragraphs_type.redes_sociales
+id: paragraph.redes_sociales.field_subtitulo
+field_name: field_subtitulo
+entity_type: paragraph
+bundle: redes_sociales
+label: Subtítulo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

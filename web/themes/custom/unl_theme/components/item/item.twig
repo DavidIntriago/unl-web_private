@@ -1,10 +1,17 @@
-<article class="unl-bloque-item">
-  {% if logo|render|trim is not empty %}
-    <div class="unl-bloque-item__icono">
-      {{ logo }}
-    </div>
+{#
+  Ítem: ícono + título corto.
+  El ícono se dibuja como máscara: el SVG solo da la forma y el color
+  sale del CSS (rojo, o el de la facultad), sin importar de qué color
+  se haya subido el archivo.
+#}
+<div class="unl-bloque-item">
+
+  {% if icono_url %}
+    <span class="unl-bloque-item__icono" style="--icono-url: url('{{ icono_url }}')" aria-hidden="true"></span>
   {% endif %}
-  <div class="unl-bloque-item__texto">
-    {{ titulo_corto }}
-  </div>
-</article>
+
+  {% if titulo_corto|render|trim is not empty %}
+    <div class="unl-bloque-item__texto">{{ titulo_corto }}</div>
+  {% endif %}
+
+</div>

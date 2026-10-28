@@ -1,0 +1,23 @@
+{% if red %}
+  {% if view.current_display starts with 'attachment' %}
+    {# Institucional: fila con título, detalle y flecha #}
+    <a class="redes-sociales__fila" href="{{ red.url }}" target="_blank" rel="noopener">
+      <span class="icono-red icono-red--{{ red.icono }} redes-sociales__fila-icono" aria-hidden="true"></span>
+      <span class="redes-sociales__fila-texto">
+        <span class="redes-sociales__fila-nombre">{{ red.titulo }}</span>
+        <span class="redes-sociales__fila-detalle">{{ red.texto ?: red.nombre }}</span>
+      </span>
+      <svg class="redes-sociales__fila-flecha" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="visually-hidden">(se abre en otra pestaña)</span>
+    </a>
+  {% else %}
+    {# Facultad o carrera: ícono solo #}
+    <a class="directorio-redes__icono" href="{{ red.url }}" target="_blank" rel="noopener"
+       title="{{ red.titulo }}{{ red.texto ? ' · ' ~ red.texto }}">
+      <span class="icono-red icono-red--{{ red.icono }}" aria-hidden="true"></span>
+      <span class="visually-hidden">{{ red.titulo }} (se abre en otra pestaña)</span>
+    </a>
+  {% endif %}
+{% endif %}

@@ -8,6 +8,8 @@ dependencies:
     - paragraphs.paragraphs_type.galeria
     - paragraphs.paragraphs_type.grid_perfiles
     - paragraphs.paragraphs_type.malla_curricular
+    - paragraphs.paragraphs_type.redes_sociales
+    - paragraphs.paragraphs_type.seccion_items
   module:
     - entity_reference_revisions
 id: node.carrera.field_secciones_carrera
@@ -27,6 +29,8 @@ settings:
       malla_curricular: malla_curricular
       galeria: galeria
       grid_perfiles: grid_perfiles
+      redes_sociales: redes_sociales
+      seccion_items: seccion_items
     negate: 0
     target_bundles_drag_drop:
       about:
@@ -37,6 +41,9 @@ settings:
         enabled: false
       banner_botones:
         weight: 30
+        enabled: false
+      banner_video:
+        weight: 35
         enabled: false
       columna_footer:
         weight: 21
@@ -71,6 +78,9 @@ settings:
       importaciones:
         weight: 27
         enabled: false
+      item:
+        weight: 47
+        enabled: false
       listado_carreras:
         weight: 40
         enabled: false
@@ -100,10 +110,13 @@ settings:
         enabled: false
       redes_sociales:
         weight: 48
-        enabled: false
+        enabled: true
       repositorio_dinamico:
         weight: 33
         enabled: false
+      seccion_items:
+        weight: 59
+        enabled: true
       tarjeta:
         weight: 34
         enabled: false

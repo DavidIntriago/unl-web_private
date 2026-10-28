@@ -61,8 +61,11 @@
 
 /* =========================================================
    COLOR DE LA FACULTAD AL PASAR EL MOUSE
-   Igual que en evento-teaser.css: la línea de la fecha es roja
-   y al pasar el mouse toma el color de la facultad del evento.
+   Igual que en evento-teaser.css.
+   Fuera de una facultad: línea roja que, al pasar el mouse,
+   toma el color de la facultad del evento.
+   Dentro de una facultad: siempre del color de la facultad,
+   sin cambio al pasar el mouse.
    ========================================================= */
 .card-ev-parrafo__fecha-cuadro {
   transition: border-bottom-color var(--duracion-normal) ease;
@@ -72,9 +75,15 @@
   border-bottom-color: var(--color-facultad, var(--color-primario));
 }
 
-/* Eventos sin facultad: siempre rojo, aunque estén dentro de una facultad */
+/* Eventos sin facultad (CAS, institucionales): el hover no cambia
+   el color. Fuera de una facultad queda rojo; dentro, el de la facultad */
 .card-ev-parrafo:not([data-facultad]) {
   --color-facultad: var(--color-primario);
+}
+
+/* Dentro de una página de facultad: sin cambio al pasar el mouse */
+body[data-facultad] .card-ev-parrafo:is(:hover, :focus-within) .card-ev-parrafo__fecha-cuadro {
+  border-bottom-color: var(--color-primario);
 }
 
 /* =========================================================

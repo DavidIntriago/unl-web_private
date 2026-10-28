@@ -1,0 +1,23 @@
+uuid: 40bc86f2-d425-40e4-842d-2fcdf1f7f759
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_enlace_red
+    - node.type.red_social
+  module:
+    - link
+id: node.red_social.field_enlace_red
+field_name: field_enlace_red
+entity_type: node
+bundle: red_social
+label: 'Enlace Red'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

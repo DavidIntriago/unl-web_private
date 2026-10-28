@@ -1,0 +1,19 @@
+uuid: ffddfbc7-7228-4144-a508-9540eb1ec225
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titulo
+    - paragraphs.paragraphs_type.redes_sociales
+id: paragraph.redes_sociales.field_titulo
+field_name: field_titulo
+entity_type: paragraph
+bundle: redes_sociales
+label: Titulo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

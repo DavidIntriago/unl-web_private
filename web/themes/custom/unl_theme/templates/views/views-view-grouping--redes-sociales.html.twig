@@ -1,0 +1,21 @@
+{#
+  Agrupamiento del directorio de redes.
+  - Página: un panel por facultad (izquierda la facultad, derecha sus carreras).
+  - Adjunto (institucionales): sin panel, solo su contenido.
+#}
+{% if view.current_display starts with 'attachment' %}
+  {{ content }}
+{% else %}
+  <section class="directorio-redes__panel"{% if codigo %} data-facultad="{{ codigo }}"{% endif %}>
+    <div class="directorio-redes__panel-facultad">
+      <span class="directorio-redes__etiqueta">Facultad</span>
+      <h3 class="directorio-redes__panel-nombre">{{ title }}</h3>
+      {{ facultad_contenido }}
+    </div>
+    {% if carreras_contenido %}
+      <div class="directorio-redes__panel-carreras">
+        {{ carreras_contenido }}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}

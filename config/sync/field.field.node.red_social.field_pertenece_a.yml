@@ -1,0 +1,31 @@
+uuid: 90577d06-b83e-4713-9fff-a5c5dd72a9f8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pertenece_a
+    - node.type.carrera
+    - node.type.facultades
+    - node.type.red_social
+id: node.red_social.field_pertenece_a
+field_name: field_pertenece_a
+entity_type: node
+bundle: red_social
+label: 'Pertenece A'
+description: 'Si la red social pertenece a una facultad o carrera, llenar este campo para replicar la red en las páginas correspondientes'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      carrera: carrera
+      facultades: facultades
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: carrera
+field_type: entity_reference

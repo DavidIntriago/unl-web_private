@@ -406,7 +406,8 @@
   inset: 0;
   z-index: -1;
   border-radius: var(--radio-lg);
-  background-color: var(--color-facultad);
+  /* Tono oscuro de la facultad: la letra blanca se lee con cualquier color */
+  background-color: var(--color-facultad-oscuro, var(--color-facultad));
   -webkit-clip-path: inset(100% 0 0 0 round var(--radio-lg));
   clip-path: inset(100% 0 0 0 round var(--radio-lg));
   transition: clip-path var(--duracion-lenta) var(--curva-salida);

@@ -1,0 +1,246 @@
+/**
+ * DIRECTORIO DE REDES SOCIALES (/redes-sociales)
+ * - Franja roja con las institucionales (misma lista que en carreras).
+ * - Un panel por facultad: a la izquierda la facultad con su tinte y
+ *   sus redes; a la derecha sus carreras en filas.
+ */
+
+/* =========================================================
+   FRANJA (institucionales)
+   ========================================================= */
+/* La vista no debe encerrar la franja: sin centrar, sin bordes ni esquinas */
+.view-redes-sociales,
+.view-redes-sociales .attachment,
+.view-redes-sociales .attachment-before {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* =========================================================
+   FRANJA OSCURA (institucionales), de borde a borde
+   ========================================================= */
+.directorio-redes__hero {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  /* Ocupa todo el ancho aunque el padre sea flex o grid */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  flex: 1 1 100%;
+  grid-column: 1 / -1;
+  justify-self: stretch;
+  padding: var(--espacio-12) clamp(var(--espacio-4), 6vw, var(--espacio-16));
+  background-color: var(--color-fondo-oscuro);
+  /* El fondo llega hasta los bordes de la pantalla */
+  box-shadow: 0 0 0 100vmax var(--color-fondo-oscuro);
+  -webkit-clip-path: inset(0 -100vmax);
+  clip-path: inset(0 -100vmax);
+  text-align: start;
+}
+
+/* Patrón: de borde a borde, se difumina antes de llegar a la lista */
+.directorio-redes__hero--con-imagen::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: calc((100% - 100vw) / 2);
+  right: calc((100% - 100vw) / 2);
+  background: var(--redes-imagen) right center / cover no-repeat;
+  opacity: 0.25;
+  -webkit-mask-image: linear-gradient(to right, transparent 35%, black 80%);
+  mask-image: linear-gradient(to right, transparent 35%, black 80%);
+  pointer-events: none;
+}
+
+/* Dentro de la franja todo en blanco y gris claro (sin el rojo aclarado) */
+.directorio-redes__hero-contenido {
+  --color-primario: #ffffff;
+  --color-texto: #ffffff;
+  --color-texto-secundario: color-mix(in srgb, white 65%, var(--color-fondo-oscuro));
+  --color-borde: color-mix(in srgb, white 14%, var(--color-fondo-oscuro));
+  max-width: 38rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+.directorio-redes__sobretitulo {
+  display: block;
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-md, 1.125rem);
+  font-weight: var(--peso-medio, 500);
+}
+
+.directorio-redes__hero-intro {
+  max-width: 34rem;
+  margin: 0 0 var(--espacio-8);
+  color: var(--color-texto-secundario);
+  font-size: var(--texto-md, 1.125rem);
+  line-height: var(--interlineado-lectura);
+}
+
+/* =========================================================
+   FACULTADES Y CARRERAS
+   ========================================================= */
+.directorio-redes__facultades {
+  max-width: var(--contenedor-normal);
+  margin-inline: auto;
+  padding: var(--espacio-12) var(--espacio-4);
+}
+
+.directorio-redes__titulo {
+  margin: 0 0 var(--espacio-1);
+  color: var(--color-texto);
+  font-size: var(--texto-2xl, 1.75rem);
+  font-weight: var(--peso-bold, 700);
+  line-height: var(--interlineado-ajustado);
+}
+
+.directorio-redes__intro {
+  margin: 0 0 var(--espacio-8);
+  color: var(--color-texto-secundario);
+}
+
+/* ---------- Panel de una facultad ---------- */
+.directorio-redes__panel {
+  --directorio-acento: var(--color-facultad-oscuro, var(--color-primario));
+  --directorio-tinte: color-mix(in srgb, var(--color-facultad, var(--color-primario)) 12%, white);
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  margin-bottom: var(--espacio-5);
+  overflow: hidden;
+  border: 0.0625rem solid var(--color-borde);
+  border-left: 0.35rem solid var(--directorio-acento);
+  border-radius: var(--radio-lg);
+  background-color: #ffffff;
+}
+
+/* Izquierda: la facultad con su tinte, su nombre y sus redes */
+.directorio-redes__panel-facultad {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  padding: var(--espacio-6);
+  background-color: var(--directorio-tinte);
+}
+
+.directorio-redes__panel-facultad .directorio-redes__iconos {
+  margin-top: var(--espacio-3);
+}
+
+.directorio-redes__etiqueta {
+  color: var(--directorio-acento);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-medio, 500);
+}
+
+.directorio-redes__panel-nombre {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: var(--texto-md, 1.125rem);
+  font-weight: var(--peso-bold, 700);
+  line-height: var(--interlineado-ajustado);
+}
+
+/* Derecha: carreras una al lado de otra, centradas en el alto del panel */
+.directorio-redes__panel-carreras {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: flex-start;
+  gap: var(--espacio-6) var(--espacio-10);
+  padding: var(--espacio-6) var(--espacio-8);
+}
+
+/* Cada carrera: nombre y, justo debajo, sus íconos */
+.directorio-redes__carrera {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.directorio-redes__carrera-nombre {
+  color: var(--color-texto);
+  font-size: var(--texto-md, 1.125rem);
+  font-weight: var(--peso-medio, 500);
+}
+
+.directorio-redes__carrera-nombre a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duracion-normal) ease;
+}
+
+.directorio-redes__carrera-nombre a:hover,
+.directorio-redes__carrera-nombre a:focus-visible {
+  color: var(--directorio-acento);
+}
+
+/* ---------- Íconos ---------- */
+.directorio-redes__iconos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.directorio-redes__icono {
+  display: flex;
+  width: var(--icono-red);
+  height: var(--icono-red);
+  border-radius: var(--radio-circulo);
+  color: var(--directorio-acento);
+  transition: transform var(--duracion-normal) ease;
+}
+
+.directorio-redes__icono .icono-red {
+  width: 100%;
+  height: 100%;
+}
+
+.directorio-redes__icono:hover,
+.directorio-redes__icono:focus-visible {
+  transform: translateY(var(--elevar-boton));
+}
+
+.directorio-redes__icono:focus-visible {
+  outline: 0.125rem solid var(--directorio-acento);
+  outline-offset: 0.125rem;
+}
+
+/* ---------- Celular: el panel se apila ---------- */
+@media (max-width: 768px) {
+  .directorio-redes__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .directorio-redes__panel-carreras {
+    padding: var(--espacio-5) var(--espacio-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .directorio-redes__icono {
+    transition: none;
+  }
+
+  .directorio-redes__icono:hover,
+  .directorio-redes__icono:focus-visible {
+    transform: none;
+  }
+}
+
+/* La franja va pegada al header: sin espacio arriba */
+.view-redes-sociales {
+  margin-top: calc(-1 * var(--espacio-entre-secciones, 0rem));
+}

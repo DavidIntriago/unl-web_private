@@ -1,18 +1,18 @@
-uuid: 4aa5f5c1-0d7e-4b3b-bc1f-26ad52487291
+uuid: 64188406-af23-42d0-b5f3-5cc2ffece5d6
 langcode: es
 status: true
 dependencies:
   module:
     - link
-    - paragraphs
-id: paragraph.field_redes
-field_name: field_redes
-entity_type: paragraph
+    - node
+id: node.field_enlace_red
+field_name: field_enlace_red
+entity_type: node
 type: link
 settings: {  }
 module: link
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

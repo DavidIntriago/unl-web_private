@@ -57,42 +57,71 @@
   }
 }
 
+/* =========================================================
+   TARJETA DE ÍTEM
+   Borde gris fino fijo. Al pasar el mouse: fondo muy clarito
+   del color de la facultad, la tarjeta sube un poco y el ícono
+   se mueve un poco a la izquierda con un zoom pequeño.
+   ========================================================= */
 .unl-bloque-item {
   display: flex;
-  align-items: center; 
-  background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: var(--radio-md, 8px);
-  padding: var(--espacio-5) var(--espacio-6);
-  transition: border-color var(--duracion-normal) ease, background-color var(--duracion-normal) ease;
+  align-items: center;
   height: 100%;
+  padding: var(--espacio-5) var(--espacio-6);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  background-color: transparent;
+  transition:
+    background-color var(--duracion-normal) ease,
+    transform var(--duracion-normal) var(--curva-suave);
 }
 
 .unl-bloque-item:hover {
-  border-color: var(--items-acento);
+  background-color: color-mix(in srgb, var(--items-acento) 6%, white);
+  transform: translateY(var(--elevar-boton));
 }
 
+/* ---------- Ícono ----------
+   Se dibuja como máscara: el SVG que suba la editora solo da la forma,
+   y el color sale de background-color. Así sale rojo fuera de una
+   facultad y del color de la facultad dentro, sin importar de qué
+   color se haya subido el archivo. */
 .unl-bloque-item__icono {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  margin-right: var(--espacio-4);
-  color: var(--items-acento);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Se dibuja a 2.2rem (el tamaño del hover) y quieto se ve a 2rem
+     con scale(0.91): así el zoom vuelve a su tamaño real y no se ve borroso */
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-right: var(--espacio-3);
+  background-color: var(--color-primario);
+  -webkit-mask: var(--icono-url) center / contain no-repeat;
+  mask: var(--icono-url) center / contain no-repeat;
+  transform: scale(0.91);
+  transition: transform var(--duracion-normal) var(--curva-suave);
 }
 
-.unl-bloque-item__icono img,
-.unl-bloque-item__icono svg {
-  max-width: 100%;
-  height: auto;
-  fill: currentColor;
+.unl-bloque-item:hover .unl-bloque-item__icono {
+  transform: rotate(-8deg) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unl-bloque-item,
+  .unl-bloque-item__icono {
+    transition: none;
+  }
+
+  .unl-bloque-item:hover {
+    transform: none;
+  }
+
+  .unl-bloque-item:hover .unl-bloque-item__icono {
+    transform: scale(0.91);
+  }
 }
 
 .unl-bloque-item__texto {
-  font-size: var(--texto-sm, 0.875rem);
   color: var(--color-texto);
-  font-weight: var(--peso-regular, 400);
-  line-height: var(--interlineado-relajado);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-normal);
+  line-height: var(--interlineado-ajustado);
 }

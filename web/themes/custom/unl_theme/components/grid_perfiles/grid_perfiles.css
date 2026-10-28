@@ -134,13 +134,10 @@
 .grid-perfiles--banner {
   --banner-acento: var(--color-facultad, var(--color-primario));
   --banner-acento-oscuro: color-mix(in srgb, var(--banner-acento) 60%, black);
-  --banner-acento-suave: color-mix(in srgb, var(--banner-acento) 14%, white);
 
-  /* Sin el margen entre secciones: el padding ya separa,
-     así arriba y abajo quedan iguales */
-  margin-top: 0;
-  padding-block: var(--espacio-16, 4rem);
-  background: linear-gradient(to bottom, transparent 0%, var(--banner-acento-suave) 100%);
+  /* Sin fondo propio: va sobre el fondo de la página,
+     con el mismo espacio entre secciones que las demás */
+  margin-top: var(--espacio-entre-secciones);
 }
 
 /* Bloque centrado de 70rem: el texto toma lo que sobra,
@@ -218,14 +215,4 @@
   .grid-perfiles--banner .grid-perfiles__grid {
     width: 100%;
   }
-}
-/* =========================================================
-   BANNER AL FINAL DE LA PÁGINA
-   El footer trae un margen arriba que necesitan las demás
-   secciones. Si la página tiene un banner (que va como cierre,
-   justo antes del footer), se quita para que la franja
-   llegue pegada al footer, como en el diseño.
-   ========================================================= */
-body:has(.grid-perfiles--banner) .footer-facultad {
-  margin-top: 0;
 }

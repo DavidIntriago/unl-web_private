@@ -3,24 +3,45 @@ langcode: es
 status: true
 dependencies:
   config:
-    - field.field.paragraph.redes_sociales.field_redes
+    - field.field.paragraph.redes_sociales.field_imagen_fondo
+    - field.field.paragraph.redes_sociales.field_subtitulo
+    - field.field.paragraph.redes_sociales.field_titulo
     - paragraphs.paragraphs_type.redes_sociales
   module:
-    - link
+    - svg_image
 id: paragraph.redes_sociales.default
 targetEntityType: paragraph
 bundle: redes_sociales
 mode: default
 content:
-  field_redes:
-    type: link
+  field_imagen_fondo:
+    type: image
     label: above
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_subtitulo:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_titulo:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 0
     region: content

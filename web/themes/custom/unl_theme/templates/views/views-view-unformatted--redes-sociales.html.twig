@@ -1,0 +1,34 @@
+{{ attach_library('unl_theme/redes_sociales') }}
+{{ attach_library('unl_theme/directorio_redes') }}
+
+{% if view.current_display starts with 'attachment' %}
+  {# Institucionales: franja roja #}
+  <section class="directorio-redes__hero{{ imagen_url ? ' directorio-redes__hero--con-imagen' }}"
+    {% if imagen_url %}style="--redes-imagen: url('{{ imagen_url }}')"{% endif %}>
+    <div class="directorio-redes__hero-contenido">
+      <span class="directorio-redes__sobretitulo">Síguenos</span>
+      <h1 class="directorio-redes__hero-titulo">Redes sociales de la UNL</h1>
+      <p class="directorio-redes__hero-intro">Las cuentas oficiales de la universidad, sus facultades y carreras.</p>
+      <ul class="redes-sociales__filas">
+        {% for row in rows %}<li>{{ row.content }}</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+{% elseif es_facultad %}
+  {# Redes propias de la facultad: columna izquierda del panel #}
+  <div class="directorio-redes__panel-redes">
+    <ul class="directorio-redes__iconos">
+      {% for row in rows %}<li>{{ row.content }}</li>{% endfor %}
+    </ul>
+  </div>
+
+{% else %}
+  {# Una carrera: fila a la derecha del panel #}
+  <div class="directorio-redes__carrera">
+    <span class="directorio-redes__carrera-nombre">{{ title }}</span>
+    <ul class="directorio-redes__iconos">
+      {% for row in rows %}<li>{{ row.content }}</li>{% endfor %}
+    </ul>
+  </div>
+{% endif %}

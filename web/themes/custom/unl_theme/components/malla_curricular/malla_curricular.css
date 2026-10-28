@@ -5,10 +5,15 @@
  * muy bajito alternados; el último periodo con el color completo.
  */
 .malla {
-  /* Versión oscura del color de la facultad: para texto y botones sobre blanco.
-     Hace falta porque el amarillo o el celeste puros no se leen sobre blanco. */
+  /* Acento: el color real de la facultad (fondos, la tarjeta final).
+     Acento oscuro: el tono oscuro oficial de la facultad (variables.css),
+     para texto y botones sobre blanco: el amarillo o el celeste puros
+     no se leen sobre blanco. Fuera de una facultad, el rojo UNL.
+     Acento texto: la letra que va ENCIMA del acento (blanca u oscura
+     según la facultad, también definida en variables.css). */
   --malla-acento: var(--color-facultad, var(--color-primario));
-  --malla-acento-oscuro: color-mix(in srgb, var(--malla-acento) 60%, black);
+  --malla-acento-oscuro: var(--color-facultad-oscuro, var(--color-primario));
+  --malla-acento-texto: var(--color-facultad-texto, var(--texto-sobre-primario));
   --malla-acento-suave: color-mix(in srgb, var(--malla-acento) 8%, white);
   --malla-acento-etiqueta: color-mix(in srgb, var(--malla-acento) 14%, white);
 
@@ -249,7 +254,9 @@
   background-color: var(--malla-acento-suave);
 }
 
-/* ---------- Último periodo: color fuerte ---------- */
+/* ---------- Último periodo: color real de la facultad ----------
+   La letra sale de --malla-acento-texto: blanca sobre el rojo,
+   oscura sobre amarillo, naranja, celeste y verde. */
 .malla__periodo--final,
 .malla__periodo--final:nth-child(odd) {
   background-color: var(--malla-acento);
@@ -258,13 +265,13 @@
 .malla__periodo--final .malla__numero,
 .malla__periodo--final .malla__conteo,
 .malla__periodo--final .malla__periodo-nombre {
-  color: var(--texto-sobre-primario);
+  color: var(--malla-acento-texto);
 }
 
 .malla__periodo--final .malla__materia,
 .malla__periodo--final:nth-child(even) .malla__materia {
-  background-color: rgb(255 255 255 / 0.22);
-  color: var(--texto-sobre-primario);
+  background-color: rgb(255 255 255 / 0.3);
+  color: var(--malla-acento-texto);
 }
 
 /* =========================================================

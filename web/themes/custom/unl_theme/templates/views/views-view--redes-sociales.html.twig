@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% if display_id starts with 'attachment' %}
+    {{ rows }}
+  {% else %}
+    {{ attachment_before }}
+    {% if rows %}
+      <section class="directorio-redes__facultades">
+        <h2 class="directorio-redes__titulo">Facultades y carreras</h2>
+        <p class="directorio-redes__intro">Encuentra las redes de tu facultad o carrera.</p>
+        {{ rows }}
+      </section>
+    {% endif %}
+  {% endif %}
+</div>

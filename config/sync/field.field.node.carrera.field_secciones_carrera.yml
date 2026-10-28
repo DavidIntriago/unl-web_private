@@ -5,6 +5,9 @@ dependencies:
   config:
     - field.storage.node.field_secciones_carrera
     - node.type.carrera
+    - paragraphs.paragraphs_type.about
+    - paragraphs.paragraphs_type.banner_botones
+    - paragraphs.paragraphs_type.banner_video
     - paragraphs.paragraphs_type.galeria
     - paragraphs.paragraphs_type.grid_perfiles
     - paragraphs.paragraphs_type.malla_curricular
@@ -26,25 +29,38 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      about: about
       malla_curricular: malla_curricular
       galeria: galeria
+      banner_botones: banner_botones
+      banner_video: banner_video
       grid_perfiles: grid_perfiles
+<<<<<<< HEAD
       redes_sociales: redes_sociales
+=======
+>>>>>>> e58bf959f257609a2695ce4c0989917641a938a5
       seccion_items: seccion_items
     negate: 0
     target_bundles_drag_drop:
       about:
         weight: 19
-        enabled: false
+        enabled: true
       archivo:
         weight: 20
         enabled: false
       banner_botones:
         weight: 30
+<<<<<<< HEAD
         enabled: false
       banner_video:
         weight: 35
         enabled: false
+=======
+        enabled: true
+      banner_video:
+        weight: 35
+        enabled: true
+>>>>>>> e58bf959f257609a2695ce4c0989917641a938a5
       columna_footer:
         weight: 21
         enabled: false

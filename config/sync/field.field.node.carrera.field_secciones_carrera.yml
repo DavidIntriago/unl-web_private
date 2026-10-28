@@ -35,10 +35,7 @@ settings:
       banner_botones: banner_botones
       banner_video: banner_video
       grid_perfiles: grid_perfiles
-<<<<<<< HEAD
       redes_sociales: redes_sociales
-=======
->>>>>>> e58bf959f257609a2695ce4c0989917641a938a5
       seccion_items: seccion_items
     negate: 0
     target_bundles_drag_drop:
@@ -50,17 +47,10 @@ settings:
         enabled: false
       banner_botones:
         weight: 30
-<<<<<<< HEAD
-        enabled: false
-      banner_video:
-        weight: 35
-        enabled: false
-=======
         enabled: true
       banner_video:
         weight: 35
         enabled: true
->>>>>>> e58bf959f257609a2695ce4c0989917641a938a5
       columna_footer:
         weight: 21
         enabled: false

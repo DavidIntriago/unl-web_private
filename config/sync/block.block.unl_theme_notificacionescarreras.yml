@@ -1,0 +1,28 @@
+uuid: c354815f-dcfd-4c23-ae8a-9d2415b88699
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:notificaciones_globales:cb31ce32-c714-45d3-a561-52881d1b4d79'
+  module:
+    - block_content
+    - system
+  theme:
+    - unl_theme
+id: unl_theme_notificacionescarreras
+theme: unl_theme
+region: hero_notificaciones
+weight: -9
+provider: null
+plugin: 'block_content:cb31ce32-c714-45d3-a561-52881d1b4d79'
+settings:
+  id: 'block_content:cb31ce32-c714-45d3-a561-52881d1b4d79'
+  label: 'Notificaciones Carreras'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/fsh/*'

@@ -1,0 +1,26 @@
+uuid: a0e5eaa0-3df1-4461-9e50-375cc9ce0d02
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.notificaciones_globales
+    - field.field.block_content.notificaciones_globales.field_notificacion_flotante
+  module:
+    - entity_reference_revisions
+id: block_content.notificaciones_globales.default
+targetEntityType: block_content
+bundle: notificaciones_globales
+mode: default
+content:
+  field_notificacion_flotante:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

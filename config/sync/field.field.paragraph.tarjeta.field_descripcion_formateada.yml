@@ -1,0 +1,24 @@
+uuid: abb52ff6-0517-4a43-9de8-1db2a7206724
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_descripcion_formateada
+    - filter.format.formato_texto_redactores
+    - paragraphs.paragraphs_type.tarjeta
+  module:
+    - text
+id: paragraph.tarjeta.field_descripcion_formateada
+field_name: field_descripcion_formateada
+entity_type: paragraph
+bundle: tarjeta
+label: 'Descripcion Formateada'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - formato_texto_redactores
+field_type: text_long

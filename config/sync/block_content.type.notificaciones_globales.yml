@@ -1,0 +1,8 @@
+uuid: 6e57cff5-ffda-4b90-987b-1f4aab4d9970
+langcode: es
+status: true
+dependencies: {  }
+id: notificaciones_globales
+label: 'Notificaciones Globales'
+revision: false
+description: null

@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.tarjeta.field_descripcion
+    - field.field.paragraph.tarjeta.field_descripcion_formateada
     - field.field.paragraph.tarjeta.field_enlace
     - field.field.paragraph.tarjeta.field_imagen
     - field.field.paragraph.tarjeta.field_titulo
     - paragraphs.paragraphs_type.tarjeta
   module:
     - link
+    - text
 id: paragraph.tarjeta.default
 targetEntityType: paragraph
 bundle: tarjeta
@@ -21,6 +23,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_descripcion_formateada:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_enlace:
     type: link

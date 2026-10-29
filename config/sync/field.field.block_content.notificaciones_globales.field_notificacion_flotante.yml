@@ -1,0 +1,121 @@
+uuid: 1dc8c9eb-95bc-4a0f-924f-5cbdcc151d40
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.notificaciones_globales
+    - field.storage.block_content.field_notificacion_flotante
+    - paragraphs.paragraphs_type.notificacion_flotante
+  module:
+    - entity_reference_revisions
+id: block_content.notificaciones_globales.field_notificacion_flotante
+field_name: field_notificacion_flotante
+entity_type: block_content
+bundle: notificaciones_globales
+label: 'Notificación Flotante'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      notificacion_flotante: notificacion_flotante
+    negate: 0
+    target_bundles_drag_drop:
+      about:
+        weight: 32
+        enabled: false
+      archivo:
+        weight: 33
+        enabled: false
+      banner_botones:
+        weight: 34
+        enabled: false
+      banner_video:
+        weight: 35
+        enabled: false
+      columna_footer:
+        weight: 36
+        enabled: false
+      convenios:
+        weight: 37
+        enabled: false
+      dato_facultad:
+        weight: 38
+        enabled: false
+      diapositiva_hero:
+        weight: 39
+        enabled: false
+      divisor:
+        weight: 40
+        enabled: false
+      galeria:
+        weight: 41
+        enabled: false
+      grid_perfiles:
+        weight: 42
+        enabled: false
+      grid_tarjetas:
+        weight: 43
+        enabled: false
+      hero_carrusel:
+        weight: 44
+        enabled: false
+      imagen_galeria:
+        weight: 45
+        enabled: false
+      importaciones:
+        weight: 46
+        enabled: false
+      item:
+        weight: 47
+        enabled: false
+      listado_carreras:
+        weight: 48
+        enabled: false
+      listado_eventos_dinamico:
+        weight: 49
+        enabled: false
+      listado_noticias_destacadas:
+        weight: 50
+        enabled: false
+      logo_footer:
+        weight: 51
+        enabled: false
+      malla_curricular:
+        weight: 52
+        enabled: false
+      notificacion_flotante:
+        weight: 53
+        enabled: true
+      perfil:
+        weight: 54
+        enabled: false
+      periodo_academico:
+        weight: 55
+        enabled: false
+      recursos_descargables:
+        weight: 56
+        enabled: false
+      redes_sociales:
+        weight: 57
+        enabled: false
+      repositorio_dinamico:
+        weight: 58
+        enabled: false
+      seccion_items:
+        weight: 59
+        enabled: false
+      tarjeta:
+        weight: 60
+        enabled: false
+      texto_libre:
+        weight: 61
+        enabled: false
+      visor_pdf:
+        weight: 62
+        enabled: false
+field_type: entity_reference_revisions

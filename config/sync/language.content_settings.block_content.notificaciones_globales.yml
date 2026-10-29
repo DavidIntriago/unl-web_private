@@ -1,0 +1,11 @@
+uuid: e242a424-5159-4652-a359-b23bd66098b6
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.notificaciones_globales
+id: block_content.notificaciones_globales
+target_entity_type_id: block_content
+target_bundle: notificaciones_globales
+default_langcode: site_default
+language_alterable: false

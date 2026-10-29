@@ -8,6 +8,8 @@
    ========================================================= */
 .grid-perfiles {
   margin-top: var(--espacio-entre-secciones);
+  /* Al cerrar "Ver todos" se vuelve aquí sin quedar debajo del header */
+  scroll-margin-top: calc(var(--header-altura) + var(--espacio-4));
 }
 
 /* =========================================================
@@ -66,13 +68,102 @@
   }
 }
 
-/* Dentro de una facultad: columnas de 230px, alineadas a la izquierda
-   con el título de la sección */
+/* Dentro de una facultad: columnas de 230px, centradas */
 @media (min-width: 769px) {
   [data-facultad] .grid-perfiles__grid {
     grid-template-columns: repeat(auto-fill, 14.375rem);
-    justify-content: start;
+    justify-content: center;
     gap: var(--espacio-4);
+  }
+}
+
+/* =========================================================
+   "VER TODOS"
+   Con más de 6 personas, grid_perfiles.js marca las demás con
+   .grid-perfiles__extra y agrega el botón. Mientras el bloque
+   está .is-plegado, esas personas se esconden.
+   ========================================================= */
+.grid-perfiles.is-plegado .grid-perfiles__extra {
+  display: none;
+}
+
+/* Al abrir, las que aparecen suben suavemente */
+.grid-perfiles__extra {
+  animation: grid-perfiles-aparecer var(--duracion-normal) var(--curva-salida);
+}
+
+@keyframes grid-perfiles-aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+.grid-perfiles__acciones {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--espacio-8);
+}
+
+.grid-perfiles__ver-todas {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-6);
+  border: 0.0625rem solid var(--color-primario);
+  border-radius: var(--radio-pastilla);
+  background-color: transparent;
+  color: var(--color-primario);
+  font: inherit;
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-seminegrita);
+  cursor: pointer;
+  transition:
+    background-color var(--duracion-rapida) ease,
+    color var(--duracion-rapida) ease,
+    transform var(--duracion-rapida) ease;
+}
+
+/* Flechita que gira al abrir */
+.grid-perfiles__ver-todas::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 0.125rem solid currentColor;
+  border-bottom: 0.125rem solid currentColor;
+  transform: translateY(-0.125rem) rotate(45deg);
+  transition: transform var(--duracion-normal) ease;
+}
+
+.grid-perfiles__ver-todas[aria-expanded="true"]::after {
+  transform: translateY(0.125rem) rotate(-135deg);
+}
+
+.grid-perfiles__ver-todas:hover,
+.grid-perfiles__ver-todas:focus-visible {
+  background-color: var(--color-primario);
+  color: var(--texto-sobre-primario);
+  transform: translateY(var(--elevar-boton));
+}
+
+.grid-perfiles__ver-todas:focus-visible {
+  outline: 0.125rem solid var(--color-primario);
+  outline-offset: 0.125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-perfiles__extra {
+    animation: none;
+  }
+
+  .grid-perfiles__ver-todas,
+  .grid-perfiles__ver-todas::after {
+    transition: none;
+  }
+
+  .grid-perfiles__ver-todas:hover,
+  .grid-perfiles__ver-todas:focus-visible {
+    transform: none;
   }
 }
 

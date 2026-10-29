@@ -31,3 +31,8 @@ props:
 slots:
   items:
     title: 'Perfiles'
+# grid_perfiles.js (botón "Ver todos") se carga solo; necesita estas librerías.
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once

@@ -1,8 +1,8 @@
 {{ attach_library('unl_theme/listado_carreras') }}
-<section class="listado-carreras" data-carreras-visibles="5">
+{# Sin título visible: el aria-label le da nombre a la sección para lectores de pantalla #}
+<section class="listado-carreras" data-carreras-visibles="5" aria-label="Carreras">
 
   <div class="listado-carreras__encabezado">
-    <h2 class="titulo-vista-global">{{ paragraph.field_titulo_seccion.value }}</h2>
     <button type="button" class="listado-carreras__ver-todas" aria-expanded="false">
       Ver toda la oferta
     </button>

@@ -5,10 +5,13 @@
     perfil_corto     → Perfil Corto: foto arriba, datos abajo, sin "Ver perfil"
     perfil_banner    → Banner: título, subtítulo y botón a la izquierda;
                        personas (foto redonda, cargo, nombre, correos) a la derecha
+
+  En completo y corto se muestran las primeras 6 personas; si hay más,
+  grid_perfiles.js agrega el botón "Ver todos" (data-perfiles-visibles).
 #}
 {% set modo = estilo == 'perfil_corto' ? 'corto' : (estilo == 'perfil_banner' ? 'banner' : 'completo') %}
 
-<div class="grid-perfiles grid-perfiles--{{ modo }}">
+<div class="grid-perfiles grid-perfiles--{{ modo }}"{% if modo != 'banner' %} data-perfiles-visibles="6"{% endif %}>
   <div class="grid-perfiles__contenido">
 
     {% if modo == 'banner' %}

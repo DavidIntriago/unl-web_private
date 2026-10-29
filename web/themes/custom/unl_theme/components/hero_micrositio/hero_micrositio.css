@@ -274,7 +274,8 @@
   justify-content: flex-end;
   gap: var(--espacio-10);
   height: auto;
-  min-height: calc(100svh - var(--header-altura));
+  /* Mismo alto que el hero de facultad; si el contenido no entra, crece */
+  min-height: max(100svh, 37.5rem);
   padding: var(--espacio-20) 8% var(--espacio-10);
 }
 

@@ -505,6 +505,11 @@
 .tarjeta-default__textos {
   flex: 1;
   padding-right: var(--espacio-3);
+  /* Nuevas reglas para centrar el contenido */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tarjeta-default__titulo {
@@ -513,9 +518,53 @@
   font-weight: var(--peso-negrita);
 }
 
+.grid-tarjetas-container--default > *:only-child {
+  max-width: 800px; 
+  margin: 0 auto;  
+}
+
 .tarjeta-default__descripcion {
   margin: 0;
   font-size: var(--texto-xs);
+}
+/* =========================================================
+   TEXTO FORMATEADO EN VARIANTE DEFAULT
+   ========================================================= */
+
+
+.tarjeta-default__descripcion p {
+  margin: 0 0 var(--espacio-2) 0;
+  font-size: var(--texto-xs);
+}
+
+.tarjeta-default__descripcion p:last-child {
+  margin-bottom: 0;
+}
+
+.tarjeta-default__descripcion ul {
+  margin: var(--espacio-2) 0 var(--espacio-2) var(--espacio-4);
+  padding: 0;
+  list-style-type: disc;
+}
+
+.tarjeta-default__descripcion li {
+  margin-bottom: var(--espacio-1);
+  font-size: var(--texto-xs);
+}
+
+.tarjeta-default__descripcion li:last-child {
+  margin-bottom: 0;
+}
+
+.tarjeta-default__descripcion strong {
+  font-weight: var(--peso-negrita, bold);
+  color: var(--color-texto-oscuro, #1a1a1a);
+}
+
+.tarjeta-default__descripcion a {
+  color: var(--color-primario);
+  position: relative;
+  z-index: 20; 
 }
 
 .tarjeta-default__icono {
@@ -558,4 +607,13 @@
   outline: 3px solid var(--color-primario);
   outline-offset: -3px;
   border-radius: var(--radio-lg, 12px);
+}
+
+:is(.noticia-full__cuerpo, .evento-detalle__cuerpo, .tarjeta-default__descripcion) ul.lista-importante {
+  /* ... mantén las propiedades que ya tienes (borde, padding, etc) ... */
+  
+  /* Agrega estas tres líneas: */
+  text-align: left;
+  width: fit-content;
+  margin: var(--espacio-4) auto; 
 }

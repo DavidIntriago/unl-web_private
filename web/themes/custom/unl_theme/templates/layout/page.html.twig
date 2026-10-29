@@ -4,7 +4,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-
 <div id="page-wrapper"{% if facultad_codigo %} data-facultad="{{ facultad_codigo }}"{% endif %}>
   
   {% set menu_facultad_renderizado = page.menu_facultad|render %}
@@ -14,7 +13,7 @@
     {% include '@unl_theme/components/header/header.html.twig' %}
   {% endif %}
 
-  {# Hero de acuerdo a tipo de page        #}
+  {# Hero de acuerdo a tipo de page #}
   {% if hero_diapositivas %}
     {{ attach_library('unl_theme/hero_micrositio') }}
     
@@ -37,6 +36,13 @@
           <div class="slide-item{% if loop.first %} active{% endif %}"><div class="slide-bg">{{ imagen }}</div><div class="slide-overlay"></div></div>
         {% endfor %}
       </div>
+
+      {# ---------- NOTIFICACIONES FLOTANTES ---------- #}
+      {% if page.hero_notificaciones|render|trim %}
+        <aside class="hero-notificaciones-flotantes">
+          {{ page.hero_notificaciones }}
+        </aside>
+      {% endif %}
 
       {# ---------- Título según el tipo ---------- #}
       {% if hero_tipo == 'facultad' %}
@@ -68,8 +74,7 @@
         </div>
       {% endif %}
 
-      {# ---------- Franja de datos: la misma para facultad y carrera ----------
-         Facultad: ícono subido (inline). Carrera: ícono del CSS según la clave. #}
+      {# ---------- Franja de datos: la misma para facultad y carrera ---------- #}
       {% if hero_tipo in ['facultad', 'carrera'] and hero_datos %}
         <ul class="hero-micrositio__datos">
           {% for dato in hero_datos %}
@@ -91,7 +96,7 @@
       {% endif %}
     </section>
   {% endif %}
-  
+
   {# Contenido de pages #}
   <main class="site-content">
     {% set menu_lateral_renderizado = page.sidebar_micrositio|render %}

@@ -154,7 +154,7 @@
    ========================================================= */
 .hero-notificaciones-flotantes {
   position: absolute;
-  top: 13%;
+  top: 18%;
   right: 4%;
   z-index: var(--z-dropdown);
   display: flex;

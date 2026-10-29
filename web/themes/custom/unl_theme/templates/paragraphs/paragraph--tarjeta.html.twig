@@ -9,10 +9,11 @@
 
 <div{{ attributes.addClass(classes) }}>
   {% set variante_padre = paragraph.getParentEntity().field_variante.value|default('default') %}
+  {% set descripcion_final = variante_padre == 'default' ? content.field_descripcion_formateada|render : content.field_descripcion|render %}
 
   {% include 'unl_theme:tarjeta' with {
     titulo: paragraph.field_titulo.value,
-    descripcion: content.field_descripcion|render,
+    descripcion: descripcion_final,
     imagen: content.field_imagen,
     color: paragraph.field_color_base.value,
     variante: variante_padre, 

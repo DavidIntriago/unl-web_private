@@ -511,7 +511,6 @@
     backdrop-filter: blur(6px);
   }
 
-  /* Dato que queda solo en la última fila: ocupa las dos columnas */
   .hero-micrositio--carrera .hero-micrositio__dato:last-child:nth-child(odd) {
     grid-column: 1 / -1;
   }
@@ -525,3 +524,88 @@
     font-size: var(--texto-sm);
   }
 }
+
+
+/* NOTIFICACIONES FLOTANTES PARA CARRERAS */
+.hero-micrositio {
+  position: relative;
+  overflow: hidden; 
+}
+
+.hero-notificaciones-flotantes {
+  position: absolute;
+  top: 20%;
+  right: 4%;
+  z-index: var(--z-dropdown);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+  width: fit-content;
+  transform: translateY(-50%) scale(1.2);
+  transform-origin: right center;
+  pointer-events: none;
+}
+
+.hero-notificaciones-flotantes > * {
+  pointer-events: auto;
+}
+
+@media (min-width: 769px) {
+  .hero-notificaciones-flotantes [id^="block-"] > div:not(.contextual) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-notificaciones-flotantes {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+  }
+
+  .hero-notificaciones-flotantes .contextual-region,
+  .hero-notificaciones-flotantes .contextual-region > div,
+  .hero-notificaciones-flotantes .contextual-region > div > div {
+    width: 100%;
+  }
+
+  .hero-notificaciones-flotantes .unl-alert__container {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding: var(--espacio-3) var(--espacio-4);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(0 0 0 / 0.1); 
+    transform: none;
+  }
+
+  .hero-notificaciones-flotantes .unl-alert__text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .hero-notificaciones-flotantes .unl-alert__icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    min-width: 2.5rem;
+    max-width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .hero-notificaciones-flotantes .unl-alert__icon::before {
+    width: var(--icono-md);
+    height: var(--icono-md);
+  }
+}
+
+
+
+
